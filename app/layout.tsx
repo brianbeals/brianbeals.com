@@ -3,9 +3,27 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Brian Beals",
+  metadataBase: new URL("https://brianbeals.com"),
+  title: {
+    default: "Brian Beals",
+    template: "%s — Brian Beals",
+  },
   description:
     "I help enterprise organizations stop piloting AI and start producing real results with it.",
+  openGraph: {
+    title: "Brian Beals",
+    description:
+      "I help enterprise organizations stop piloting AI and start producing real results with it.",
+    url: "https://brianbeals.com",
+    siteName: "Brian Beals",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brian Beals",
+    description:
+      "I help enterprise organizations stop piloting AI and start producing real results with it.",
+  },
 };
 
 export default function RootLayout({

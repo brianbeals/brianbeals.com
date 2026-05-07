@@ -10,7 +10,16 @@ export default function About() {
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-2xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">About</h1>
-
+ <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
+          <Image
+            src="/brian-beals.jpg"
+            alt="Brian Beals"
+            width={180}
+            height={180}
+            className="rounded-md shadow-sm"
+            priority
+          />
+        </div>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I've built three enterprise sales practices from scratch. Each one started with $0 in revenue and the kind of slide deck no customer believed yet.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, $0 to $20M. The next was Sirius Computer Solutions' Big Data and Analytics group, which I took from $20M to $78M in under four years (3.9×). For the last decade I've been at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>

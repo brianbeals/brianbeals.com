@@ -62,6 +62,7 @@ export default function RootLayout({
         <footer className="px-6 sm:px-12 py-6 text-xs text-neutral-500">
           <div className="max-w-2xl mx-auto">© Brian Beals</div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );

@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Three enterprise practices, built from scratch. How I think about AI that actually ships.",
+};
 export default function About() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">

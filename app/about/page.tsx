@@ -36,7 +36,7 @@ export default function About() {
 
         <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight" style={{ color: "#1E3A5F" }}>Earlier</h2>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, 1989 to 1992, honorably discharged. It was a long time ago, but the parts I still carry are the most valuable ones. Honor in the work. Integrity when nobody is checking. An attention to detail that's hard to switch off. It's also why I take infrastructure questions seriously and why I never assume the demo represents the running system.</p>
+       <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, 1989 to 1992, honorably discharged. It was a long time ago, but the parts I still carry are the most valuable ones. Honor in the work. Integrity when nobody is checking. An attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Based in Punta Gorda, Florida. Email is the fastest way to reach me.</p>
       </article>

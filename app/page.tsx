@@ -1,65 +1,24 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen flex items-center justify-center px-6 py-16 sm:px-12">
+      <div className="max-w-2xl">
+        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">
+          Brian Beals
+        </h1>
+        <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
+          I help enterprise organizations stop piloting AI and start producing real results with it.
+        </p>
+        <p className="text-base sm:text-lg leading-relaxed mb-4 text-neutral-700 dark:text-neutral-300">
+          Career started in 1992. Built and led AI, analytics, and enterprise data practices at Mainline Information Systems, Sirius Computer Solutions, and LRS IT Solutions: each grown from the ground up.
+        </p>
+        <p className="text-base sm:text-lg leading-relaxed mb-12 text-neutral-700 dark:text-neutral-300">
+          Currently leading AI, Analytics &amp; Automation at LRS IT Solutions. Punta Gorda, Florida.
+        </p>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
+          <a href="mailto:brian@bealsfamily.com" className="underline underline-offset-4 hover:no-underline">Email</a>
+          <a href="https://www.linkedin.com/in/brianbeals/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">LinkedIn</a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

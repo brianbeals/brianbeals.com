@@ -12,7 +12,7 @@ export default function About() {
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">About</h1>
  <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
           <Image
-            src="/brian-beals.jpg"
+            src="/brian-beals.JPG"
             alt="Brian Beals"
             width={180}
             height={180}

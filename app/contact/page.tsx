@@ -11,20 +11,11 @@ export default function Contact() {
         <ul className="space-y-4 text-base sm:text-lg">
           <li>
             <span className="text-neutral-500 mr-2 inline-block w-20">Email</span>
-            <a href="mailto:brian@bealsfamily.com" className="underline underline-offset-4 hover:no-underline">
-              brian@bealsfamily.com
-            </a>
+            <a href="mailto:brian@bealsfamily.com" className="underline underline-offset-4 hover:no-underline">brian@bealsfamily.com</a>
           </li>
           <li>
             <span className="text-neutral-500 mr-2 inline-block w-20">LinkedIn</span>
-            
-              href="https://www.linkedin.com/in/brian-beals-ab79363/"
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-4 hover:no-underline"
-            >
-              linkedin.com/in/brian-beals-ab79363
-            </a>
+            <a href="https://www.linkedin.com/in/brian-beals-ab79363/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">linkedin.com/in/brian-beals-ab79363</a>
           </li>
           <li>
             <span className="text-neutral-500 mr-2 inline-block w-20">Based in</span>

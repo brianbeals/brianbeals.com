@@ -16,7 +16,7 @@ export default function Home() {
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
           <a href="mailto:brian@bealsfamily.com" className="underline underline-offset-4 hover:no-underline">Email</a>
-          <a href="https://www.linkedin.com/in/brianbeals/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/brian-beals-ab79363/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">LinkedIn</a>
         </div>
       </div>
     </main>

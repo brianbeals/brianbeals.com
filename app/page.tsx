@@ -1,6 +1,12 @@
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-6 py-16 sm:px-12">
+    <main
+  className="min-h-screen flex items-center justify-center px-6 py-16 sm:px-12"
+  style={{
+    background:
+      "radial-gradient(at 25% 20%, rgba(46,134,193,0.12) 0, transparent 50%), radial-gradient(at 75% 80%, rgba(30,58,95,0.10) 0, transparent 50%), #F4F6F9",
+  }}
+>
       <div className="max-w-2xl">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8">
           Brian Beals

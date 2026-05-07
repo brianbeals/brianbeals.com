@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Brian Beals.",
+};
 export default function Contact() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">

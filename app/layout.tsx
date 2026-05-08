@@ -6,15 +6,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://brianbeals.com"),
   title: {
-    default: "Brian Beals - Enterprise Technology Leader",
-    template: "%s — Brian Beals",
+    default: "Brian Beals | Enterprise Sales Leader",
+    template: "%s | Brian Beals",
   },
   description:
-    "Brian Beals - Enterprise Technology Leader. 30 years across data, analytics, automation, and AI. I help enterprise organizations turn technology investments into real business results.",
+    "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
   openGraph: {
-    title: "Brian Beals - Enterprise Technology Leader",
+    title: "Brian Beals | Enterprise Sales Leader",
     description:
-      "Enterprise technology leader with 30 years across data, analytics, automation, and AI. I help organizations turn technology investments into real business results.",
+      "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
     url: "https://brianbeals.com",
     siteName: "Brian Beals",
     images: ["/opengraph-image"],
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Beals - Enterprise Technology Leader",
+    title: "Brian Beals | Enterprise Sales Leader",
     description:
-      "Enterprise technology leader with 30 years across data, analytics, automation, and AI. I help organizations turn technology investments into real business results.",
+      "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
     images: ["/opengraph-image"],
   },
 };
@@ -33,15 +33,14 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Brian Beals",
-  jobTitle: "Enterprise Technology Leader",
+  jobTitle: "Enterprise Sales Leader",
   description:
-    "Enterprise technology leader with 30 years across data, analytics, automation, and AI. I help organizations turn technology investments into real business results.",
+    "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
   url: "https://brianbeals.com",
   image: "https://brianbeals.com/opengraph-image",
   sameAs: [
     "https://www.linkedin.com/in/brianbeals/",
-    "https://github.com/bbeals42",
-    "https://bbeals.substack.com",
+    "https://github.com/Bbeals42",
   ],
 };
 
@@ -72,6 +71,9 @@ export default function RootLayout({
               <Link href="/about" className="hover:underline underline-offset-4">
                 About
               </Link>
+              <Link href="/elsewhere" className="hover:underline underline-offset-4">
+                Elsewhere
+              </Link>
               <Link href="/contact" className="hover:underline underline-offset-4">
                 Contact
               </Link>
@@ -79,8 +81,8 @@ export default function RootLayout({
           </nav>
         </header>
         <main className="flex-1 flex flex-col">{children}</main>
-        <footer className="px-6 sm:px-12 py-6 text-xs text-neutral-500">
-          <div className="max-w-2xl mx-auto">© Brian Beals</div>
+        <footer className="px-6 sm:px-12 py-6 text-xs" style={{ color: "rgba(30, 58, 95, 0.7)" }}>
+          <div className="max-w-2xl mx-auto">© {new Date().getFullYear()} Brian Beals</div>
         </footer>
         <Analytics />
       </body>

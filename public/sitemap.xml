@@ -9,6 +9,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://brianbeals.com/elsewhere</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://brianbeals.com/contact</loc>
     <priority>0.8</priority>
   </url>

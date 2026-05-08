@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Brian Beals — I help enterprise organizations stop piloting AI and start producing real results with it.";
+  "Brian Beals. I help enterprise organizations get real results out of their AI, analytics, and automation investments.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -43,7 +43,7 @@ export default async function Image() {
             marginBottom: 80,
           }}
         >
-          I help enterprise organizations stop piloting AI and start producing real results with it.
+          I help enterprise organizations get real results out of their AI, analytics, and automation investments.
         </div>
         <div
           style={{

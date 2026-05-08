@@ -40,7 +40,7 @@ const personJsonLd = {
   image: "https://brianbeals.com/opengraph-image",
   sameAs: [
     "https://www.linkedin.com/in/brianbeals/",
-    "https://github.com/brianbeals",
+    "https://github.com/bbeals42",
     "https://bbeals.substack.com",
   ],
 };
@@ -61,6 +61,32 @@ export default function RootLayout({
       >
         <script
           type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <header className="px-6 sm:px-12 pt-8 pb-2">
+          <nav className="max-w-2xl mx-auto flex items-center justify-between text-sm">
+            <Link href="/" className="font-semibold tracking-tight text-base">
+              Brian Beals
+            </Link>
+            <div className="flex gap-6">
+              <Link href="/about" className="hover:underline underline-offset-4">
+                About
+              </Link>
+              <Link href="/contact" className="hover:underline underline-offset-4">
+                Contact
+              </Link>
+            </div>
+          </nav>
+        </header>
+        <main className="flex-1 flex flex-col">{children}</main>
+        <footer className="px-6 sm:px-12 py-6 text-xs text-neutral-500">
+          <div className="max-w-2xl mx-auto">© Brian Beals</div>
+        </footer>
+        <Analytics />
+      </body>
+    </html>
+  );
+}          type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <header className="px-6 sm:px-12 pt-8 pb-2">

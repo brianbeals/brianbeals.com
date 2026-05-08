@@ -32,7 +32,7 @@ export default function About() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Most enterprise AI doesn't fail at the model. It fails at the handoffs: pilot to production, data foundation to sustained use, demo to actual procurement decision. The technical part is rarely the hard part anymore. The hard part is everything that has to be right before the model is even running.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The practices I've built share a vendor-neutral, consultative posture. We've sold IBM, Microsoft, AWS, Cisco, Dell, Snowflake, and a long tail of others, and the practice grows because customers eventually figure out who's selling them what works versus what pays the rep best. Vendor-neutral isn't a marketing line. It's the actual reason these practices compound.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The practices I've built are vendor-neutral on purpose. We've represented IBM, Microsoft, AWS, Cisco, Dell, Snowflake, and dozens of others, and the practice grows because customers eventually figure out who's selling them what works versus what pays the rep best. That isn't a marketing line. It's the actual reason these practices compound.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I currently maintain more than 80 technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter for thirty-plus years.</p>
 

@@ -11,11 +11,14 @@ export const metadata: Metadata = {
   },
   description:
     "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Brian Beals | Enterprise Sales Leader",
     description:
       "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
-    url: "https://brianbeals.com",
+    url: "/",
     siteName: "Brian Beals",
     images: ["/opengraph-image"],
     type: "website",

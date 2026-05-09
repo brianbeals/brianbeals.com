@@ -3,6 +3,19 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Email Brian directly. No form, no funnel.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact | Brian Beals",
+    description: "Email Brian directly. No form, no funnel.",
+    url: "/contact",
+    type: "website",
+  },
+  twitter: {
+    title: "Contact | Brian Beals",
+    description: "Email Brian directly. No form, no funnel.",
+  },
 };
 export default function Contact() {
   return (

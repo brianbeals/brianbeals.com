@@ -4,6 +4,21 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Three enterprise sales practices, built from scratch. How I think about getting AI, analytics, and automation to actually pay off.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About | Brian Beals",
+    description:
+      "Three enterprise sales practices, built from scratch. How I think about getting AI, analytics, and automation to actually pay off.",
+    url: "/about",
+    type: "website",
+  },
+  twitter: {
+    title: "About | Brian Beals",
+    description:
+      "Three enterprise sales practices, built from scratch. How I think about getting AI, analytics, and automation to actually pay off.",
+  },
 };
 export default function About() {
   return (
@@ -12,7 +27,7 @@ export default function About() {
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8" style={{ color: "#1E3A5F" }}>About</h1>
         <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
           <Image
-            src="/brian-beals.JPG"
+            src="/brian-beals.jpg"
             alt="Photo of Brian Beals"
             width={180}
             height={180}

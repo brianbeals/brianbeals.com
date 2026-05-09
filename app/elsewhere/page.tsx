@@ -5,6 +5,21 @@ export const metadata: Metadata = {
   title: "Elsewhere",
   description:
     "Adventure travel, mostly to places where the signal goes away.",
+  alternates: {
+    canonical: "/elsewhere",
+  },
+  openGraph: {
+    title: "Elsewhere | Brian Beals",
+    description:
+      "Adventure travel, mostly to places where the signal goes away.",
+    url: "/elsewhere",
+    type: "website",
+  },
+  twitter: {
+    title: "Elsewhere | Brian Beals",
+    description:
+      "Adventure travel, mostly to places where the signal goes away.",
+  },
 };
 
 const photos = [

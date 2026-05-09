@@ -21,7 +21,7 @@ export default function Contact() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-2xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8" style={{ color: "#1E3A5F" }}>
+        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
           Contact
         </h1>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

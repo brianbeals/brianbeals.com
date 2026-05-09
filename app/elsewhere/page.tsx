@@ -60,8 +60,8 @@ export default function Elsewhere() {
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-2xl mx-auto">
         <h1
-          className="text-4xl sm:text-5xl font-bold tracking-tight mb-8"
-          style={{ color: "#1E3A5F" }}
+          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
+          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
         >
           Elsewhere
         </h1>

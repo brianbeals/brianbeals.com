@@ -1,7 +1,15 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["600"],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://brianbeals.com"),
@@ -51,7 +59,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={sourceSerif.variable}>
       <body
         className="min-h-screen flex flex-col antialiased text-neutral-900"
         style={{

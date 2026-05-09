@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="flex-1 flex items-center justify-center px-6 py-16 sm:px-12">
       <div className="max-w-2xl text-center">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6" style={{ color: "#1E3A5F" }}>
+        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
           That page isn't here.
         </h1>
         <p className="text-base sm:text-lg text-neutral-700 mb-10">

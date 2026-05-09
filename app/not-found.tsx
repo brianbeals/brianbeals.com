@@ -21,6 +21,9 @@ export default function NotFound() {
           <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>
             About
           </Link>
+          <Link href="/elsewhere" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>
+            Elsewhere
+          </Link>
           <Link href="/contact" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>
             Contact
           </Link>

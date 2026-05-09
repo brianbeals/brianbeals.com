@@ -56,7 +56,7 @@ export default function About() {
           Earlier
         </h2>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, 1989 to 1992, honorably discharged. It was a long time ago, but the parts I still carry are the most valuable ones. Honor in the work. Integrity when nobody is checking. An attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, 1989 to 1992, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
       </article>
     </div>
   );

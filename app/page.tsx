@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex-1 flex items-center justify-center px-6 py-16 sm:px-12">
-      <div className="max-w-2xl">
+    <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
+      <div className="max-w-2xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-8" style={{ color: "#1E3A5F" }}>
           Brian Beals
         </h1>

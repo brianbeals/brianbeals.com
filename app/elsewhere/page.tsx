@@ -58,7 +58,7 @@ const photos = [
 export default function Elsewhere() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <article className="max-w-3xl mx-auto">
+      <article className="max-w-2xl mx-auto">
         <h1
           className="text-4xl sm:text-5xl font-bold tracking-tight mb-8"
           style={{ color: "#1E3A5F" }}
@@ -76,7 +76,7 @@ export default function Elsewhere() {
               alt={photo.alt}
               width={photo.width}
               height={photo.height}
-              sizes="(max-width: 768px) 100vw, 768px"
+              sizes="(max-width: 672px) 100vw, 672px"
               className="w-full h-auto rounded-md shadow-sm"
             />
           ))}

@@ -39,6 +39,10 @@ export default function Contact() {
             <span className="text-neutral-500 mr-2 inline-block w-20">LinkedIn</span>
             <a href="https://www.linkedin.com/in/brianbeals/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>linkedin.com/in/brianbeals</a>
           </li>
+          <li>
+            <span className="text-neutral-500 mr-2 inline-block w-20">GitHub</span>
+            <a href="https://github.com/brianbeals" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>github.com/brianbeals</a>
+          </li>
         </ul>
       </article>
     </div>

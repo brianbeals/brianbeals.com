@@ -50,6 +50,9 @@ export default function Home() {
             </div>
           ))}
         </dl>
+        <p className="text-base sm:text-lg leading-relaxed mb-8 text-neutral-800">
+          I also write the code I'd put in front of a client. Small, auditable, no black boxes. The current ones live at <a href="https://github.com/brianbeals" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>github.com/brianbeals</a>.
+        </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
           <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>
             More about my work

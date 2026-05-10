@@ -51,7 +51,7 @@ const personJsonLd = {
   image: "https://brianbeals.com/opengraph-image",
   sameAs: [
     "https://www.linkedin.com/in/brianbeals/",
-    "https://github.com/Bbeals42",
+    "https://github.com/brianbeals",
   ],
 };
 

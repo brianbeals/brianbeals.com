@@ -33,7 +33,7 @@ export default function Contact() {
         <ul className="space-y-4 text-base sm:text-lg">
           <li>
             <span className="text-neutral-500 mr-2 inline-block w-20">Email</span>
-            <a href="mailto:brian@bealsfamily.com" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>brian@bealsfamily.com</a>
+            <a href="mailto:brian@brianbeals.com" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>brian@brianbeals.com</a>
           </li>
           <li>
             <span className="text-neutral-500 mr-2 inline-block w-20">LinkedIn</span>

@@ -45,7 +45,7 @@ export default function About() {
           How I think about this work
         </h2>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Most enterprise AI doesn't fail at the model. It fails at the handoffs: pilot to production, data foundation to sustained use, demo to actual procurement decision. The technical part is rarely the hard part anymore. The hard part is everything that has to be right before the model is even running.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Most enterprise AI doesn't fail at the model. It fails at the handoffs. Pilots that never reach production. Data foundations that never sustain real use. Demos that don't survive a procurement cycle. The technical part is rarely the hard part anymore. The hard part is everything that has to be right before the model is even running.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The practices I've built are vendor-neutral on purpose. We've represented IBM, Microsoft, AWS, Cisco, Dell, Snowflake, SAS, and dozens of others, and the practice grows because customers eventually figure out who's selling them what works versus what pays the rep best. That isn't a marketing line. It's the actual reason these practices compound.</p>
 

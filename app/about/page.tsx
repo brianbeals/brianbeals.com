@@ -38,7 +38,7 @@ export default function About() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "#1E3A5F" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I took from <strong style={{ color: "#1E3A5F" }}>$20M to $78M</strong> in under four years (<strong style={{ color: "#1E3A5F" }}>3.9×</strong>). For the last decade I've been at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Before that, technical sales at Red Hat, Oracle, and MicroStrategy. The progression matters: the practice work I do now depends on knowing the products, the channels, and the customer's procurement model from inside, not from a marketing deck.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Before that, technical sales at Red Hat, Oracle, and MicroStrategy. The practice work I do now depends on knowing the products, the channels, and the customer's procurement model from inside, not from a marketing deck.</p>
 
         <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
           <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
@@ -64,7 +64,7 @@ export default function About() {
           ))}
         </div>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I currently maintain more than 80 technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter for thirty-plus years.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I maintain 70+ active technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter since 1992.</p>
 
         <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
           <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>

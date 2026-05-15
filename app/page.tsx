@@ -12,6 +12,33 @@ const stats = [
   },
 ];
 
+type ProjectLink = { label: string; href: string };
+
+const projects: { name: string; description: string; links: ProjectLink[] }[] = [
+  {
+    name: "Sector Rotation Screener",
+    description:
+      "A Python pipeline that scores the 11 SPDR sector ETFs against three signals: seasonality, economic-cycle fit, and relative strength. Backtests 15 years against SPY. Runs every Sunday via GitHub Actions, asks Claude for a plain-language read on the output, and commits the dashboard back to the repo. The banner up top reports whether the strategy is beating SPY net of trading costs. Right now it isn't, and the dashboard says so up front.",
+    links: [
+      { label: "Live", href: "https://sector.brianbeals.com" },
+      { label: "Code", href: "https://github.com/brianbeals/sector-rotation-screener" },
+    ],
+  },
+  {
+    name: "This site",
+    description: "Next.js on Vercel. Built and shipped solo.",
+    links: [
+      { label: "Code", href: "https://github.com/brianbeals/brianbeals.com" },
+    ],
+  },
+  {
+    name: "Claude skills",
+    description:
+      "A growing library I use for my own workflow: account research, contact research, financial modeling, document critique. Sanitized public versions of the generic ones coming.",
+    links: [],
+  },
+];
+
 export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
@@ -50,8 +77,52 @@ export default function Home() {
             </div>
           ))}
         </dl>
+        <section className="mb-12 pb-12 border-b border-neutral-200">
+          <h2
+            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-8"
+            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          >
+            Currently building
+          </h2>
+          <div className="space-y-8">
+            {projects.map((p) => (
+              <div key={p.name}>
+                <h3
+                  className="text-xl font-semibold tracking-tight mb-2"
+                  style={{ color: "#1E3A5F" }}
+                >
+                  {p.name}
+                </h3>
+                <p className="text-base leading-relaxed text-neutral-800">
+                  {p.description}
+                </p>
+                {p.links.length > 0 && (
+                  <p className="mt-3 text-sm">
+                    {p.links.map((l, i) => (
+                      <span key={l.href}>
+                        {i > 0 && <span aria-hidden="true" className="text-neutral-400"> · </span>}
+                        <a
+                          href={l.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline underline-offset-4 hover:no-underline"
+                          style={{ color: "#2E86C1" }}
+                        >
+                          {l.label}
+                        </a>
+                      </span>
+                    ))}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          I don't sell technology I haven't tried to build myself.
+        </p>
         <p className="text-base sm:text-lg leading-relaxed mb-8 text-neutral-800">
-          I don't sell technology I haven't tried to build myself. The current projects live at <a href="https://github.com/brianbeals" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>github.com/brianbeals</a>.
+          More coming. I'm building toward a small portfolio of agent-driven applications that show what enterprise sales leaders should be able to do for themselves now that the tooling has caught up.
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
           <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>

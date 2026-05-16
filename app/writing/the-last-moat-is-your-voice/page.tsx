@@ -60,15 +60,11 @@ export default function EssayPage() {
         </h1>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          A few months ago a CMO sent me a draft of a new campaign deck. Twelve slides, written by some combination of her team, her agency, and the agency&rsquo;s tools. She asked me a simple question: &ldquo;Which slides did people actually write?&rdquo;
+          Half the B2B marketing content I read this year could have been written by anyone, by any tool, for any company. That&rsquo;s the problem.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          She couldn&rsquo;t tell. I couldn&rsquo;t tell. Her two reviewers couldn&rsquo;t tell either.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          That&rsquo;s not a quality problem. The slides were fine. Grammatically clean, on-message, hit the right beats. It&rsquo;s a brand problem, and a worse one than most companies realize they have.
+          It&rsquo;s not a quality problem. The content is fine. Grammatically clean, on-message, hits the right beats. It&rsquo;s a brand problem, and a worse one than most companies realize they have.
         </p>
 
         <h2

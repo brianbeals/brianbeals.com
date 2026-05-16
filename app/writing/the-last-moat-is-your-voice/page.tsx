@@ -60,11 +60,11 @@ export default function EssayPage() {
         </h1>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Half the B2B marketing content I read this year could have been written by anyone, by any tool, for any company. That&rsquo;s the problem.
+          Half the B2B marketing content I read this year could have been written by anyone, by any tool, for any company.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          It&rsquo;s not a quality problem. The content is fine. Grammatically clean, on-message, hits the right beats. It&rsquo;s a brand problem, and a worse one than most companies realize they have.
+          The content is fine. Grammatically clean, on-message, hits the right beats. The quality isn&rsquo;t the problem. The brand is, and most companies haven&rsquo;t priced it in yet.
         </p>
 
         <h2
@@ -152,7 +152,7 @@ export default function EssayPage() {
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Four practices, said plainly.
+          Four practices, in order of how hard they are to actually do.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -172,7 +172,7 @@ export default function EssayPage() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          I run the AI, Analytics &amp; Automation practice at LRS, and this is the most common conversation I&rsquo;m having with executive buyers right now. The CIO and the CMO walk into the same room about it for the first time, sometimes ever.
+          I run the AI, Analytics &amp; Automation practice at LRS, and this is a common conversation I&rsquo;m having with executive buyers right now. The CIO and the CMO walk into the same room about it for the first time, sometimes ever.
         </p>
 
         <h2

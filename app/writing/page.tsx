@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "ai-and-the-poisoning-of-professionalism",
+    title: "AI and the Poisoning of Professionalism",
+    date: "2026-05-30",
+    summary:
+      "A colleague discovered AI for email replies last month. The recipients can tell. The sender can't. Notes on what AI-curated correspondence is doing to your voice, your relationships, and your inbox.",
+  },
+  {
     slug: "the-last-moat-is-your-voice",
     title: "The Last Moat Is Your Voice",
     date: "2026-05-16",

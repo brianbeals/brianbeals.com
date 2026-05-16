@@ -1,0 +1,33 @@
+name: Publish essay 2 on May 30
+
+# Scheduled merge of the essay-02-poisoning-of-professionalism branch into main.
+# Runs once on May 30, 2026 at 13:00 UTC (9:00 AM ET, EDT).
+# GitHub Actions cron is best-effort; may fire 0-15 minutes late under load.
+# workflow_dispatch allows manual firing from the Actions tab.
+
+on:
+  schedule:
+    - cron: '0 13 30 5 *'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge essay branch into main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin essay-02-poisoning-of-professionalism
+          git merge origin/essay-02-poisoning-of-professionalism --no-ff \
+            -m "Publish: AI and the Poisoning of Professionalism"
+          git push origin main

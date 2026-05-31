@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import EssayByline from "@/app/components/EssayByline";
 
 export const metadata: Metadata = {
   title: "AI and the Poisoning of Professionalism",
@@ -236,9 +237,7 @@ export default function EssayPage() {
           Your inbox is where the relationship lives. Don&rsquo;t outsource it to a model that&rsquo;s never met the recipient.
         </p>
 
-        <p className="text-sm text-neutral-600 italic mt-12 pt-6 border-t border-neutral-200">
-          Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT Solutions. Reach him at brian@brianbeals.com.
-        </p>
+        <EssayByline />
       </article>
     </div>
   );

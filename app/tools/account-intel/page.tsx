@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type Phase = "idle" | "dispatching" | "queued" | "running" | "done" | "error";
+type HistoryItem = { runId: number; company: string; createdAt: string };
 
 const POLL_MS = 5000;
 const MAX_POLLS = 180; // ~15 minutes
@@ -12,6 +13,7 @@ export default function AccountIntel() {
   const [phase, setPhase] = useState<Phase>("idle");
   const [message, setMessage] = useState("");
   const [runId, setRunId] = useState<number | null>(null);
+  const [history, setHistory] = useState<HistoryItem[]>([]);
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   function stopPolling() {
@@ -19,7 +21,20 @@ export default function AccountIntel() {
     pollRef.current = null;
   }
 
-  useEffect(() => () => stopPolling(), []);
+  const loadHistory = useCallback(async () => {
+    const res = await fetch("/api/account-intel/history", { cache: "no-store" });
+    if (res.ok) {
+      const data = (await res.json()) as { runs: HistoryItem[] };
+      setHistory(data.runs || []);
+    }
+  }, []);
+
+  useEffect(() => {
+    void (async () => {
+      await loadHistory();
+    })();
+    return () => stopPolling();
+  }, [loadHistory]);
 
   async function run(e: React.FormEvent) {
     e.preventDefault();
@@ -69,12 +84,21 @@ export default function AccountIntel() {
           setRunId(data.runId);
           setPhase("done");
           setMessage("");
+          loadHistory();
         } else {
           setPhase("error");
           setMessage("The run finished without a report. Check the Action logs.");
         }
       }
     }, POLL_MS);
+  }
+
+  function view(item: HistoryItem) {
+    stopPolling();
+    setCompany(item.company);
+    setRunId(item.runId);
+    setPhase("done");
+    setMessage("");
   }
 
   const working = phase === "dispatching" || phase === "queued" || phase === "running";
@@ -125,7 +149,7 @@ export default function AccountIntel() {
         )}
 
         {phase === "done" && runId && (
-          <div>
+          <div className="mb-10">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg font-semibold" style={{ color: "#1E3A5F" }}>
                 Report
@@ -144,6 +168,38 @@ export default function AccountIntel() {
               className="w-full rounded-md border border-gray-200"
               style={{ height: "70vh", background: "#fff" }}
             />
+          </div>
+        )}
+
+        {history.length > 0 && (
+          <div>
+            <h2 className="text-lg font-semibold mb-3" style={{ color: "#1E3A5F" }}>
+              History
+            </h2>
+            <ul className="divide-y divide-gray-200 border border-gray-200 rounded-md">
+              {history.map((h) => (
+                <li key={h.runId}>
+                  <button
+                    onClick={() => view(h)}
+                    className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50"
+                  >
+                    <span className="font-medium" style={{ color: "#1E3A5F" }}>
+                      {h.company}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      {new Date(h.createdAt).toLocaleDateString(undefined, {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-gray-400 mt-2">
+              Reports are kept for 90 days.
+            </p>
           </div>
         )}
       </div>

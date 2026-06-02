@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "how-i-review-my-own-writing",
+    title: "How I Review My Own Writing",
+    date: "2026-06-27",
+    summary:
+      "Five dimensions I run on any piece of writing in 2026: three letter grades, two percentages, one of them scoring how much it reads as AI. How I grade my own essays before they ship, and the AI-shaped pitches that land in my inbox.",
+  },
+  {
     slug: "an-llm-with-a-logo",
     title: "An LLM With a Logo",
     date: "2026-06-13",

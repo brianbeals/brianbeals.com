@@ -80,7 +80,17 @@ export default function EssayPage() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Today the page goes public, and so does the tool that reads it. The rubric from essay 4 grades writing against a file exactly like this one, and both are now on GitHub: the one-page template, and the voice-critique skill that runs against it. Copy the template, make it yours, point the skill at it, and run it before anything ships. The defaults catch generic AI-shaped prose. Your own edits catch the things that don&rsquo;t sound like you, which is the real point, because those are the tells no generic list will ever know about.
+          Today the page goes public, and so does the tool that reads it. The rubric from essay 4 grades writing against a file exactly like this one, and both are now{" "}
+          <a
+            href="https://github.com/brianbeals/voice-critique"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2"
+            style={{ color: "#2E86C1" }}
+          >
+            on GitHub
+          </a>
+          : the one-page template, and the voice-critique skill that runs against it. Copy the template, make it yours, point the skill at it, and run it before anything ships. The defaults catch generic AI-shaped prose. Your own edits catch the things that don&rsquo;t sound like you, which is the real point, because those are the tells no generic list will ever know about.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -92,7 +102,17 @@ export default function EssayPage() {
         </p>
 
         <p className="text-sm text-neutral-600 italic mt-12 pt-6 border-t border-neutral-200">
-          Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT Solutions. The one-page template and the voice-critique skill are at github.com/brianbeals/voice-critique.
+          Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT Solutions. The one-page template and the voice-critique skill are at{" "}
+          <a
+            href="https://github.com/brianbeals/voice-critique"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2"
+            style={{ color: "#2E86C1" }}
+          >
+            github.com/brianbeals/voice-critique
+          </a>
+          .
         </p>
       </article>
     </div>

@@ -94,7 +94,7 @@ export default function EssayPage() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          That&rsquo;s one writer with one page. A team or a company is harder, because you want coherence without uniformity. Put everyone on identical rules with no room to move and the brand reads as one bland monotone, the wallpaper problem from essay 3. Let everyone keep their own rules and you&rsquo;re back to ten artifacts that sound like ten companies. The fix is layered: a corporate voice book as the shared base, the refusals everyone honors, with a thin individual layer on top so each writer still sounds like a person inside the guardrails. The base keeps the company coherent, the top keeps it human. Getting that layering right is harder than writing one page for yourself: who owns the corporate standard, how much room each writer gets, how the review pass reads both at once. It&rsquo;s the work I do at LRS. If that&rsquo;s your problem, reach out.
+          That&rsquo;s one writer with one page. A team or a company is harder, because you want coherence without uniformity. Put everyone on identical rules with no room to move and the brand reads as one bland monotone, the wallpaper problem from essay 3. Let everyone keep their own rules and you&rsquo;re back to ten artifacts that sound like ten companies. The fix is layered: a corporate voice book as the shared base, the refusals everyone honors, with a thin individual layer on top so each writer still sounds like a person inside the guardrails. The base keeps the company coherent, the top keeps it human. Getting that layering right is harder than writing one page for yourself: who owns the corporate standard, how much room each writer gets, how the review pass reads both at once. It&rsquo;s the work I do. If that&rsquo;s your problem, reach out.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -102,7 +102,7 @@ export default function EssayPage() {
         </p>
 
         <p className="text-sm text-neutral-600 italic mt-12 pt-6 border-t border-neutral-200">
-          Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT Solutions. The one-page template and the voice-critique skill are at{" "}
+          Brian Beals writes about voice, brand, and AI at brianbeals.com. The template and skill are at{" "}
           <a
             href="https://github.com/brianbeals/voice-critique"
             target="_blank"

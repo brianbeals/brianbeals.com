@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "the-voice-book",
+    title: "The Voice Book",
+    date: "2026-07-11",
+    summary:
+      "What voice rules? Here's mine. One page, mostly a list of things I refuse to write, and why a refusal list beats an inspiring adjective. Plus how the same idea scales from one writer to a whole company.",
+  },
+  {
     slug: "how-i-review-my-own-writing",
     title: "How I Review My Own Writing",
     date: "2026-06-27",

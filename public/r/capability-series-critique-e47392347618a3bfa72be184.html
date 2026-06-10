@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AI Capability Series v3 · Critique</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size:15.5px; color:#1A1A2A; background:#F4F6F9; line-height:1.55; }
+  .page { max-width:980px; margin:0 auto; padding:0 20px 40px; }
+  header.top { background:#1E3A5F; color:#fff; padding:28px 24px 22px; margin:0 -20px; }
+  header.top h1 { font-size:26px; font-weight:800; letter-spacing:-0.01em; }
+  header.top .meta { color:#D6EAF8; font-size:13.5px; margin-top:6px; }
+  .disclosure { background:#FDF6E3; border-left:4px solid #D4AC0D; padding:12px 16px; border-radius:6px; margin:20px 0; font-size:14px; }
+  .grades { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:22px 0 10px; }
+  .gcard { background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:14px; text-align:center; }
+  .gcard .lbl { font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#5a6a7a; }
+  .badge { display:inline-block; margin-top:8px; font-size:24px; font-weight:800; padding:4px 16px; border-radius:8px; color:#fff; }
+  .bg-green { background:#1E8449; } .bg-blue { background:#2E86C1; } .bg-yellow { background:#D4AC0D; } .bg-red { background:#C0392B; }
+  .gauges { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 0 8px; }
+  .gauge { background:#fff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:16px; }
+  .gauge h4 { color:#1E3A5F; font-size:14px; margin-bottom:4px; }
+  .gauge .reading { font-size:20px; font-weight:800; margin-bottom:8px; }
+  .bar { position:relative; height:12px; border-radius:6px; background:linear-gradient(90deg,#1E8449 0%,#1E8449 38%,#D4AC0D 42%,#D4AC0D 58%,#C0392B 64%,#C0392B 100%); }
+  .bar.snark { background:linear-gradient(90deg,#1E8449 0%,#1E8449 20%,#D4AC0D 22%,#D4AC0D 40%,#E67E22 42%,#E67E22 60%,#C0392B 62%,#C0392B 100%); }
+  .pin { position:absolute; top:-5px; width:4px; height:22px; background:#1A1A2A; border-radius:2px; }
+  .gauge .note { font-size:13px; color:#5a6a7a; margin-top:8px; }
+  section { margin-top:22px; }
+  h2.barhead { background:#1E3A5F; color:#fff; font-size:16.5px; padding:12px 18px; border-radius:8px; cursor:pointer; user-select:none; display:flex; justify-content:space-between; align-items:center; }
+  h2.barhead .tw { font-size:13px; color:#D6EAF8; font-weight:400; }
+  .body { background:#fff; border-radius:0 0 8px 8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:18px 22px; margin-top:2px; }
+  .body p { margin:0 0 12px; }
+  .body p:last-child { margin-bottom:0; }
+  .body h3 { color:#1E3A5F; font-size:14.5px; margin:14px 0 6px; }
+  .grade-inline { font-weight:800; padding:1px 10px; border-radius:6px; color:#fff; font-size:14px; }
+  .finding { background:#FBEAE8; border-left:4px solid #C0392B; padding:10px 14px; border-radius:6px; margin:10px 0; font-size:14.5px; }
+  .good { background:#E8F6EE; border-left:4px solid #1E8449; padding:10px 14px; border-radius:6px; margin:10px 0; font-size:14.5px; }
+  .watch { background:#FDF6E3; border-left:4px solid #D4AC0D; padding:10px 14px; border-radius:6px; margin:10px 0; font-size:14.5px; }
+  table.assess { width:100%; border-collapse:collapse; margin:8px 0; font-size:14.5px; }
+  table.assess td { padding:8px 10px; border-bottom:1px solid #e4e9ef; vertical-align:top; }
+  table.assess td:first-child { font-weight:700; color:#1E3A5F; white-space:nowrap; width:32%; }
+  .verdict { background:#1E3A5F; color:#fff; border-radius:8px; padding:16px 20px; margin-top:14px; font-size:16px; font-weight:600; }
+  .rl-slide { margin:16px 0; }
+  .rl-slide h4 { color:#1E3A5F; font-size:14.5px; margin-bottom:8px; }
+  .rl { border:1px solid #e4e9ef; border-radius:8px; overflow:hidden; margin-bottom:10px; }
+  .rl .orig { background:#FBEAE8; padding:10px 14px; font-size:14.5px; }
+  .rl .orig s { color:#C0392B; }
+  .rl .sugg { background:#E8F6EE; padding:10px 14px; font-size:14.5px; }
+  .rl .sugg b { color:#1E8449; }
+  .rl .why { background:#fff; padding:8px 14px; font-size:13px; color:#5a6a7a; border-top:1px solid #e4e9ef; }
+  .tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.05em; padding:2px 8px; border-radius:4px; margin-right:8px; }
+  .tag.del { background:#C0392B; color:#fff; } .tag.ins { background:#1E8449; color:#fff; } .tag.why { background:#D6EAF8; color:#1E3A5F; }
+  footer { margin-top:34px; padding-top:14px; border-top:1px solid #dfe5ec; font-size:13px; color:#5a6a7a; display:flex; align-items:center; gap:8px; }
+  .collapsed + .body { display:none; }
+  .chev { transition:transform .15s; } .collapsed .chev { transform:rotate(-90deg); }
+  @media print { h2.barhead { cursor:default; } .collapsed + .body { display:block; } .copy-btn { display:none !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <h1>AI Capability Series v3 · Critique</h1>
+  <div class="meta">Executive capability deck (49 slides, 4 chapters) &nbsp;|&nbsp; Audience: hiring managers &amp; recruiters &nbsp;|&nbsp; brianbeals.com &nbsp;|&nbsp; June 10, 2026</div>
+</header>
+
+<div class="disclosure"><strong>Disclosure, self-review (pass two of two).</strong> This v3 is the product of the v2 critique's redlines, applied by the same reviewer earlier today, plus an expanded slide 2 ported from the author's overview PDF. This pass hunted for faults the changes introduced rather than re-grading the fixes. Of the three findings below, two were created by the v3 changes themselves, one of those by this reviewer's own suggested sentence. Per the critique standard, this is the last useful self-pass: the next read belongs to someone who hasn't seen any version.</div>
+
+<div class="grades">
+  <div class="gcard"><div class="lbl">Professionalism</div><span class="badge bg-green">A</span></div>
+  <div class="gcard"><div class="lbl">Writing Style</div><span class="badge bg-green">A−</span></div>
+  <div class="gcard"><div class="lbl">Leadership</div><span class="badge bg-green">A</span></div>
+  <div class="gcard"><div class="lbl">Overall</div><span class="badge bg-green">A</span></div>
+</div>
+
+<div class="gauges">
+  <div class="gauge">
+    <h4>AI Authorship</h4>
+    <div class="reading" style="color:#1E8449">30% · Likely Human-led</div>
+    <div class="bar"><div class="pin" style="left:30%"></div></div>
+    <div class="note">Down from 45% on v2: the self-contradiction signal cleared when slide 30 adopted its own fix, so the counter-detection floor no longer applies. The deck still discloses its AI collaboration on slide 1, which is the honest frame.</div>
+  </div>
+  <div class="gauge">
+    <h4>Snarky Meter</h4>
+    <div class="reading" style="color:#1E8449">12% · Straight Shooter</div>
+    <div class="bar snark"><div class="pin" style="left:12%"></div></div>
+    <div class="note">Unchanged. The Acme humor still lands as personality; nothing sharpened or soured between versions.</div>
+  </div>
+</div>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">Summary <span class="chev">▼</span></h2>
+<div class="body">
+<p>The same 49-slide, four-chapter capability series, now carrying the v2 critique's corrections: slide 30 uses the anchored claim slide 47 demonstrates, the slide 13 filename no longer wraps mid-extension, footers match the revision date, the "X, not Y" pattern is down from four instances to one natural one, and slide 33 names what the series proves for a hiring reader. Slide 2's four cards were expanded from the author's overview PDF and now carry full value statements instead of taglines.</p>
+<p>The structural fixes landed. What this pass found is the residue of the expansion itself: ported copy that brought its own baseline numbers and point of view with it.</p>
+</div>
+</section>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">Professionalism <span class="grade-inline bg-green">A</span></h2>
+<div class="body">
+<p><strong>The contradiction is gone and the chrome is right.</strong> Slide 30 now practices what slide 47 preaches, the filename console reads cleanly, the folder map matches the real convention, and every footer carries June 10. The design system holds across all 49 slides; the verification renders on slides 2, 13, 30, 31, and 33 are clean, including the line break that keeps slide 30's longer title clear of its number badge.</p>
+<div class="watch"><strong>The manual baseline is now quoted three ways.</strong> Slide 2 says a plan "took a week," slide 23 says "takes days," slide 30 says "took two days." Each is defensible alone; together they read as a number that bends to the sentence. This arrived with the ported overview copy. Pick one baseline and let every slide quote it.</div>
+<div class="watch"><strong>Slide 2 breaks the deck's point of view.</strong> "This is the reason the other three sound like Brian" is third person on a slide whose neighbors say "who you are" and "your voice." The overview PDF was written about Brian; the deck talks to the reader. One pronoun fixes it.</div>
+</div>
+</section>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">Writing Style <span class="grade-inline bg-green">A−</span></h2>
+<div class="body">
+<p><strong>Flesch-Kincaid: roughly grade 6–7</strong>, unchanged and right for the format. The cadence repairs hold: "in week one" and the rewritten slide 31 card read as claims rather than templates, and the single remaining "degree, not pass or fail" on slide 46 is the natural kind.</p>
+<div class="watch"><strong>The glance slide got wordier.</strong> Slide 2's cards went from one-line taglines to four-line value statements. The new copy is good prose, and it fits the boxes, but the slide's job is a ten-second scan, and it now asks for forty. This is the one place v3 traded punch for completeness; the redline trims each card back toward two lines without losing the new substance.</div>
+<div class="good"><strong>No banned vocabulary, no em-dashes, fragments still capped at pairs.</strong> The ported copy kept the voice rules even though it came from a different artifact, which is the system doing its job.</div>
+</div>
+</section>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">Leadership Capability <span class="grade-inline bg-green">A</span></h2>
+<div class="body">
+<p><strong>The ask now exists.</strong> Slide 33's added line tells a hiring reader what the series proves. Positions are still taken and owned, the offer to demo live still stands, and the chapter structure still does the reader's work for them.</p>
+<div class="watch"><strong>"One person's working system" sits next to two names.</strong> The new slide 33 sentence claims individual authorship while the slide credits both Brian and Steve below it, and slide 1 says "built together." The deck's own answer, one system per person, each on their own profile, is a stronger leadership claim anyway: it says the system scales without flattening anyone. The redline makes that explicit. This reviewer wrote the sentence in question, so weigh the finding accordingly.</div>
+</div>
+</section>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">AI Authorship Assessment <span class="grade-inline bg-green">30%</span></h2>
+<div class="body">
+<p><strong>Standard signals: clean, and now uncontradicted.</strong> Concrete specifics, owned positions, varied rhythm, zero AI vocabulary across 49 slides. On v2, the counter-detection check fired twice (ironic self-contradiction plus curated specifics) and the floor rule forced the score to 45%. With slide 30 fixed, only curated specifics remains; one signal is noise by the scoring rule, so the score returns to the standard-signal band.</p>
+<p><strong>Reported: 30%, likely human-led with disclosed AI assistance.</strong> Slide 1 says the deck was built with the assistant from Brian's profile, so the number confirms rather than reveals. Disciplined writing under explicit style rules is indistinguishable from well-prompted AI; this deck is the documented case of that, on purpose.</p>
+</div>
+</section>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">Snarky Meter <span class="grade-inline bg-green">12%</span></h2>
+<div class="body">
+<p>Unchanged from v2. "Road Runner, prospect (unreachable)" and the 70-years-pre-revenue Avian Capture division are still the sharpest lines, and they still punch at a cartoon. The new slide 2 and slide 33 copy added warmth, no edge. Nothing to soften.</p>
+</div>
+</section>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">Overall Assessment <span class="grade-inline bg-green">A</span></h2>
+<div class="body">
+<p>Professionalism weighted heavily, as before. The v2 deductions were earned back by fixing real things; the new findings are smaller than what they replaced and two of the three are one-line fixes.</p>
+<h3>Top 3 strengths</h3>
+<table class="assess">
+<tr><td>It practices its own redline</td><td>Slide 30 now carries the anchored claim slide 47 demonstrates. The deck's strongest internal proof point is finally true end to end.</td></tr>
+<tr><td>The glance slide earns its cards</td><td>Slide 2's expanded copy states value, mechanism, and payoff per artifact instead of taglines, and it survived the port with the voice rules intact.</td></tr>
+<tr><td>An ask for the actual audience</td><td>Slide 33 now tells a hiring reader what 49 slides prove: one person defined a standard, built against it, and wired in the guardrails.</td></tr>
+</table>
+<h3>Top 3 areas for improvement</h3>
+<table class="assess">
+<tr><td>One baseline, quoted everywhere</td><td>A week, days, and two days are three different claims about the same manual process. Pick one.</td></tr>
+<tr><td>Second person on slide 2</td><td>"Sound like Brian" should be "sound like you," matching every neighboring card.</td></tr>
+<tr><td>Resolve the authorship line</td><td>Make slide 33 say what the deck means: one system per person, Steve's running on his own profile.</td></tr>
+</table>
+<div class="verdict">An A deck whose remaining faults are three sentences, all introduced by the revision itself; fix them, then stop revising and hand it to a cold reader, someone who has seen no version, because two self-passes is where this process stops finding and starts inventing.</div>
+</div>
+</section>
+
+<section>
+<h2 class="barhead" onclick="tog(this)">Redline · Suggested Rewrites <span class="tw">three items, late-pass restraint applied</span></h2>
+<div class="body">
+<p>Nothing else in 49 slides earned a rewrite this pass. A longer list here would be manufactured rigor.</p>
+
+<div class="rl-slide"><h4>Slide 2 · account planning card</h4>
+<div class="rl">
+<div class="orig"><span class="tag del">ORIGINAL</span>A company name goes in and a sales-ready plan comes out, with a branded research report and a working intel workbook behind it. <s>A plan that took a week now takes minutes, to the same standard for every account, so a new rep can plan like a veteran.</s></div>
+<div class="sugg"><span class="tag ins">SUGGESTED</span>A company name goes in and a sales-ready plan comes out, with a branded research report and a working intel workbook behind it. <b>A plan that took days now takes minutes, so a new rep can plan like a veteran.</b></div>
+<div class="why"><span class="tag why">WHY</span>Aligns the baseline with slides 23 and 30 and trims the card a line; "to the same standard for every account" already lives on slides 30 and 31.</div>
+</div></div>
+
+<div class="rl-slide"><h4>Slide 2 · my-profile card</h4>
+<div class="rl">
+<div class="orig"><span class="tag del">ORIGINAL</span>...so changing it once moves everything downstream. <s>This is the reason the other three sound like Brian.</s></div>
+<div class="sugg"><span class="tag ins">SUGGESTED</span>...so changing it once moves everything downstream. <b>This is the reason the other three sound like you.</b></div>
+<div class="why"><span class="tag why">WHY</span>Restores the deck's second-person frame; every neighboring card already speaks to the reader.</div>
+</div></div>
+
+<div class="rl-slide"><h4>Slide 33 · closing ask</h4>
+<div class="rl">
+<div class="orig"><span class="tag del">ORIGINAL</span>This runs today. I'd be glad to show you the live version. <s>Everything in this series is one person's working system: the standard, the skills, and the guardrails that keep them honest.</s></div>
+<div class="sugg"><span class="tag ins">SUGGESTED</span>This runs today. I'd be glad to show you the live version. <b>Everything in this series is one person's working system, the standard, the skills, and the guardrails that keep them honest, and Steve runs the same engines on his own profile.</b></div>
+<div class="why"><span class="tag why">WHY</span>Keeps the individual claim and squares it with the dual credit; the system-per-person point is the stronger story for a hiring reader.</div>
+</div></div>
+
+</div>
+</section>
+
+<footer>
+  <svg viewBox="0 0 32 32" width="16" height="16" aria-label="Brian Beals"><rect width="32" height="32" rx="6" fill="#1E3A5F"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+  <span>© Brian Beals · brianbeals.com · June 10, 2026</span>
+</footer>
+
+</div>
+<script>
+function tog(h){ h.classList.toggle('collapsed'); }
+</script>
+</body>
+</html>

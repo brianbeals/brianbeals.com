@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Michael Downs · Contact Brief</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --navy: #1E3A5F;
+    --accent: #2E86C1;
+    --card: #D6EAF8;
+    --bg: #F4F6F9;
+    --text: #1A1A2A;
+    --win: #1E8449;
+    --risk: #C0392B;
+    --caution: #D4AC0D;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text);
+    background: var(--bg);
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* Header */
+  header.page {
+    background: var(--navy);
+    color: #fff;
+    padding: 38px 0 30px;
+  }
+  header.page .inner { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  header.page h1 { margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; }
+  header.page .role { margin: 6px 0 0; font-size: 18px; color: #cfe0ee; font-weight: 500; }
+  header.page .date { margin: 4px 0 0; font-size: 14px; color: #9fb6cc; }
+  .snapshot {
+    margin-top: 22px;
+    background: rgba(255,255,255,0.06);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 4px;
+    font-size: 15.5px;
+    color: #e8eef4;
+    line-height: 1.6;
+  }
+  .snapshot .label { display:block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+
+  /* Sticky nav */
+  nav.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  nav.sticky .inner { max-width: 980px; margin: 0 auto; padding: 0 12px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav.sticky a {
+    color: #cfe0ee;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 11px 12px;
+    white-space: nowrap;
+  }
+  nav.sticky a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+
+  /* Sections */
+  section { margin-top: 30px; }
+  .sec-head {
+    background: var(--navy);
+    color: #fff;
+    padding: 13px 18px;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  .sec-head h2 { margin: 0; font-size: 18px; font-weight: 700; }
+  .sec-head .chev { font-size: 14px; transition: transform 0.2s; }
+  .sec-head.collapsed .chev { transform: rotate(-90deg); }
+  .sec-body {
+    background: transparent;
+    padding: 18px 0 4px;
+  }
+  .sec-body.hidden { display: none; }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+  .card h3 { margin: 0 0 8px; color: var(--navy); font-size: 16px; }
+  .card p { margin: 0 0 8px; }
+  .card p:last-child { margin-bottom: 0; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+
+  .factlist { margin: 0; padding: 0; list-style: none; }
+  .factlist li { padding: 7px 0; border-bottom: 1px solid #eceef2; font-size: 15px; }
+  .factlist li:last-child { border-bottom: none; }
+  .factlist .k { color: var(--navy); font-weight: 700; display: inline-block; min-width: 168px; }
+
+  .caution-card {
+    background: #fcf8e6;
+    border: 1px solid #ecdca0;
+    border-left: 5px solid var(--caution);
+  }
+  .caution-card ul { margin: 0; padding-left: 20px; }
+  .caution-card li { margin-bottom: 10px; }
+  .caution-card li:last-child { margin-bottom: 0; }
+
+  .hook { position: relative; }
+  .hook .src { font-size: 12.5px; margin-top: 6px; }
+  .hook .src a { word-break: break-all; }
+  .note-inline { font-size: 13.5px; color: #5a6470; font-style: italic; margin-top: 8px; }
+
+  .copy-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 13px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: inherit;
+  }
+  .copy-btn:hover { filter: brightness(1.07); }
+  .copy-btn.copied { background: var(--win); }
+
+  .starter {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .starter:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+  .starter .quote { margin: 0; font-size: 15.5px; line-height: 1.6; }
+
+  .small-label { font-size: 13px; color: #5a6470; margin: 0 0 14px; font-style: italic; }
+
+  table.overlap { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  table.overlap td { padding: 13px 16px; border-bottom: 1px solid #eceef2; vertical-align: top; font-size: 14.5px; }
+  table.overlap tr:last-child td { border-bottom: none; }
+  table.overlap td.type { width: 32%; color: var(--navy); font-weight: 700; }
+
+  .approach { background: var(--card); border-radius: 8px; padding: 18px 22px; margin-top: 4px; }
+  .approach p { margin: 0; }
+
+  footer.bb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 46px;
+    padding-top: 16px;
+    border-top: 1px solid #d8dde3;
+    font-size: 12.5px;
+    color: #6a7480;
+  }
+
+  @media print {
+    .copy-btn { display: none !important; }
+    nav.sticky { display: none; }
+    .card:hover, .starter:hover { transform: none; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="inner">
+    <h1>Michael Downs</h1>
+    <p class="role">Chief Technology Officer · Evolving Solutions</p>
+    <p class="date">June 10, 2026</p>
+    <div class="snapshot">
+      <span class="label">Snapshot</span>
+      Michael Downs is the CTO of Evolving Solutions, a privately held Minneapolis-area IT solutions provider (~120 people, founder-led). Long-tenured enterprise architect turned executive technology advisor with a deep IBM background; best approached as a peer on the shared problem of getting enterprise AI from pilot to production.
+    </div>
+  </div>
+</header>
+
+<nav class="sticky">
+  <div class="inner">
+    <a href="#who">1. Who They Are</a>
+    <a href="#career">2. Career Background</a>
+    <a href="#priorities">3. Priorities &amp; Pain Points</a>
+    <a href="#hooks">4. Conversation Hooks</a>
+    <a href="#relationship">5. Relationship Read</a>
+    <a href="#watchouts">6. Watch Outs</a>
+    <a href="#comparison">7. LinkedIn Comparison</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- SECTION 1 -->
+  <section id="who">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <h2>1. Who They Are</h2><span class="chev">▾</span>
+    </div>
+    <div class="sec-body">
+      <div class="card">
+        <ul class="factlist">
+          <li><span class="k">Full name</span> Michael Downs</li>
+          <li><span class="k">Role</span> CTO at Evolving Solutions (Hamel, MN, greater Minneapolis)</li>
+          <li><span class="k">Tenure</span> CTO since Jan 2018, at the company ~11.5 years</li>
+          <li><span class="k">Internal arc</span> Solution Architect 2014 → Innovation and Technical Sales 2017 → CTO 2018</li>
+          <li><span class="k">LinkedIn</span> <a href="https://linkedin.com/in/mldowns">linkedin.com/in/mldowns</a></li>
+          <li><span class="k">Executive education</span> Carlson Executive Education Certificate of Excellence in Business</li>
+          <li><span class="k">Education</span> B.A. Music, St. Olaf College, plus Michigan State University (1988–1989)</li>
+          <li><span class="k">Top skills</span> IT Strategy, Cloud Computing, Architecture</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="career">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <h2>2. Career Background</h2><span class="chev">▾</span>
+    </div>
+    <div class="sec-body">
+      <div class="card">
+        <p>Twelve years inside IBM (1999–2011) form the spine of his career: global desktop and software-distribution delivery for American Express as an outsourcing provider, high-performance compute for portfolio managers and traders, a Client IT Architect role responsible for over $200M in annual revenue in Retail and Consumer Products, and an internal strategy consultant role advising senior IBM executives on a business-analytics growth plan that reached the chairman and executive committee.</p>
+        <p>Then about four years at CA Technologies as Executive Advisor and Business Solution Architect, running CIO and VP-level workshops across Midwest industries and building an internal architect community. At Evolving Solutions since 2014, where the architect-to-advisor-to-CTO arc completed.</p>
+        <p>Career arc summary: a builder who rose by translating technology trends into business-model language for senior leaders, with an unusual origin (music degree before a full technology career).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="priorities">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <h2>3. Likely Priorities &amp; Pain Points</h2><span class="chev">▾</span>
+    </div>
+    <div class="sec-body">
+      <p class="small-label">Inferred from his role and company content.</p>
+      <div class="grid2">
+        <div class="card">
+          <h3>Operationalizing AI past the pilot stage</h3>
+          <p>Evolving Solutions has built an "Operationalizing AI" solution line and an "AI and Intelligent Operations" capability, and publishes material like "AI at Enterprise Scale: The Infrastructure Behind the Model." A recurring theme in their content: organizations see early AI wins but struggle to turn pilots into measurable results. As technology owner, the data and infrastructure foundation under AI is squarely his territory.</p>
+        </div>
+        <div class="card">
+          <h3>Observability that keeps up with changing systems</h3>
+          <p>Observability is a named practice; a June 2026 company blog covers observability debt, agentic AI in operations, and decision-level telemetry, tied to the Observability Summit held in Minneapolis (May 21–22, 2026). The shift from dashboards toward self-healing, AI-assisted operations is an active company narrative.</p>
+        </div>
+        <div class="card">
+          <h3>Platform modernization and technical debt without rip-and-replace</h3>
+          <p>Current solution lines include Platform Modernization and Technical Debt Remediation, plus content on modernizing IBM Power environments without replatforming and rethinking virtualization after the VMware licensing changes.</p>
+        </div>
+        <div class="card">
+          <h3>Cloud and AI cost control (FinOps)</h3>
+          <p>The company eBook "Get Control of IT Spend" argues FinOps has moved beyond cloud-waste visibility to governing the cost of running AI at scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="hooks">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <h2>4. Conversation Hooks</h2><span class="chev">▾</span>
+    </div>
+    <div class="sec-body">
+      <div class="card hook">
+        <h3>CTO Insights series</h3>
+        <p>Evolving Solutions runs a "CTO Insights" hub built around Downs: short video and written pieces on observability, data protection, networking, automation, and emerging tech. A natural, specific opener about his own published point of view.</p>
+        <div class="src"><a href="https://evolvingsol.com/resources/cto-insights/">https://evolvingsol.com/resources/cto-insights/</a></div>
+        <button class="copy-btn" onclick="copyText(this, 'CTO Insights series: Evolving Solutions runs a CTO Insights hub built around Downs: short video and written pieces on observability, data protection, networking, automation, and emerging tech. A natural, specific opener about his own published point of view. https://evolvingsol.com/resources/cto-insights/')">Copy hook</button>
+      </div>
+
+      <div class="card hook">
+        <h3>2026 CRN Solution Provider 500</h3>
+        <p>Evolving Solutions was named to the 2026 CRN Solution Provider 500 list (announced June 8, 2026). Timely, neutral recognition to acknowledge.</p>
+        <div class="src"><a href="https://evolvingsol.com/resources/blogs/evolving-solutions-named-to-2026-crn-solution-provider-500-list/">https://evolvingsol.com/resources/blogs/evolving-solutions-named-to-2026-crn-solution-provider-500-list/</a></div>
+        <button class="copy-btn" onclick="copyText(this, '2026 CRN Solution Provider 500: Evolving Solutions was named to the 2026 CRN Solution Provider 500 list (announced June 8, 2026). Timely, neutral recognition to acknowledge. https://evolvingsol.com/resources/blogs/evolving-solutions-named-to-2026-crn-solution-provider-500-list/')">Copy hook</button>
+      </div>
+
+      <div class="card hook">
+        <h3>Observability Summit North America 2026 (Minneapolis)</h3>
+        <p>The company published a detailed takeaways piece on observability debt and agentic AI tied to a hometown conference. Good shared-interest territory on where AIOps and observability are heading.</p>
+        <p class="note-inline">Note: the byline is colleague Rael Rodning, so frame as a company/topic hook rather than his writing.</p>
+        <div class="src"><a href="https://evolvingsol.com/resources/blogs/from-observability-debt-to-agentic-intelligence/">https://evolvingsol.com/resources/blogs/from-observability-debt-to-agentic-intelligence/</a></div>
+        <button class="copy-btn" onclick="copyText(this, 'Observability Summit North America 2026 (Minneapolis): the company published a detailed takeaways piece on observability debt and agentic AI tied to a hometown conference. Good shared-interest territory on where AIOps and observability are heading. Note: the byline is colleague Rael Rodning, so frame as a company/topic hook rather than his writing. https://evolvingsol.com/resources/blogs/from-observability-debt-to-agentic-intelligence/')">Copy hook</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="relationship">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <h2>5. Relationship Read</h2><span class="chev">▾</span>
+    </div>
+    <div class="sec-body">
+      <div class="card">
+        <p>The common ground is genuine: two long-tenured technology leaders who both came up through the IBM ecosystem and both spend their days helping CIO and CDO-level audiences turn data and AI into something that runs in production.</p>
+        <p>What would make the conversation memorable: comparing notes on the same hard problem from two seats, the architect-and-CTO view versus the practice-builder view, on why AI pilots stall and what gets them to scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="watchouts">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <h2>6. Watch Outs</h2><span class="chev">▾</span>
+    </div>
+    <div class="sec-body">
+      <div class="card caution-card">
+        <ul>
+          <li>Don't attribute the June 2026 observability blog to Downs; that byline is colleague Rael Rodning. The CTO Insights series is the content actually under his name.</li>
+          <li>His public personal footprint is moderate and mostly company-channel (CTO Insights, company posts). No independent press quotes, external podcast hosting, or named conference talks surfaced. Treat the AI/data/cloud positioning as the company's, which he leads, rather than a large personal thought-leadership trail.</li>
+          <li>The IBM overlap with Brian is ecosystem-level, from different seats and companies; don't overstate it as having crossed paths.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section id="comparison">
+    <div class="sec-head" onclick="toggleSec(this)">
+      <h2>7. LinkedIn Comparison: Michael Downs ↔ Brian Beals</h2><span class="chev">▾</span>
+    </div>
+    <div class="sec-body">
+      <p class="small-label">Based on LinkedIn profiles for Michael Downs and Brian Beals.</p>
+
+      <h3 style="color:var(--navy); margin: 4px 0 10px;">Direct overlaps</h3>
+      <table class="overlap">
+        <tr>
+          <td class="type">IBM ecosystem, opposite sides of the channel</td>
+          <td>Downs spent 12 years at IBM (1999–2011). Brian spent his analytics-practice years (Mainline 2007–2012, Sirius 2013–2016) selling IBM-centric data and analytics solutions through the partner channel and holds a stack of IBM technical-sales certifications. Involvement overlaps in time (~2007–2011) from different seats.</td>
+        </tr>
+        <tr>
+          <td class="type">Same solution-provider world</td>
+          <td>Both built careers inside national or regional IT solution providers and systems integrators (Downs: CA Technologies, Evolving Solutions; Brian: Mainline, Sirius, LRS), in the same vendor ecosystem (IBM, Microsoft, AWS, Red Hat).</td>
+        </tr>
+        <tr>
+          <td class="type">Overlapping technology domains</td>
+          <td>Hybrid cloud, data and AI, AIOps/observability, automation, FinOps on both sides.</td>
+        </tr>
+        <tr>
+          <td class="type">Geography</td>
+          <td>Minneapolis vs. Punta Gorda today, but both have Midwest chapters (Downs across the Midwest at CA; Brian's Greater Chicago early career).</td>
+        </tr>
+      </table>
+
+      <h3 style="color:var(--navy); margin: 22px 0 10px;">Parallel arcs</h3>
+      <div class="card">
+        <p>Both moved from hands-on technical roots into executive advisory inside solution providers, and both live in the CIO/CDO conversation. Both took nontraditional paths in: Downs from a St. Olaf music degree, Brian from Navy electronics technician. Both translate technology trends into business-outcome language rather than feature lists.</p>
+      </div>
+
+      <h3 style="color:var(--navy); margin: 22px 0 10px;">Useful asymmetries</h3>
+      <div class="card">
+        <p>Downs leans architecture and platform: enterprise and solution architecture, outsourcing-scale delivery, high-performance compute, CTO-level platform strategy, and architect-community building. Brian leans practice-building and go-to-market: he started analytics and AI practices from zero (Mainline $0 to $20M; Sirius $20M to $78M; founded the LRS AI, Analytics &amp; Automation practice), coached infrastructure sellers into consultative advisors, and works the GenAI and FinOps go-to-market motion. The two views fit together rather than compete.</p>
+      </div>
+
+      <h3 style="color:var(--navy); margin: 22px 0 10px;">Conversation starters</h3>
+      <div class="starter">
+        <p class="quote">"You spent over a decade inside IBM as an architect and strategist; I spent my analytics-practice years on the IBM partner side at Mainline and Sirius. Curious how you saw the analytics push from inside IBM around 2010, since I was selling into that same wave from the channel."</p>
+        <button class="copy-btn" onclick="copyText(this, 'You spent over a decade inside IBM as an architect and strategist; I spent my analytics-practice years on the IBM partner side at Mainline and Sirius. Curious how you saw the analytics push from inside IBM around 2010, since I was selling into that same wave from the channel.')">Copy starter</button>
+      </div>
+      <div class="starter">
+        <p class="quote">"Your CTO Insights series and the recent Evolving Solutions material keep circling the same thing I run into: clients get early AI wins, then stall before production. From the architecture seat, where do you see those pilots actually breaking down?"</p>
+        <button class="copy-btn" onclick="copyText(this, 'Your CTO Insights series and the recent Evolving Solutions material keep circling the same thing I run into: clients get early AI wins, then stall before production. From the architecture seat, where do you see those pilots actually breaking down?')">Copy starter</button>
+      </div>
+      <div class="starter">
+        <p class="quote">"We both came into technology sideways, you from music at St. Olaf, me from Navy electronics. I've always thought the non-CS starts make for better client conversations. Has that been your experience leading an architect community?"</p>
+        <button class="copy-btn" onclick="copyText(this, 'We both came into technology sideways, you from music at St. Olaf, me from Navy electronics. I\'ve always thought the non-CS starts make for better client conversations. Has that been your experience leading an architect community?')">Copy starter</button>
+      </div>
+
+      <h3 style="color:var(--navy); margin: 22px 0 10px;">Recommended approach</h3>
+      <div class="approach">
+        <p>Open on the shared IBM-ecosystem and solution-provider history, since it's concrete and immediate, then let the conversation settle on the problem both clearly care about: getting enterprise AI out of pilot purgatory and into production. Two practitioners comparing how the same problem looks from the architecture seat versus the practice-building seat.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bb">
+    <svg viewBox="0 0 32 32" width="16" height="16" aria-label="Brian Beals"><rect width="32" height="32" rx="6" fill="#1E3A5F"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+    <span>© Brian Beals · brianbeals.com · June 10, 2026</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggleSec(head) {
+    head.classList.toggle('collapsed');
+    var body = head.nextElementSibling;
+    body.classList.toggle('hidden');
+  }
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(function () {
+      var orig = btn.textContent;
+      btn.textContent = '✓ Copied';
+      btn.classList.add('copied');
+      setTimeout(function () {
+        btn.textContent = orig;
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+</body>
+</html>

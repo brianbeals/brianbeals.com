@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import EssayByline from "@/app/components/EssayByline";
 
 export const metadata: Metadata = {
   title: "The Last Moat Is Your Voice",
@@ -195,9 +196,7 @@ export default function EssayPage() {
           Speed isn&rsquo;t a flex anymore. Not sounding like everyone else is.
         </p>
 
-        <p className="text-sm text-neutral-600 italic mt-12 pt-6 border-t border-neutral-200">
-          Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT Solutions. Reach him at brian@brianbeals.com.
-        </p>
+        <EssayByline />
       </article>
     </div>
   );

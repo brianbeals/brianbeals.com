@@ -1,13 +1,14 @@
-name: Publish essay 2 on May 30
+name: Publish essay 5 on July 11
 
-# Scheduled merge of the essay-02-poisoning-of-professionalism branch into main.
-# Runs once on May 30, 2026 at 13:00 UTC (9:00 AM ET, EDT).
+# Scheduled merge of the essay-05-the-voice-book branch into main.
+# Runs once on July 11, 2026 at 13:00 UTC (9:00 AM ET, EDT).
+# Self-destructs in the same commit so it won't fire next year.
 # GitHub Actions cron is best-effort; may fire 0-15 minutes late under load.
 # workflow_dispatch allows manual firing from the Actions tab.
 
 on:
   schedule:
-    - cron: '0 13 30 5 *'
+    - cron: '0 13 11 7 *'
   workflow_dispatch:
 
 jobs:
@@ -23,11 +24,12 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Merge essay branch into main
+      - name: Merge essay branch and remove this workflow
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin essay-02-poisoning-of-professionalism
-          git merge origin/essay-02-poisoning-of-professionalism --no-ff \
-            -m "Publish: AI and the Poisoning of Professionalism"
+          git fetch origin essay-05-the-voice-book
+          git merge origin/essay-05-the-voice-book --no-ff --no-commit
+          git rm .github/workflows/publish-essay-05.yml
+          git commit -m "Publish: The Voice Book (remove scheduled-publish workflow)"
           git push origin main

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fastenal Company — Account Research · June 8, 2026</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1E3A5F;
+    --accent: #2E86C1;
+    --card-bg: #D6EAF8;
+    --page-bg: #F4F6F9;
+    --body-text: #1A1A2A;
+    --win: #1E8449;
+    --risk: #C0392B;
+    --caution: #D4AC0D;
+    --white: #FFFFFF;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--page-bg);
+    color: var(--body-text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  /* STICKY NAV */
+  #top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    padding: 6px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  #top-nav a {
+    color: #B3D4F0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  #top-nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  /* PAGE HEADER */
+  #page-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 40px 32px 32px;
+  }
+  .company-name {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .company-descriptor {
+    font-size: 15px;
+    color: #B3D4F0;
+    margin-bottom: 6px;
+  }
+  .report-date {
+    font-size: 13px;
+    color: #8ab4d4;
+    margin-bottom: 24px;
+  }
+  .quick-take-box {
+    background: rgba(255,255,255,0.07);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 16px 20px;
+    max-width: 860px;
+  }
+  .qt-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .quick-take-box p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #e8f0f8;
+  }
+  /* MAIN */
+  .main-content { max-width: 980px; margin: 0 auto; padding: 0 20px 60px; }
+  .section-wrap { margin-top: 32px; }
+  .section-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 13px 20px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .section-header:hover { background: #253f6a; }
+  .toggle-icon {
+    font-size: 13px;
+    color: #8ab4d4;
+    transition: transform 0.2s;
+  }
+  .section-header.collapsed .toggle-icon { transform: rotate(-90deg); }
+  .section-body {
+    background: var(--white);
+    border: 1px solid #dde4ef;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 24px;
+  }
+  .section-body.hidden { display: none; }
+  /* OVERVIEW TABLE */
+  .profile-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  .profile-table th, .profile-table td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e8edf5;
+    font-size: 14px;
+  }
+  .profile-table th {
+    background: var(--card-bg);
+    color: var(--navy);
+    font-weight: 700;
+    width: 160px;
+  }
+  .profile-table tr:last-child th, .profile-table tr:last-child td { border-bottom: none; }
+  .what-they-do { font-size: 15px; line-height: 1.7; color: var(--body-text); }
+  /* CONTACT CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 18px;
+  }
+  .contact-card {
+    background: var(--white);
+    border: 1px solid #dde4ef;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .contact-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.11); }
+  .contact-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .contact-title { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+  .contact-meta { font-size: 13px; color: #555; margin-bottom: 10px; line-height: 1.5; }
+  .contact-meta a { color: var(--accent); text-decoration: none; }
+  .contact-meta a:hover { text-decoration: underline; }
+  .no-li { color: #888; font-style: italic; }
+  .tp-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy); margin: 12px 0 6px; }
+  .tp-block {
+    background: var(--card-bg);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .copy-btn:hover { background: #2472a4; }
+  .copy-btn.copied { background: var(--win); }
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: #c5d6ec;
+  }
+  .timeline-item { position: relative; margin-bottom: 24px; transition: transform 0.15s; }
+  .timeline-item:hover { transform: translateX(2px); }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .timeline-date { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+  .timeline-headline { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+  .timeline-desc { font-size: 14px; color: var(--body-text); margin-bottom: 8px; line-height: 1.6; }
+  .why-matters {
+    background: #fff8e1;
+    border-left: 3px solid var(--caution);
+    border-radius: 0 4px 4px 0;
+    padding: 7px 12px;
+    font-size: 13px;
+    color: #5a4800;
+    line-height: 1.5;
+  }
+  .why-matters strong { color: #8a6d00; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
+  /* PAIN POINTS */
+  .pain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+  .pain-card { border-radius: 8px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.07); transition: transform 0.15s, box-shadow 0.15s; }
+  .pain-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+  .pain-card.growth { background: #eaf5ea; border-top: 3px solid var(--win); }
+  .pain-card.ops { background: #eef3fb; border-top: 3px solid var(--accent); }
+  .pain-card.tech { background: #f9f3e3; border-top: 3px solid var(--caution); }
+  .pain-card.comp { background: #fbeaea; border-top: 3px solid var(--risk); }
+  .pain-category { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 6px; }
+  .pain-card.growth .pain-category { color: var(--win); }
+  .pain-card.ops .pain-category { color: var(--accent); }
+  .pain-card.tech .pain-category { color: #a07800; }
+  .pain-card.comp .pain-category { color: var(--risk); }
+  .pain-headline { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .pain-desc { font-size: 13px; line-height: 1.55; color: var(--body-text); margin-bottom: 8px; }
+  .pain-opp { font-size: 12px; font-style: italic; color: #444; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 7px; line-height: 1.5; }
+  .pain-opp strong { font-style: normal; color: var(--navy); }
+  /* TECH STACK */
+  .tech-group { margin-bottom: 18px; }
+  .tech-group:last-child { margin-bottom: 0; }
+  .tech-group-label { font-size: 12px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .badge { display: inline-block; background: var(--card-bg); color: var(--navy); font-size: 12.5px; font-weight: 600; padding: 4px 12px; border-radius: 20px; border: 1px solid #b3cfe8; }
+  /* APPROACH */
+  .entry-card { background: #eaf5ea; border: 1px solid #aad4aa; border-left: 5px solid var(--win); border-radius: 8px; padding: 18px 20px; margin-bottom: 20px; }
+  .entry-card h3 { color: var(--win); font-size: 13px; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .entry-card p { font-size: 14px; line-height: 1.65; }
+  .hook-card { background: var(--card-bg); border: 1px solid #b3cfe8; border-left: 5px solid var(--accent); border-radius: 8px; padding: 18px 20px; margin-bottom: 20px; }
+  .hook-card h3 { color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .hook-text { font-size: 14px; line-height: 1.65; font-style: italic; color: var(--body-text); }
+  .disc-questions h3 { color: var(--navy); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+  .disc-questions ol { padding-left: 20px; }
+  .disc-questions li { font-size: 14px; line-height: 1.65; margin-bottom: 10px; }
+  .comp-note { background: #fff0f0; border: 1px solid #e8b4b4; border-left: 5px solid var(--risk); border-radius: 8px; padding: 18px 20px; margin-top: 20px; }
+  .comp-note h3 { color: var(--risk); font-size: 13px; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .comp-note p { font-size: 14px; line-height: 1.65; }
+  /* BOARD */
+  .board-intro { font-size: 14px; line-height: 1.65; margin-bottom: 20px; color: var(--body-text); }
+  .board-tier-label {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em;
+    padding: 4px 10px; border-radius: 4px; margin: 16px 0 12px; display: inline-block;
+  }
+  .board-tier-label.very-high { background: #eaf5ea; color: var(--win); border: 1px solid #a8d4a8; }
+  .board-tier-label.high { background: #eef3fb; color: var(--accent); border: 1px solid #b3cfe8; }
+  .board-card {
+    background: var(--white);
+    border: 1px solid #dde4ef;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .board-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.11); }
+  .board-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .board-role { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+  .board-affil { font-size: 13.5px; color: var(--body-text); margin-bottom: 5px; }
+  .board-li { font-size: 13px; margin-bottom: 5px; }
+  .board-li a { color: var(--accent); text-decoration: none; }
+  .board-li a:hover { text-decoration: underline; }
+  .board-angle { font-size: 13px; color: #555; font-style: italic; margin-bottom: 12px; padding: 6px 10px; background: #f6f9fc; border-radius: 4px; border-left: 3px solid #c5d6ec; }
+  .connect-note-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); margin-bottom: 6px; }
+  .connect-note-block { background: var(--card-bg); border-radius: 6px; padding: 10px 12px; font-size: 13.5px; line-height: 1.6; margin-bottom: 6px; color: var(--body-text); }
+  /* FOOTER */
+  footer {
+    border-top: 1px solid #d0d9e8;
+    margin-top: 40px;
+    padding: 20px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  /* PRINT */
+  @media print {
+    .copy-btn { display: none !important; }
+    #top-nav { display: none !important; }
+    .section-body.hidden { display: block !important; }
+  }
+  @media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .pain-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav id="top-nav">
+  <a href="#sec-header">Overview</a>
+  <a href="#sec-overview">Company</a>
+  <a href="#sec-contacts">Key Contacts</a>
+  <a href="#sec-news">News &amp; Triggers</a>
+  <a href="#sec-pain">Pain Points</a>
+  <a href="#sec-tech">Tech Stack</a>
+  <a href="#sec-approach">Approach</a>
+  <a href="#sec-board">Board &amp; Relationships</a>
+</nav>
+
+<!-- 1. PAGE HEADER -->
+<div id="sec-header">
+<div id="page-header">
+  <div class="company-name">Fastenal Company</div>
+  <div class="company-descriptor">North America's Largest Fastener &amp; Industrial Supply Distributor &middot; NASDAQ: FAST</div>
+  <div class="report-date">June 8, 2026</div>
+  <div class="quick-take-box">
+    <div class="qt-label">Quick Take</div>
+    <p>Fastenal is the largest fastener and industrial-supply distributor in North America (~$8.2B FY2025 revenue, ~24,500 employees), mid-flight on its biggest leadership turnover in a decade: a planned CEO handoff from 30-year insider Dan Florness to Jeff Watts (effective July 16, 2026) and a freshly seated outside CFO, Max Tunnicliff (Nov 2025). The best opening for an AI/analytics/automation seller is Fastenal's own strategy: a 61% digital footprint, a 136,000+ device FMI hardware network throwing off enormous inventory/sensor data, a 2024 customer master-data overhaul now feeding site-level analytics, and a $310&ndash;330M 2026 capex wave aimed at hub automation and FMI hardware. A new CEO and new CFO create a rare prove-the-value window.</p>
+  </div>
+</div>
+</div>
+
+<div class="main-content">
+
+<!-- 2. COMPANY OVERVIEW -->
+<div class="section-wrap" id="sec-overview">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>Company Overview</span>
+    <span class="toggle-icon">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <table class="profile-table">
+      <tr><th>Industry</th><td>Wholesale Industrial Distribution (Fasteners, MRO, Safety, OEM)</td></tr>
+      <tr><th>Employees</th><td>~24,500</td></tr>
+      <tr><th>Headquarters</th><td>Winona, MN</td></tr>
+      <tr><th>Founded</th><td>1967 (Bob Kierlin)</td></tr>
+      <tr><th>FY2025 Revenue</th><td>~$8.2B</td></tr>
+      <tr><th>Website</th><td><a href="https://www.fastenal.com" target="_blank" rel="noopener" style="color:var(--accent)">fastenal.com</a></td></tr>
+    </table>
+    <p class="what-they-do">Fastenal is a wholesale industrial distributor of fasteners (its original, highest-margin category) plus OEM, MRO, construction, and safety products. Founded in 1967 in Winona, MN by Bob Kierlin, the company has evolved from a store model into an embedded supply-chain platform: 3,200+ branch and Onsite locations co-located inside customer facilities, ~15 distribution centers, and a fast-growing FMI hardware footprint (vending, smart bins, scanned stocking) on customer factory floors. About 61% of revenue flows through digital channels (eCommerce, EDI, FMI). The Onsite + FMI model creates deep switching costs once Fastenal is physically inside a plant.</p>
+  </div>
+</div>
+
+<!-- 3. KEY CONTACTS -->
+<div class="section-wrap" id="sec-contacts">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>Key Contacts</span>
+    <span class="toggle-icon">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="cards-grid">
+
+      <!-- Dan Florness -->
+      <div class="contact-card">
+        <div class="contact-name">Daniel L. Florness</div>
+        <div class="contact-title">Chief Executive Officer &amp; Director (stepping out of both roles effective July 16, 2026)</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> Joined 1996 as CFO (after 10 yrs at KPMG); CFO/EVP-CFO to 2015; CEO since Jan 2016; notified board Dec 19, 2025; advisor through early 2028.<br>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daniel-florness-90138616" target="_blank" rel="noopener">linkedin.com/in/daniel-florness-90138616</a>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-florness-1">He's architecting an orderly knowledge transfer through 2028, not a clean exit. Frame analytics/AI as a legacy-hardening play that institutionalizes his digital-footprint strategy (61% toward mid-60s%) before he hands off to Watts.</div>
+        <button class="copy-btn" onclick="copyText('tp-florness-1', this)">Copy</button>
+        <div class="tp-block" id="tp-florness-2">As the ex-CFO who built Fastenal's financial discipline, he underwrites by ROI and operating-leverage math. Lead with a quantified margin-defense case (gross margin slipped ~50 bps in Q1 2026 on customer mix), not a tech vision.</div>
+        <button class="copy-btn" onclick="copyText('tp-florness-2', this)">Copy</button>
+      </div>
+
+      <!-- Jeff Watts -->
+      <div class="contact-card">
+        <div class="contact-name">Jeffery M. Watts</div>
+        <div class="contact-title">President &amp; Chief Sales Officer; CEO-designate (effective July 16, 2026)</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> 30-year veteran; joined 1996 as a part-time branch employee; rose through field sales to President &amp; CSO (Aug 2024); CEO-designate Dec 2025.<br>
+          <strong>LinkedIn:</strong> <a href="https://ca.linkedin.com/in/jeff-watts-32177636" target="_blank" rel="noopener">ca.linkedin.com/in/jeff-watts-32177636</a>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-watts-1">A pure sales/field operator inheriting a tech-heavy strategy he didn't build on the IT side. Position AI/analytics as a force-multiplier for the selling org: lead scoring, FMI cross-sell signals, rep productivity.</div>
+        <button class="copy-btn" onclick="copyText('tp-watts-1', this)">Copy</button>
+        <div class="tp-block" id="tp-watts-2">A new CEO wants an early visible win. Offer a tightly scoped, fast-payback analytics pilot tied to his goal of pushing the digital footprint toward the mid-60s%, citable in his first earnings calls.</div>
+        <button class="copy-btn" onclick="copyText('tp-watts-2', this)">Copy</button>
+      </div>
+
+      <!-- Max Tunnicliff -->
+      <div class="contact-card">
+        <div class="contact-name">Max H. Tunnicliff</div>
+        <div class="contact-title">Senior EVP &amp; Chief Financial Officer (effective Nov 10, 2025; ex-Whirlpool/Beko)</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> Newest senior exec; ex-CFO Beko Europe; senior Whirlpool finance roles (internal audit, VP strategy, CFO Asia Pacific). Remit spans finance, accounting, audit, legal.<br>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/max-tunnicliff/" target="_blank" rel="noopener">linkedin.com/in/max-tunnicliff</a>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-tunnicliff-1">The only true outsider in an insider Winona culture. He brings a global manufacturer's expectations of modern FP&amp;A and finance automation, and is likely the strongest internal champion for finance-data and forecasting automation.</div>
+        <button class="copy-btn" onclick="copyText('tp-tunnicliff-1', this)">Copy</button>
+        <div class="tp-block" id="tp-tunnicliff-2">His supply-chain and operational-finance background is the bridge. Connect FMI/Onsite data and the new MDM system to CFO outcomes he cares about: working capital, inventory turns, margin protection amid the customer-mix shift.</div>
+        <button class="copy-btn" onclick="copyText('tp-tunnicliff-2', this)">Copy</button>
+      </div>
+
+      <!-- Sheryl Lisowski -->
+      <div class="contact-card">
+        <div class="contact-name">Sheryl A. Lisowski</div>
+        <div class="contact-title">EVP, Chief Accounting Officer &amp; Treasurer (former interim CFO)</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> With Fastenal since 1994; CAO/Treasurer since Dec 2020; interim CFO Apr&ndash;Nov 2025 (2nd stint). Deep institutional memory.<br>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sheryl-lisowski-0b3257169/" target="_blank" rel="noopener">linkedin.com/in/sheryl-lisowski-0b3257169</a>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-lisowski-1">Just ran finance solo as interim CFO and now must onboard an outside CFO. Analytics/automation that gives Tunnicliff clean, trustworthy reporting fast makes her the hero of the transition.</div>
+        <button class="copy-btn" onclick="copyText('tp-lisowski-1', this)">Copy</button>
+        <div class="tp-block" id="tp-lisowski-2">Owns data governance and controls in an ISO 27001 environment. Emphasize auditability, lineage, and SOX-friendly controls. She'll stop anything that looks like ungoverned shadow data before it gets close to a decision.</div>
+        <button class="copy-btn" onclick="copyText('tp-lisowski-2', this)">Copy</button>
+      </div>
+
+      <!-- John Soderberg -->
+      <div class="contact-card">
+        <div class="contact-name">John L. Soderberg</div>
+        <div class="contact-title">Senior EVP, Information Technology (de facto CIO; since Dec 2020)</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> With Fastenal since 1993; regional VP/VP-Sales, EVP-Sales Ops &amp; Support (2014&ndash;2016), then EVP-IT and SEVP-IT since Dec 2020.<br>
+          <span class="no-li">LinkedIn: not found</span>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-soderberg-1">A rare IT leader who came up through sales and ops. He evaluates tech by business outcome. Frame AI/analytics in revenue-lift and efficiency terms for the field org and he becomes a powerful internal sponsor.</div>
+        <button class="copy-btn" onclick="copyText('tp-soderberg-1', this)">Copy</button>
+        <div class="tp-block" id="tp-soderberg-2">Owns the platform behind 136,000+ FMI devices and the 2024 MDM overhaul. The highest-value conversation is turning that data lake into productized analytics: predictive replenishment, churn signals, expansion signals.</div>
+        <button class="copy-btn" onclick="copyText('tp-soderberg-2', this)">Copy</button>
+      </div>
+
+      <!-- Charles Miller -->
+      <div class="contact-card">
+        <div class="contact-name">Charles S. Miller</div>
+        <div class="contact-title">Senior EVP, Sales</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> With Fastenal since 1999; regional VP Southeast Central 2009&ndash;2015; SEVP-Sales since Jan 2020 over the entire U.S. business.<br>
+          <span class="no-li">LinkedIn: not found</span>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-miller-1">Owns U.S. sales and ops, the engine for digital-footprint and Onsite growth. Pitch analytics that help regional and branch leaders prioritize the right accounts for FMI conversion and Onsite expansion.</div>
+        <button class="copy-btn" onclick="copyText('tp-miller-1', this)">Copy</button>
+        <div class="tp-block" id="tp-miller-2">Came up running a regional P&amp;L. He responds to tooling that surfaces site-level performance the new MDM now makes possible. AI that scales "regional VP intuition" across thousands of locations is the frame that lands.</div>
+        <button class="copy-btn" onclick="copyText('tp-miller-2', this)">Copy</button>
+      </div>
+
+      <!-- Jeff Hicks -->
+      <div class="contact-card">
+        <div class="contact-name">Jeff Hicks</div>
+        <div class="contact-title">SVP, Solutions (FMI/Onsite)</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> ~29 yrs in industrial supply; leads Fastenal Solutions / FMI Technology over $2B+ FMI activity; MBA Illinois State.<br>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jeff-hicks-21a17819/" target="_blank" rel="noopener">linkedin.com/in/jeff-hicks-21a17819</a>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-hicks-1">The most direct owner of the device network generating Fastenal's richest data (FASTStock/FASTBin/FASTVend telemetry). The natural partner for demand prediction, stock-out detection, and automated replenishment at scale.</div>
+        <button class="copy-btn" onclick="copyText('tp-hicks-1', this)">Copy</button>
+        <div class="tp-block" id="tp-hicks-2">His mandate is to use tech to create value in customers' supply chains. Co-develop a customer-facing analytics layer (consumption insights, savings dashboards) he can sell as a differentiator inside existing FMI accounts.</div>
+        <button class="copy-btn" onclick="copyText('tp-hicks-2', this)">Copy</button>
+      </div>
+
+      <!-- Craig Weatherhead -->
+      <div class="contact-card">
+        <div class="contact-name">Craig Weatherhead</div>
+        <div class="contact-title">VP, IT Infrastructure &amp; Security</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> With Fastenal since 1996; leads IT Infrastructure &amp; Security (90+ person org) across on-prem and cloud; ISO 27001 program owner.<br>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/craigweatherhead/" target="_blank" rel="noopener">linkedin.com/in/craigweatherhead</a>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-weatherhead-1">Owns the hybrid backbone and the ISO 27001 security program. Any AI/analytics deployment needs his sign-off. Lead with deployment architecture, data residency, and security posture so you're de-risking rather than expanding his attack surface.</div>
+        <button class="copy-btn" onclick="copyText('tp-weatherhead-1', this)">Copy</button>
+        <div class="tp-block" id="tp-weatherhead-2">With $310&ndash;330M in 2026 capex flowing into automation and IT, his team must scale the data and compute layer under fixed headcount. Cloud and data-platform tooling that supports automated DCs without linear hiring is the right frame.</div>
+        <button class="copy-btn" onclick="copyText('tp-weatherhead-2', this)">Copy</button>
+      </div>
+
+      <!-- John Milek -->
+      <div class="contact-card">
+        <div class="contact-name">John J. Milek</div>
+        <div class="contact-title">VP, General Counsel &amp; Corporate Secretary</div>
+        <div class="contact-meta">
+          <strong>Tenure:</strong> Fastenal's first in-house attorney; GC since 1998; finance BA (UW&ndash;La Crosse), J.D. Mitchell Hamline; handles M&amp;A and governance.<br>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/john-milek-a8383299/" target="_blank" rel="noopener">linkedin.com/in/john-milek-a8383299</a>
+        </div>
+        <div class="tp-label">Talking Points</div>
+        <div class="tp-block" id="tp-milek-1">As Corporate Secretary steering governance through a CEO/CFO transition, he's focused on continuity and risk. Frame AI/data engagements with strong contractual, IP, and data-use governance so legal accelerates rather than blocks.</div>
+        <button class="copy-btn" onclick="copyText('tp-milek-1', this)">Copy</button>
+        <div class="tp-block" id="tp-milek-2">Finance and M&amp;A mindset. Emphasize clear data-ownership, liability allocation, and AI-governance terms up front to shorten his review and signal that you've done this before at companies with a similar compliance posture.</div>
+        <button class="copy-btn" onclick="copyText('tp-milek-2', this)">Copy</button>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </div>
+</div>
+
+<!-- 4. RECENT NEWS & BUYING TRIGGERS -->
+<div class="section-wrap" id="sec-news">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>Recent News &amp; Buying Triggers</span>
+    <span class="toggle-icon">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Dec 19&ndash;21, 2025</div>
+        <div class="timeline-headline">CEO Transition Announced</div>
+        <div class="timeline-desc">Florness steps out as CEO on July 16, 2026. Jeff Watts named successor. Florness stays as advisor through early 2028, giving incoming leadership continuous access to institutional knowledge while they set their own agenda.</div>
+        <div class="why-matters"><strong>Why It Matters</strong>The strongest buying trigger of the year. A new CEO wants early modernization wins citable in his first earnings calls, and the advisor structure means the transition is orderly, not chaotic.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Nov 10, 2025</div>
+        <div class="timeline-headline">New CFO: Max Tunnicliff (ex-Whirlpool/Beko)</div>
+        <div class="timeline-desc">Tunnicliff joins as Senior EVP &amp; CFO, the first true outsider in Fastenal's senior leadership. His background spans global manufacturing finance at Whirlpool and Beko Europe, including internal audit, VP of strategy, and CFO roles across multiple regions.</div>
+        <div class="why-matters"><strong>Why It Matters</strong>New CFOs reset budgets and tooling in their first two quarters. A finance-data and forecasting automation conversation is particularly receptive right now, before his first full-year budget cycle locks.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jan 2026</div>
+        <div class="timeline-headline">FY2025 Results: ~$8.2B Revenue; Digital Footprint 61.4%; FMI $3.71B</div>
+        <div class="timeline-desc">Full-year net sales came in at ~$8.2B. The digital footprint reached 61.4% of sales. FMI accounted for $3.71B (44.7% of total revenue), continuing its climb as the dominant go-to-market channel.</div>
+        <div class="why-matters"><strong>Why It Matters</strong>Management's own scorecard is digital mix. Selling analytics that directly advance the digital-footprint metric aligns with what they report to Wall Street every quarter.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Apr 2026</div>
+        <div class="timeline-headline">Q1 2026: Sales +12.4% to $2.20B; Gross Margin Slips 50 bps on Customer Mix</div>
+        <div class="timeline-desc">Revenue grew 12.4% year over year to $2.20B. Net income rose 13.8% to $339.8M. Operating margin held at 20.3%, but gross margin slipped ~50 basis points as large-contract and non-fastener revenue grew faster than the higher-margin fastener base.</div>
+        <div class="why-matters"><strong>Why It Matters</strong>The gross-margin squeeze is exactly what analytics can attack: pricing optimization, cost-to-serve modeling, and mix analysis are all fundable responses to a publicly visible margin problem.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026 Guidance</div>
+        <div class="timeline-headline">Capex $310&ndash;330M &mdash; Up ~40% from $230.6M</div>
+        <div class="timeline-desc">Management guided 2026 capex to $310&ndash;330M, directed at hub automation, FMI hardware, and IT infrastructure. The ~40% jump from the prior year's $230.6M is one of the most explicit spend signals in the sector this year.</div>
+        <div class="why-matters"><strong>Why It Matters</strong>Budget is allocated and named. Aligning to the three stated priorities (hub automation, FMI, IT) is the fastest path to finding funded conversations inside an already-approved spend plan.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2026</div>
+        <div class="timeline-headline">Carrollton, GA Southeast DC Groundbreaking</div>
+        <div class="timeline-desc">Fastenal broke ground on a next-generation distribution center in Carrollton, GA, replacing the Atlanta hub. The facility can expand to 900,000 sq ft and is designed for next-gen warehouse automation. Projected to open spring 2027.</div>
+        <div class="why-matters"><strong>Why It Matters</strong>A greenfield automated DC is a clean slate for warehouse AI/analytics. Engaging during the design phase, before systems are locked, is the best window for influencing the data and automation architecture.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2024&ndash;2025</div>
+        <div class="timeline-headline">Customer MDM Overhaul Delivers Site-Level Insights</div>
+        <div class="timeline-desc">Fastenal completed a multi-year overhaul of its customer master data management system. The new foundation delivers site-level customer insights that were previously unavailable, setting up a clean data layer across the 3,200+ location network.</div>
+        <div class="why-matters"><strong>Why It Matters</strong>The hard data-foundation work is done. The AI and analytics layer on top is the natural, fundable next step — and it's a fast time-to-value play because the data is already there.</div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</div>
+
+<!-- 5. PAIN POINTS & OPPORTUNITIES -->
+<div class="section-wrap" id="sec-pain">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>Pain Points &amp; Opportunities</span>
+    <span class="toggle-icon">&#9660;</span>
+  </div>
+  <div class="section-body">
+    <div class="pain-grid">
+
+      <div class="pain-card growth">
+        <div class="pain-category">Growth</div>
+        <div class="pain-headline">Margin-Mix Problem</div>
+        <div class="pain-desc">Large contracts and non-fastener product growth are diluting gross margin. Q1 2026 showed a ~50 bps decline on customer mix, a publicly flagged concern for a company managing the transition from fastener-led to broad-line distribution.</div>
+        <div class="pain-opp"><strong>Opportunity:</strong> Pricing optimization, cost-to-serve analytics, and mix modeling that quantify which accounts and SKUs are actually profitable at the margin level.</div>
+      </div>
+
+      <div class="pain-card growth">
+        <div class="pain-category">Growth</div>
+        <div class="pain-headline">Digital Footprint Gap (61% &rarr; mid-60s%)</div>
+        <div class="pain-desc">Management has publicly committed to pushing the digital mix into the mid-60s%, but FMI and Onsite conversion requires identifying and prioritizing the right accounts at the right time across thousands of locations.</div>
+        <div class="pain-opp"><strong>Opportunity:</strong> Propensity-to-convert scoring and lead-scoring analytics that give the field org a prioritized target list for FMI and Onsite expansion.</div>
+      </div>
+
+      <div class="pain-card ops">
+        <div class="pain-category">Operations</div>
+        <div class="pain-headline">Hub Automation at Scale (~40% Capex Jump)</div>
+        <div class="pain-desc">A $310&ndash;330M capex year, with the Carrollton GA DC as the flagship, requires sophisticated demand forecasting and performance measurement across the automation layer. Design decisions made now will run for a decade.</div>
+        <div class="pain-opp"><strong>Opportunity:</strong> Warehouse optimization, demand forecasting, and automated-DC analytics aligned to the three named capex priorities.</div>
+      </div>
+
+      <div class="pain-card ops">
+        <div class="pain-category">Operations</div>
+        <div class="pain-headline">Under-Monetized FMI Telemetry (136,000+ Devices)</div>
+        <div class="pain-desc">FASTStock, FASTBin, and FASTVend generate continuous inventory and consumption data across customer floors. That data is largely used for fulfillment and billing, not for predictive or strategic analytics.</div>
+        <div class="pain-opp"><strong>Opportunity:</strong> Predictive replenishment, anomaly and stock-out detection, and customer-facing consumption insights built on the existing telemetry stream.</div>
+      </div>
+
+      <div class="pain-card tech">
+        <div class="pain-category">Technology</div>
+        <div class="pain-headline">Analytics Layer Is Nascent Post-MDM</div>
+        <div class="pain-desc">The 2024 MDM overhaul created a clean data foundation with site-level granularity. But productized AI and analytics on top of that foundation hasn't materialized yet. The data is ready; the layer on top of it is not.</div>
+        <div class="pain-opp"><strong>Opportunity:</strong> Fast time-to-value analytics built on existing clean data. The foundation work is done; the AI layer is the fundable next step.</div>
+      </div>
+
+      <div class="pain-card tech">
+        <div class="pain-category">Technology</div>
+        <div class="pain-headline">Hybrid Estate Scaling Under Fixed IT Headcount</div>
+        <div class="pain-desc">A 90+ person IT infrastructure and security org must support 3,200+ locations, a growing FMI device network, and new automated DCs, all without proportional headcount growth.</div>
+        <div class="pain-opp"><strong>Opportunity:</strong> Cloud and data-platform modernization that scales the compute and data layer supporting automated distribution centers without requiring linear hiring.</div>
+      </div>
+
+      <div class="pain-card comp">
+        <div class="pain-category">Competitive</div>
+        <div class="pain-headline">Grainger (63.7% eCommerce) Pressing on Digital Mix</div>
+        <div class="pain-desc">Fastenal's 61% digital footprint is real, but Grainger's pure eCommerce model already exceeds it on headline digital mix, and Amazon Business continues to pressure price transparency across the distributor category.</div>
+        <div class="pain-opp"><strong>Opportunity:</strong> AI-driven customer-facing insights and supply-chain analytics that deepen the Onsite/FMI moat Grainger's eCommerce model structurally cannot replicate.</div>
+      </div>
+
+    </div><!-- /pain-grid -->
+  </div>
+</div>
+
+<!-- 6. TECH STACK -->
+<div class="section-wrap" id="sec-tech">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>Tech Stack</span>
+    <span class="toggle-icon">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="tech-group">
+      <div class="tech-group-label">FMI / Managed Inventory</div>
+      <div class="badge-row">
+        <span class="badge">FASTStock</span>
+        <span class="badge">FASTBin (IR / RFID / Scale Smart Bins)</span>
+        <span class="badge">FASTVend</span>
+        <span class="badge">136,000+ Installed Devices</span>
+      </div>
+    </div>
+
+    <div class="tech-group">
+      <div class="tech-group-label">eBusiness / Integration</div>
+      <div class="badge-row">
+        <span class="badge">eCommerce (fastenal.com)</span>
+        <span class="badge">EDI</span>
+        <span class="badge">eProcurement / Punchout</span>
+        <span class="badge">SAP Ariba</span>
+        <span class="badge">~61% Digital Footprint</span>
+      </div>
+    </div>
+
+    <div class="tech-group">
+      <div class="tech-group-label">Data &amp; Analytics</div>
+      <div class="badge-row">
+        <span class="badge">Customer MDM (Overhauled 2024)</span>
+        <span class="badge">Site-Level Insights Layer</span>
+      </div>
+    </div>
+
+    <div class="tech-group">
+      <div class="tech-group-label">Security / Compliance</div>
+      <div class="badge-row">
+        <span class="badge">ISO/IEC 27001 ISMS</span>
+        <span class="badge">90+ Person IT Infra &amp; Security Org</span>
+      </div>
+    </div>
+
+    <div class="tech-group">
+      <div class="tech-group-label">Infrastructure</div>
+      <div class="badge-row">
+        <span class="badge">Hybrid On-Prem + Cloud</span>
+        <span class="badge">3,200+ Locations</span>
+        <span class="badge">Next-Gen Warehouse Automation (Carrollton GA &mdash; Spring 2027)</span>
+      </div>
+    </div>
+
+    <div class="tech-group">
+      <div class="tech-group-label">ESG Data</div>
+      <div class="badge-row">
+        <span class="badge">Watershed Carbon Platform</span>
+        <span class="badge">EcoVadis Silver</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 7. RECOMMENDED APPROACH -->
+<div class="section-wrap" id="sec-approach">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>Recommended Approach</span>
+    <span class="toggle-icon">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <div class="entry-card">
+      <h3>Best Entry Point</h3>
+      <p><strong>John Soderberg (SEVP-IT, de facto CIO)</strong> and <strong>Jeff Hicks (SVP, Solutions / FMI)</strong> are the two technical entry points worth pursuing in parallel. Soderberg owns the platform: the 136,000+ device network, the 2024 MDM overhaul, and the entire IT architecture that would underpin any AI/analytics layer. He came up through sales and ops before IT, which means he evaluates tech by field and business outcome rather than technical specs. That's a rare and valuable combination in a CIO seat. Hicks owns the data at its richest point. His mandate is to use FMI telemetry from every device on every customer floor to create measurable value in customer supply chains. Both leaders have a funded problem and a clean data foundation ready to build on. Getting both in the same conversation, Soderberg on platform and Hicks on use-case, is the fastest path to an internal champion who can also pull budget.</p>
+    </div>
+
+    <div class="hook-card">
+      <h3>Opening Hook</h3>
+      <div class="hook-text" id="hook-main">Your 136,000+ FMI devices already generate the data most distributors spend years trying to collect, and the 2024 MDM work means the foundation is cleaner than it's ever been. Fastenal has more than enough data to build predictive replenishment and expansion-signal analytics. The open question is whether the right layer sits on top of it before a new CEO sets the agenda in Q3.</div>
+      <br>
+      <button class="copy-btn" onclick="copyText('hook-main', this)">Copy Hook</button>
+    </div>
+
+    <div class="disc-questions">
+      <h3>Discovery Questions</h3>
+      <ol>
+        <li>The MDM overhaul gave you site-level granularity you didn't have before. What's the current plan for turning that into analytics your field org can act on, and who owns that roadmap today?</li>
+        <li>With 136,000+ FMI devices generating continuous telemetry, how much of that data is currently feeding predictive models versus being used primarily for fulfillment and billing? Where does the biggest gap sit?</li>
+        <li>As Fastenal pushes toward the mid-60s% digital footprint, how does the field org currently decide which accounts to prioritize for FMI or Onsite conversion, and is that a process you'd want to make more data-driven under a new leadership team?</li>
+      </ol>
+    </div>
+
+    <div class="comp-note">
+      <h3>Competitive Pressure Note</h3>
+      <p>W.W. Grainger is the direct benchmark here. Grainger sits at ~63.7% eCommerce, ahead of Fastenal's ~61% digital footprint, and is investing heavily in its digital supply chain and a 1.4M+ SKU catalog. Wall Street and Fastenal's own management compare these numbers directly. But Grainger's model is transactional eCommerce. It can't replicate the physical embeddedness of Onsite locations and FMI devices installed inside customer plants. The competitive play for Fastenal isn't to out-eCommerce Grainger; it's to convert the Onsite and FMI moat into AI-powered customer value that Grainger's model structurally can't match. That's the frame that resonates with a new CEO inheriting a differentiated strategy and needing to defend it publicly.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 8. BOARD & RELATIONSHIPS -->
+<div class="section-wrap" id="sec-board">
+  <div class="section-header" onclick="toggleSection(this)">
+    <span>Board &amp; Relationships</span>
+    <span class="toggle-icon">&#9660;</span>
+  </div>
+  <div class="section-body">
+
+    <p class="board-intro">These board members' own companies and interlocking board affiliations are potential warm paths when a direct executive route stalls. Very High priority directors offer the strongest network overlap with AI, data, and supply-chain conversations.</p>
+
+    <div class="board-tier-label very-high">Very High Priority</div>
+
+    <!-- Michael Ancius -->
+    <div class="board-card">
+      <div class="board-name">Michael J. Ancius</div>
+      <div class="board-role">Director (Independent) &middot; Audit (Chair) &middot; Compensation</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> VP &amp; CFO, A.L.M. Holding Company (private, Onalaska, WI)</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <span class="no-li">not found</span></div>
+      <div class="board-angle">Audit chair owns cyber-risk oversight at the board level. Reach via Wisconsin / La Crosse / ex-Kwik Trip network.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-ancius">Hi Michael, your Audit Chair role at Fastenal and its cyber-risk oversight caught my eye. I work in AI and analytics, helping industrial companies build data governance and security controls that hold up under audit. I'd value comparing notes.</div>
+      <button class="copy-btn" onclick="copyText('cn-ancius', this)">Copy Note</button>
+    </div>
+
+    <!-- Rita Heise -->
+    <div class="board-card">
+      <div class="board-name">Rita J. Heise</div>
+      <div class="board-role">Director (Independent) &middot; Compensation &middot; Nominating &amp; Governance</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> Self-employed consultant; retired Corporate VP &amp; CIO, Cargill</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rita-heise-214b8863/" target="_blank" rel="noopener">linkedin.com/in/rita-heise-214b8863</a></div>
+      <div class="board-angle">Best tech-buyer ally on the board. Route via Cargill alumni or Curtiss-Wright board interlock.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-heise">Hi Rita, your CIO years at Cargill are exactly the lens I work in: helping industrial leaders turn operational data into real results with AI. I'd value connecting to compare notes on where this is heading in distribution and supply chain.</div>
+      <button class="copy-btn" onclick="copyText('cn-heise', this)">Copy Note</button>
+    </div>
+
+    <!-- Irene Quarshie -->
+    <div class="board-card">
+      <div class="board-name">Irene A. Quarshie</div>
+      <div class="board-role">Director (Independent) &middot; Audit &middot; Nominating &amp; Governance</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> SVP Global Supply Chain &amp; Logistics, Target Corporation</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/irene-quarshie-5799621/" target="_blank" rel="noopener">linkedin.com/in/irene-quarshie-5799621</a></div>
+      <div class="board-angle">Sitting Target supply-chain SVP. Best interlock for a supply-chain and automation pitch. Minneapolis ecosystem.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-quarshie">Hi Irene, your work scaling Target's supply chain is a direct parallel to what I focus on: AI and analytics for large, distributed supply networks. I'd value connecting to hear how you see automation moving in distribution.</div>
+      <button class="copy-btn" onclick="copyText('cn-quarshie', this)">Copy Note</button>
+    </div>
+
+    <!-- Scott Satterlee -->
+    <div class="board-card">
+      <div class="board-name">Scott A. Satterlee</div>
+      <div class="board-role">Chair of the Board (Independent)</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> Retired President, North America Surface Transportation, C.H. Robinson</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/scott-satterlee-03789a5/" target="_blank" rel="noopener">linkedin.com/in/scott-satterlee-03789a5</a></div>
+      <div class="board-angle">Top of the board. Warm path via C.H. Robinson (Eden Prairie, MN) supply-chain network.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-satterlee">Hi Scott, your years leading North America surface transportation at C.H. Robinson put you squarely in the supply-chain space I work in: AI and analytics for large industrial networks. I'd value connecting.</div>
+      <button class="copy-btn" onclick="copyText('cn-satterlee', this)">Copy Note</button>
+    </div>
+
+    <div class="board-tier-label high">High Priority</div>
+
+    <!-- Stephen Eastman -->
+    <div class="board-card">
+      <div class="board-name">Stephen L. Eastman</div>
+      <div class="board-role">Director (Independent) &middot; Nominating &amp; Governance (Chair) &middot; Compensation</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> Retired President PG&amp;A Division, Polaris; ex-President Target.com</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <span class="no-li">not found</span></div>
+      <div class="board-angle">Governance chair with eCommerce DNA. Entry point for the digital-footprint narrative. Polaris and Target alumni.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-eastman">Hi Stephen, your eCommerce background at Target.com and your work scaling Polaris's PG&amp;A division are exactly the experience I'd want to learn from. I focus on AI and analytics for industrial businesses. I'd value connecting.</div>
+      <button class="copy-btn" onclick="copyText('cn-eastman', this)">Copy Note</button>
+    </div>
+
+    <!-- Brady Ericson -->
+    <div class="board-card">
+      <div class="board-name">Brady D. Ericson</div>
+      <div class="board-role">Director (Independent, since 2025) &middot; Audit</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> President &amp; CEO, PHINIA Inc. (NYSE: PHIN)</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/brady-ericson-6342aa/" target="_blank" rel="noopener">linkedin.com/in/brady-ericson-6342aa</a></div>
+      <div class="board-angle">Sitting public-company CEO. Route via PHINIA / BorgWarner (Auburn Hills, MI) network.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-ericson">Hi Brady, leading PHINIA through its public-company build puts you in the space I work in: AI and analytics that scale industrial operations. I'd value connecting and learning from how you've approached it.</div>
+      <button class="copy-btn" onclick="copyText('cn-ericson', this)">Copy Note</button>
+    </div>
+
+    <!-- Daniel Johnson -->
+    <div class="board-card">
+      <div class="board-name">Daniel L. Johnson</div>
+      <div class="board-role">Director (Independent) &middot; Compensation (Chair, since Feb 2026) &middot; Nominating &amp; Governance</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> Retired CEO, M.A. Mortenson Company</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dan-johnson-b3598259/" target="_blank" rel="noopener">linkedin.com/in/dan-johnson-b3598259</a></div>
+      <div class="board-angle">Compensation chair. Reach via Mortenson (Minneapolis) construction and infrastructure network.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-johnson">Hi Dan, you led Mortenson through major infrastructure and construction growth, which is exactly the kind of operational scale I work in with AI and analytics. I'd value connecting.</div>
+      <button class="copy-btn" onclick="copyText('cn-johnson', this)">Copy Note</button>
+    </div>
+
+    <!-- Sarah Nielsen -->
+    <div class="board-card">
+      <div class="board-name">Sarah N. Nielsen</div>
+      <div class="board-role">Director (Independent) &middot; Audit &middot; Compensation</div>
+      <div class="board-affil"><strong>Primary Affiliation:</strong> CFO, First Citizens Bank (Mason City, IA)</div>
+      <div class="board-li"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sarah-nielsen-fcb/" target="_blank" rel="noopener">linkedin.com/in/sarah-nielsen-fcb</a></div>
+      <div class="board-angle">Reach via Iowa banking / Winnebago alumni / Deloitte. Influences finance-systems and ERP topics.</div>
+      <div class="connect-note-label">LinkedIn Connect Note</div>
+      <div class="connect-note-block" id="cn-nielsen">Hi Sarah, your CFO and audit experience across banking and industrial boards puts you close to the finance-systems decisions I care about. I work in AI and analytics, with a focus on the finance-data side. I'd value connecting.</div>
+      <button class="copy-btn" onclick="copyText('cn-nielsen', this)">Copy Note</button>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<!-- FOOTER -->
+<footer>
+  <svg viewBox="0 0 32 32" width="16" height="16" aria-label="Brian Beals"><rect width="32" height="32" rx="6" fill="#1E3A5F"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+  &copy; Brian Beals &middot; brianbeals.com &middot; June 8, 2026
+</footer>
+
+<script>
+  function toggleSection(header) {
+    header.classList.toggle('collapsed');
+    const body = header.nextElementSibling;
+    body.classList.toggle('hidden');
+  }
+
+  function copyText(elementId, btn) {
+    const el = document.getElementById(elementId);
+    if (!el) return;
+    const text = el.innerText || el.textContent;
+    const original = btn.textContent;
+    function showCopied() {
+      btn.textContent = '✓ Copied';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 2000);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text.trim()).then(showCopied).catch(() => fallbackCopy(text, showCopied));
+    } else {
+      fallbackCopy(text, showCopied);
+    }
+  }
+
+  function fallbackCopy(text, callback) {
+    const ta = document.createElement('textarea');
+    ta.value = text.trim();
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); callback(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+
+  document.querySelectorAll('#top-nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+</body>
+</html>

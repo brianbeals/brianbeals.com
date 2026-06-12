@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import EssayByline from "@/app/components/EssayByline";
 
 export const metadata: Metadata = {
   title: "An LLM With a Logo",
@@ -184,11 +185,11 @@ export default function EssayPage() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Apply the standard across every artifact, not just marketing: sales emails, AE follow-ups, recruiting outreach, internal all-hands decks. The brand is whatever the customer sees, not whatever marketing produces. The recruiter speaks for the brand, so does the AE, so does the customer success manager, and none of them currently read from the same voice book because there isn&rsquo;t one.
+          Apply the standard everywhere the company writes: sales emails, AE follow-ups, recruiting outreach, internal all-hands decks. The brand is whatever the customer sees, not whatever marketing produces. The recruiter speaks for the brand, so does the AE, so does the customer success manager, and none of them currently read from the same voice book because there isn&rsquo;t one.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Review every artifact for voice the way code gets reviewed for security: a named owner who can stop a shipment, a documented standard, a review pass before publish. Companies that wouldn&rsquo;t dream of pushing code to production without security review are pushing brand-shaped content past the same wall every day, because nobody owns that wall.
+          Review every artifact for voice the way code gets reviewed for security: a named owner who can stop a shipment, a documented standard, a review pass before publish. Essay one made that case for a single piece. Across ten artifact types the wall matters ten times as much, and it still has no owner.
         </p>
 
         <h2
@@ -204,7 +205,7 @@ export default function EssayPage() {
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This is the second time the CIO and the CMO need to be in the same room. Essay one asked whether AI ships at all. This one asks whether what it ships hangs together, and that question belongs to both of them, not to marketing alone.
+          This is the second time the CIO and the CMO need to be in the same room. Essay one asked whether AI drafts should ship without a human pass. This one asks whether what it ships hangs together, and that question belongs to both of them, not to marketing alone.
         </p>
 
         <h2
@@ -231,9 +232,7 @@ export default function EssayPage() {
           A logo at the top is not a through-line.
         </p>
 
-        <p className="text-sm text-neutral-600 italic mt-12 pt-6 border-t border-neutral-200">
-          Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT Solutions. Reach him at brian@brianbeals.com.
-        </p>
+        <EssayByline />
       </article>
     </div>
   );

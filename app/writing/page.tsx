@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "an-llm-with-a-logo",
+    title: "An LLM With a Logo",
+    date: "2026-06-13",
+    summary:
+      "Pull ten artifacts from one company in 2026 and read them back to back. They sound like ten different companies. The brand book has a guardian. The voice book doesn't have one yet, and the company pays for it.",
+  },
+  {
     slug: "ai-and-the-poisoning-of-professionalism",
     title: "AI and the Poisoning of Professionalism",
     date: "2026-05-30",

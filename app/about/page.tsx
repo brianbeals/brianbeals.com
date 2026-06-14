@@ -34,7 +34,7 @@ export default function About() {
             className="rounded-md shadow-sm"
           />
         </div>
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I've built three enterprise sales practices from scratch. Each one started with $0 in revenue and the kind of slide deck no customer believed yet.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I've built and grown three enterprise technology practices, each at a different stage.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "#1E3A5F" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I took from <strong style={{ color: "#1E3A5F" }}>$20M to $78M</strong> in under four years (<strong style={{ color: "#1E3A5F" }}>3.9×</strong>). For the last decade I've been at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
 

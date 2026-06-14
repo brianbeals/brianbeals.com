@@ -30,6 +30,9 @@ export default function Contact() {
         <p className="text-base sm:text-lg leading-relaxed mb-8 text-neutral-800">
           The conversations I want are about AI, analytics, and automation. Not the slide decks, the actual work. If you're modernizing a data stack, sorting out governance, taking a pilot to production, or building a practice from scratch, write me.
         </p>
+        <p className="text-base sm:text-lg leading-relaxed mb-8 text-neutral-800">
+          I'm always open to thoughtful conversations about where enterprise AI, analytics, and automation are heading, and the organizations being built around them.
+        </p>
         <ul className="space-y-4 text-base sm:text-lg">
           <li>
             <span className="text-neutral-500 mr-2 inline-block w-20">Email</span>

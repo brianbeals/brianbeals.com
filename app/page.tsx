@@ -26,7 +26,7 @@ const projects: { name: string; description: string; links: ProjectLink[] }[] = 
   },
   {
     name: "This site",
-    description: "Next.js on Vercel. Built and shipped solo.",
+    description: "Next.js on Vercel.",
     links: [
       { label: "Code", href: "https://github.com/brianbeals/brianbeals.com" },
     ],
@@ -60,7 +60,7 @@ export default function Home() {
           I help enterprise organizations get real results out of their AI, analytics, and automation investments.
         </p>
         <p className="text-base sm:text-lg leading-relaxed mb-12 text-neutral-800">
-          I've built three enterprise sales practices from scratch. The work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. The part where the technology either pays for itself or doesn't.
+          I've spent my career building and growing enterprise technology practices. The work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. The part where the technology either pays for itself or doesn't.
         </p>
         <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 mb-12 pb-12 border-b border-neutral-200">
           {stats.map((s) => (

@@ -1,6 +1,6 @@
 # brianbeals.com
 
-Source for [brianbeals.com](https://brianbeals.com), my personal site. Built and deployed by me, no agency, no template.
+Source for [brianbeals.com](https://brianbeals.com), my personal site and writing.
 
 ## What's here
 

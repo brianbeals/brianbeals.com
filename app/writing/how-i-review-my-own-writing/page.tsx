@@ -88,7 +88,7 @@ export default function EssayPage() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Professionalism asks whether the piece fits its venue. Writing Style asks whether the sentences have rhythm and hold a consistent voice. Leadership Capability asks whether the writer takes a position, owns it, and gives the reader something to do. Those three measure craft.
+          Professionalism asks whether the piece fits its venue. Writing Style asks whether the sentences have rhythm and hold a consistent voice. Leadership Capability is whether the writer takes a position, owns it, and hands the reader something to do. Those three measure craft.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -168,7 +168,7 @@ export default function EssayPage() {
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Voice discipline isn&rsquo;t a brand-book project. A brand book is a static file. This is a recurring operation: a named owner, a one-page standard, a mandatory pass before publish, and the same rubric on what you send and what you receive. Companies that build that function catch the failure modes this series has spent four essays naming. Companies that don&rsquo;t will keep shipping the wallpaper version of their voice, and keep reading vendor pitches as if a person wrote them.
+          Voice discipline is a recurring operation. A brand book is a static file you write once and shelve; this runs every time something ships: a named owner, a one-page standard, a mandatory pass before publish, and the same rubric on what you send and what you receive. Companies that build that function catch the failure modes the first three essays named. Companies that don&rsquo;t will keep shipping the wallpaper version of their voice, and keep reading vendor pitches as if a person wrote them.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

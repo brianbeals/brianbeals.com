@@ -14,18 +14,18 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL("https://brianbeals.com"),
   title: {
-    default: "Brian Beals | Enterprise Sales Leader",
+    default: "Brian Beals | AI & Analytics Practice Builder",
     template: "%s | Brian Beals",
   },
   description:
-    "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+    "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Brian Beals | Enterprise Sales Leader",
+    title: "Brian Beals | AI & Analytics Practice Builder",
     description:
-      "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+      "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
     url: "/",
     siteName: "Brian Beals",
     images: ["/opengraph-image"],
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Beals | Enterprise Sales Leader",
+    title: "Brian Beals | AI & Analytics Practice Builder",
     description:
-      "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+      "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
     images: ["/opengraph-image"],
   },
 };
@@ -44,9 +44,9 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Brian Beals",
-  jobTitle: "Enterprise Sales Leader",
+  jobTitle: "Director, AI, Analytics & Automation",
   description:
-    "Brian Beals, enterprise sales leader. Three practices built from scratch across AI, analytics, and automation. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+    "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
   url: "https://brianbeals.com",
   image: "https://brianbeals.com/opengraph-image",
   sameAs: [

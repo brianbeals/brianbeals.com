@@ -21,6 +21,7 @@ const STATIC_PAGES: StaticEntry[] = [
   { path: "/writing", priority: 0.7, changeFrequency: "weekly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
+  { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },
 ];
 
 function getEssays(): Array<{ slug: string; publishedAt: Date | null }> {

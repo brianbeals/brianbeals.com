@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import EssayByline from "@/app/components/EssayByline";
 
 export const metadata: Metadata = {
   title: "How I Review My Own Writing",
@@ -179,9 +180,7 @@ export default function EssayPage() {
           I run this on my own writing because somebody has to. I run it on writing I receive because nobody else will.
         </p>
 
-        <p className="text-sm text-neutral-600 italic mt-12 pt-6 border-t border-neutral-200">
-          Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT Solutions. Reach him at brian@brianbeals.com.
-        </p>
+        <EssayByline variant="lrs" />
       </article>
     </div>
   );

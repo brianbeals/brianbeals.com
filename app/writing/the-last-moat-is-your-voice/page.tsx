@@ -196,7 +196,7 @@ export default function EssayPage() {
           Speed isn&rsquo;t a flex anymore. Not sounding like everyone else is.
         </p>
 
-        <EssayByline />
+        <EssayByline variant="lrs" />
       </article>
     </div>
   );

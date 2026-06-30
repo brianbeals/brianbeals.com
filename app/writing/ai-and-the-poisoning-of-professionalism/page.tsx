@@ -237,7 +237,7 @@ export default function EssayPage() {
           Your inbox is where the relationship lives. Don&rsquo;t outsource it to a model that&rsquo;s never met the recipient.
         </p>
 
-        <EssayByline />
+        <EssayByline variant="lrs" />
       </article>
     </div>
   );

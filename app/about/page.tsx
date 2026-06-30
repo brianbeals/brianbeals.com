@@ -64,14 +64,14 @@ export default function About() {
           ))}
         </div>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I maintain 70+ active technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter since 1992.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I maintain 65+ active technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter.</p>
 
         <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
           <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
           Earlier
         </h2>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, 1989 to 1992, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
       </article>
     </div>
   );

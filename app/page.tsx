@@ -18,7 +18,7 @@ const projects: { name: string; description: string; links: ProjectLink[] }[] = 
   {
     name: "Marine Forecast",
     description:
-      "A live marine forecast for my home water, Charlotte Harbor and Pine Island Sound. Parses the NWS coastal waters product into wind, chop, and storm-risk cards, then adds Port Boca Grande tides with a tide-plus-light fishing read, live station observations, and NEXRAD radar cropped to the harbor. GitHub Actions polls after each NWS issuance and republishes the page as static HTML; the browser refreshes the live pieces on every load. Runs entirely on public NOAA endpoints and GitHub Pages, so the hosting bill is zero.",
+      "A live marine forecast for my home water, Charlotte Harbor and Pine Island Sound. Parses the NWS coastal waters product into wind, chop, and storm-risk cards, then adds Port Boca Grande tides with a tide-plus-light fishing read, live station observations, and NEXRAD radar cropped to the harbor. GitHub Actions polls after each NWS issuance and republishes the page as static HTML; the browser refreshes the live pieces on every load. Runs entirely on public NOAA endpoints and GitHub Pages, so hosting is free, making it the only part of this project that respected a budget.",
     links: [
       { label: "Live", href: "https://weather.brianbeals.com" },
       { label: "Code", href: "https://github.com/brianbeals/marine-forecast" },

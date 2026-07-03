@@ -62,7 +62,7 @@ export default function Home() {
             priority
           />
         </div>
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
+        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
           Brian Beals
         </h1>
         <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
@@ -76,7 +76,7 @@ export default function Home() {
             <div key={s.figure}>
               <dt
                 className="text-2xl sm:text-3xl font-semibold tracking-tight"
-                style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+                style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
               >
                 {s.figure}
               </dt>
@@ -89,7 +89,7 @@ export default function Home() {
         <section className="mb-12 pb-12 border-b border-neutral-200">
           <h2
             className="text-2xl sm:text-3xl font-semibold tracking-tight mb-8"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
           >
             Building in public
           </h2>
@@ -98,7 +98,7 @@ export default function Home() {
               <div key={p.name}>
                 <h3
                   className="text-xl font-semibold tracking-tight mb-2"
-                  style={{ color: "#1E3A5F" }}
+                  style={{ color: "var(--head)" }}
                 >
                   {p.name}
                 </h3>
@@ -115,7 +115,7 @@ export default function Home() {
                           target="_blank"
                           rel="noreferrer"
                           className="underline underline-offset-4 hover:no-underline"
-                          style={{ color: "#2E86C1" }}
+                          style={{ color: "var(--link)" }}
                         >
                           {l.label}
                         </a>
@@ -134,10 +134,10 @@ export default function Home() {
           More coming. I'm building toward a small portfolio of agent-driven applications that show what enterprise sales leaders should be able to do for themselves now that the tooling has caught up.
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
-          <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>
+          <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
             More about my work
           </Link>
-          <Link href="/contact" className="underline underline-offset-4 hover:no-underline" style={{ color: "#2E86C1" }}>
+          <Link href="/contact" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
             Get in touch
           </Link>
         </div>

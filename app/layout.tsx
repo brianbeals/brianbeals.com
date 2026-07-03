@@ -1,5 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
@@ -40,6 +40,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F4F6F9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0F1822" },
+  ],
+};
+
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -65,8 +72,6 @@ export default function RootLayout({
         style={{
           fontFamily:
             '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          background:
-            "radial-gradient(at 25% 20%, rgba(46,134,193,0.12) 0, transparent 50%), radial-gradient(at 75% 80%, rgba(30,58,95,0.10) 0, transparent 50%), #F4F6F9",
         }}
       >
         <script
@@ -95,7 +100,7 @@ export default function RootLayout({
           </nav>
         </header>
         <main className="flex-1 flex flex-col">{children}</main>
-        <footer className="px-6 sm:px-12 py-6 text-xs" style={{ color: "rgba(30, 58, 95, 0.7)" }}>
+        <footer className="px-6 sm:px-12 py-6 text-xs" style={{ color: "var(--footer-ink)" }}>
           <div className="max-w-2xl mx-auto">© {new Date().getFullYear()} Brian Beals</div>
         </footer>
         <Analytics />

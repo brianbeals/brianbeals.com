@@ -49,7 +49,7 @@ export default function VoiceCritiquePage() {
       <div className="max-w-2xl mx-auto">
         <h1
           className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           voice-critique
         </h1>
@@ -69,7 +69,7 @@ export default function VoiceCritiquePage() {
 
         <h2
           className="text-2xl font-semibold tracking-tight mt-12 mb-4"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           Seeing the result
         </h2>
@@ -82,7 +82,7 @@ export default function VoiceCritiquePage() {
 
         <h2
           className="text-2xl font-semibold tracking-tight mt-12 mb-4"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           The full version
         </h2>
@@ -94,7 +94,7 @@ export default function VoiceCritiquePage() {
           <a
             href="https://github.com/brianbeals/voice-critique"
             className="underline underline-offset-4"
-            style={{ color: "#2E86C1" }}
+            style={{ color: "var(--link)" }}
           >
             github.com/brianbeals/voice-critique
           </a>
@@ -107,7 +107,7 @@ export default function VoiceCritiquePage() {
           <a
             href="/contact"
             className="underline underline-offset-4"
-            style={{ color: "#2E86C1" }}
+            style={{ color: "var(--link)" }}
           >
             Get in touch
           </a>

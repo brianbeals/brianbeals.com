@@ -108,7 +108,7 @@ export default function AccountIntel() {
       <div className="max-w-2xl mx-auto">
         <h1
           className="text-4xl font-semibold tracking-tight mb-3"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           Account Intelligence
         </h1>
@@ -140,8 +140,8 @@ export default function AccountIntel() {
           <div
             className="rounded-md px-4 py-3 mb-6 text-sm"
             style={{
-              background: phase === "error" ? "#FDEDEC" : "#D6EAF8",
-              color: phase === "error" ? "#C0392B" : "#1E3A5F",
+              background: phase === "error" ? "var(--pill-err-bg)" : "var(--pill-ok-bg)",
+              color: phase === "error" ? "var(--err)" : "var(--head)",
             }}
           >
             {message}
@@ -151,13 +151,13 @@ export default function AccountIntel() {
         {phase === "done" && runId && (
           <div className="mb-10">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold" style={{ color: "#1E3A5F" }}>
+              <h2 className="text-lg font-semibold" style={{ color: "var(--head)" }}>
                 Report
               </h2>
               <a
                 href={`/api/account-intel/result?runId=${runId}&file=archive`}
                 className="text-sm font-medium"
-                style={{ color: "#2E86C1" }}
+                style={{ color: "var(--link)" }}
               >
                 Download Excel ↓
               </a>
@@ -166,14 +166,14 @@ export default function AccountIntel() {
               title="Account intelligence report"
               src={`/api/account-intel/result?runId=${runId}`}
               className="w-full rounded-md border border-gray-200"
-              style={{ height: "70vh", background: "#fff" }}
+              style={{ height: "70vh", background: "#fff", colorScheme: "light" }}
             />
           </div>
         )}
 
         {history.length > 0 && (
           <div>
-            <h2 className="text-lg font-semibold mb-3" style={{ color: "#1E3A5F" }}>
+            <h2 className="text-lg font-semibold mb-3" style={{ color: "var(--head)" }}>
               History
             </h2>
             <ul className="divide-y divide-gray-200 border border-gray-200 rounded-md">
@@ -183,7 +183,7 @@ export default function AccountIntel() {
                     onClick={() => view(h)}
                     className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-gray-50"
                   >
-                    <span className="font-medium" style={{ color: "#1E3A5F" }}>
+                    <span className="font-medium" style={{ color: "var(--head)" }}>
                       {h.company}
                     </span>
                     <span className="text-sm text-gray-500">

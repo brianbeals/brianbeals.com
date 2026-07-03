@@ -60,7 +60,7 @@ export default function WritingIndex() {
       <div className="max-w-2xl mx-auto">
         <h1
           className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           Writing
         </h1>
@@ -70,7 +70,7 @@ export default function WritingIndex() {
               <Link href={`/writing/${e.slug}`} className="block group">
                 <h2
                   className="text-2xl font-semibold tracking-tight group-hover:underline underline-offset-4"
-                  style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+                  style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
                 >
                   {e.title}
                 </h2>

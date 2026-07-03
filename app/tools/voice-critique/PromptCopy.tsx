@@ -37,7 +37,7 @@ export default function PromptCopy() {
   return (
     <div className="mt-8">
       <div className="flex items-center justify-between mb-3">
-        <span className="text-sm font-semibold" style={{ color: NAVY }}>
+        <span className="text-sm font-semibold" style={{ color: "var(--head)" }}>
           The prompt
         </span>
         <button

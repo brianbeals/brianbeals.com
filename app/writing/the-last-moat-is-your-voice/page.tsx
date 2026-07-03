@@ -55,7 +55,7 @@ export default function EssayPage() {
       <article className="max-w-2xl mx-auto">
         <h1
           className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           The Last Moat Is Your Voice
         </h1>
@@ -70,7 +70,7 @@ export default function EssayPage() {
 
         <h2
           className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           <span
             aria-hidden="true"
@@ -90,7 +90,7 @@ export default function EssayPage() {
 
         <h2
           className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           <span
             aria-hidden="true"
@@ -118,7 +118,7 @@ export default function EssayPage() {
 
         <h2
           className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           <span
             aria-hidden="true"
@@ -142,7 +142,7 @@ export default function EssayPage() {
 
         <h2
           className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           <span
             aria-hidden="true"
@@ -178,7 +178,7 @@ export default function EssayPage() {
 
         <h2
           className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           <span
             aria-hidden="true"

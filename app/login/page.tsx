@@ -48,7 +48,7 @@ function LoginForm() {
       >
         {busy ? "Checking..." : "Enter"}
       </button>
-      {error && <p className="text-sm" style={{ color: "#C0392B" }}>{error}</p>}
+      {error && <p className="text-sm" style={{ color: "var(--err)" }}>{error}</p>}
     </form>
   );
 }
@@ -59,7 +59,7 @@ export default function Login() {
       <div className="max-w-sm mx-auto">
         <h1
           className="text-3xl font-semibold tracking-tight mb-6"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           Sign in
         </h1>

@@ -3,3 +3,49 @@
 html {
   scrollbar-gutter: stable;
 }
+
+:root {
+  color-scheme: light dark;
+  --head: #1E3A5F;
+  --link: #2E86C1;
+  --page-bg: #F4F6F9;
+  --footer-ink: rgba(30, 58, 95, 0.7);
+  --muted-ink: #6B7280;
+  --err: #C0392B;
+  --pill-ok-bg: #D6EAF8;
+  --pill-err-bg: #FDEDEC;
+}
+
+body {
+  background:
+    radial-gradient(at 25% 20%, rgba(46, 134, 193, 0.12) 0, transparent 50%),
+    radial-gradient(at 75% 80%, rgba(30, 58, 95, 0.10) 0, transparent 50%),
+    var(--page-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --head: #A9C9E8;
+    --link: #7FB3D8;
+    --page-bg: #0F1822;
+    --footer-ink: rgba(169, 201, 232, 0.6);
+    --muted-ink: #93A6B8;
+    --err: #F1948A;
+    --pill-ok-bg: #14283A;
+    --pill-err-bg: #33150F;
+  }
+
+  /* Remap the Tailwind utilities this site uses; these come after the
+     Tailwind import, so same specificity + later cascade wins. */
+  .text-neutral-900 { color: #E6EDF3; }
+  .text-neutral-800 { color: #D3DEE8; }
+  .text-neutral-700 { color: #C4D2DE; }
+  .text-neutral-600 { color: #A7B9C8; }
+  .text-neutral-500 { color: #93A6B8; }
+  .text-neutral-400 { color: #7A8FA0; }
+  .border-neutral-200 { border-color: #2A3B4D; }
+  .border-gray-200 { border-color: #2A3B4D; }
+  .border-gray-300 { border-color: #35485C; }
+  .divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: #2A3B4D; }
+  .bg-white { background-color: #16202B; }
+}

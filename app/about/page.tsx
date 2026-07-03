@@ -24,7 +24,7 @@ export default function About() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-2xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>About</h1>
+        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>About</h1>
         <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
           <Image
             src="/brian-beals.jpg"
@@ -36,11 +36,11 @@ export default function About() {
         </div>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I've built and grown three enterprise technology practices, each at a different stage.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "#1E3A5F" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I took from <strong style={{ color: "#1E3A5F" }}>$20M to $78M</strong> in under four years (<strong style={{ color: "#1E3A5F" }}>3.9×</strong>). For the last decade I've been at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "var(--head)" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I took from <strong style={{ color: "var(--head)" }}>$20M to $78M</strong> in under four years (<strong style={{ color: "var(--head)" }}>3.9×</strong>). For the last decade I've been at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Before that, technical sales at Red Hat, Oracle, and MicroStrategy. The practice work I do now depends on knowing the products, the channels, and the customer's procurement model from inside, not from a marketing deck.</p>
 
-        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
+        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
           <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
           How I think about this work
         </h2>
@@ -51,7 +51,7 @@ export default function About() {
 
         <div
           className="my-8 flex flex-wrap items-center gap-x-8 sm:gap-x-10 gap-y-3"
-          style={{ color: "#6B7280" }}
+          style={{ color: "var(--muted-ink)" }}
           aria-label="Vendors represented through the practice"
         >
           {["IBM", "Microsoft", "AWS", "Cisco", "Dell", "Snowflake", "SAS"].map((vendor) => (
@@ -66,7 +66,7 @@ export default function About() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I maintain 65+ active technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter.</p>
 
-        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}>
+        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
           <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
           Earlier
         </h2>

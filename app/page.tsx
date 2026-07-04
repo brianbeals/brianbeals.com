@@ -48,12 +48,6 @@ const projects: { name: string; description: string; links: ProjectLink[] }[] = 
       { label: "Code", href: "https://github.com/brianbeals/brianbeals.com" },
     ],
   },
-  {
-    name: "Claude skills, custom GPTs, and Copilot agents",
-    description:
-      "A growing library I use for my own workflow: account research, contact research, financial modeling, document critique. Sanitized public versions of the generic ones coming.",
-    links: [],
-  },
 ];
 
 export default function Home() {

@@ -133,7 +133,7 @@ export default function Home() {
           I don't sell technology I haven't tried to build myself.
         </p>
         <p className="text-base sm:text-lg leading-relaxed mb-8 text-neutral-800">
-          More coming. I'm building toward a small portfolio of agent-driven applications that show what enterprise sales leaders should be able to do for themselves now that the tooling has caught up.
+          This is where the work goes public. Each project above is a working answer to the same question: what can an enterprise sales leader build without an engineering team, now that the tooling has caught up. New work lands here as it ships.
         </p>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
           <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>

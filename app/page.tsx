@@ -34,6 +34,14 @@ const projects: { name: string; description: string; links: ProjectLink[] }[] = 
     ],
   },
   {
+    name: "Lobo",
+    description:
+      "An always-on agent that lives on the Mac mini and texts like a member of the household. Every 30 minutes it checks the GitHub deploys for everything above, retries the transient failures, and texts me only when something stays broken. On Mondays it reads a legislative watch report and texts the highlights. It answers texts on its own iMessage identity, a dedicated Apple ID, because a bot on your own phone number can't tell your texts from its own echoes. Runs locally on OpenClaw with Claude doing the thinking; getting iMessage working surfaced an upstream bug, and the reproduction was half the fun.",
+    links: [
+      { label: "Bug report", href: "https://github.com/openclaw/openclaw/issues/99638" },
+    ],
+  },
+  {
     name: "This site",
     description: "Next.js on Vercel.",
     links: [

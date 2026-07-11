@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "seeing-the-next-rung",
+    title: "Seeing the Next Rung",
+    date: "2026-07-25",
+    summary:
+      "A lit hot-sheet tray in a 1968 patrol car, an early automation that worked so well it vanished. The floor of normal keeps rising, so the real test of anything you build is whether it compounds or just accumulates.",
+  },
+  {
     slug: "the-voice-book",
     title: "The Voice Book",
     date: "2026-07-11",

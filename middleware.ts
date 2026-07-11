@@ -7,6 +7,13 @@ export const config = {
 };
 
 export async function middleware(req: NextRequest) {
+  // Public tool: the voice-critique prompt page is linked publicly (GitHub one-click copy,
+  // essays), so let it through the gate. The rest of /tools stays gated.
+  const path = req.nextUrl.pathname;
+  if (path === "/tools/voice-critique" || path.startsWith("/tools/voice-critique/")) {
+    return NextResponse.next();
+  }
+
   const secret = process.env.SITE_GATE_SECRET || "";
   const cookie = req.cookies.get(COOKIE_NAME)?.value;
   const ok = Boolean(secret && cookie && (await verifySession(secret, cookie)));

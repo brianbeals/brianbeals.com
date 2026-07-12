@@ -1,0 +1,35 @@
+name: Publish essay 6 on August 8
+
+# Scheduled merge of the essay-06-ai-is-not-automation branch into main.
+# Runs once on August 8, 2026 at 13:00 UTC (9:00 AM ET, EDT).
+# Self-destructs in the same commit so it won't fire next year.
+# GitHub Actions cron is best-effort; may fire 0-15 minutes late under load.
+# workflow_dispatch allows manual firing from the Actions tab.
+
+on:
+  schedule:
+    - cron: '0 13 8 8 *'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge essay branch and remove this workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin essay-06-ai-is-not-automation
+          git merge origin/essay-06-ai-is-not-automation --no-ff --no-commit
+          git rm .github/workflows/publish-essay-06.yml
+          git commit -m "Publish: AI Is Not Automation (remove scheduled-publish workflow)"
+          git push origin main

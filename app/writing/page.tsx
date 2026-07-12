@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "ai-is-not-automation",
+    title: "AI Is Not Automation",
+    date: "2026-08-08",
+    summary:
+      "Two clients tried to tell me AI and automation are the same thing. They aren't, and the confusion gets expensive at scale. Two systems I run at home, and where AI actually belongs in them.",
+  },
+  {
     slug: "seeing-the-next-rung",
     title: "Seeing the Next Rung",
     date: "2026-07-25",

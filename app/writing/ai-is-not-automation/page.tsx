@@ -65,7 +65,7 @@ export default function EssayPage() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Automation is the boring machinery that has quietly run the world for decades. Cron, scripts, parsers, schedulers, the mail server. It does the same thing every time, for free, and it fails loudly when it fails at all. AI is one specialized part you drop into that machinery at the spots where the work is language or judgment. The skill worth having in 2026 is knowing which is which. Here&rsquo;s what that looks like when I build it for myself.
+          Automation is the boring machinery that has quietly run the world for decades. Cron, scripts, parsers, schedulers, the mail server. It does the same thing every time, for free, and it fails loudly when it fails at all. AI is one specialized part you drop into that machinery at the spots where the work is language or judgment. The skill worth having in 2026 is knowing which is which. This is what it looks like when I build it for myself.
         </p>
 
         <h2
@@ -81,23 +81,27 @@ export default function EssayPage() {
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Every week a small system tells me which of the things my family actually buys are on sale at our Publix. It runs on its own, and it&rsquo;s a decent model of how to place AI correctly, because AI does exactly two jobs in it and the boring machinery does everything else.
+          Every week a small system tells me which of the things my family actually buys are on sale at our Publix. It runs on its own, and it&rsquo;s a decent model of how to place AI correctly: AI does exactly two jobs, and the boring machinery does everything else.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          It starts with a receipt. Publix emails one after every trip, a mail filter drops it in a folder, and an n8n workflow wakes up when it lands. None of that is AI. It&rsquo;s a filter and a trigger, the same plumbing that&rsquo;s routed email for decades.
+          It starts with a receipt. Publix emails one after every transaction, a mail filter drops it in a folder, and an n8n workflow wakes up when it lands. None of that is AI. It&rsquo;s a filter and a trigger, the same plumbing that&rsquo;s routed email for decades.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Then the first real judgment call. A Publix receipt is written in a cryptic register-tape shorthand. &ldquo;B&amp;J ICE CREAM&rdquo; is Ben &amp; Jerry&rsquo;s, and the register doesn&rsquo;t even name the flavor. Turning that line into a clean record, brand, product, price, and quantity, is a language problem, and it&rsquo;s the model&rsquo;s job. The model reads each line and returns a structured record, which then gets filed into two plain data files: an identity store of what we buy, and a running ledger of every trip. Filing isn&rsquo;t AI. It&rsquo;s writing to disk.
+          Then the first real judgment call. A Publix receipt is written in a cryptic register-tape shorthand. &ldquo;B&amp;J ICE CREAM&rdquo; is Ben &amp; Jerry&rsquo;s, and the register doesn&rsquo;t even name the flavor. Turning that line into a clean record, brand, product, price, and quantity, is a language problem, and it&rsquo;s the model&rsquo;s job. The model reads each line and returns a structured record, which then gets filed into two plain data files: an identity store of what we buy, and a running ledger of every transaction. Filing isn&rsquo;t AI. It&rsquo;s writing to disk.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The second half runs on Thursdays, when the new ad drops. The system pulls the entire Publix BOGO circular, 300 to 400 deals, off a public feed. Then plain code does the heavy filtering. It compares those hundreds of deals against our buy list and throws out everything that plainly doesn&rsquo;t touch it, leaving about 30 candidates. No model needed. It&rsquo;s matching strings.
+          The second half runs on Thursdays, when the new weekly ad drops. The system pulls the entire Publix BOGO circular, 300 to 400 deals, off a public feed. Then plain code does the heavy filtering. It compares those hundreds of deals against our buy list and throws out everything that plainly doesn&rsquo;t touch it, leaving about 30 candidates. No model needed. It&rsquo;s matching strings.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The model comes back for the last mile, the fuzzy judgment plain code is bad at. Is the ad&rsquo;s &ldquo;Idahoan&rdquo; the same as the &ldquo;Idaho potatoes&rdquo; we buy? No. Is a Spanish-labeled brand the same product under a different name? Sometimes. The model looks at the 30 survivors and decides, by real product identity, which are genuine matches worth telling me about. Then the machinery takes back over and emails me the short list.
+          The model comes back for the last mile, the fuzzy judgment plain code is bad at. Is the ad&rsquo;s &ldquo;Idahoan&rdquo; the same as the &ldquo;Idaho potatoes&rdquo; we buy? No. Is a Spanish-labeled brand the same product under a different name? Sometimes. The model looks at the 30 survivors and decides, by real product identity, which are genuine matches worth telling me about. Then the machinery takes back over and emails us the short list.
+        </p>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          I felt the pull toward the wrong answer while adding a new item to that watch. I wanted it to catch any GreenWise frozen vegetable on sale, whatever variety was cheap that week, and my first instinct was to teach the rules to recognize a vegetable. So I started a list of things to exclude, no fruit, no waffles, no frozen meals, no pizza, and watched it grow, because &ldquo;is this a vegetable&rdquo; isn&rsquo;t something a list of forbidden words can settle. Each exclusion I added just exposed the next edge case. That&rsquo;s automation reaching for judgment, and it never quite gets there. The fix was to quit trying: let a blunt rule take the rough cut, hand the survivors to the model, and let it decide by real product identity, the same way it settles the Idahoan question. The rules got simple again the second I stopped asking them to think.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -117,7 +121,7 @@ export default function EssayPage() {
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          There&rsquo;s a companion piece I&rsquo;m fonder of than I should be. A small always-on agent, running locally, that watches everything else I&rsquo;ve built. Every half hour it checks whether the deploys and jobs are healthy, quietly retries the ones that fail for dumb transient reasons, and texts me only when something stays broken. On Mondays it reads a long legislative report and texts me the parts that matter.
+          There&rsquo;s a companion piece I&rsquo;m fonder of than I should be. A small always-on agent, running locally, that watches everything else I&rsquo;ve built. Every half hour it checks whether the deploys and jobs are healthy, quietly retries the ones that fail for dumb transient reasons, and texts me only when something stays broken. On Mondays it reads a long legislative report, the kind that runs hundreds of pages and buries the one line I care about deep inside, and texts me the parts that matter.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

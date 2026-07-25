@@ -8,7 +8,7 @@ name: Publish essay 6 on August 8
 
 on:
   schedule:
-    - cron: '0 13 8 8 *'
+    - cron: '17 13 8 8 *'
   workflow_dispatch:
 
 jobs:

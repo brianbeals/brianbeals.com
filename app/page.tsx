@@ -18,16 +18,25 @@ const projects: { name: string; description: string; links: ProjectLink[] }[] = 
   {
     name: "Marine Forecast",
     description:
-      "A live marine forecast for my home water, Charlotte Harbor and Pine Island Sound. Parses the NWS coastal waters product into wind, chop, and storm-risk cards, then adds Port Boca Grande tides with a tide-plus-light fishing read, live station observations, and NEXRAD radar cropped to the harbor, plus a red-tide status line from the state's sampling. A verdict line reads the day's chop, storm risk, and rain into a plain call on whether to go, and an hourly wind-and-gust chart shades the day green to red and names the best window to be out. It shows official NWS marine warnings and advisories the moment they are issued, and as an early backstop the browser samples the radar over the harbor and the pass every few minutes, flagging a cell on the water that the inland airport observation would miss. GitHub Actions polls after each NWS issuance and republishes the page as static HTML; the browser refreshes the live pieces on every load. Runs entirely on public NOAA endpoints and GitHub Pages, so hosting is free, making it the only part of this project that respected a budget.",
+      "A live marine forecast for my home water, Charlotte Harbor and Pine Island Sound. It parses the NWS coastal waters product into wind, chop, and storm-risk cards, adds Port Boca Grande tides and a red-tide line from the state's sampling, and ends on a verdict: a plain call on whether to go, and the best window to be out. The browser samples NEXRAD over the harbor and the pass every few minutes, which catches a cell on the water that the inland airport observation misses. GitHub Actions republishes after each NWS issuance. Runs entirely on public NOAA endpoints and GitHub Pages, so hosting is free, making it the only part of this project that respected a budget.",
     links: [
       { label: "Live", href: "https://weather.brianbeals.com" },
       { label: "Code", href: "https://github.com/brianbeals/marine-forecast" },
     ],
   },
   {
+    name: "Harbor Spots",
+    description:
+      "A map of the artificial reefs, boat ramps, seagrass beds, and manatee zones in Charlotte Harbor and Pine Island Sound, assembled from live state GIS services. Pick where you're leaving from and it recomputes every reef's distance and magnetic bearing, redraws the 20 nm range ring, and refits the view. A strip in the corner reads today's conditions from the forecast above. Rebuilt weekly from FWC and DEP feature services. The one hand-entered piece is the marina list, because no GIS layer knows which docks people actually leave from.",
+    links: [
+      { label: "Live", href: "https://harbor.brianbeals.com" },
+      { label: "Code", href: "https://github.com/brianbeals/harbor-spots" },
+    ],
+  },
+  {
     name: "Sector Rotation Screener",
     description:
-      "A Python pipeline that scores the 11 SPDR sector ETFs against three signals: seasonality, economic-cycle fit, and relative strength. Backtests 15 years against SPY. Runs every Sunday via GitHub Actions, asks Claude for a plain-language read on the output, and commits the dashboard back to the repo. The banner up top reports whether the strategy is beating SPY net of trading costs. Right now it isn't, and the dashboard says so up front.",
+      "A Python pipeline that scores the 11 SPDR sector ETFs against three signals: seasonality, economic-cycle fit, and relative strength. Backtests 15 years against SPY. Runs every Sunday via GitHub Actions, asks Claude for a plain-language read on the output, and commits the dashboard back to the repo. The banner up top reports whether the strategy is beating SPY net of trading costs, and it leads with that number whichever way it points. Fifteen years in, the two are close enough that the honest answer moves around: currently ahead on return and on drawdown, behind on Sharpe.",
     links: [
       { label: "Live", href: "https://sector.brianbeals.com" },
       { label: "Code", href: "https://github.com/brianbeals/sector-rotation-screener" },

@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export const alt =
   "Brian Beals. I help enterprise organizations get real results out of their AI, analytics, and automation investments.";
@@ -22,6 +24,25 @@ const NAVY = "#1E3A5F";
 const BLUE = "#2E86C1";
 const SUB = "#C6D5E6";
 
+// Satori (what powers ImageResponse) has no system fonts. If you don't hand it
+// font files it renders everything in one fallback weight and silently ignores
+// fontWeight, which is exactly what happened here: the first pass looked correct
+// in source and rendered "Brian Beals" in regular next to harbor's heavy bold.
+// These are the same DejaVu Sans faces used to build harbor-spots/og-card.png and
+// sector-rotation-screener/og-card.png, subset to the characters this card uses,
+// so all four previews are literally the same typeface. ~13KB each.
+async function fonts() {
+  const dir = join(process.cwd(), "app", "fonts");
+  const [bold, regular] = await Promise.all([
+    readFile(join(dir, "DejaVuSans-Bold.subset.ttf")),
+    readFile(join(dir, "DejaVuSans.subset.ttf")),
+  ]);
+  return [
+    { name: "DejaVu", data: bold, weight: 700 as const, style: "normal" as const },
+    { name: "DejaVu", data: regular, weight: 400 as const, style: "normal" as const },
+  ];
+}
+
 export default async function Image() {
   return new ImageResponse(
     (
@@ -31,11 +52,11 @@ export default async function Image() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          padding: "0 64px",
+          justifyContent: "flex-start",
+          padding: "56px 64px",
           backgroundColor: NAVY,
           color: "#FFFFFF",
-          fontFamily: "system-ui",
+          fontFamily: "DejaVu",
         }}
       >
         <div
@@ -50,7 +71,7 @@ export default async function Image() {
             fontSize: 66,
             fontWeight: 700,
             letterSpacing: "-0.04em",
-            marginBottom: 64,
+            marginBottom: 86,
           }}
         >
           BB
@@ -62,7 +83,7 @@ export default async function Image() {
             fontSize: 84,
             fontWeight: 700,
             letterSpacing: "-0.02em",
-            marginBottom: 30,
+            marginBottom: 40,
           }}
         >
           Brian Beals
@@ -74,7 +95,7 @@ export default async function Image() {
             width: 163,
             height: 9,
             backgroundColor: BLUE,
-            marginBottom: 34,
+            marginBottom: 44,
           }}
         />
 
@@ -86,7 +107,7 @@ export default async function Image() {
             lineHeight: 1.35,
             maxWidth: 900,
             color: SUB,
-            marginBottom: 38,
+            marginBottom: 50,
           }}
         >
           I help enterprise organizations get real results out of their AI, analytics, and automation investments.
@@ -97,6 +118,6 @@ export default async function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    { ...size, fonts: await fonts() }
   );
 }

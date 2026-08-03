@@ -31,6 +31,14 @@ const SUB = "#C6D5E6";
 // These are the same DejaVu Sans faces used to build harbor-spots/og-card.png and
 // sector-rotation-screener/og-card.png, subset to the characters this card uses,
 // so all four previews are literally the same typeface. ~13KB each.
+// Satori cannot fetch from /public at render time, so the headshot is read off disk
+// and inlined as a data URI. app/og/headshot.jpg is a 680px square crop at ~44KB,
+// not the 2.2MB original: it renders at 340 and this is the 2x asset.
+async function headshot() {
+  const buf = await readFile(join(process.cwd(), "app", "og", "headshot.jpg"));
+  return `data:image/jpeg;base64,${buf.toString("base64")}`;
+}
+
 async function fonts() {
   const dir = join(process.cwd(), "app", "fonts");
   const [bold, regular] = await Promise.all([
@@ -43,7 +51,12 @@ async function fonts() {
   ];
 }
 
+const PHOTO = 340;      // portrait edge length
+const PHOTO_TOP = 64;   // upper right, not vertically centred
+const PHOTO_RIGHT = 72;
+
 export default async function Image() {
+  const photo = await headshot();
   return new ImageResponse(
     (
       <div
@@ -51,14 +64,25 @@ export default async function Image() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
+          flexDirection: "row",
+          alignItems: "flex-start",
           padding: "56px 64px",
           backgroundColor: NAVY,
           color: "#FFFFFF",
           fontFamily: "DejaVu",
         }}
       >
+        {/* Left column: everything that was here before, now in its own flex column
+            so the portrait can sit beside it rather than under it. */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            flex: 1,
+            paddingRight: 46,
+          }}
+        >
         <div
           style={{
             display: "flex",
@@ -71,7 +95,7 @@ export default async function Image() {
             fontSize: 66,
             fontWeight: 700,
             letterSpacing: "-0.04em",
-            marginBottom: 86,
+            marginBottom: 58,
           }}
         >
           BB
@@ -83,7 +107,7 @@ export default async function Image() {
             fontSize: 84,
             fontWeight: 700,
             letterSpacing: "-0.02em",
-            marginBottom: 40,
+            marginBottom: 32,
           }}
         >
           Brian Beals
@@ -95,19 +119,18 @@ export default async function Image() {
             width: 163,
             height: 9,
             backgroundColor: BLUE,
-            marginBottom: 44,
+            marginBottom: 36,
           }}
         />
 
         <div
           style={{
             display: "flex",
-            fontSize: 34,
+            fontSize: 32,
             fontWeight: 400,
             lineHeight: 1.35,
-            maxWidth: 900,
             color: SUB,
-            marginBottom: 50,
+            marginBottom: 36,
           }}
         >
           I help enterprise organizations get real results out of their AI, analytics, and automation investments.
@@ -116,6 +139,25 @@ export default async function Image() {
         <div style={{ display: "flex", fontSize: 26, fontWeight: 700, color: BLUE }}>
           brianbeals.com
         </div>
+        </div>
+
+        {/* Portrait, upper right. Deliberately NOT vertically centred and
+            deliberately NOT bleeding to the card edge: a face cropped full-height
+            reads like a billboard and swallows the headline. Contained and smaller,
+            it fills the dead space while the name still leads. */}
+        <img
+          src={photo}
+          width={PHOTO}
+          height={PHOTO}
+          style={{
+            width: PHOTO,
+            height: PHOTO,
+            marginTop: PHOTO_TOP - 56,
+            marginRight: PHOTO_RIGHT - 64,
+            borderRadius: 20,
+            objectFit: "cover",
+          }}
+        />
       </div>
     ),
     { ...size, fonts: await fonts() }

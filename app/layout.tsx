@@ -14,7 +14,7 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL("https://brianbeals.com"),
   title: {
-    default: "Brian Beals | AI & Analytics Practice Builder",
+    default: "Brian Beals | AI, Analytics & Automation",
     template: "%s | Brian Beals",
   },
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Brian Beals | AI & Analytics Practice Builder",
+    title: "Brian Beals | AI, Analytics & Automation",
     description:
       "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
     url: "/",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Beals | AI & Analytics Practice Builder",
+    title: "Brian Beals | AI, Analytics & Automation",
     description:
       "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
     images: ["/opengraph-image"],

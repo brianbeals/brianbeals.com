@@ -82,14 +82,17 @@ export default function RootLayout({
           Skip to main content
         </a>
         <header className="px-6 sm:px-12 pt-8 pb-2">
+          {/* 1.4.10 Reflow. On one line the nav needs 403px, so at the 320px
+              WCAG target it overflowed and forced horizontal scrolling. Both
+              rows now wrap, and the link gap tightens on narrow viewports. */}
           <nav
             aria-label="Main"
-            className="max-w-2xl mx-auto flex items-center justify-between text-sm"
+            className="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2 text-sm"
           >
             <Link href="/" className="font-semibold tracking-tight text-base">
               Brian Beals
             </Link>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6">
               <Link href="/about" className="hover:underline underline-offset-4">
                 About
               </Link>

@@ -121,10 +121,14 @@ export default function Home() {
                     {p.links.map((l, i) => (
                       <span key={l.href}>
                         {i > 0 && <span aria-hidden="true" className="text-neutral-400"> · </span>}
+                        {/* 2.4.4 Link Purpose. Seven links on this page read
+                            "Live" or "Code". A screen reader's links list shows
+                            them stripped of their card, so name the project. */}
                         <a
                           href={l.href}
                           target="_blank"
                           rel="noreferrer"
+                          aria-label={`${l.label}: ${p.name}`}
                           className="underline underline-offset-4 hover:no-underline"
                           style={{ color: "var(--link)" }}
                         >

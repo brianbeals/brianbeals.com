@@ -105,7 +105,9 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <main className="flex-1 flex flex-col">{children}</main>
+        <main id="main" className="flex-1 flex flex-col">
+          {children}
+        </main>
         <footer className="px-6 sm:px-12 py-6 text-xs" style={{ color: "var(--footer-ink)" }}>
           <div className="max-w-2xl mx-auto">© {new Date().getFullYear()} Brian Beals</div>
         </footer>

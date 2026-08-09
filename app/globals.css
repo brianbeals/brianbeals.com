@@ -33,6 +33,14 @@ html {
   border-radius: 2px;
 }
 
+/* Programmatic focus targets (main, skip destinations) are not tab stops and
+   should not draw a ring when jumped to. Higher specificity than the rule
+   above, so it wins for these elements only. */
+[tabindex="-1"]:focus,
+[tabindex="-1"]:focus-visible {
+  outline: none;
+}
+
 /* 2.4.1 Bypass Blocks. Five nav links precede main content on every page.
    Visually hidden until focused. */
 .skip-link {

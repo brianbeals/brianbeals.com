@@ -105,7 +105,11 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <main id="main" className="flex-1 flex flex-col">
+        {/* tabIndex -1 makes main a valid focus target for the skip link.
+            Without it Chrome still advances the tab sequence, but Safari
+            scrolls and leaves focus at the top of the nav, which makes the
+            skip link do nothing on the default macOS and iOS browser. */}
+        <main id="main" tabIndex={-1} className="flex-1 flex flex-col">
           {children}
         </main>
         <footer className="px-6 sm:px-12 py-6 text-xs" style={{ color: "var(--footer-ink)" }}>

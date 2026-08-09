@@ -116,7 +116,15 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="px-6 sm:px-12 py-6 text-xs" style={{ color: "var(--footer-ink)" }}>
-          <div className="max-w-2xl mx-auto">© {new Date().getFullYear()} Brian Beals</div>
+          <div className="max-w-2xl mx-auto flex flex-wrap gap-x-4 gap-y-1">
+            <span>© {new Date().getFullYear()} Brian Beals</span>
+            {/* 2.4.5 Multiple Ways. The second route to every page, reachable
+                from every page. A site map linked from nowhere satisfies
+                nothing. */}
+            <Link href="/sitemap-page" className="underline underline-offset-4 hover:no-underline">
+              Site map
+            </Link>
+          </div>
         </footer>
         <Analytics />
       </body>

@@ -31,24 +31,34 @@ function LoginForm() {
 
   return (
     <form onSubmit={submit} className="space-y-4">
+      {/* 3.3.2 / 4.1.2. A placeholder disappears on first keystroke and is not a
+          reliable accessible name, so the field carries a real label. */}
+      <label htmlFor="site-password" className="sr-only">
+        Password
+      </label>
       <input
+        id="site-password"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
+        autoComplete="current-password"
+        aria-describedby={error ? "login-error" : undefined}
         autoFocus
-        className="w-full rounded-md border border-gray-300 px-3 py-2 text-base focus:outline-none focus:ring-2"
-        style={{ outlineColor: "#2E86C1" }}
+        className="w-full rounded-md border border-gray-300 px-3 py-2 text-base"
       />
       <button
         type="submit"
         disabled={busy || !password}
         className="w-full rounded-md px-4 py-2 text-white font-medium disabled:opacity-50"
-        style={{ background: "#2E86C1" }}
+        style={{ background: "var(--btn-bg)" }}
       >
         {busy ? "Checking..." : "Enter"}
       </button>
-      {error && <p className="text-sm" style={{ color: "var(--err)" }}>{error}</p>}
+      {/* 4.1.3 Status Messages. Announced without moving focus. */}
+      <p id="login-error" role="alert" className="text-sm" style={{ color: "var(--err)" }}>
+        {error}
+      </p>
     </form>
   );
 }

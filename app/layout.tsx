@@ -78,8 +78,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
         <header className="px-6 sm:px-12 pt-8 pb-2">
-          <nav className="max-w-2xl mx-auto flex items-center justify-between text-sm">
+          <nav
+            aria-label="Main"
+            className="max-w-2xl mx-auto flex items-center justify-between text-sm"
+          >
             <Link href="/" className="font-semibold tracking-tight text-base">
               Brian Beals
             </Link>

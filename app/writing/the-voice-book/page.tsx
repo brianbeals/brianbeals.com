@@ -86,7 +86,7 @@ export default function EssayPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-2"
-            style={{ color: "#2E86C1" }}
+            style={{ color: "var(--link)" }}
           >
             on GitHub
           </a>
@@ -108,7 +108,7 @@ export default function EssayPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-2"
-            style={{ color: "#2E86C1" }}
+            style={{ color: "var(--link)" }}
           >
             github.com/brianbeals/voice-critique
           </a>

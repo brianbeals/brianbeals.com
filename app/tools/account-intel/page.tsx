@@ -118,35 +118,46 @@ export default function AccountIntel() {
         </p>
 
         <form onSubmit={run} className="flex gap-3 mb-6">
+          {/* 3.3.2 / 4.1.2. The placeholder is not the accessible name. */}
+          <label htmlFor="company-name" className="sr-only">
+            Company name
+          </label>
           <input
+            id="company-name"
             type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
             placeholder="Company name"
             disabled={working}
-            className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-base focus:outline-none focus:ring-2 disabled:opacity-60"
+            className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-base disabled:opacity-60"
           />
           <button
             type="submit"
             disabled={working || !company.trim()}
             className="rounded-md px-5 py-2 text-white font-medium disabled:opacity-50"
-            style={{ background: "#2E86C1" }}
+            style={{ background: "var(--btn-bg)" }}
           >
             {working ? "Working..." : "Run"}
           </button>
         </form>
 
-        {message && (
-          <div
-            className="rounded-md px-4 py-3 mb-6 text-sm"
-            style={{
-              background: phase === "error" ? "var(--pill-err-bg)" : "var(--pill-ok-bg)",
-              color: phase === "error" ? "var(--err)" : "var(--head)",
-            }}
-          >
-            {message}
-          </div>
-        )}
+        {/* 4.1.3 Status Messages. The live region is always in the DOM so screen
+            readers announce progress and errors without focus moving. */}
+        <div
+          role="status"
+          aria-live="polite"
+          className={message ? "rounded-md px-4 py-3 mb-6 text-sm" : undefined}
+          style={
+            message
+              ? {
+                  background: phase === "error" ? "var(--pill-err-bg)" : "var(--pill-ok-bg)",
+                  color: phase === "error" ? "var(--err)" : "var(--head)",
+                }
+              : undefined
+          }
+        >
+          {message}
+        </div>
 
         {phase === "done" && runId && (
           <div className="mb-10">

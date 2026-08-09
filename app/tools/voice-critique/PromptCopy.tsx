@@ -49,7 +49,14 @@ export default function PromptCopy() {
           {copied ? "Copied" : "Copy prompt"}
         </button>
       </div>
+      {/* 2.1.1 Keyboard. This block scrolls (max-h-96 overflow-auto), so a
+          keyboard user needs to be able to focus it to scroll it. Without
+          tabIndex it is reachable by mouse wheel only. The group role and
+          label give it a name once it is in the tab order. */}
       <pre
+        tabIndex={0}
+        role="group"
+        aria-label="The prompt, scrollable"
         className="max-h-96 overflow-auto rounded-lg border border-neutral-200 bg-white p-4 text-xs leading-relaxed whitespace-pre-wrap text-neutral-800"
         style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace' }}
       >

@@ -55,7 +55,7 @@ export default function EssayPage() {
       <article className="max-w-2xl mx-auto">
         <h1
           className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
           AI Is Not Automation
         </h1>

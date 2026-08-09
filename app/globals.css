@@ -23,6 +23,10 @@ html {
   --err: #C0392B;
   --pill-ok-bg: #D6EAF8;
   --pill-err-bg: #FDEDEC;
+  /* 1.4.11 Non-text Contrast. A form control's border is the only thing that
+     shows where the control is, so it needs 3:1. Tailwind's border-gray-300
+     (#D1D5DB) measures 1.47:1 on white and fails. #767676 gives 4.54:1. */
+  --field-border: #767676;
 }
 
 /* 2.4.7 Focus Visible. A single visible indicator for every interactive element,
@@ -77,6 +81,9 @@ body {
     --err: #F1948A;
     --pill-ok-bg: #14283A;
     --pill-err-bg: #33150F;
+    /* 3.29:1 on the dark card. The dark border-gray-300 remap (#35485C) is
+       1.75:1 and would fail the same criterion. */
+    --field-border: #5A7288;
   }
 
   /* Remap the Tailwind utilities this site uses; these come after the

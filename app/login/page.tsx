@@ -45,7 +45,8 @@ function LoginForm() {
         autoComplete="current-password"
         aria-describedby={error ? "login-error" : undefined}
         autoFocus
-        className="w-full rounded-md border border-gray-300 px-3 py-2 text-base"
+        className="w-full rounded-md border px-3 py-2 text-base"
+        style={{ borderColor: "var(--field-border)" }}
       />
       <button
         type="submit"

@@ -129,7 +129,8 @@ export default function AccountIntel() {
             onChange={(e) => setCompany(e.target.value)}
             placeholder="Company name"
             disabled={working}
-            className="flex-1 rounded-md border border-gray-300 px-3 py-2 text-base disabled:opacity-60"
+            className="flex-1 rounded-md border px-3 py-2 text-base disabled:opacity-60"
+            style={{ borderColor: "var(--field-border)" }}
           />
           <button
             type="submit"

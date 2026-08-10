@@ -145,7 +145,13 @@ export default async function Image() {
             deliberately NOT bleeding to the card edge: a face cropped full-height
             reads like a billboard and swallows the headline. Contained and smaller,
             it fills the dead space while the name still leads. */}
+        {/* alt="" satisfies jsx-a11y and costs nothing. Satori renders this JSX
+            to a PNG, so there is no DOM and no assistive technology to read an
+            alt attribute here. The alternative text a screen reader actually
+            receives for this card is the openGraph images alt in the page
+            metadata, not anything in this file. */}
         <img
+          alt=""
           src={photo}
           width={PHOTO}
           height={PHOTO}

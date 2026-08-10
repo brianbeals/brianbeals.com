@@ -41,7 +41,6 @@ const sections = [
     heading: "Tools",
     links: [
       { href: "/tools/voice-critique", label: "Voice Critique", note: "The prompt and template, free to copy." },
-      { href: "/tools/account-intel", label: "Account Intelligence", note: "Sign-in required." },
     ],
   },
 ];

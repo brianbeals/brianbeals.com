@@ -120,7 +120,12 @@ export default function Home() {
                   <p className="mt-3 text-sm">
                     {p.links.map((l, i) => (
                       <span key={l.href}>
-                        {i > 0 && <span aria-hidden="true" className="text-neutral-400"> · </span>}
+                        {i > 0 && (
+                          <span aria-hidden="true" style={{ color: "var(--muted-ink)" }}>
+                            {" "}
+                            ·{" "}
+                          </span>
+                        )}
                         {/* 2.4.4 Link Purpose. Seven links on this page read
                             "Live" or "Code". A screen reader's links list shows
                             them stripped of their card, so name the project. */}

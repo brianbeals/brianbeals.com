@@ -19,6 +19,7 @@ const STATIC_PAGES: StaticEntry[] = [
   { path: "/", priority: 1.0, changeFrequency: "monthly" },
   { path: "/about", priority: 0.8, changeFrequency: "yearly" },
   { path: "/writing", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/accessibility", priority: 0.8, changeFrequency: "monthly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },

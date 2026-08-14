@@ -99,6 +99,9 @@ export default function RootLayout({
               <Link href="/writing" className="hover:underline underline-offset-4">
                 Writing
               </Link>
+              <Link href="/accessibility" className="hover:underline underline-offset-4">
+                Accessibility
+              </Link>
               <Link href="/elsewhere" className="hover:underline underline-offset-4">
                 Elsewhere
               </Link>

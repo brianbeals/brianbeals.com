@@ -95,7 +95,7 @@ export default function WritingIndex() {
                 >
                   {e.title}
                 </h2>
-                <p className="text-sm text-neutral-500 mt-1">
+                <p className="text-sm mt-1" style={{ color: "var(--muted-ink)" }}>
                   {new Date(e.date).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",

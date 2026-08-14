@@ -35,15 +35,15 @@ export default function Contact() {
         </p>
         <ul className="space-y-4 text-base sm:text-lg">
           <li>
-            <span className="text-neutral-500 mr-2 inline-block w-20">Email</span>
+            <span className="mr-2 inline-block w-20" style={{ color: "var(--muted-ink)" }}>Email</span>
             <a href="mailto:brian@brianbeals.com" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>brian@brianbeals.com</a>
           </li>
           <li>
-            <span className="text-neutral-500 mr-2 inline-block w-20">LinkedIn</span>
+            <span className="mr-2 inline-block w-20" style={{ color: "var(--muted-ink)" }}>LinkedIn</span>
             <a href="https://www.linkedin.com/in/brianbeals/" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>linkedin.com/in/brianbeals</a>
           </li>
           <li>
-            <span className="text-neutral-500 mr-2 inline-block w-20">GitHub</span>
+            <span className="mr-2 inline-block w-20" style={{ color: "var(--muted-ink)" }}>GitHub</span>
             <a href="https://github.com/brianbeals" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>github.com/brianbeals</a>
           </li>
         </ul>

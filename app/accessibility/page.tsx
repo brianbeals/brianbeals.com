@@ -309,8 +309,8 @@ export default function Accessibility() {
               </span>
             </li>
           </ul>
-          <p className="text-sm leading-relaxed" style={{ color: "var(--muted-ink)" }}>
-            All three are tagged PDFs: structure tree present, language declared, headings in
+          <p className="text-sm leading-relaxed" style={{ color: "#5B6470" }}>
+            All four are tagged PDFs: structure tree present, language declared, headings in
             order, table headers marked, no untagged figures. A firm that hands you an
             inaccessible document about accessibility has told you something.
           </p>

@@ -221,8 +221,17 @@ export default function Accessibility() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Ask me for it. It is the same document you would receive, produced by the same
-          process, and it is the fastest way to judge whether the work is any good.
+          <a
+            href="/conformance-report.html"
+            className="underline underline-offset-4 font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            Read the full conformance report
+          </a>
+          . It is the same document a client receives, produced by the same process, published
+          here because a firm that sells conformance reports should have its own on display.
+          It also serves as this site&apos;s accessibility statement. The fastest way to judge
+          whether the work is any good is to read one.
         </p>
 
         <H2>The firm</H2>

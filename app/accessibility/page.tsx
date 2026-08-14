@@ -32,7 +32,7 @@ function H2({ children }: { children: React.ReactNode }) {
       className="text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3"
       style={{
         color: "#FFFFFF",
-        backgroundColor: "var(--head)",
+        backgroundColor: "#1E3A5F",
         fontFamily: "var(--font-serif)",
       }}
     >
@@ -46,29 +46,13 @@ function H2({ children }: { children: React.ReactNode }) {
    labelling it would make a screen reader announce the name twice. */
 function BBMarkInverse() {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      width="40"
-      height="40"
-      role="presentation"
-      aria-hidden="true"
-      focusable="false"
-    >
-      <rect width="32" height="32" rx="6" fill="#FFFFFF" />
-      <text
-        x="16"
-        y="15"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fill="#1E3A5F"
-        fontFamily="-apple-system,system-ui,sans-serif"
-        fontSize="16"
-        fontWeight="800"
-        letterSpacing="-0.04em"
-      >
-        BB
-      </text>
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='white'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='%231E3A5F' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E"
+      alt=""
+      width={40}
+      height={40}
+    />
   );
 }
 
@@ -80,7 +64,7 @@ export default function Accessibility() {
             arrived from an email sees a firm rather than a personal homepage. */}
         <div
           className="rounded-lg px-6 py-8 sm:px-8 sm:py-10 mb-10"
-          style={{ backgroundColor: "var(--head)" }}
+          style={{ backgroundColor: "#1E3A5F" }}
         >
           <div className="flex items-center gap-3 mb-5">
             <BBMarkInverse />
@@ -116,7 +100,7 @@ export default function Accessibility() {
         <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
           <h2
             className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
           >
             Compliance dates
           </h2>
@@ -128,7 +112,7 @@ export default function Accessibility() {
             </dt>
             <dd>April 26, 2028</dd>
           </dl>
-          <p className="text-sm mt-4" style={{ color: "var(--muted-ink)" }}>
+          <p className="text-sm mt-4" style={{ color: "#5B6470" }}>
             Confirm which tier applies to your entity before planning against a date. Special
             districts land on the later date regardless of size.
           </p>
@@ -226,13 +210,14 @@ export default function Accessibility() {
         <H2>The proof</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. Fifteen pages evaluated
-          against all 50 Level A and AA criteria on August 10, 2026:{" "}
-          <strong style={{ color: "var(--head)" }}>37 Supports</strong> and{" "}
-          <strong style={{ color: "var(--head)" }}>13 Not Applicable</strong>, with zero
-          criteria failing. It states its own limitation, that screen reader testing was
-          performed separately from the scan, because a report that hides its method is not
-          worth reading.
+          This site carries its own Accessibility Conformance Report. Fifteen pages and all
+          four published documents evaluated against all 50 Level A and AA criteria on
+          August 14, 2026: <strong style={{ color: "var(--head)" }}>36 Supports</strong> and{" "}
+          <strong style={{ color: "var(--head)" }}>14 Not Applicable</strong>, with zero
+          criteria failing. The document layer passed too: every PDF on this page is tagged,
+          with structure, language and headings verified. The report states its own
+          limitation, that screen reader testing was performed separately from the scan,
+          because a report that hides its method is not worth reading.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -261,7 +246,7 @@ export default function Accessibility() {
         <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
           <h2
             className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
           >
             Capability statement
           </h2>
@@ -274,7 +259,7 @@ export default function Accessibility() {
               <a
                 href="/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf"
                 className="underline underline-offset-4 font-semibold"
-                style={{ color: "var(--link)" }}
+                style={{ color: "#22688F" }}
               >
                 Accessibility practice
               </a>
@@ -287,7 +272,7 @@ export default function Accessibility() {
               <a
                 href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf"
                 className="underline underline-offset-4 font-semibold"
-                style={{ color: "var(--link)" }}
+                style={{ color: "#22688F" }}
               >
                 Accessibility practice, federal Section 508
               </a>
@@ -301,7 +286,7 @@ export default function Accessibility() {
               <a
                 href="/Brian-Beals-LLC-Capability-Statement-Federal.pdf"
                 className="underline underline-offset-4 font-semibold"
-                style={{ color: "var(--link)" }}
+                style={{ color: "#22688F" }}
               >
                 Federal, SDVOSB
               </a>
@@ -314,7 +299,7 @@ export default function Accessibility() {
               <a
                 href="/Brian-Beals-LLC-Capability-Statement-Florida.pdf"
                 className="underline underline-offset-4 font-semibold"
-                style={{ color: "var(--link)" }}
+                style={{ color: "#22688F" }}
               >
                 Florida state and local, VBE
               </a>

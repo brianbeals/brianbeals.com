@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Accessibility Conformance Reports",
   description:
-    "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports for Florida public entities facing the April 2027 Title II deadline. Service-disabled veteran-owned.",
+    "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports. ADA Title II for state and local government, Section 508 for federal agencies and the vendors who sell to them. Service-disabled veteran-owned.",
   alternates: {
     canonical: "/accessibility",
   },
@@ -155,6 +155,36 @@ export default function Accessibility() {
           record leaves you with nothing to show.
         </p>
 
+        <H2>Federal: Section 508</H2>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Section 508 of the Rehabilitation Act, at{" "}
+          <strong style={{ color: "var(--head)" }}>36 CFR 1194 Appendix A</strong>, works
+          differently. There is no government-wide compliance date. It is in force now, and
+          what it affects is award eligibility.
+        </p>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          It reaches two groups. Federal agencies, for the information and communication
+          technology they develop, procure and use. And every company selling that technology
+          to an agency, which is where the deadline is real and immediate: a solicitation asks
+          for a VPAT, and the answer is due with the bid.
+        </p>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          If a contracting officer has asked you for an Accessibility Conformance Report and
+          you do not have one, that is a dated problem this quarter, not a 2027 problem. A
+          missing or obviously boilerplate ACR can cost an award before anyone reads the
+          technical approach.
+        </p>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          One detail worth knowing, because it trips people up. Section 508 points at WCAG 2.0
+          Level AA while the Title II rule points at 2.1 Level AA. Building to 2.1 satisfies
+          both, since 2.1 is a superset. The reverse is not true, so a 2.0 conformance claim
+          does not cover a Title II obligation.
+        </p>
+
         <H2>Why I do not remediate</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -227,6 +257,32 @@ export default function Accessibility() {
             <dd className="font-mono">22XM3</dd>
           </div>
         </dl>
+
+        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <h2
+            className="text-lg font-semibold mb-3 tracking-tight"
+            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+          >
+            Capability statement
+          </h2>
+          <p className="text-base leading-relaxed mb-4 text-neutral-800">
+            One page, for your procurement file.
+          </p>
+          <p className="mb-4">
+            <a
+              href="/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf"
+              className="underline underline-offset-4 font-semibold"
+              style={{ color: "var(--link)" }}
+            >
+              Download the capability statement (PDF, 1 page)
+            </a>
+          </p>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--muted-ink)" }}>
+            It is a tagged PDF: structure tree present, language declared, headings in order,
+            table headers marked, no untagged figures. A firm that hands you an inaccessible
+            document about accessibility has told you something.
+          </p>
+        </div>
 
         <H2>Getting started</H2>
 

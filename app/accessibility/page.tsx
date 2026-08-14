@@ -266,21 +266,68 @@ export default function Accessibility() {
             Capability statement
           </h2>
           <p className="text-base leading-relaxed mb-4 text-neutral-800">
-            One page, for your procurement file.
+            One page each, for your procurement file. Four, because the rule and the
+            certification that matter depend on who is buying.
           </p>
-          <p className="mb-4">
-            <a
-              href="/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf"
-              className="underline underline-offset-4 font-semibold"
-              style={{ color: "var(--link)" }}
-            >
-              Download the capability statement (PDF, 1 page)
-            </a>
-          </p>
+          <ul className="mb-4 space-y-3">
+            <li>
+              <a
+                href="/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf"
+                className="underline underline-offset-4 font-semibold"
+                style={{ color: "var(--link)" }}
+              >
+                Accessibility practice
+              </a>
+              <span className="block text-base text-neutral-800">
+                Conformance evaluation, ACR and VPAT work, remediation roadmaps. Start here if
+                you came for the report.
+              </span>
+            </li>
+            <li>
+              <a
+                href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf"
+                className="underline underline-offset-4 font-semibold"
+                style={{ color: "var(--link)" }}
+              >
+                Accessibility practice, federal Section 508
+              </a>
+              <span className="block text-base text-neutral-800">
+                The same evaluation practice framed for 36 CFR 1194: conformance assessment and
+                VPAT for agencies and for vendors answering a solicitation. SDVOSB set-aside
+                eligible.
+              </span>
+            </li>
+            <li>
+              <a
+                href="/Brian-Beals-LLC-Capability-Statement-Federal.pdf"
+                className="underline underline-offset-4 font-semibold"
+                style={{ color: "var(--link)" }}
+              >
+                Federal, SDVOSB
+              </a>
+              <span className="block text-base text-neutral-800">
+                SBA-certified service-disabled veteran-owned small business, certified August
+                2026. Covers the broader AI, analytics and automation practice.
+              </span>
+            </li>
+            <li>
+              <a
+                href="/Brian-Beals-LLC-Capability-Statement-Florida.pdf"
+                className="underline underline-offset-4 font-semibold"
+                style={{ color: "var(--link)" }}
+              >
+                Florida state and local, VBE
+              </a>
+              <span className="block text-base text-neutral-800">
+                Florida-certified Veteran Business Enterprise. Same practice, written for state
+                and local procurement.
+              </span>
+            </li>
+          </ul>
           <p className="text-sm leading-relaxed" style={{ color: "var(--muted-ink)" }}>
-            It is a tagged PDF: structure tree present, language declared, headings in order,
-            table headers marked, no untagged figures. A firm that hands you an inaccessible
-            document about accessibility has told you something.
+            All three are tagged PDFs: structure tree present, language declared, headings in
+            order, table headers marked, no untagged figures. A firm that hands you an
+            inaccessible document about accessibility has told you something.
           </p>
         </div>
 

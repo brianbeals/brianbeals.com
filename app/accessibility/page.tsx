@@ -104,7 +104,7 @@ export default function Accessibility() {
           >
             Compliance dates
           </h2>
-          <dl className="text-base leading-relaxed text-neutral-800">
+          <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Public entities serving 50,000 or more</dt>
             <dd className="mb-3">April 26, 2027</dd>
             <dt className="font-semibold">
@@ -250,7 +250,7 @@ export default function Accessibility() {
           >
             Capability statement
           </h2>
-          <p className="text-base leading-relaxed mb-4 text-neutral-800">
+          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page each, for your procurement file. Four, because the rule and the
             certification that matter depend on who is buying.
           </p>
@@ -263,7 +263,7 @@ export default function Accessibility() {
               >
                 Accessibility practice
               </a>
-              <span className="block text-base text-neutral-800">
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
                 Conformance evaluation, ACR and VPAT work, remediation roadmaps. Start here if
                 you came for the report.
               </span>
@@ -276,7 +276,7 @@ export default function Accessibility() {
               >
                 Accessibility practice, federal Section 508
               </a>
-              <span className="block text-base text-neutral-800">
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
                 The same evaluation practice framed for 36 CFR 1194: conformance assessment and
                 VPAT for agencies and for vendors answering a solicitation. SDVOSB set-aside
                 eligible.
@@ -290,7 +290,7 @@ export default function Accessibility() {
               >
                 Federal, SDVOSB
               </a>
-              <span className="block text-base text-neutral-800">
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
                 SBA-certified service-disabled veteran-owned small business, certified August
                 2026. Covers the broader AI, analytics and automation practice.
               </span>
@@ -303,7 +303,7 @@ export default function Accessibility() {
               >
                 Florida state and local, VBE
               </a>
-              <span className="block text-base text-neutral-800">
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
                 Florida-certified Veteran Business Enterprise. Same practice, written for state
                 and local procurement.
               </span>

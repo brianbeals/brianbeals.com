@@ -234,6 +234,21 @@ export default function Accessibility() {
           whether the work is any good is to read one.
         </p>
 
+        <H2>Maryland: CATS+ contractors</H2>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Maryland runs its own version of this obligation through a different statute.
+          If you hold or subcontract on CATS+,{" "}
+          <Link
+            href="/accessibility/maryland"
+            className="underline underline-offset-4 font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            see how Maryland&apos;s nonvisual access clause works
+          </Link>
+          .
+        </p>
+
         <H2>The firm</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

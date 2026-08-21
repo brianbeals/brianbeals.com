@@ -94,12 +94,22 @@ const personJsonLd = {
       // Every sameAs must resolve publicly for a signed-out crawler. A URL that
       // 404s or sits behind a login is an unverifiable claim and weakens the set.
       // Checked 2026-08-20: GovTribe resolves and serves a real vendor profile.
-      // DELIBERATELY ABSENT, both from the original spec:
-      //   HigherGov  - no profile exists. Their awardee pages are generated from
-      //                award data and the LLC has no federal awards yet. Add it
-      //                the day a profile appears, not before.
+      //
+      // These are the PERSON's identities. Directory entries for the LLC belong
+      // on the Organization node below, not here. GovTribe is the one exception
+      // and it is a knowing one: it predates this rule and is load-bearing for
+      // name disambiguation. Do not add more company pages to this array.
+      //
+      // DELIBERATELY ABSENT:
       //   SAM.gov    - entity pages require authentication, so a crawler sees a
       //                sign-in wall. Public record, but not a public URL.
+      //   SBA Small Business Search - fails the signed-out test in a way worth
+      //                recording. It is a client-rendered SPA, and on 2026-08-20
+      //                a deliberately bogus UEI (ZZZZZZZZZZZZ/00000) returned
+      //                HTML byte-identical to the real profile. A non-JS crawler
+      //                cannot tell an existing business from a nonexistent one,
+      //                which is weaker than a 404. Revisit only if SBA starts
+      //                server-rendering profiles.
       sameAs: [
         "https://www.linkedin.com/in/brianbeals/",
         "https://github.com/brianbeals",
@@ -133,7 +143,15 @@ const personJsonLd = {
           value: "22XM3",
         },
       ],
-      sameAs: ["https://govtribe.com/vendors/brian-beals-llc-22xm3"],
+      // Federal contracting directories that carry the LLC. Both are server-
+      // rendered, so a signed-out crawler with no JS gets the real record:
+      // GovTribe returns the UEI, NAICS and SAM dates; HigherGov the same plus
+      // the self-certifications. HigherGov was absent until 2026-08-20 because
+      // no profile existed; one does now.
+      sameAs: [
+        "https://govtribe.com/vendors/brian-beals-llc-22xm3",
+        "https://www.highergov.com/awardee/brian-beals-llc-1625265099/",
+      ],
     },
   ],
 };

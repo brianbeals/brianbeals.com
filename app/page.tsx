@@ -64,12 +64,31 @@ export default function Home() {
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-2xl mx-auto">
         <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
+          {/* TWO SEPARATE JOBS, DELIBERATELY NOT SOLVED BY THE SAME KNOB.
+
+              Getting the high-resolution headshot into Google Images is the
+              IMAGE SITEMAP's job (see app/sitemap.ts). That entry nominates the
+              raw 3093x3369 /brian-beals.jpg, not a _next/image variant, so the
+              crawler never has to choose among downscaled candidates.
+              Person.image in the JSON-LD points at the same file.
+
+              Rendering this element is a different job, and the only thing that
+              matters here is being honest and fast. It carries `priority` and is
+              the homepage LCP element.
+
+              `sizes` MUST describe the real display width. An earlier pass set
+              it to 640px against a 180px box; the browser believed it and pulled
+              a 1280 or 1920 candidate on retina to paint a 180px square, and the
+              emitted `src` resolved to w=3840. Overstating `sizes` to chase the
+              index is a performance regression that buys nothing the sitemap has
+              not already delivered. */}
           <Image
             src="/brian-beals.jpg"
-            alt="Photo of Brian Beals"
-            width={180}
-            height={180}
-            className="rounded-md shadow-sm"
+            alt="Brian Beals, Director of AI, Analytics and Automation"
+            width={400}
+            height={400}
+            sizes="(min-width: 640px) 200px, 180px"
+            className="rounded-md shadow-sm w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] object-cover"
             priority
           />
         </div>

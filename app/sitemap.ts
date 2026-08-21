@@ -67,6 +67,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: page.changeFrequency,
     priority: page.priority,
+    // Image sitemap entry on the homepage only. This is the most reliable way to
+    // tell Google that a specific image belongs to a specific page, and it points
+    // at the FULL-RESOLUTION original (3093x3369) rather than any _next/image
+    // variant, so the crawler is never choosing from downscaled candidates.
+    //
+    // Why this exists: Google was returning an unrelated face for "brian beals",
+    // pulled from a LinkedIn profile rather than from here. The rendered headshot
+    // was being served as a 384px variant, small enough to be deprioritized.
+    // Raising the rendered size alone would have cost LCP on the homepage; this
+    // gets the high-resolution file in front of the crawler at no runtime cost.
+    ...(page.path === "/" ? { images: [`${BASE_URL}/brian-beals.jpg`] } : {}),
   }));
 
   const essayEntries: MetadataRoute.Sitemap = getEssays().map(

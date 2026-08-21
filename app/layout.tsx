@@ -47,18 +47,89 @@ export const viewport: Viewport = {
   ],
 };
 
+// Structured data. The goal is disambiguation: there is another Brian Beals, and
+// Google has been pairing this one's name with a stranger's face.
+//
+// WHY @graph RATHER THAN A SINGLE Person. The Person and the LLC are separate
+// entities that reference each other by @id. A flat Person block cannot express
+// that, and the reciprocal founder link is part of what makes the pair coherent.
+//
+// Person.image points at the RAW high-resolution JPG, not /opengraph-image. That
+// endpoint returns a 1200x630 social card whose headshot is a 113px inset, which
+// is the wrong thing to hand Google as "this is what this person looks like."
+//
+// NO worksFor. Deliberate, permanent, do not add one.
 const personJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Brian Beals",
-  jobTitle: "Director, AI, Analytics & Automation",
-  description:
-    "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
-  url: "https://brianbeals.com",
-  image: "https://brianbeals.com/opengraph-image",
-  sameAs: [
-    "https://www.linkedin.com/in/brianbeals/",
-    "https://github.com/brianbeals",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://brianbeals.com/#person",
+      name: "Brian Beals",
+      jobTitle: "Director, AI, Analytics & Automation",
+      description:
+        "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+      // disambiguatingDescription exists in schema.org specifically to separate
+      // entities that share a name. This is the property most directly aimed at
+      // the problem, so keep it short, factual and distinctive.
+      disambiguatingDescription:
+        "AI, analytics and automation practice leader based in Punta Gorda, Florida. Founder of Brian Beals, LLC, a service-disabled veteran-owned small business.",
+      url: "https://brianbeals.com",
+      image: "https://brianbeals.com/brian-beals.jpg",
+      homeLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Punta Gorda",
+          addressRegion: "FL",
+          addressCountry: "US",
+        },
+      },
+      founder: { "@id": "https://brianbeals.com/#organization" },
+      // Every sameAs must resolve publicly for a signed-out crawler. A URL that
+      // 404s or sits behind a login is an unverifiable claim and weakens the set.
+      // Checked 2026-08-20: GovTribe resolves and serves a real vendor profile.
+      // DELIBERATELY ABSENT, both from the original spec:
+      //   HigherGov  - no profile exists. Their awardee pages are generated from
+      //                award data and the LLC has no federal awards yet. Add it
+      //                the day a profile appears, not before.
+      //   SAM.gov    - entity pages require authentication, so a crawler sees a
+      //                sign-in wall. Public record, but not a public URL.
+      sameAs: [
+        "https://www.linkedin.com/in/brianbeals/",
+        "https://github.com/brianbeals",
+        "https://govtribe.com/vendors/brian-beals-llc-22xm3",
+      ],
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://brianbeals.com/#organization",
+      name: "Brian Beals, LLC",
+      url: "https://brianbeals.com",
+      founder: { "@id": "https://brianbeals.com/#person" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Punta Gorda",
+        addressRegion: "FL",
+        addressCountry: "US",
+      },
+      // Federally issued and globally unique, which makes them far stronger
+      // disambiguation than a link to a directory page. Both are already public
+      // on /accessibility/maryland and in the SAM registry.
+      identifier: [
+        {
+          "@type": "PropertyValue",
+          propertyID: "UEI",
+          value: "NJLEHNAQATJ6",
+        },
+        {
+          "@type": "PropertyValue",
+          propertyID: "CAGE",
+          value: "22XM3",
+        },
+      ],
+      sameAs: ["https://govtribe.com/vendors/brian-beals-llc-22xm3"],
+    },
   ],
 };
 

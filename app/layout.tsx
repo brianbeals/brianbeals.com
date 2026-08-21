@@ -85,7 +85,12 @@ const personJsonLd = {
           addressCountry: "US",
         },
       },
-      founder: { "@id": "https://brianbeals.com/#organization" },
+      // NO reciprocal founder property here. `founder` is defined on Organization
+      // only; schema.org has no Person-side inverse, and the validator flags it
+      // as unrecognized on a Person. The Organization node below declares
+      // founder -> #person, which establishes the relationship once, correctly,
+      // and Google resolves @graph references in both directions. Caught by
+      // validator.schema.org on 2026-08-20 after the first deploy.
       // Every sameAs must resolve publicly for a signed-out crawler. A URL that
       // 404s or sits behind a login is an unverifiable claim and weakens the set.
       // Checked 2026-08-20: GovTribe resolves and serves a real vendor profile.

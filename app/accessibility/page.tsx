@@ -3,8 +3,17 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Accessibility Conformance Reports",
+  // "SBA-certified" is load-bearing and deliberate. Primes and agency small
+  // business offices filter on the certification, not on the phrase
+  // "veteran-owned", which anyone can self-assert in SAM. The certification
+  // issued 2026-08-06 and runs to 2029-08-05.
+  //
+  // This page, not the homepage, is where the LLC's actual offering lives.
+  // The homepage stays pointed at AI and analytics on purpose; splitting the
+  // two audiences by page is what keeps the personal-brand search work intact
+  // while still giving a prime something to find. Do not merge them.
   description:
-    "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports. ADA Title II for state and local government, Section 508 for federal agencies and the vendors who sell to them. Service-disabled veteran-owned.",
+    "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports. ADA Title II for state and local government, Section 508 for federal agencies and the vendors who sell to them. SBA-certified service-disabled veteran-owned small business.",
   alternates: {
     canonical: "/accessibility",
   },

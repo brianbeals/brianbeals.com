@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "i-built-the-thing",
+    title: "I Built the Thing",
+    date: "2026-08-22",
+    summary:
+      "32,000 blocked DNS queries, ten Sonos speakers, and an afternoon of firewall rules and SSH keys. I was a network engineer once, long enough ago that none of it survived. What that afternoon says about who gets to do the work now.",
+  },
+  {
     slug: "ai-is-not-automation",
     title: "AI Is Not Automation",
     date: "2026-08-08",

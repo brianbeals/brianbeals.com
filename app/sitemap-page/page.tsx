@@ -22,6 +22,7 @@ const sections = [
       { href: "/about", label: "About", note: "Background, certifications, and how I work." },
       { href: "/writing", label: "Writing", note: "Essays on AI, voice, and enterprise technology." },
       { href: "/accessibility", label: "Accessibility", note: "Conformance reports, VPAT work, and capability statements." },
+      { href: "/accessibility/healthcare", label: "Section 504 for Healthcare", note: "45 CFR Part 84, the May 11 2027 date, and what it means for patient-facing documents." },
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },
       { href: "/elsewhere", label: "Elsewhere", note: "Other places this work shows up." },
       { href: "/contact", label: "Contact", note: "Email, LinkedIn, and GitHub." },

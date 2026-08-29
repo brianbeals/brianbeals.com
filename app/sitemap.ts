@@ -20,6 +20,13 @@ const STATIC_PAGES: StaticEntry[] = [
   { path: "/about", priority: 0.8, changeFrequency: "yearly" },
   { path: "/writing", priority: 0.7, changeFrequency: "weekly" },
   { path: "/accessibility", priority: 0.8, changeFrequency: "monthly" },
+  // The two audience-specific accessibility pages. /accessibility/maryland was
+  // live and linked from both the hub page and the human site map, but it was
+  // never added here, so the XML sitemap never carried it. Found 2026-08-24
+  // while adding the healthcare page. A page reachable only by crawl is a page
+  // competing with a handicap.
+  { path: "/accessibility/healthcare", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/accessibility/maryland", priority: 0.7, changeFrequency: "monthly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },

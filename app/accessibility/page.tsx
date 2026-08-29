@@ -243,6 +243,25 @@ export default function Accessibility() {
           whether the work is any good is to read one.
         </p>
 
+        <H2>Healthcare: Section 504</H2>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Healthcare organizations answer to a different rule with an earlier date. The
+          HHS final rule at <strong style={{ color: "var(--head)" }}>45 CFR Part 84</strong>{" "}
+          requires WCAG 2.1 Level AA by May 11, 2027 for recipients with 15 or more
+          employees, and it reaches anyone taking Medicare or Medicaid. Its
+          legacy-document exemption stops at any document a patient uses to apply for or
+          access a program, which puts the whole forms library back in scope.{" "}
+          <Link
+            href="/accessibility/healthcare"
+            className="underline underline-offset-4 font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            See how Section 504 applies to healthcare
+          </Link>
+          .
+        </p>
+
         <H2>Maryland: CATS+ contractors</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

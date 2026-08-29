@@ -303,8 +303,9 @@ export default function Accessibility() {
             Capability statement
           </h2>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
-            One page each, for your procurement file. Four, because the rule and the
-            certification that matter depend on who is buying.
+            One page each, for your procurement file. Six, because the rule and the
+            certification that matter depend on who is buying. These four cover the
+            practice:
           </p>
           <ul className="mb-4 space-y-3">
             <li>

@@ -313,11 +313,11 @@ export default function Accessibility() {
                 className="underline underline-offset-4 font-semibold"
                 style={{ color: "#22688F" }}
               >
-                Accessibility practice
+                Accessibility practice, ADA Title II
               </a>
               <span className="block text-base" style={{ color: "#1A1A2A" }}>
-                Conformance evaluation, ACR and VPAT work, remediation roadmaps. Start here if
-                you came for the report.
+                Conformance evaluation, ACR and VPAT work, and document inventory, written
+                for state and local government and the April 2027 and 2028 dates.
               </span>
             </li>
             <li>
@@ -361,8 +361,27 @@ export default function Accessibility() {
               </span>
             </li>
           </ul>
+          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
+            Two more are written for a specific rule and live with it:{" "}
+            <Link
+              href="/accessibility/healthcare"
+              className="underline underline-offset-4 font-semibold"
+              style={{ color: "#22688F" }}
+            >
+              Section 504 for healthcare
+            </Link>{" "}
+            and{" "}
+            <Link
+              href="/accessibility/maryland"
+              className="underline underline-offset-4 font-semibold"
+              style={{ color: "#22688F" }}
+            >
+              Maryland nonvisual access
+            </Link>
+            .
+          </p>
           <p className="text-sm leading-relaxed" style={{ color: "#5B6470" }}>
-            All four are tagged PDFs: structure tree present, language declared, headings in
+            All are tagged PDFs: structure tree present, language declared, headings in
             order, table headers marked, no untagged figures. A firm that hands you an
             inaccessible document about accessibility has told you something.
           </p>

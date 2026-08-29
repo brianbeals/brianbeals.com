@@ -267,6 +267,38 @@ export default function AccessibilityHealthcare() {
           fastest way to judge whether the work is any good is to read one.
         </p>
 
+        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <h2
+            className="text-lg font-semibold mb-3 tracking-tight"
+            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
+          >
+            Capability statement
+          </h2>
+          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
+            One page for your file, written for Section 504.
+          </p>
+          <ul className="mb-4 space-y-3">
+            <li>
+              <a
+                href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Healthcare.pdf"
+                className="underline underline-offset-4 font-semibold"
+                style={{ color: "#22688F" }}
+              >
+                Accessibility practice, Section 504 healthcare
+              </a>
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
+                Patient-facing document inventory, conformance evaluation, and ACR work,
+                framed for 45 CFR Part 84 and the May 11, 2027 date.
+              </span>
+            </li>
+          </ul>
+          <p className="text-sm leading-relaxed" style={{ color: "#5B6470" }}>
+            A tagged PDF: structure tree present, language declared, headings in order,
+            table headers marked. A firm that hands you an inaccessible document about
+            accessibility has told you something.
+          </p>
+        </div>
+
         <H2>The firm</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

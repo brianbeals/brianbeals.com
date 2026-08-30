@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="color-scheme" content="light dark">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brian Beals, LLC Capability Statement: Section 508 Digital Accessibility</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E">
@@ -71,9 +72,41 @@
             page-break-inside:avoid;}
   footer{border-top:1px solid #e5e8ec;padding:11px 28px;color:#6B7280;font-size:11.5px;display:flex;align-items:center;gap:7px;}
   .navhr{height:4px;background:var(--navy);}
+
+  /* Skip link. WCAG 2.4.1 Bypass Blocks. The header and brand lockup sit ahead
+     of the content with no keyboard route past them. Hidden until focused. */
+  .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--navy);
+    color:#fff;padding:10px 16px;font-weight:700;text-decoration:none;
+    border-radius:0 0 6px 0;font-size:13px;}
+  .skip:focus{left:0;}
+  #main:focus{outline:none;}
+
+  /* Dark mode. Declared natively so Dark Reader and Safari's dark extensions
+     stand down rather than repainting the page themselves, which is what
+     produces unreadable results on a document like this.
+
+     Navy surfaces and the ice badge carry over unchanged. See the module
+     docstring for why --card is not touched. */
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0F1822;--ink:#E6EDF3;--muted:#93A6B8;--accent:#7FB3D8;
+      --green:#5FCF8E;--alert:#D9B84A;}
+    html,body{background:var(--bg);color:var(--ink);}
+    .page{background:#16202B;box-shadow:0 2px 8px rgba(0,0,0,0.5);}
+    .col-r{background:#1B2836;border-left-color:#2A3B4D;}
+    .clock{background:#2A2313;border-bottom-color:#3D3520;color:#E8D49B;}
+    .clock strong{color:#F2E2AE;}
+    .lead,.svc .d{color:#C3D0DC;}
+    .snap .row,.snap th,.snap td{border-bottom-color:#2A3B4D;}
+    .vbe{background:#14301F;}
+    footer{border-top-color:#2A3B4D;color:var(--muted);}
+    /* Ten paragraphs carry color:#555 as an inline style, which a media block
+       cannot reach without this. #555 on #16202B is roughly 3:1 and fails. */
+    .proof p[style]{color:#B4C2D0 !important;}
+  }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to main content</a>
 <div class="page">
   <header>
     <div class="brand">
@@ -95,7 +128,7 @@
     <strong>What applies.</strong> Section 508 of the Rehabilitation Act requires that information and communication technology developed, procured, maintained or used by federal agencies be accessible. There is no government-wide compliance date: it is in force now and it governs <strong>award eligibility</strong>. A solicitation asks for a VPAT, and the answer is due with the bid.
   </div>
 
-  <main>
+  <main id="main" tabindex="-1">
     <div class="col-r">
       <h2>Company Snapshot</h2>
       <table class="snap">

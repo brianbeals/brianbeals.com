@@ -102,7 +102,7 @@ export default function AccessibilityMaryland() {
           >
             Who this reaches
           </h2>
-          <dl className="text-base leading-relaxed text-neutral-800">
+          <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Applies to</dt>
             <dd className="mb-3">
               Executive Branch units and Maryland&apos;s public colleges and
@@ -280,7 +280,7 @@ export default function AccessibilityMaryland() {
           >
             Capability statement
           </h2>
-          <p className="text-base leading-relaxed mb-4 text-neutral-800">
+          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your procurement file, written for Maryland.
           </p>
           <ul className="mb-4 space-y-3">
@@ -292,7 +292,7 @@ export default function AccessibilityMaryland() {
               >
                 Accessibility practice, Maryland CATS+
               </a>
-              <span className="block text-base text-neutral-800">
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
                 Conformance evaluation, VPAT and ACR work, and remediation
                 specifications, framed for Maryland&apos;s nonvisual access statute and
                 the CATS+ vehicle.

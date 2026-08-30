@@ -103,7 +103,7 @@ export default function AccessibilityHealthcare() {
           >
             Compliance dates
           </h2>
-          <dl className="text-base leading-relaxed text-neutral-800">
+          <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Recipients with 15 or more employees</dt>
             <dd className="mb-3 font-mono">May 11, 2027</dd>
             <dt className="font-semibold">Recipients with fewer than 15 employees</dt>
@@ -217,7 +217,7 @@ export default function AccessibilityHealthcare() {
           >
             What this is not
           </h2>
-          <p className="text-base leading-relaxed text-neutral-800">
+          <p className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             Not an overlay, a widget, or a script you paste into your site. Those have
             been named in litigation rather than protecting against it, and OCR is not
             going to accept one as conformance. Not an unsolicited scan of your live site
@@ -278,7 +278,7 @@ export default function AccessibilityHealthcare() {
           >
             Capability statement
           </h2>
-          <p className="text-base leading-relaxed mb-4 text-neutral-800">
+          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your file, written for Section 504.
           </p>
           <ul className="mb-4 space-y-3">
@@ -290,7 +290,7 @@ export default function AccessibilityHealthcare() {
               >
                 Accessibility practice, Section 504 healthcare
               </a>
-              <span className="block text-base text-neutral-800">
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
                 Patient-facing document inventory, conformance evaluation, and ACR work,
                 framed for 45 CFR Part 84 and the May 11, 2027 date.
               </span>

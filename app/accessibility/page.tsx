@@ -219,26 +219,33 @@ export default function Accessibility() {
         <H2>The proof</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. Fifteen pages and the
-          four documents published as of that date, evaluated against all 50 Level A and AA
-          criteria on August 14, 2026:{" "}
-          <strong style={{ color: "var(--head)" }}>36 Supports</strong> and{" "}
-          <strong style={{ color: "var(--head)" }}>14 Not Applicable</strong>, with zero
-          criteria failing. The document layer passed too: every PDF in that set is tagged,
-          with structure, language and headings verified. The report states its own
-          limitation, that screen reader testing was performed separately from the scan,
-          because a report that hides its method is not worth reading.
+          This site carries its own Accessibility Conformance Report. Nineteen pages and all
+          six published documents, evaluated against all 50 Level A and AA criteria on
+          August 30, 2026: <strong style={{ color: "var(--head)" }}>31 Supports</strong>,{" "}
+          <strong style={{ color: "var(--head)" }}>18 Not Applicable</strong>, and{" "}
+          <strong style={{ color: "var(--head)" }}>1 Partially Supports</strong>, with
+          nothing marked Does Not Support and nothing left unevaluated. The document layer
+          passed too: all six PDFs are tagged, with structure, language, title and figure
+          labelling verified.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Two capability statements have been published since, for Maryland and for
-          healthcare, and the healthcare one was revised on August 29, 2026. They are not
-          covered by the August 14 report and are scheduled for the next evaluation. Each
-          was produced by the same renderer, which refuses to write an untagged file and
-          verifies structure, language and title after writing. That is an assertion by the
-          tool, not an evaluated finding, and the difference is the whole point of dating a
-          report. A conformance claim covers what was tested, on the day it was tested, and
-          nothing else.
+          The partial is 2.4.5 Multiple Ways, and it is left in on purpose. This report is
+          reachable two ways, from three pages that link it and from the site map, which is
+          what the criterion asks. What it does not carry is site navigation of its own,
+          because it is a standalone document meant to be forwarded. The automated check
+          tests whether every page links to the site map, which over-reports on a document
+          of that kind. Recording it is more useful than arguing it away, and a firm that
+          evaluates its own site and publishes nothing but green has told you less than one
+          that shows its edges.
+        </p>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Four criteria were settled by a person rather than by the scan: meaningful
+          sequence, keyboard traps, headings and labels, and change of context on focus.
+          Those were checked by tabbing the site with a keyboard and listening to it with
+          VoiceOver, including the headings and links lists through the rotor. Reading order
+          cannot be scored mechanically, and no report from this practice will claim it was.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

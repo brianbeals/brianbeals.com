@@ -176,10 +176,11 @@
 
   <footer>
     <svg viewBox="0 0 32 32" width="16" height="16" role="presentation" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="6" fill="#1E3A5F"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
-    <span>&copy; Brian Beals, LLC &middot; brianbeals.com &middot; <script>document.write(new Date().getFullYear())</script><br>
+    <span>&copy; Brian Beals, LLC &middot; brianbeals.com &middot; <span class="yr">2026</span><br>
     This document as HTML, and every capability statement in both formats: <strong>brianbeals.com/documents</strong></span>
   </footer>
   <div class="navhr"></div>
 </div>
+<script>document.querySelectorAll(".yr").forEach(function(e){e.textContent=new Date().getFullYear()});</script>
 </body>
 </html>

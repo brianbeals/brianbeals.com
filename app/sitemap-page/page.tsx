@@ -24,6 +24,7 @@ const sections = [
       { href: "/accessibility", label: "Accessibility", note: "Conformance reports, VPAT work, and capability statements." },
       { href: "/accessibility/healthcare", label: "Section 504 for Healthcare", note: "45 CFR Part 84, the May 11 2027 date, and what it means for patient-facing documents." },
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },
+      { href: "/conformance-report.html", label: "Accessibility Conformance Report", note: "This site's own VPAT 2.5 report. Linked from three pages and, until August 30 2026, missing here, which left it locatable only one way." },
       { href: "/elsewhere", label: "Elsewhere", note: "Other places this work shows up." },
       { href: "/contact", label: "Contact", note: "Email, LinkedIn, and GitHub." },
     ],

@@ -88,9 +88,10 @@ export default function AccessibilityHealthcare() {
         </div>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The rule took effect July 8, 2024. On May 7, 2026, the HHS Office for Civil
-          Rights issued an interim final rule moving both compliance dates out by one
-          year, so a date you wrote down before that has changed.
+          The rule took effect July 8, 2024. HHS published an interim final rule in the
+          Federal Register on May 11, 2026, document 2026-09266, moving both compliance
+          dates out by one year. It published on the original deadline itself, so a date
+          you wrote down before that has changed.
         </p>
 
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
@@ -102,7 +103,7 @@ export default function AccessibilityHealthcare() {
           >
             Compliance dates
           </h2>
-          <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
+          <dl className="text-base leading-relaxed text-neutral-800">
             <dt className="font-semibold">Recipients with 15 or more employees</dt>
             <dd className="mb-3 font-mono">May 11, 2027</dd>
             <dt className="font-semibold">Recipients with fewer than 15 employees</dt>
@@ -146,9 +147,12 @@ export default function AccessibilityHealthcare() {
           Read the next clause carefully, because it is where the exemption stops:
         </p>
 
+        {/* Ink is set by the theme-aware utility class, never a hardcoded hex. A literal
+            #1A1A2A here measured 1.04:1 against the dark background: the exemption clause,
+            the most important sentence on the page, was invisible in dark mode. */}
         <blockquote
-          className="my-8 border-l-4 pl-5 text-base sm:text-lg leading-relaxed italic"
-          style={{ borderColor: "#1E3A5F", color: "#1A1A2A" }}
+          className="my-8 border-l-4 pl-5 text-base sm:text-lg leading-relaxed italic text-neutral-800"
+          style={{ borderColor: "#1E3A5F" }}
         >
           The exception does not apply where such documents are being utilized by
           individuals to apply for, access, or take part in a recipient&apos;s program or
@@ -213,7 +217,7 @@ export default function AccessibilityHealthcare() {
           >
             What this is not
           </h2>
-          <p className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
+          <p className="text-base leading-relaxed text-neutral-800">
             Not an overlay, a widget, or a script you paste into your site. Those have
             been named in litigation rather than protecting against it, and OCR is not
             going to accept one as conformance. Not an unsolicited scan of your live site
@@ -274,7 +278,7 @@ export default function AccessibilityHealthcare() {
           >
             Capability statement
           </h2>
-          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
+          <p className="text-base leading-relaxed mb-4 text-neutral-800">
             One page for your file, written for Section 504.
           </p>
           <ul className="mb-4 space-y-3">
@@ -286,7 +290,7 @@ export default function AccessibilityHealthcare() {
               >
                 Accessibility practice, Section 504 healthcare
               </a>
-              <span className="block text-base" style={{ color: "#1A1A2A" }}>
+              <span className="block text-base text-neutral-800">
                 Patient-facing document inventory, conformance evaluation, and ACR work,
                 framed for 45 CFR Part 84 and the May 11, 2027 date.
               </span>

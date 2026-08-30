@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brian Beals, LLC: Capability Statement (Maryland Digital Accessibility &amp; Nonvisual Access)</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E">
+<style>
+  :root{--navy:#1E3A5F;--accent:#2673A8;--card:#D6EAF8;--bg:#F4F6F9;--ink:#1A1A2A;--green:#1E8449;--muted:#6B7280;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .page{max-width:780px;margin:0 auto;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+  header{background:var(--navy);color:#fff;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand .name{font-size:25px;font-weight:800;letter-spacing:-0.01em;line-height:1.1;margin:0;color:inherit;}
+  .brand .tag{font-size:13px;color:var(--card);margin-top:3px;}
+  .contact{font-size:12px;text-align:right;line-height:1.7;color:#eaf1f8;white-space:nowrap;}
+  .contact a{color:#fff;text-decoration:none;}
+  .ribbon{background:var(--green);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;padding:7px 28px;}
+  .clock{background:#FCF3CF;border-bottom:1px solid #E8D9A0;color:#5c4a00;font-size:12.5px;line-height:1.5;padding:9px 28px;}
+  /* Float, NOT grid, and this is load-bearing. The sidebar is FIRST in the DOM
+     on purpose, so a screen reader reaches the certification numbers and the
+     standards applied before the prose. Under CSS grid, DOM order drives cell
+     placement, so a source-first sidebar takes the 1fr column and the long
+     column gets crushed into 270px: the whole document renders as one narrow
+     ribbon beside an empty half-page. Float puts the sidebar right visually
+     while leaving it first in source, which is the only way to get both.
+     The general-purpose statement can use grid because its columns are in
+     visual order. This one cannot. Do not "modernize" this back to grid. */
+  main{display:block;}
+  .col-l{padding:18px 24px 8px 28px;}
+  .col-r{float:right;width:270px;padding:18px 28px 12px 20px;
+         border-left:1px solid #e5e8ec;background:#fbfcfe;}
+  h2{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--navy);margin:16px 0 7px;}
+  h2:first-child{margin-top:0;}
+  ul{margin:0;padding-left:17px;}
+  li{font-size:13px;line-height:1.5;margin-bottom:4px;}
+  p{font-size:13px;line-height:1.5;margin:0 0 8px;}
+  .lead{font-size:13.5px;color:#333;}
+  .svc{margin-bottom:9px;}
+  .svc .t{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 1px;text-transform:none;letter-spacing:normal;line-height:1.35;}
+  .svc .d{font-size:12.5px;line-height:1.5;color:#333;margin:0;}
+  /* Real tables with th scope="row", not definition lists. A dl with div-wrapped
+     dt/dd pairs renders correctly on screen and then arrives in the PDF as
+     undifferentiated NonStruct, so a label and its value are two adjacent runs of
+     text with nothing joining them. That is 1.3.1 Level A, and it is the same
+     finding this firm raises against other people's documents. */
+  .snap{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.5;margin:0;}
+  .snap th,.snap td{padding:3px 0;border-bottom:1px solid #eef1f5;vertical-align:top;}
+  .snap tr:last-child th,.snap tr:last-child td{border-bottom:none;}
+  .snap .k{color:var(--muted);font-weight:600;text-align:left;}
+  .snap .v{text-align:right;font-weight:600;color:var(--ink);padding-left:10px;}
+  .cert-ok{color:var(--green);}
+  .vbe{display:inline-block;background:#e5f3ea;color:var(--green);font-weight:700;font-size:11.5px;border-radius:5px;padding:5px 9px;margin-top:2px;line-height:1.35;}
+  .proof{padding:6px 28px 14px;}
+  .proof .grid{column-count:2;column-gap:22px;display:block;}
+  .proof li{margin:0 0 9px;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;}
+  footer{border-top:1px solid #e5e8ec;padding:11px 28px;color:#6B7280;font-size:11.5px;display:flex;align-items:center;gap:7px;}
+  .navhr{height:4px;background:var(--navy);}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="40" height="40" role="presentation" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="6" fill="#fff"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#1E3A5F" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+      <div>
+        <h1 class="name">Brian Beals, LLC</h1>
+        <div class="tag">Nonvisual Access &amp; ADA Title II &middot; Assessment and Remediation Planning</div>
+      </div>
+    </div>
+    <div class="contact">
+      Remote delivery &middot; on-site in Maryland as needed<br>
+      <a href="mailto:brian@brianbeals.com">brian@brianbeals.com</a><br>
+      <a href="https://brianbeals.com/accessibility/maryland">brianbeals.com/accessibility/maryland</a><br>
+      (941) 979-6282
+    </div>
+  </header>
+  <div class="ribbon">Maryland-Certified VSBE VB26-100715 &middot; SBA-Certified SDVOSB</div>
+  <div class="clock">
+    <strong>Two obligations, one body of evidence.</strong> Maryland has required nonvisual access in state IT procurement since 2005: under <strong>State Finance &amp; Procurement &sect;3.5-311</strong> the Nonvisual Access clause goes into every IFB, RFP, and contract for new or upgraded ICT, the vendor <strong>warrants</strong> equivalent nonvisual access when it bids, and DoIT reviews conformance <strong>within 18 months of award</strong>. A vendor that fails that review has <strong>12 months to remediate at its own expense</strong>, then faces a civil penalty and an obligation to <strong>indemnify the State</strong> for liability arising from the noncompliant technology. Separately, the DOJ rule under ADA Title II requires WCAG 2.1 Level AA by <strong>April 26, 2027</strong> for public entities serving 50,000 or more, and <strong>April 26, 2028</strong> for smaller entities and special districts.
+  </div>
+
+  <main>
+    <div class="col-r">
+      <h2>Company Snapshot</h2>
+      <table class="snap">
+        <tr><th scope="row" class="k">Maryland VSBE</th><td class="v cert-ok">Certified</td></tr>
+        <tr><th scope="row" class="k">VSBE #</th><td class="v">VB26-100715</td></tr>
+        <tr><th scope="row" class="k">VSBE Term</th><td class="v">08/2026 &ndash; 08/2029</td></tr>
+        <tr><th scope="row" class="k">Maryland CSB #</th><td class="v">SB26-100712</td></tr>
+        <tr><th scope="row" class="k">eMMA Vendor</th><td class="v">SUP1105247</td></tr>
+        <tr><th scope="row" class="k">UEI</th><td class="v">NJLEHNAQATJ6</td></tr>
+        <tr><th scope="row" class="k">CAGE</th><td class="v">22XM3</td></tr>
+        <tr><th scope="row" class="k">Founded</th><td class="v">2026 &middot; Florida LLC</td></tr>
+      </table>
+      <div class="vbe">Certified Veteran-Owned Small Business Enterprise (MD Office of Small, Minority &amp; Women Business Affairs)</div>
+
+      <h2>Standards Applied</h2>
+      <table class="snap">
+        <tr><th scope="row" class="k">Maryland NVA</th><td class="v">COMAR 14.33.02</td></tr>
+        <tr><th scope="row" class="k">NVA Clause</th><td class="v">COMAR 21.05.08.05</td></tr>
+        <tr><th scope="row" class="k">Statute</th><td class="v">SF&amp;P &sect;3.5-311</td></tr>
+        <tr><th scope="row" class="k">WCAG</th><td class="v">2.1 Level AA</td></tr>
+        <tr><th scope="row" class="k">ADA Rule</th><td class="v">28 CFR Part 35</td></tr>
+        <tr><th scope="row" class="k">Also</th><td class="v">Section 504 &middot; 508</td></tr>
+      </table>
+
+      <h2>Scope Covered</h2>
+      <table class="snap">
+        <tr><th scope="row" class="k">Web</th><td class="v">Pages &amp; templates</td></tr>
+        <tr><th scope="row" class="k">Documents</th><td class="v">PDF &amp; Office</td></tr>
+        <tr><th scope="row" class="k">Forms</th><td class="v">Online &amp; fillable</td></tr>
+        <tr><th scope="row" class="k">Mobile</th><td class="v">Apps &amp; responsive</td></tr>
+        <tr><th scope="row" class="k">Media</th><td class="v">Captions &amp; transcripts</td></tr>
+        <tr><th scope="row" class="k">Third party</th><td class="v">Vendor VPAT review</td></tr>
+      </table>
+
+      <h2>CATS+ Fit</h2>
+      <table class="snap">
+        <tr><th scope="row" class="k">FA 2</th><td class="v">Web &amp; Internet Systems</td></tr>
+        <tr><th scope="row" class="k">FA 10</th><td class="v">IT Mgmt Consulting</td></tr>
+        <tr><th scope="row" class="k">Posture</th><td class="v">Subcontract to a master</td></tr>
+      </table>
+    </div>
+
+    <div class="col-l">
+      <p class="lead">A veteran-owned consultancy that establishes where an agency or a prime actually stands against Maryland's nonvisual access requirement and the Title II deadline, then says what to fix first. The deliverable is an Accessibility Conformance Report: every WCAG 2.1 Level A and AA success criterion marked and evidenced, dated and signed. Delivered by one principal with an enterprise data and automation background.</p>
+
+      <h2>Services</h2>
+      <div class="svc">
+        <h3 class="t">Nonvisual Access Conformance Evidence</h3>
+        <p class="d">Independent evaluation of a deliverable against COMAR 14.33.02 and WCAG 2.1 Level AA, producing the evidence a contractor needs when DoIT reviews conformance within 18 months of award. A prime signs the NVA warranty at bid time; this is the work that makes the warranty defensible eighteen months later, before the review rather than during it.</p>
+      </div>
+      <div class="svc">
+        <h3 class="t">Title II Readiness Assessment</h3>
+        <p class="d">Automated scanning plus manual sample testing, including keyboard and screen reader checks, against WCAG 2.1 Level AA. Review of the published accessibility statement, coordinator designation, and grievance procedure against what the rule requires. Deliverable is an Accessibility Conformance Report in VPAT 2.5 format, the same document you already require from your software vendors, plus a prioritized roadmap with effort bands and a one-page summary suitable for a board or budget request. Two to four weeks.</p>
+      </div>
+      <div class="svc">
+        <h3 class="t">Document Inventory &amp; Triage</h3>
+        <p class="d">Catalog every PDF and document across the agency's web properties, then classify each one: retire, replace with an accessible HTML page, remediate, or leave. Remaining items are prioritized by page traffic, program criticality, and exposure. Deliverable is a scoped work order a remediation vendor can execute against, so per-page remediation spend goes to documents that are actually in use.</p>
+      </div>
+      <div class="svc">
+        <h3 class="t">Program &amp; Policy Setup</h3>
+        <p class="d">Accessibility statement naming the standard and conformance level, coordinator designation, grievance procedure, self-evaluation documentation, procurement language requiring a VPAT or ACR before purchase, and content governance so newly published material stops regressing.</p>
+      </div>
+
+      <h2>Differentiators</h2>
+      <ul>
+        <li><strong>Maryland's requirement is older and stricter than the federal one.</strong> The nonvisual access warranty has been in state IT contracts since 2005 and carries a post-award review. Teams that plan only for the 2027 ADA date are planning for the later of the two obligations.</li>
+        <li><strong>No product to sell.</strong> No overlay, no platform license, no per-page remediation quota. The recommendation follows the finding.</li>
+        <li><strong>Evaluation only, never the remediation.</strong> A conformance claim written by whoever built or repaired the site is self-assessment. Staying out of the repair work is what lets the report mean something, and it gives a remediation vendor a specification to bid against rather than a per-page quote nobody can check.</li>
+        <li><strong>A tagged PDF is not a conforming PDF.</strong> Most checkers ask only whether tags exist. A document can have them and still be unreadable: no headings, tables with no header cells, images with no alt text. That is what an auto-tag pass leaves behind, and often what an agency receives after paying to have it fixed.</li>
+        <li><strong>The report says what it did not check.</strong> Reading order, meaningful alt text, and focus order are not machine-detectable, and asserting conformance on automated evidence alone is how a report becomes the exhibit. An unanswered criterion reports as Not Evaluated, never as Supports.</li>
+        <li><strong>Set-aside vehicle.</strong> Certified VSBE, so participation counts against the 3% statewide goal and against the VSBE subcontract goals written into task orders.</li>
+      </ul>
+    </div>
+  </main>
+
+  <div class="proof">
+    <h2>Demonstrated Capability</h2>
+    <ul class="grid">
+      <li><strong>Conformance report issued:</strong> a full evaluation of brianbeals.com against all 50 WCAG 2.1 Level A and AA success criteria, remediated to conformance and documented in an Accessibility Conformance Report in VPAT 2.5 format. Every defect found was fixed and re-verified, including a skip link that scrolled the page without moving keyboard focus.</li>
+      <li><strong>Purpose-built evaluation tooling:</strong> an assessment engine combining automated rule checking with four checks the scanner has no rule for, among them reflow at a true 320-pixel viewport, both light and dark color schemes, live-region preconditions, and focus-visible under a real Tab press. Documents are read rather than counted: the tag tree is walked to find missing alt text, tables with no header cells, and tagged files with no headings at all. A regression suite runs against fixture pages encoding known defects, so the engine is tested rather than trusted.</li>
+      <li><strong>Volume screening in practice:</strong> 22 public entities verified and sampled across four counties, producing per-entity findings mapped to specific success criteria. Third-party widget defects are attributed to the vendor rather than to the entity, so an agency is never handed a finding it cannot act on.</li>
+      <li><strong>Large-scale content inventory:</strong> automation that polls a government opportunities API, filters and classifies records by code and keyword, scores them, and publishes a live dashboard. The same pattern applied to a document library.</li>
+      <li><strong>Scheduled pipelines:</strong> data screeners running on a schedule via GitHub Actions and publishing to public web endpoints without manual intervention.</li>
+      <li><strong>Modern web delivery:</strong> a Next.js site on Vercel with CI/CD deploys, plus multiple public sites maintained under version control.</li>
+    </ul>
+    <p style="font-size:11.5px;color:#555;margin:6px 0 0;"><strong>Method.</strong> Findings are measured, not estimated. Where a check cannot be made honestly, for example text over a photograph where the background color is unknowable from the page, it is reported as indeterminate rather than asserted. A finding a client can disprove costs more than a finding never made.</p>
+    <p style="font-size:11.5px;color:#555;margin:6px 0 0;"><strong>Past performance.</strong> Newly formed, with no Maryland contract past performance to date. The reference implementation above is the firm&rsquo;s own site, evaluated and remediated end to end under the same method proposed here, with the resulting report available on request. Manual assistive-technology validation at depth and high-volume document remediation are delivered with a specialist partner. Available to subcontract the assessment, inventory, and program layer under a CATS+ master or a remediation prime.</p>
+  </div>
+
+  <footer>
+    <svg viewBox="0 0 32 32" width="16" height="16" role="presentation" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="6" fill="#1E3A5F"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+    <span>&copy; Brian Beals, LLC &middot; brianbeals.com/accessibility/maryland &middot; <script>document.write(new Date().getFullYear())</script><br>
+    This document as HTML, and every capability statement in both formats: <strong>brianbeals.com/documents</strong></span>
+  </footer>
+  <div class="navhr"></div>
+</div>
+</body>
+</html>

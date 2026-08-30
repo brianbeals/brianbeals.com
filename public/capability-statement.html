@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brian Beals, LLC — Capability Statement</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    /* --accent darkened to 5.12:1 against white so the ribbon text clears
+       WCAG 2.1 AA 1.4.3 (4.5:1). The prior lighter blue measured 3.97:1. */
+    --navy:#1E3A5F; --accent:#2673A8; --card:#D6EAF8; --bg:#F4F6F9;
+    --ink:#1A1A2A; --green:#1E8449; --muted:#6B7280;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .page{max-width:780px;margin:0 auto;background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+  /* Header */
+  header{background:var(--navy);color:#fff;padding:22px 28px;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand .name{font-size:25px;font-weight:800;letter-spacing:-0.01em;line-height:1.1;
+    margin:0;color:inherit;}
+  .brand .tag{font-size:13px;color:var(--card);margin-top:3px;}
+  .contact{font-size:12px;text-align:right;line-height:1.7;color:#eaf1f8;white-space:nowrap;}
+  .contact a{color:#fff;text-decoration:none;}
+  /* Status ribbon */
+  .ribbon{background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;
+    letter-spacing:0.02em;text-transform:uppercase;padding:7px 28px;}
+  /* Body */
+  main{display:grid;grid-template-columns:1fr 270px;gap:0;}
+  .col-l{padding:18px 24px 8px 28px;}
+  .col-r{padding:18px 28px 8px 20px;border-left:1px solid #e5e8ec;background:#fbfcfe;}
+  h2{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;
+    color:var(--navy);margin:16px 0 7px;}
+  h2:first-child{margin-top:0;}
+  ul{margin:0;padding-left:17px;}
+  li{font-size:13px;line-height:1.5;margin-bottom:4px;}
+  p{font-size:13px;line-height:1.5;margin:0 0 8px;}
+  .lead{font-size:13.5px;color:#333;}
+  /* Snapshot card */
+  .snap{font-size:12.5px;line-height:1.5;margin:0;}
+  .snap .row{display:flex;justify-content:space-between;gap:10px;padding:3px 0;
+    border-bottom:1px solid #eef1f5;}
+  .snap .row:last-child{border-bottom:none;}
+  .snap .k{color:var(--muted);font-weight:600;margin:0;}
+  .snap .v{text-align:right;font-weight:600;color:var(--ink);margin:0;}
+  .pending{color:var(--accent);}
+  .sdv{display:inline-block;background:var(--card);color:var(--navy);font-weight:700;
+    font-size:11.5px;border-radius:5px;padding:5px 9px;margin-top:2px;line-height:1.35;}
+  /* Demonstrated capability band */
+  .proof{padding:6px 28px 14px;}
+  .proof .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;}
+  .proof li{margin-bottom:5px;}
+  /* Footer */
+  /* footer grey raised to --muted (4.83:1) for AA; the prior grey measured 3.25:1 */
+  footer{border-top:1px solid #e5e8ec;padding:11px 28px;color:var(--muted);font-size:11.5px;
+    display:flex;align-items:center;gap:7px;}
+  .navhr{height:4px;background:var(--navy);}
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="40" height="40" role="presentation" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="6" fill="#fff"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#1E3A5F" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+      <div>
+        <h1 class="name">Brian Beals, LLC</h1>
+        <div class="tag">AI, Analytics &amp; Automation Consulting</div>
+      </div>
+    </div>
+    <div class="contact">
+      Punta Gorda, FL · remote nationwide<br>
+      <a href="mailto:brian@brianbeals.com">brian@brianbeals.com</a><br>
+      <a href="https://brianbeals.com">brianbeals.com</a><br>
+      linkedin.com/in/brianbeals
+    </div>
+  </header>
+  <div class="ribbon">SBA-Certified Service-Disabled Veteran-Owned Small Business (SDVOSB)</div>
+
+  <main>
+    <div class="col-l">
+      <p class="lead">A veteran-owned consultancy that moves AI, data, and automation from idea to working systems, led by one principal who has built and led three enterprise AI, data, and analytics practices, plus hands-on delivery of the automations, agents, and pipelines.</p>
+
+      <h2>Core Competencies</h2>
+      <ul>
+        <li>AI and machine learning consulting, AI-readiness assessments, and roadmapping</li>
+        <li>Workflow automation and orchestration, including agentic and LLM-driven workflows</li>
+        <li>Custom AI agents and assistants scoped and tuned to specific business tasks</li>
+        <li>Data analytics, reporting, and self-updating dashboards</li>
+        <li>Data pipeline design and systems integration via public and internal APIs</li>
+        <li>Cloud and hybrid architecture across AWS, Azure, and GCP</li>
+        <li>Vendor-neutral technology strategy, discovery workshops, opportunity sizing, and executive enablement</li>
+      </ul>
+
+      <h2>Differentiators</h2>
+      <ul>
+        <li><strong>Strategist and builder in one.</strong> Rare to have both practice leadership and hands-on delivery in a single resource.</li>
+        <li><strong>Vendor-neutral.</strong> Recommends fit, not a single product line.</li>
+        <li><strong>Lean and direct.</strong> Low overhead, direct access to the principal, fast turnaround.</li>
+      </ul>
+    </div>
+
+    <div class="col-r">
+      <h2>Company Snapshot</h2>
+      <dl class="snap">
+        <div class="row"><dt class="k">UEI</dt><dd class="v">NJLEHNAQATJ6</dd></div>
+        <div class="row"><dt class="k">CAGE</dt><dd class="v">22XM3</dd></div>
+        <div class="row"><dt class="k">Founded</dt><dd class="v">2026 · Florida</dd></div>
+        <div class="row"><dt class="k">Location</dt><dd class="v">Punta Gorda, FL</dd></div>
+      </dl>
+      <div class="sdv">SDVOSB · SBA-certified service-disabled veteran-owned small business · certified 2026, valid through 08/2029</div>
+
+      <h2>NAICS</h2>
+      <dl class="snap">
+        <div class="row"><dt class="k">Primary</dt><dd class="v">541512</dd></div>
+        <div class="row"><dt class="k">Additional</dt><dd class="v">541511 · 541618 · 541990</dd></div>
+      </dl>
+
+      <h2>PSC</h2>
+      <dl class="snap">
+        <div class="row"><dt class="k">Primary</dt><dd class="v">DA01</dd></div>
+        <div class="row"><dt class="k">Also</dt><dd class="v">DD01 &middot; DA10</dd></div>
+      </dl>
+
+      <h2>Certifications</h2>
+      <p style="font-size:12.5px;margin:0;">65+ active vendor and technical certifications across AI, data, automation, and analytics (Credly-verified). Detail on request.</p>
+    </div>
+  </main>
+
+  <div class="proof">
+    <h2>Demonstrated Capability</h2>
+    <ul class="grid">
+      <li><strong>Contract-opportunity monitor:</strong> automation polling the SAM.gov API, filtering by NAICS, set-aside, and keyword, AI fit-scoring, and publishing a live dashboard.</li>
+      <li><strong>Scheduled data screener:</strong> a pipeline running weekly via GitHub Actions and publishing results to a public web endpoint.</li>
+      <li><strong>AI-agent skill library:</strong> a versioned repository of custom agent skills for research, document generation, and data tasks.</li>
+      <li><strong>brianbeals.com:</strong> a Next.js site on Vercel with CI/CD deploys, demonstrating modern web build and cloud delivery.</li>
+    </ul>
+    <p style="font-size:11.5px;color:#555;margin:6px 0 0;">Newly formed; no federal past performance yet. The builds above evidence delivery capability; positioned to subcontract under a prime to build a federal record.</p>
+  </div>
+
+  <footer>
+    <svg viewBox="0 0 32 32" width="16" height="16" role="presentation" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="6" fill="#1E3A5F"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+    <span>&copy; Brian Beals, LLC &middot; brianbeals.com &middot; <script>document.write(new Date().getFullYear())</script><br>
+    This document as HTML, and every capability statement in both formats: <strong>brianbeals.com/documents</strong></span>
+  </footer>
+  <div class="navhr"></div>
+</div>
+</body>
+</html>

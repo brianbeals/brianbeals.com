@@ -44,31 +44,31 @@ const docs: Doc[] = [
   {
     name: "ADA Title II Digital Accessibility",
     note: "28 CFR 35.200 for state and local government, and the April 26 2027 deadline.",
-    html: null,
+    html: "/capability-statement-accessibility.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf",
   },
   {
     name: "Section 508 Digital Accessibility",
     note: "Federal agencies and their contractors.",
-    html: null,
+    html: "/capability-statement-accessibility-federal.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf",
   },
   {
     name: "Maryland Digital Accessibility and Nonvisual Access",
     note: "The § 3.5-311 nonvisual access clause, and the CATS+ vehicle.",
-    html: null,
+    html: "/capability-statement-accessibility-maryland.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Maryland.pdf",
   },
   {
     name: "Capability Statement",
     note: "General. AI, analytics, and enterprise technology.",
-    html: null,
+    html: "/capability-statement.html",
     pdf: "/Brian-Beals-LLC-Capability-Statement-Federal.pdf",
   },
   {
     name: "Capability Statement, State and Local",
     note: "General, framed for state and local buyers.",
-    html: null,
+    html: "/capability-statement-state-local.html",
     pdf: "/Brian-Beals-LLC-Capability-Statement-Florida.pdf",
   },
 ];
@@ -83,15 +83,11 @@ export default function Documents() {
         >
           Capability statements
         </h1>
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+        <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
           Each of these is published in two formats. The PDF conforms to PDF/UA-1
           (ISO 14289-1), verified with veraPDF rather than asserted by the tool
           that wrote it. The HTML is the same document as a web page, for reading
           on a phone or pasting into a portal.
-        </p>
-        <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
-          Where a document shows no HTML link yet, only the PDF is published. The
-          HTML versions are being added one at a time.
         </p>
 
         <ul className="space-y-6">

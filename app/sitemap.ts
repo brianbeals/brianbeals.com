@@ -27,6 +27,10 @@ const STATIC_PAGES: StaticEntry[] = [
   // competing with a handicap.
   { path: "/accessibility/healthcare", priority: 0.8, changeFrequency: "monthly" },
   { path: "/accessibility/maryland", priority: 0.7, changeFrequency: "monthly" },
+  // Every capability statement in both formats. The short URL printed in the
+  // footer of every PDF, so it has to resolve for as long as any of those PDFs
+  // is in circulation, which is longer than any of them is current.
+  { path: "/documents", priority: 0.7, changeFrequency: "monthly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },

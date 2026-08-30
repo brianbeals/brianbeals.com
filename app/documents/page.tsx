@@ -100,10 +100,20 @@ export default function Documents() {
                 {d.note}
               </p>
               <p className="text-sm">
+                {/* The visible text stays "HTML" and "PDF", which is what a
+                    sighted reader needs beside a name they just read. The
+                    accessible name carries the document, because a screen
+                    reader's links list is flat: without this it reads twelve
+                    entries as HTML, PDF, HTML, PDF, with no way to tell which
+                    document any of them belongs to. WCAG 2.4.4.
+
+                    Found by scanning this site on the day the page shipped,
+                    which is the argument for scanning your own work. */}
                 {d.html ? (
                   <>
                     <a
                       href={d.html}
+                      aria-label={`${d.name}, HTML version`}
                       className="underline underline-offset-4 hover:no-underline"
                       style={{ color: "var(--link)" }}
                     >
@@ -116,6 +126,7 @@ export default function Documents() {
                 ) : null}
                 <a
                   href={d.pdf}
+                  aria-label={`${d.name}, PDF version`}
                   className="underline underline-offset-4 hover:no-underline"
                   style={{ color: "var(--link)" }}
                 >

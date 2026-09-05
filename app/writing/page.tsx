@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "sixty-cents-a-year",
+    title: "Sixty Cents a Year",
+    date: "2026-09-05",
+    summary:
+      "Six tubs of ice cream since February, two of them free. The thing that found the free ones is a rules engine with exactly one model call bolted to the end, and it costs sixty cents a year to run. What that says about the other conversation I'm in every week.",
+  },
+  {
     slug: "i-built-the-thing",
     title: "I Built the Thing",
     date: "2026-08-22",

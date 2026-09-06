@@ -16,7 +16,15 @@ browser: Divisions & Revenue, Technology Initiatives (AI / Analytics / Automatio
 Cyber), and Key Contacts. Same three sections the Excel skill produces, same research
 brief, public sources only.
 
-## Current site (confirmed)
+## Status
+
+Built and shipped. `middleware.ts`, `app/login`, `app/tools/account-intel`, and the
+`app/api/account-intel/*` routes (`start`, `status`, `result`, plus a `history` route
+added later) are in the repo. The gate is a signed-cookie login form at `/login`, not the
+Basic Auth this scope recommended. What follows is the original scope, kept for the
+reasoning behind the architecture.
+
+## Site at the time this was written
 
 - Next.js 16.2.4, App Router, React 19, TypeScript, Tailwind v4.
 - Hosted on Vercel. Uses `@vercel/analytics`.

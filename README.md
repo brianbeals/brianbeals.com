@@ -4,7 +4,7 @@ Source for [brianbeals.com](https://brianbeals.com), my personal site and writin
 
 ## What's here
 
-Home, about, contact, and an "elsewhere" page with links out. A writing section at [`/writing`](https://brianbeals.com/writing) holds my essays. There's also a password-gated tools area under `/tools` for work that isn't public yet.
+Home, about, contact, and an "elsewhere" page with links out. A writing section at [`/writing`](https://brianbeals.com/writing) holds my essays. An [`/accessibility`](https://brianbeals.com/accessibility) section carries the Brian Beals, LLC conformance-report practice, with its Maryland and healthcare pages and the capability statements at `/documents`. The tools area under `/tools` is password-gated, except [`/tools/voice-critique`](https://brianbeals.com/tools/voice-critique), which is public.
 
 ## Stack
 

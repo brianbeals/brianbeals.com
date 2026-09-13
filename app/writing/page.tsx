@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "everybody-got-a-license",
+    title: "Everybody Got a License",
+    date: "2026-09-19",
+    summary:
+      "My AI spend went up tenfold this year and I can account for every step, which turns out to be the unusual part. The industry solved cost metering: rate cards, token billing, a specification, a conference named after the unit. The number nobody can produce is still the useful one.",
+  },
+  {
     slug: "sixty-cents-a-year",
     title: "Sixty Cents a Year",
     date: "2026-09-05",

@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "who-could-afford-to-find-out",
+    title: "Who Could Afford to Find Out",
+    date: "2026-10-03",
+    summary:
+      "Uber turned on Claude Code in December and burned through its 2026 AI coding budget by April. Eight months later it had an answer. Most companies bought a $30 seat for everybody instead, and a year later can't say what came back. One of them bought an experiment. The other bought a subscription.",
+  },
+  {
     slug: "everybody-got-a-license",
     title: "Everybody Got a License",
     date: "2026-09-19",

@@ -36,7 +36,7 @@ const projects: { name: string; description: string; links: ProjectLink[] }[] = 
   {
     name: "Sector Rotation Screener",
     description:
-      "A Python pipeline that scores the 11 SPDR sector ETFs against three signals: seasonality, economic-cycle fit, and relative strength. Backtests 15 years against SPY. Runs every Sunday via GitHub Actions, asks Claude for a plain-language read on the output, and commits the dashboard back to the repo. The banner up top reports whether the strategy is beating SPY net of trading costs, and it leads with that number whichever way it points. Fifteen years in, the two are close enough that the honest answer moves around: currently ahead on return and on drawdown, behind on Sharpe.",
+      "A Python pipeline that scores the 11 SPDR sector ETFs against three signals: seasonality, economic-cycle fit, and relative strength. Backtests 15 years against SPY. Runs every Sunday via GitHub Actions, asks Claude for a plain-language read on the output, and commits the dashboard back to the repo. The banner up top reports whether the strategy is beating SPY net of trading costs, and it leads with that number whichever way it points. Fifteen years in, the two are close enough that the answer moves between runs, which is why the live page reports it and this one does not.",
     links: [
       { label: "Live", href: "https://sector.brianbeals.com" },
       { label: "Code", href: "https://github.com/brianbeals/sector-rotation-screener" },

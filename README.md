@@ -35,7 +35,7 @@ The routine is a one-shot workflow plus a branch:
 
 Two things that have bitten this routine:
 
-- **Schedule a few minutes past the hour.** Essay 6's cron was `0 13 25 7 *` and GitHub dropped it outright; top of the hour is the heaviest window on Actions and scheduled jobs there are shed first. That publish had to be fired by hand from the Actions tab. Use `:07` or similar. Actions cron is best-effort regardless and can run 0 to 15 minutes late.
+- **Schedule a few minutes past the hour.** Essay 6's cron was `0 13 25 7 *` and GitHub dropped it outright; top of the hour is the heaviest window on Actions and scheduled jobs there are shed first. That publish had to be fired by hand from the Actions tab. Use `:07` or similar. Actions cron is best-effort regardless: essay 10's `:07` cron still fired 3h16m late on September 19. Arm a second cron 30 minutes later as a backup (the merge is idempotent) and treat `workflow_dispatch` as the reliable path. The n8n essay dispatcher in the `n8n-automation` repo finds any armed `publish-essay-NN.yml` on `main` and dispatches it.
 - **Never cut the essay branch from a reverted commit.** If a publish commit was reverted on `main`, that commit is already an ancestor of `main` and merging a branch containing it does nothing at all. Branch from current `main` and re-apply the files as a fresh commit (`git checkout <publish-sha> -- app/writing` is the simplest way).
 
 Because the workflow deletes itself on every publish, `.github/workflows/` is normally empty between essays. An empty workflows directory is the expected resting state, not a sign the routine was lost. This section is the durable copy of the routine; the workflow file is disposable.

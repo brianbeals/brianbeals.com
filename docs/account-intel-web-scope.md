@@ -21,7 +21,11 @@ brief, public sources only.
 Built and shipped. `middleware.ts`, `app/login`, `app/tools/account-intel`, and the
 `app/api/account-intel/*` routes (`start`, `status`, `result`, plus a `history` route
 added later) are in the repo. The gate is a signed-cookie login form at `/login`, not the
-Basic Auth this scope recommended. What follows is the original scope, kept for the
+Basic Auth this scope recommended. The worker is the separate `account-intel` repo
+(`.github/workflows/account-intel.yml`). As built, the Vercel env vars are `GH_TOKEN`,
+`GH_OWNER`, `GH_REPO`, `GH_WORKFLOW`, `GH_REF`, `SITE_GATE_SECRET`, and `SITE_GATE_PASSWORD`,
+not the names listed below, and the key inventory lives in `claude-skills/docs/api-keys.md`
+(names only). What follows is the original scope, kept for the
 reasoning behind the architecture.
 
 ## Site at the time this was written

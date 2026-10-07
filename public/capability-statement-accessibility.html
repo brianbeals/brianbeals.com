@@ -103,6 +103,32 @@
        cannot reach without this. #555 on #16202B is roughly 3:1 and fails. */
     .proof p[style]{color:#B4C2D0 !important;}
   }
+
+  /* Print. Letter-size, light palette regardless of the OS theme, the page
+     footer handed to the renderer (render_print_pdf.py draws the BB byline and
+     page numbers), and the two-column body kept intact. */
+  @media print{
+    :root{--bg:#fff;--ink:#1A1A2A;--muted:#6B7280;--accent:#2673A8;--green:#1E8449;--alert:#B7791F;color-scheme:light;}
+    @page{size:letter;margin:0.6in 0.6in 0.9in;}
+    html,body{background:#fff;color:var(--ink);}
+    .page{max-width:none;box-shadow:none;background:#fff;}
+    .skip,footer{display:none;}
+    .navhr{display:none;}
+    header{padding:16px 22px;break-inside:avoid;}
+    .brand .name{font-size:22px;}
+    .ribbon,.clock{padding-left:22px;padding-right:22px;}
+    .col-r{background:#fbfcfe;border-left-color:#e5e8ec;width:250px;padding:14px 22px 10px 16px;}
+    .col-l{padding:14px 20px 6px 22px;}
+    .proof{padding:4px 22px 10px;}
+    .clock{background:#FEF6E7;color:#6b5410;}
+    .vbe{background:#e5f3ea;}
+    .lead,.svc .d{color:#333;}
+    h2{break-after:avoid;margin-top:12px;}
+    .svc,.proof li,.snap,.vbe{break-inside:avoid;}
+    li{margin-bottom:3px;}
+    a{color:inherit;text-decoration:none;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
 </style>
 </head>
 <body>

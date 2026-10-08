@@ -118,7 +118,33 @@
     header{padding:16px 22px;break-inside:avoid;}
     .brand .name{font-size:22px;}
     .ribbon,.clock{padding-left:22px;padding-right:22px;}
-    .col-r{background:#fbfcfe;border-left-color:#e5e8ec;width:250px;padding:14px 22px 10px 16px;}
+    /* The sidebar floats on screen; a float split across a page break leaves
+       gaps. On paper it becomes a full-width band under the main text, in two
+       columns. col-r precedes col-l in source, so the band is ordered first
+       with flex and the main text follows. */
+    main{display:flex;flex-direction:column;}
+    main::after{display:none;}
+    .col-l{order:1;}
+    .col-r{order:2;float:none;width:auto;border-left:none;border-top:1px solid #e5e8ec;
+           background:#fbfcfe;padding:12px 22px 8px;column-count:2;column-gap:28px;}
+    .col-r h2{margin-top:8px;break-after:avoid;}
+    .col-r h2:first-child{margin-top:0;}
+    .snap,.vbe{break-inside:avoid;}
+    .snap .k{white-space:nowrap;}
+    .col-r p{break-inside:avoid;}
+    /* Type scale for print. 1,200 words plus the sidebar runs to three pages at
+       screen size; this holds it to two. */
+    p,li,.svc .d,.snap,.proof p{font-size:11px !important;line-height:1.4;}
+    .lead{font-size:11.5px;}
+    .clock{font-size:11px;padding:6px 22px;}
+    h2{font-size:11.5px;margin:10px 0 5px;}
+    .svc{margin-bottom:6px;}
+    .svc .t{font-size:11.5px;}
+    li{margin-bottom:3px;}
+    .proof li{margin-bottom:5px;}
+    .proof .grid{column-gap:18px;}
+    .vbe{font-size:10.5px;padding:4px 8px;}
+    .snap th,.snap td{padding:2px 0;}
     .col-l{padding:14px 20px 6px 22px;}
     .proof{padding:4px 22px 10px;}
     .clock{background:#FEF6E7;color:#6b5410;}

@@ -31,6 +31,16 @@ const STATIC_PAGES: StaticEntry[] = [
   // footer of every PDF, so it has to resolve for as long as any of those PDFs
   // is in circulation, which is longer than any of them is current.
   { path: "/documents", priority: 0.7, changeFrequency: "monthly" },
+  // The HTML capability statements themselves, static files under public/.
+  // Linked only from /documents and never listed here, so the accessibility
+  // scan's crawl never found them and the conformance report left all six out
+  // of its evaluated set until 2026-10-08.
+  { path: "/capability-statement.html", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/capability-statement-state-local.html", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/capability-statement-accessibility.html", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/capability-statement-accessibility-federal.html", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/capability-statement-accessibility-healthcare.html", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/capability-statement-accessibility-maryland.html", priority: 0.5, changeFrequency: "monthly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },

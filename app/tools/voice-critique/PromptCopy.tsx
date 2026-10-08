@@ -48,6 +48,13 @@ export default function PromptCopy() {
         >
           {copied ? "Copied" : "Copy prompt"}
         </button>
+        {/* 4.1.3 Status Messages. The button's text change alone is not
+            reliably announced, so the confirmation also goes to a polite live
+            region. The region is rendered empty from the start, because one
+            inserted along with its text is often not announced at all. */}
+        <span role="status" aria-live="polite" className="sr-only">
+          {copied ? "Prompt copied to the clipboard" : ""}
+        </span>
       </div>
       {/* 2.1.1 Keyboard. This block scrolls (max-h-96 overflow-auto), so a
           keyboard user needs to be able to focus it to scroll it. Without

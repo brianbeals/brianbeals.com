@@ -3,6 +3,9 @@ import type { ReactNode } from "react";
 /**
  * EssayByline — the navy BB mark plus the author byline that closes every essay.
  * Shared so the brand mark lives in one place; existing and future essays inherit it.
+ * The mark is hidden from assistive technology, as it is everywhere else on the
+ * site: the byline beside it already names Brian Beals, and a labelled mark made
+ * VoiceOver say the name twice. Labelled from 2026-05-31 to 2026-10-08.
  *
  * Attribution is controlled two ways:
  *  - `variant` picks a stock byline. Default is "personal" (neutral, no employer).
@@ -41,8 +44,8 @@ export default function EssayByline({
         width="22"
         height="22"
         className="flex-none"
-        aria-label="Brian Beals"
-        role="img"
+        aria-hidden="true"
+        focusable="false"
       >
         <rect width="32" height="32" rx="6" fill="#1E3A5F" />
         <text

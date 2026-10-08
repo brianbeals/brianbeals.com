@@ -48,6 +48,9 @@ const STATIC_PAGES: StaticEntry[] = [
   // on the human site map since 2026-08-30 and never here, so crawlers only
   // found it by following a link.
   { path: "/conformance-report.html", priority: 0.6, changeFrequency: "monthly" },
+  // The August 30, 2026 report, kept at its own address once the October 8
+  // re-evaluation took /conformance-report.html. The current report cites it.
+  { path: "/conformance-report-2026-08-30.html", priority: 0.2, changeFrequency: "yearly" },
   // The human-readable site map. It exists to satisfy WCAG 2.4.5 Multiple Ways,
   // and it was reachable from the footer but absent from the XML sitemap, so
   // search engines had no idea it was there.

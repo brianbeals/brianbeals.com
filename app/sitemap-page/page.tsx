@@ -26,6 +26,7 @@ const sections = [
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },
       { href: "/documents", label: "Capability statements", note: "Every capability statement, in HTML and as a PDF/UA-1 conformant PDF. The short URL the document footers point at." },
       { href: "/conformance-report.html", label: "Accessibility Conformance Report", note: "This site's own VPAT 2.5 report. Linked from three pages and, until August 30 2026, missing here, which left it locatable only one way." },
+      { href: "/conformance-report-2026-08-30.html", label: "Accessibility Conformance Report, August 30, 2026", note: "The prior report, superseded by the October 8 2026 re-evaluation and kept so the current report's citation resolves." },
       { href: "/elsewhere", label: "Elsewhere", note: "Other places this work shows up." },
       { href: "/contact", label: "Contact", note: "Email, LinkedIn, and GitHub." },
     ],

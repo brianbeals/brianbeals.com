@@ -39,6 +39,14 @@ const sections = [
       // live page has been reachable only one way, after /accessibility/maryland
       // and the conformance report. The two routes drift because only one of
       // them is generated.
+      // Same drift again on 2026-10-08: the three essays published since
+      // September 5 were in the XML sitemap and on /writing, and not here.
+      // The accessibility scan did not catch it, because its 2.4.5 check asks
+      // whether every page links to this list, not whether this list links to
+      // every page.
+      { href: "/writing/who-could-afford-to-find-out", label: "Who Could Afford to Find Out", note: "October 3, 2026" },
+      { href: "/writing/everybody-got-a-license", label: "Everybody Got a License", note: "September 19, 2026" },
+      { href: "/writing/sixty-cents-a-year", label: "Sixty Cents a Year", note: "September 5, 2026" },
       { href: "/writing/i-built-the-thing", label: "I Built the Thing", note: "August 22, 2026" },
       { href: "/writing/ai-is-not-automation", label: "AI Is Not Automation", note: "August 8, 2026" },
       { href: "/writing/seeing-the-next-rung", label: "Seeing the Next Rung", note: "July 25, 2026" },

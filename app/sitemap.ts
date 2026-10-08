@@ -34,6 +34,10 @@ const STATIC_PAGES: StaticEntry[] = [
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },
+  // This site's own conformance report, a static file under public/. Listed
+  // on the human site map since 2026-08-30 and never here, so crawlers only
+  // found it by following a link.
+  { path: "/conformance-report.html", priority: 0.6, changeFrequency: "monthly" },
   // The human-readable site map. It exists to satisfy WCAG 2.4.5 Multiple Ways,
   // and it was reachable from the footer but absent from the XML sitemap, so
   // search engines had no idea it was there.

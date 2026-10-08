@@ -76,6 +76,7 @@
      footer handed to the renderer (render_print_pdf.py draws the BB byline and
      page numbers), and the two-column body kept intact. */
   @media print{
+    header .brand svg{width:40px !important;height:40px !important;}
     :root{--bg:#fff;--ink:#1A1A2A;--muted:#6B7280;--accent:#2673A8;--green:#1E8449;--alert:#B7791F;color-scheme:light;}
     @page{size:letter;margin:0.6in 0.6in 0.9in;}
     html,body{background:#fff;color:var(--ink);}

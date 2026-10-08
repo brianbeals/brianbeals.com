@@ -55,10 +55,14 @@ function H2({ children }: { children: React.ReactNode }) {
    labelling it would make a screen reader announce the name twice. */
 function BBMarkInverse() {
   return (
+    // aria-hidden as well as alt="": on October 8, 2026 VoiceOver in Safari
+    // read the SVG's own text aloud as "BB" despite the empty alt, intermittently.
+    // Every other BB mark on the site was already aria-hidden.
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='white'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='%231E3A5F' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E"
       alt=""
+      aria-hidden="true"
       width={40}
       height={40}
     />

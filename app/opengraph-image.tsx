@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const alt =
-  "Brian Beals, LLC. Independent digital accessibility evaluation for Florida public entities. AI, analytics and automation consulting.";
+  "Brian Beals, LLC. Independent digital accessibility evaluation for public entities. AI, analytics and automation consulting.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -135,7 +135,7 @@ export default async function Image() {
             marginBottom: 36,
           }}
         >
-          Independent digital accessibility evaluation for Florida public entities. AI, analytics and automation consulting.
+          Independent digital accessibility evaluation for public entities. AI, analytics and automation consulting.
         </div>
 
         <div style={{ display: "flex", fontSize: 26, fontWeight: 700, color: BLUE }}>

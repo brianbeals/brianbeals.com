@@ -94,7 +94,7 @@ export default function Home() {
           Brian Beals, LLC
         </h1>
         <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
-          Independent digital accessibility evaluation for Florida public entities. AI, analytics and automation consulting from someone who builds what he recommends.
+          Independent digital accessibility evaluation for public entities. AI, analytics and automation consulting from someone who builds what he recommends.
         </p>
         {/* No hero image, on purpose. The text opens the page; the headshot
             lives in "Who does the work" below and is the only photo. */}

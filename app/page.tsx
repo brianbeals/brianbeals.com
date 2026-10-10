@@ -209,7 +209,7 @@ export default function Home() {
                 className="rounded-md shadow-sm w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] object-cover mb-5"
               />
               <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
-                <strong style={{ color: "var(--head)" }}>Brian Beals</strong>. Navy electronics technician. Every evaluation is done by me, by hand and by screen reader, and I sign it.
+                <strong style={{ color: "var(--head)" }}>Brian Beals</strong>. Navy veteran, electronics technician by training. Built and led enterprise data and AI practices before this, and did the delivery underneath them. Every evaluation is done by me, by hand and by screen reader, and I sign it.
               </p>
             </div>
             <div>

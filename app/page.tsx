@@ -33,7 +33,7 @@ const services = [
     name: "Program and Policy Setup",
     href: "/accessibility#program-and-policy",
     description:
-      "The accessibility statement, ADA coordinator designation, grievance procedure and self-evaluation record the rule expects, and procurement language requiring an ACR before purchase.",
+      "The accessibility statement, ADA coordinator designation, grievance procedure and self-evaluation record the rule expects. Plus procurement language that requires an ACR before you buy.",
   },
 ];
 
@@ -88,45 +88,22 @@ export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-2xl mx-auto">
-        <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
-          {/* TWO SEPARATE JOBS, DELIBERATELY NOT SOLVED BY THE SAME KNOB.
-
-              Getting the high-resolution headshot into Google Images is the
-              IMAGE SITEMAP's job (see app/sitemap.ts). That entry nominates the
-              raw 3093x3369 /brian-beals.jpg, not a _next/image variant, so the
-              crawler never has to choose among downscaled candidates.
-              Person.image in the JSON-LD points at the same file.
-
-              Rendering this element is a different job, and the only thing that
-              matters here is being honest and fast. It carries `priority` and is
-              the homepage LCP element.
-
-              `sizes` MUST describe the real display width. An earlier pass set
-              it to 640px against a 180px box; the browser believed it and pulled
-              a 1280 or 1920 candidate on retina to paint a 180px square, and the
-              emitted `src` resolved to w=3840. Overstating `sizes` to chase the
-              index is a performance regression that buys nothing the sitemap has
-              not already delivered. */}
-          <Image
-            src="/brian-beals.jpg"
-            alt="Brian Beals, Director of AI, Analytics and Automation"
-            width={400}
-            height={400}
-            sizes="(min-width: 640px) 200px, 180px"
-            className="rounded-md shadow-sm w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] object-cover"
-            priority
-          />
-        </div>
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
           Brian Beals, LLC
         </h1>
         <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
-          Independent digital accessibility evaluation for Florida public entities, and AI, analytics and automation consulting from someone who builds what he recommends.
+          Independent digital accessibility evaluation for Florida public entities. AI, analytics and automation consulting from someone who builds what he recommends.
         </p>
+        {/* No hero image, on purpose. The text opens the page; the headshot
+            lives in "Who does the work" below and is the only photo. */}
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          A veteran-owned firm in Punta Gorda. If you run the website for a Florida county, city, school district or hospital, you have a date: April 26, 2027 for most public entities, April 26, 2028 for the smaller ones, and May 11, 2027 for hospitals under Section 504. I tell you where you stand against WCAG 2.1 Level AA and what to fix first, in a signed Accessibility Conformance Report.
+        </p>
+        {/* Its own paragraph, as a rule rather than a feature. */}
         <p className="text-base sm:text-lg leading-relaxed mb-12 text-neutral-800">
-          A veteran-owned firm in Punta Gorda. For a county, city, school district or hospital facing the ADA Title II and Section 504 dates, I tell you where your web accessibility stands against WCAG 2.1 Level AA and what to fix first, in a signed Accessibility Conformance Report. I write the report; I do not do the remediation, and that is what makes it independent.
+          I do not sell remediation. A conformance report from a firm that also sells the fix is a sales document. Mine is not, and that is the reason to hire me.
         </p>
-        <section className="clear-both mb-12 pb-12 border-b border-neutral-200">
+        <section className="mb-12 pb-12 border-b border-neutral-200">
           <h2
             className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
             style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
@@ -188,6 +165,64 @@ export default function Home() {
             <Link href="/documents" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
               Capability statements
             </Link>
+          </div>
+        </section>
+        <section className="mb-12 pb-12 border-b border-neutral-200">
+          <h2
+            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
+            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+          >
+            Who does the work, and how long it takes
+          </h2>
+          {/* Key Personnel is scored in public-sector RFPs, so this block names
+              the person. No certifications here: those live on /accessibility
+              and the capability statements, and nothing here may imply an IAAP
+              credential. */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              {/* TWO SEPARATE JOBS, DELIBERATELY NOT SOLVED BY THE SAME KNOB.
+
+                  Getting the high-resolution headshot into Google Images is the
+                  IMAGE SITEMAP's job (see app/sitemap.ts). That entry nominates the
+                  raw 3093x3369 /brian-beals.jpg, not a _next/image variant, so the
+                  crawler never has to choose among downscaled candidates.
+                  Person.image in the JSON-LD points at the same file.
+
+                  Rendering this element is a different job, and the only thing that
+                  matters here is being honest and fast. Until 2026-10-10 it sat at
+                  the top of the page with `priority` as the LCP element. It now sits
+                  below the fold, so `priority` is gone and it lazy-loads; the LCP is
+                  the H1 text.
+
+                  `sizes` MUST describe the real display width. An earlier pass set
+                  it to 640px against a 180px box; the browser believed it and pulled
+                  a 1280 or 1920 candidate on retina to paint a 180px square, and the
+                  emitted `src` resolved to w=3840. Overstating `sizes` to chase the
+                  index is a performance regression that buys nothing the sitemap has
+                  not already delivered. */}
+              <Image
+                src="/brian-beals.jpg"
+                alt="Brian Beals"
+                width={400}
+                height={400}
+                sizes="(min-width: 640px) 200px, 180px"
+                className="rounded-md shadow-sm w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] object-cover mb-5"
+              />
+              <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
+                <strong style={{ color: "var(--head)" }}>Brian Beals</strong>. Navy electronics technician. Every evaluation is done by me, by hand and by screen reader, and I sign it.
+              </p>
+            </div>
+            <div>
+              <ol className="list-decimal pl-6 space-y-3 text-base sm:text-lg leading-relaxed text-neutral-800 mb-6">
+                <li>First call, 30 minutes, free.</li>
+                <li>Scope and fixed quote within a week.</li>
+                <li>Evaluation, two to four weeks.</li>
+                <li>Signed report, remediation list and a walkthrough with your team.</li>
+              </ol>
+              <p className="text-base leading-relaxed text-neutral-800">
+                Purchase order or credit card. Under most direct-purchase thresholds, so no RFP.
+              </p>
+            </div>
           </div>
         </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">

@@ -33,7 +33,11 @@ Order of sections, top to bottom. Headings are H1 then H2s; no skipped levels.
 
 *Independent digital accessibility evaluation for Florida public entities, and AI, analytics and automation consulting from someone who builds what he recommends.*
 
-A veteran-owned firm in Punta Gorda. For a county, city, school district or hospital facing the ADA Title II and Section 504 dates, I tell you where you stand against WCAG 2.1 Level AA and what to fix first, in a signed Accessibility Conformance Report. I write the report; I do not do the remediation, and that is what makes it independent.
+A veteran-owned firm in Punta Gorda. If you run the website for a Florida county, city, school district or hospital, you have a date: April 26, 2027 for most public entities, April 26, 2028 for the smaller ones, and May 11, 2027 for hospitals under Section 504. I tell you where you stand against WCAG 2.1 Level AA and what to fix first, in a signed Accessibility Conformance Report.
+
+I do not sell remediation. A conformance report from a firm that also sells the fix is a sales document. Mine is not, and that is the reason to hire me.
+
+(Revised 2026-10-10 after the SBDC competitor-website worksheet. Of the five firms that bid Charlotte County's RFP, none puts the compliance date or the words county, city or school district on its home page, and three of the five sell remediation. The date goes in the first paragraph and the independence line stands as its own paragraph, as a rule rather than a feature. Keep both exactly as written unless the readability check objects.)
 
 ### H2: Accessibility services
 
@@ -51,6 +55,14 @@ Under the cards, one line: "Dates: April 26, 2027 for public entities serving 50
 
 Two sentences and two links. "This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 8, 2026 with scripted and by-ear screen reader testing, is public." Links: the ACR (/conformance-report.html) and the capability statements (/documents).
 
+### H2: Who does the work, and how long it takes
+
+Added 2026-10-10 from the competitor worksheet: the best thing on any of the five sites is QualityLogic's "Who You'll Work With" block, named people with photos and years, next to a plain first-call-to-kickoff timeline. Procurement scores Key Personnel (40 of 100 points on Charlotte County's RFP), so the home page should show it knows that.
+
+Two columns, or stacked on a phone. Left: the existing headshot (reuse the image and the JSON-LD Person; do not add a second copy of the photo), then: "**Brian Beals**. Navy electronics technician. Thirty-five years in enterprise data, analytics and AI before this. Every evaluation is done by me, by hand and by screen reader, and I sign it." Right, a four-step timeline with no graphics beyond a numbered list: "1. First call, 30 minutes, free. 2. Scope and fixed quote within a week. 3. Evaluation, two to four weeks. 4. Signed report, remediation list and a walkthrough with your team." Under it, one line: "Purchase order or credit card. Under most direct-purchase thresholds, so no RFP."
+
+No certifications in this block. Brian holds no IAAP certification (CPACC or WAS); never imply one. The SDVOSB and VBE certifications live on /accessibility and the capability statements, where procurement looks for them. No tenure counts or start years beyond "thirty-five years." Nothing names a former employer.
+
 ### H2: AI, analytics and automation
 
 Keep the current paragraph, moved here and trimmed to positioning. Suggested: "The second practice. I've built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn't." No services list, no pricing, no engagement names. The two stat tiles stay here if Brian wants them; see the note on the Sirius tile below.
@@ -65,6 +77,8 @@ The existing projects section, unchanged, moved below the practices. It is the c
 - **Headshot and JSON-LD** stay as they are; the Person schema is correct and the image sitemap logic in the comments is deliberate.
 - **Reading level.** The SBDC asked for public-facing copy at roughly an eighth-grade level. The copy above was written to that; run it through a readability check and flag anything that comes back above tenth grade rather than rewriting it silently.
 - **Alt text, no image-as-text, no skipped headings, every card a real link.** The scanner will catch the first three; make the fourth true by hand.
+- **Words that do not appear anywhere on the home page or /accessibility:** comprehensive, streamline, solutions, empower, seamless, leverage, robust, innovative, journey, holistic, cutting-edge. Every competitor site uses them in every paragraph and they read as filler. Grep for them before the commit. "Services" is fine; "solutions" is not.
+- **No hero image.** All five competitors open with text; the two that use imagery read most generic. The headshot in the new "Who does the work" section is the only photo. If a visual is ever added, it is a cropped sample of the real conformance report, not stock art. Logo work stays parked.
 - **Metadata.** Title and description on the home page should name the accessibility practice first. Suggested description: "Independent ADA Title II and Section 504 digital accessibility evaluation for Florida public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida."
 
 ## 4. After the build
@@ -171,6 +185,66 @@ All home and accessibility copy taken together scores FK 10.5, Flesch reading ea
 - **The /accessibility meta description is unchanged.** The brief only set the title.
 - **The headshot alt reads "Director of AI, Analytics and Automation"** and now sits under an H1 that names the LLC. It's unchanged per section 3.
 - **This file is still in the repo.** The global rule is to delete the TODO in the commit that lands the work, but the scan section below still has to be filled in. Delete it in the scan commit.
+
+## Report back: second pass, 2026-10-10
+
+This pass builds the edits added to this file this morning, plus three fixes Brian approved. It's typechecked, linted, built, committed, and pushed. The scan didn't run and the ACR wasn't regenerated.
+
+### What changed
+
+- **Lede:** the revised lede is in, word for word. Paragraph one carries the dates, and "I do not sell remediation." is its own paragraph. This replaces the "I write the report; I do not do the remediation" sentence.
+- **New H2, "Who does the work, and how long it takes"**, sits between Proof and the AI section. It's two columns, stacked on a phone. On the left is the headshot, then the bio line. On the right is a four-step numbered list, then the payment line. It names no certifications and no former employer. The bio paragraph keeps the sentence period outside `<strong>`.
+- **No hero image:** the headshot moved out of the top float into the new section, and there's still only one copy of it. The JSON-LD and image sitemap are unchanged. The image dropped `priority`: it's below the fold now, so the H1 text is the LCP element. The LCP comment is updated to say so.
+- **Fix 1:**
+  - The subhead is now two sentences, split at "entities. AI, analytics".
+  - The Program and Policy card is now two sentences, ending "Plus procurement language that requires an ACR before you buy." The Program H3 copy on /accessibility matches.
+- **Fix 2:** the /accessibility proof section now describes the October 8 report: 30 pages, 6 documents, 33 Supports, 17 Not Applicable, and nothing Partially Supports. I checked those numbers against `public/conformance-report.html` (50 rows: 33 Supports, 17 Not Applicable).
+  - With no partial left, the old paragraph defending the 2.4.5 partial was wrong. I rewrote it to say the August 30 report marked 2.4.5 partial, the fix, and that the August report stays published.
+  - The "four criteria settled by a person" paragraph was also stale. It now says 23 checklist answers came from the scripted keyboard pass and that VoiceOver across 12 pages confirmed four criteria by ear. Both facts come from the October 8 report.
+- **Fix 3:** the headshot alt is now "Brian Beals".
+- **README:** the home-page description now includes the new section and the no-hero-image rule.
+
+### Held out, needs Brian
+
+- **"Thirty-five years in enterprise data, analytics and AI before this." isn't on the page.** The global rule says never to cite a tenure count in public copy, and its own example is "30+ years". The brief makes an exception, but a brief can't override that rule, so I left the sentence out. The bio currently reads: "**Brian Beals**. Navy electronics technician. Every evaluation is done by me, by hand and by screen reader, and I sign it." If Brian wants the sentence, it goes back in after "technician."
+
+### Flags
+
+- **"web accessibility" is no longer on the home page.** The first pass got it there by changing the lede to "where your web accessibility stands". The revised lede is to be kept exactly as written, so it now reads "where you stand". /accessibility still uses the term once. The other seven search terms are still on both pages.
+- **Two first-call lengths:** the timeline says "First call, 30 minutes". The Getting started section on /accessibility still says "Twenty minutes is usually enough." Pick one.
+- **Two "the proof" headings:** the home page's H2 is "Proof" and /accessibility's is "The proof". That's harmless, just noting it.
+
+### Banned words
+
+I grepped the source and the rendered HTML of both pages for comprehensive, streamline, solutions, empower, seamless, leverage, robust, innovative, journey, holistic, and cutting-edge. None appear.
+
+### Readability (Flesch-Kincaid grade, Gunning Fog)
+
+Approved copy, flagged and **not rewritten**:
+
+| Block | FK | Fog | |
+|---|---|---|---|
+| Home subhead, split | 17.8 | 24.0 | **above 10**: the split helped (21.3 before), but both halves are noun stacks |
+| Lede paragraph 1 | 8.6 | 10.4 | |
+| Lede paragraph 2 | 4.8 | 8.0 | |
+| Program and Policy card, split | 15.6 | 16.5 | **above 10**: down from 22.0, but the first sentence is still five compound nouns |
+| Who: bio, as built | 8.2 | 9.9 | |
+| Who: timeline | 4.1 | 5.7 | |
+| Who: payment line | 6.4 | 5.7 | |
+
+New copy I wrote, all under 10:
+
+| Block | FK | Fog |
+|---|---|---|
+| /accessibility proof, paragraph 1 | 7.2 | 8.6 |
+| /accessibility proof, paragraph 2 (2.4.5) | 7.7 | 9.1 |
+| /accessibility proof, paragraph 3 (method) | 7.2 | 8.1 |
+
+My first drafts of paragraphs 1 and 3 scored 14.8 and 12.1, so I tightened them before committing.
+
+### Build, typecheck, lint
+
+All three passed. The only warning is the same Node DEP0205 deprecation from the toolchain. Rendered headings: home is h1, h2, h3×3, h2 Proof, h2 Who does the work, h2 AI, h2 Building in public, h3×5. /accessibility has no skipped levels. The home page has one image, alt "Brian Beals".
 
 ## Scan and ACR delta (to fill in after Brian signs off on the copy)
 

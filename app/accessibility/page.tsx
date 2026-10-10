@@ -179,8 +179,8 @@ export default function Accessibility() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The accessibility statement, ADA coordinator designation, grievance procedure and
-          self-evaluation record the rule expects, and procurement language requiring an ACR
-          before purchase.
+          self-evaluation record the rule expects. Plus procurement language that requires an
+          ACR before you buy.
         </p>
 
         <H2>What you get</H2>
@@ -274,34 +274,33 @@ export default function Accessibility() {
 
         <H2>The proof</H2>
 
+        {/* Matches the October 8, 2026 report. Change these numbers only when the
+            report is regenerated, and change the home page Proof line with them. */}
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. Nineteen pages and all
-          six published documents, evaluated against all 50 Level A and AA criteria on
-          August 30, 2026: <strong style={{ color: "var(--head)" }}>31 Supports</strong>,{" "}
-          <strong style={{ color: "var(--head)" }}>18 Not Applicable</strong>, and{" "}
-          <strong style={{ color: "var(--head)" }}>1 Partially Supports</strong>, with
-          nothing marked Does Not Support and nothing left unevaluated. The document layer
-          passed too: all six PDFs are tagged, with structure, language, title and figure
-          labelling verified.
+          This site carries its own Accessibility Conformance Report. It covers thirty pages
+          and all six published documents, tested against all 50 Level A and AA criteria.
+          The latest run was October 8, 2026. The result:{" "}
+          <strong style={{ color: "var(--head)" }}>33 Supports</strong> and{" "}
+          <strong style={{ color: "var(--head)" }}>17 Not Applicable</strong>. Nothing is
+          marked Partially Supports or Does Not Support, and nothing was left out. All six
+          PDFs are tagged and pass veraPDF.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The partial is 2.4.5 Multiple Ways, and it is left in on purpose. This report is
-          reachable two ways, from five pages that link it and from the site map, which is
-          what the criterion asks. What it does not carry is site navigation of its own,
-          because it is a standalone document meant to be forwarded. The automated check
-          tests whether every page links to the site map, which over-reports on a document
-          of that kind. Recording it is more useful than arguing it away, and a firm that
-          evaluates its own site and publishes nothing but green has told you less than one
-          that shows its edges.
+          The August 30 report marked one criterion Partially Supports: 2.4.5 Multiple Ways,
+          because the report itself did not link the site map. Every page now does, the
+          report included, and the October 8 report marks it Supports. The August report
+          stays published at its own address, so the change is on the record rather than
+          quietly replaced. A firm that evaluates its own site should show its edges, and
+          its fixes.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Four criteria were settled by a person rather than by the scan: meaningful
-          sequence, keyboard traps, headings and labels, and change of context on focus.
-          Those were checked by tabbing the site with a keyboard and listening to it with
-          VoiceOver, including the headings and links lists through the rotor. Reading order
-          cannot be scored mechanically, and no report from this practice will claim it was.
+          A person, not the scan, settled 23 checklist answers. They came from a scripted
+          keyboard pass: Tab to the end of every page and back, then hover on every link.
+          Then a VoiceOver pass in Safari, across 12 pages, confirmed four criteria by ear.
+          Reading order can&apos;t be scored by a machine, and no report from this practice
+          will claim it was.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

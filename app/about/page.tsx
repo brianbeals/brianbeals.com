@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -36,7 +37,7 @@ export default function About() {
         </div>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I've built and grown three enterprise technology practices, each at a different stage.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "var(--head)" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I took from <strong style={{ color: "var(--head)" }}>$20M to $78M</strong> in under four years (<strong style={{ color: "var(--head)" }}>3.9×</strong>). Now I'm at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "var(--head)" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I founded and built to <strong style={{ color: "var(--head)" }}>$78M</strong> in under four years. Now I'm at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Before that, technical sales at Red Hat, Oracle, and MicroStrategy. The practice work I do now depends on knowing the products, the channels, and the customer's procurement model from inside, not from a marketing deck.</p>
 
@@ -72,6 +73,9 @@ export default function About() {
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
+
+        {/* Off the main nav since 2026-10-10. This line and the site map are its two routes. */}
+        <p className="text-base sm:text-lg leading-relaxed mt-12 text-neutral-800"><Link href="/elsewhere" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>Elsewhere</Link>: adventure travel, mostly to places where the signal goes away.</p>
       </article>
     </div>
   );

@@ -14,18 +14,18 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL("https://brianbeals.com"),
   title: {
-    default: "Brian Beals | AI, Analytics & Automation",
+    default: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
     template: "%s | Brian Beals",
   },
   description:
-    "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+    "Independent ADA Title II and Section 504 digital accessibility evaluation for Florida public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Brian Beals | AI, Analytics & Automation",
+    title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
     description:
-      "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+      "Independent ADA Title II and Section 504 digital accessibility evaluation for Florida public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     url: "/",
     siteName: "Brian Beals",
     images: ["/opengraph-image"],
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Beals | AI, Analytics & Automation",
+    title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
     description:
-      "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+      "Independent ADA Title II and Section 504 digital accessibility evaluation for Florida public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     images: ["/opengraph-image"],
   },
 };
@@ -156,6 +156,19 @@ const personJsonLd = {
   ],
 };
 
+// Ordered for the public-sector buyer: what is sold, then the procurement
+// documents, then everything else. Services points at /accessibility until the
+// AI page joins it. /elsewhere is off the nav on purpose and linked from the
+// bottom of /about and from the site map.
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/accessibility", label: "Services" },
+  { href: "/documents", label: "Capability Statements" },
+  { href: "/writing", label: "Writing" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -177,32 +190,18 @@ export default function RootLayout({
         </a>
         <header className="px-6 sm:px-12 pt-8 pb-2">
           {/* 1.4.10 Reflow. On one line the nav needs 403px, so at the 320px
-              WCAG target it overflowed and forced horizontal scrolling. Both
-              rows now wrap, and the link gap tightens on narrow viewports. */}
+              WCAG target it overflowed and forced horizontal scrolling. The
+              links wrap, and the gap tightens on narrow viewports. Six items
+              since 2026-10-10, so it wraps sooner than it did; that is fine. */}
           <nav
             aria-label="Main"
-            className="max-w-2xl mx-auto flex flex-wrap items-center justify-between gap-y-2 text-sm"
+            className="max-w-2xl mx-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm sm:gap-x-6"
           >
-            <Link href="/" className="font-semibold tracking-tight text-base">
-              Brian Beals
-            </Link>
-            <div className="flex flex-wrap gap-x-4 gap-y-1 sm:gap-x-6">
-              <Link href="/about" className="hover:underline underline-offset-4">
-                About
+            {navLinks.map((l) => (
+              <Link key={l.href} href={l.href} className="hover:underline underline-offset-4">
+                {l.label}
               </Link>
-              <Link href="/writing" className="hover:underline underline-offset-4">
-                Writing
-              </Link>
-              <Link href="/accessibility" className="hover:underline underline-offset-4">
-                Accessibility
-              </Link>
-              <Link href="/elsewhere" className="hover:underline underline-offset-4">
-                Elsewhere
-              </Link>
-              <Link href="/contact" className="hover:underline underline-offset-4">
-                Contact
-              </Link>
-            </div>
+            ))}
           </nav>
         </header>
         {/* tabIndex -1 makes main a valid focus target for the skip link.

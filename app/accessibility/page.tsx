@@ -2,30 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Accessibility Conformance Reports",
+  // absolute, so the layout's "%s | Brian Beals" template does not append a
+  // second name to a title that already ends in the firm's.
+  title: { absolute: "ADA Title II Website Accessibility Evaluation | Brian Beals, LLC" },
   // "SBA-certified" is load-bearing and deliberate. Primes and agency small
   // business offices filter on the certification, not on the phrase
   // "veteran-owned", which anyone can self-assert in SAM. The certification
   // issued 2026-08-06 and runs to 2029-08-05.
   //
-  // This page, not the homepage, is where the LLC's actual offering lives.
-  // The homepage stays pointed at AI and analytics on purpose; splitting the
-  // two audiences by page is what keeps the personal-brand search work intact
-  // while still giving a prime something to find. Do not merge them.
+  // Since 2026-10-10 the homepage leads with the accessibility practice too, and
+  // this page is the Services destination in the main nav. The homepage carries
+  // the summary and the cards; this page carries the detail each card links to.
+  // The AI practice stays positioning on the homepage, with no page of its own
+  // here, until it joins as a second service.
   description:
     "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports. ADA Title II for state and local government, Section 508 for federal agencies and the vendors who sell to them. SBA-certified service-disabled veteran-owned small business.",
   alternates: {
     canonical: "/accessibility",
   },
   openGraph: {
-    title: "Accessibility Conformance Reports | Brian Beals, LLC",
+    title: "ADA Title II Website Accessibility Evaluation | Brian Beals, LLC",
     description:
       "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports for Florida public entities facing the April 2027 Title II deadline.",
     url: "/accessibility",
     type: "website",
   },
   twitter: {
-    title: "Accessibility Conformance Reports | Brian Beals, LLC",
+    title: "ADA Title II Website Accessibility Evaluation | Brian Beals, LLC",
     description:
       "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports for Florida public entities facing the April 2027 Title II deadline.",
   },
@@ -47,6 +50,18 @@ function H2({ children }: { children: React.ReactNode }) {
     >
       {children}
     </h2>
+  );
+}
+
+function H3({ id, children }: { id?: string; children: React.ReactNode }) {
+  return (
+    <h3
+      id={id}
+      className="text-lg sm:text-xl font-semibold mt-8 mb-3 tracking-tight scroll-mt-6"
+      style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+    >
+      {children}
+    </h3>
   );
 }
 
@@ -130,6 +145,43 @@ export default function Accessibility() {
             districts land on the later date regardless of size.
           </p>
         </div>
+
+        {/* The three homepage cards link here by id. Keep the ids in step with
+            the services array in app/page.tsx. The H3 copy matches the cards. */}
+        <H2>Services</H2>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          These are built for a county, city, school district or special district getting
+          ready for the Title II date, and for the ADA coordinator who will be asked what was
+          done. Each one is digital accessibility (a11y) evaluation or the program paperwork
+          around it. None of them is the repair.
+        </p>
+
+        <H3 id="conformance-report">Conformance Report</H3>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Up to 25 pages across your site&apos;s templates, plus the documents linked from
+          them, against all 50 WCAG 2.1 A and AA criteria. An ACR in VPAT 2.5 format, an
+          accessibility audit report with evidence per criterion, and a prioritized
+          remediation list. Two to four weeks.
+        </p>
+
+        <H3 id="document-inventory">Document Inventory and Triage</H3>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Every PDF on your web properties cataloged and sorted: retire, replace with a web
+          page, remediate, or leave under the rule&apos;s exceptions. A work order a
+          remediation vendor can bid against, so per-page spend goes to the documents
+          residents use.
+        </p>
+
+        <H3 id="program-and-policy">Program and Policy Setup</H3>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          The accessibility statement, ADA coordinator designation, grievance procedure and
+          self-evaluation record the rule expects, and procurement language requiring an ACR
+          before purchase.
+        </p>
 
         <H2>What you get</H2>
 
@@ -235,7 +287,7 @@ export default function Accessibility() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The partial is 2.4.5 Multiple Ways, and it is left in on purpose. This report is
-          reachable two ways, from three pages that link it and from the site map, which is
+          reachable two ways, from five pages that link it and from the site map, which is
           what the criterion asks. What it does not carry is site navigation of its own,
           because it is a standalone document meant to be forwarded. The automated check
           tests whether every page links to the site map, which over-reports on a document
@@ -410,6 +462,42 @@ export default function Accessibility() {
             inaccessible document about accessibility has told you something.
           </p>
         </div>
+
+        <H2>Common questions</H2>
+
+        <H3>Is an Accessibility Conformance Report the same as an audit?</H3>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          They overlap. An accessibility audit finds the web accessibility problems and
+          records the evidence. The conformance report is the signed, dated verdict on each of
+          the 50 criteria. It uses the VPAT format your purchasing office already asks for.
+          You get both.
+        </p>
+
+        <H3>What does ADA Title II require by April 2027?</H3>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Every state entity, and every local government serving 50,000 or more, must have its
+          web content and mobile apps meet WCAG 2.1 Level AA by April 26, 2027. That includes
+          the documents posted on the site and content a vendor provides for you. Smaller
+          entities and special districts have until April 26, 2028.
+        </p>
+
+        <H3>Does the rule cover PDFs?</H3>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Yes. The rule calls them conventional electronic documents. They have to meet the
+          same standard as the page that links them. The exceptions are narrow: archived
+          content, and older files nobody uses to apply for or reach a service.
+        </p>
+
+        <H3>Do you do the remediation?</H3>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          No. A report written by whoever fixed the site is the vendor grading their own
+          homework, and your counsel will say so. Staying out of the repair keeps the report
+          independent. It also gives your remediation vendor a clear spec to bid against.
+        </p>
 
         <H2>Getting started</H2>
 

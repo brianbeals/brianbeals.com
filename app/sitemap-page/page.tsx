@@ -18,17 +18,19 @@ const sections = [
   {
     heading: "Main pages",
     links: [
-      { href: "/", label: "Home", note: "Practice areas and projects built in public." },
-      { href: "/about", label: "About", note: "Background, certifications, and how I work." },
-      { href: "/writing", label: "Writing", note: "Essays on AI, voice, and enterprise technology." },
-      { href: "/accessibility", label: "Accessibility", note: "Conformance reports, VPAT work, and capability statements." },
+      // Same order as the main nav, then the pages hanging off it. Elsewhere
+      // left the nav on 2026-10-10 and is reachable from /about and here.
+      { href: "/", label: "Home", note: "Accessibility services, the proof, the AI practice, and projects built in public." },
+      { href: "/accessibility", label: "Services", note: "Accessibility evaluation: conformance reports, document triage, program setup, and common questions." },
       { href: "/accessibility/healthcare", label: "Section 504 for Healthcare", note: "45 CFR Part 84, the May 11 2027 date, and what it means for patient-facing documents." },
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },
-      { href: "/documents", label: "Capability statements", note: "Every capability statement, in HTML and as a PDF/UA-1 conformant PDF. The short URL the document footers point at." },
-      { href: "/conformance-report.html", label: "Accessibility Conformance Report", note: "This site's own VPAT 2.5 report. Linked from three pages and, until August 30 2026, missing here, which left it locatable only one way." },
+      { href: "/documents", label: "Capability Statements", note: "Every capability statement, in HTML and as a PDF/UA-1 conformant PDF. The short URL the document footers point at." },
+      { href: "/conformance-report.html", label: "Accessibility Conformance Report", note: "This site's own VPAT 2.5 report. Linked from five pages and, until August 30 2026, missing here, which left it locatable only one way." },
       { href: "/conformance-report-2026-08-30.html", label: "Accessibility Conformance Report, August 30, 2026", note: "The prior report, superseded by the October 8 2026 re-evaluation and kept so the current report's citation resolves." },
-      { href: "/elsewhere", label: "Elsewhere", note: "Other places this work shows up." },
+      { href: "/writing", label: "Writing", note: "Essays on AI, voice, and enterprise technology." },
+      { href: "/about", label: "About", note: "Background, certifications, and how I work." },
       { href: "/contact", label: "Contact", note: "Email, LinkedIn, and GitHub." },
+      { href: "/elsewhere", label: "Elsewhere", note: "Adventure travel, mostly to places where the signal goes away." },
     ],
   },
   {

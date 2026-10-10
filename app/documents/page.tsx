@@ -16,12 +16,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Capability statements",
   description:
-    "Every Brian Beals, LLC capability statement, in HTML and as a PDF/UA-1 conformant PDF.",
+    "Capability statements for ADA Title II, Section 504 and Section 508 digital accessibility work, plus state and local AI and analytics consulting. HTML and PDF/UA-1 PDF.",
   alternates: { canonical: "/documents" },
   openGraph: {
     title: "Capability statements | Brian Beals, LLC",
     description:
-      "Every Brian Beals, LLC capability statement, in HTML and as a PDF/UA-1 conformant PDF.",
+      "Capability statements for ADA Title II, Section 504 and Section 508 digital accessibility work, plus state and local AI and analytics consulting. HTML and PDF/UA-1 PDF.",
     url: "/documents",
     type: "website",
   },

@@ -1,0 +1,178 @@
+# TODO: Home page and navigation for the buyers the site now serves
+
+Written 2026-10-09 in Cowork, from the SBDC consultation the same day. Brief for Claude Code. Brian approves the copy below before anything is built; do not start until he says so.
+
+## Why
+
+The site was built as a resume and a workshop. The navigation reads Brian Beals, About, Writing, Accessibility, Elsewhere, Contact, and the home page opens with the enterprise AI pitch. The buyers for the next year are ADA coordinators, county and city IT, school districts, hospitals and health centers, and the purchasing offices that serve them. They arrive looking for a service and a conformance report and have to dig for both. The SBDC's read, which Brian agrees with: shorten the path from landing to "this is what they sell and here is the proof."
+
+Two constraints from the same meeting. The site is under an Accessibility Conformance Report dated October 8, 2026, so every change is rescanned and the report regenerated before it is final; the renderer and the scanner both enforce heading order and the rest. And the AI, analytics and automation consulting stays positioning, not a service with its own pages, until Brian has given notice at his employer; nothing in this brief adds AI service pages.
+
+## 1. Navigation
+
+Replace the main nav with six items, in this order:
+
+| Label | Href | Note |
+|---|---|---|
+| Home | / | unchanged |
+| Services | /accessibility | the existing accessibility page; the AI page joins it in January |
+| Capability Statements | /documents | the page the PDF footers already point to; today it is not in the nav at all |
+| Writing | /writing | keep the label; they are essays, and "Blogs" would be less accurate without being more findable |
+| About | /about | unchanged |
+| Contact | /contact | unchanged |
+
+Remove Elsewhere from the nav. Keep the page (it is the human part of the site) and link it from the bottom of About with one line: "Elsewhere: adventure travel, mostly to places where the signal goes away." Update sitemap-page and the footer links to match. Keep the skip link, the aria-label on the nav, and the current focus styling.
+
+## 2. Home page
+
+Order of sections, top to bottom. Headings are H1 then H2s; no skipped levels.
+
+### H1 and lede (replaces the current opening)
+
+**Brian Beals, LLC**
+
+*Independent digital accessibility evaluation for Florida public entities, and AI, analytics and automation consulting from someone who builds what he recommends.*
+
+A veteran-owned firm in Punta Gorda. For a county, city, school district or hospital facing the ADA Title II and Section 504 dates, I tell you where you stand against WCAG 2.1 Level AA and what to fix first, in a signed Accessibility Conformance Report. I write the report; I do not do the remediation, and that is what makes it independent.
+
+### H2: Accessibility services
+
+Three cards, each a link to the matching section of /accessibility:
+
+**Conformance Report.** Up to 25 pages across your site's templates, plus the documents linked from them, against all 50 WCAG 2.1 A and AA criteria. An ACR in VPAT 2.5 format, an audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.
+
+**Document Inventory and Triage.** Every PDF on your web properties cataloged and sorted: retire, replace with a web page, remediate, or leave under the rule's exceptions. A work order a remediation vendor can bid against, so per-page spend goes to the documents residents use.
+
+**Program and Policy Setup.** The accessibility statement, coordinator designation, grievance procedure and self-evaluation record the rule expects, and procurement language requiring an ACR before purchase.
+
+Under the cards, one line: "Dates: April 26, 2027 for public entities serving 50,000 or more and for every state entity; April 26, 2028 for smaller entities and special districts. Hospitals and health centers under Section 504: May 11, 2027 for 15 or more employees, May 10, 2028 under 15." (Dates per the HHS extension of May 11, 2026, document 2026-09266, already on /accessibility/healthcare; keep them matching.) Link the line to /accessibility.
+
+### H2: Proof
+
+Two sentences and two links. "This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 8, 2026 with scripted and by-ear screen reader testing, is public." Links: the ACR (/conformance-report.html) and the capability statements (/documents).
+
+### H2: AI, analytics and automation
+
+Keep the current paragraph, moved here and trimmed to positioning. Suggested: "The second practice. I've built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn't." No services list, no pricing, no engagement names. The two stat tiles stay here if Brian wants them; see the note on the Sirius tile below.
+
+### H2: Building in public
+
+The existing projects section, unchanged, moved below the practices. It is the credibility for both practices and the proof that "builds what he recommends" is literal. Keep the closing paragraph and the two links (More about my work, Get in touch).
+
+## 3. Things to fix while in there
+
+- **Sirius stat tile.** It reads "$20M to $78M, Sirius Big Data and Analytics, 3.9x in under four years." Brian founded that practice; there was no practice and no leader before him, only scattered product sales. "$20M to" implies he inherited a $20M practice. Reword to match the business plan: "Founded the Big Data and Analytics group and built it to $78M in under four years." Same for any other place the figure appears.
+- **Headshot and JSON-LD** stay as they are; the Person schema is correct and the image sitemap logic in the comments is deliberate.
+- **Reading level.** The SBDC asked for public-facing copy at roughly an eighth-grade level. The copy above was written to that; run it through a readability check and flag anything that comes back above tenth grade rather than rewriting it silently.
+- **Alt text, no image-as-text, no skipped headings, every card a real link.** The scanner will catch the first three; make the fourth true by hand.
+- **Metadata.** Title and description on the home page should name the accessibility practice first. Suggested description: "Independent ADA Title II and Section 504 digital accessibility evaluation for Florida public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida."
+
+## 4. After the build
+
+Approved by Brian 2026-10-10 with one change to the sequence: **build, typecheck, lint, commit and push so it deploys, then stop.** Brian reads the live site first and may want copy tweaks. Do not run the a11y-audit scan or regenerate the ACR until he says the copy is final; the scan and the ACR delta note ("home page and navigation reorganized for public-sector buyers; 30 pages; no verdict changed" or whatever is true) happen once, after his sign-off, so the report is not regenerated twice. The scanner's own heading-order and alt checks still run as part of the build.
+
+Report back at the bottom of this file after the push: what changed, the readability scores, which of the eight search terms landed on which page, and anything the lint or build flagged. Leave a second section for the scan results to fill in later.
+
+## 5. Search terms
+
+Added 2026-10-10 after a Search Console read (property https://brianbeals.com/, last three months): 223 impressions, 7 clicks, every visible query is Brian's name or a misspelling. /accessibility draws the most impressions of any page (102) and no clicks. A grep of home, /accessibility, /documents, /about and the layout shows the regulatory vocabulary is covered (ADA, Title II, Accessibility Conformance Report, ACR, WCAG 2.1, VPAT, Section 504, Section 508, PDF/UA, SDVOSB) and the buyer vocabulary is absent: "web accessibility" 0, "accessibility audit" 0, "ADA coordinator" 0, "county" 0, "city" 0, "school district" 0, "accessibility statement" 1, "a11y" 0.
+
+Do this in the same pass, not as a separate project:
+
+- **Titles.** Home per section 3 (accessibility practice first). /accessibility: "ADA Title II Website Accessibility Evaluation | Brian Beals, LLC". The layout's default title and the Open Graph and Twitter titles in `app/layout.tsx` change with it; they still read "AI, Analytics & Automation".
+- **Buyer vocabulary in real sentences, once each, on the home page and /accessibility:** web accessibility, accessibility audit, ADA coordinator, county, city, school district, special district, accessibility statement. The home copy in section 2 already carries county, city, school district and hospital; give /accessibility the same. Write sentences, not a keyword list; the scanner's readability check applies here too.
+- **a11y.** Once, in body copy on /accessibility, as "digital accessibility (a11y)". Industry shorthand, not buyer vocabulary; once is enough.
+- **One FAQ-style H2 on /accessibility**, three or four questions as H3s, each answered in two or three sentences: "Is an Accessibility Conformance Report the same as an audit?", "What does ADA Title II require by April 2027?", "Does the rule cover PDFs?", "Do you do the remediation?" (no, and why that matters). These match how people search and are what AI answers quote from.
+- **The /documents description** should say what the documents are for: "Capability statements for ADA Title II, Section 504 and Section 508 digital accessibility work, plus state and local AI and analytics consulting. HTML and PDF/UA-1 PDF."
+- **Leave alone:** EN 301 549 (federal and EU vendor vocabulary; not this year's buyer), and the deliberate note in `app/accessibility/page.tsx` about keeping the AI audience on the home page, which section 2 supersedes. Update that comment so it no longer contradicts the home page.
+
+After the build, note in the report-back which of the eight terms landed on which page.
+
+## Not in this brief
+
+Logo changes (parked), the LLC LinkedIn company page (separate), the competitor hero-image review (Brian does that with the SBDC worksheet first), and any AI service page.
+
+## Report back: build, 2026-10-10
+
+Built from sections 1, 2, 3 and 5, then typechecked, linted, committed, and pushed. The a11y-audit scan didn't run and the ACR wasn't regenerated.
+
+### What changed
+
+- **Nav** (`app/layout.tsx`): six links in the order Home, Services (/accessibility), Capability Statements (/documents), Writing, About, Contact. Skip link, `aria-label="Main"`, the `:focus-visible` styling, and the wrapping for reflow at 320px are all unchanged. The old "Brian Beals" wordmark was the Home link, so the header no longer shows his name. The six items now include "Home", as the brief specified. Elsewhere is off the nav.
+- **Layout metadata:** the default, Open Graph, and Twitter titles now read "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics". The description is the one suggested in section 3. JSON-LD is unchanged, including Person.description and jobTitle, which still describe the AI practice.
+- **Home** (`app/page.tsx`): H1 "Brian Beals, LLC", then the subhead and lede, then H2 Accessibility services with three cards, the dates line, H2 Proof, H2 AI, analytics and automation (with the two stat tiles), H2 Building in public, the closing paragraph, and the two links. Each card is a real `<a>`: the link sits on the H3 title and a stretched `::after` makes the whole card the click target, so the link's accessible name stays the short title. The headshot and its alt text are unchanged.
+- **/accessibility:** the title is now "ADA Title II Website Accessibility Evaluation | Brian Beals, LLC". It uses `title.absolute` so the layout template doesn't append a second name. The OG and Twitter titles match. The comment about splitting audiences was rewritten so it no longer contradicts the home page. Two sections were added: a new H2 **Services** with three H3s carrying the card copy verbatim (ids `conformance-report`, `document-inventory`, `program-and-policy`), and a new H2 **Common questions** with the four H3 questions.
+- **/documents:** the description is now the one in section 5.
+- **/about:** the Sirius line now reads "which I founded and built to $78M in under four years". The 3.9× is gone because it only made sense against the $20M base. The Elsewhere line is now the closing paragraph.
+- **Sirius stat tile:** the figure is now "$78M" with the label "Founded the Big Data and Analytics group at Sirius and built it to $78M in under four years". The figure also appeared in `public/r/michael-downs-…html`, and that copy now reads "Sirius founded and built to $78M".
+- **Site map page:** links are now in nav order, Accessibility is relabeled Services, and the Elsewhere note now reads the travel line. The ACR note's "Linked from three pages" is now "five", since the home page and /documents link it too.
+- **Footer:** it only carries the Site map link, so it didn't need changes.
+- **README:** the site description now matches the new nav and home page.
+
+### Departures from the brief, and copy I wrote that you haven't seen
+
+1. **The card targets didn't exist.** /accessibility had no sections for Document Inventory or Program and Policy Setup. I added the Services H2 and its three H3s, reusing your approved card copy word for word, so each card has a real anchor.
+2. **Three words added to approved home copy** to land the search terms: "where **your web accessibility stands** against WCAG" (lede), "an **accessibility** audit report" (Conformance card), and "**ADA** coordinator designation" (Program card). The Services H3s on /accessibility carry the same edits.
+3. **New copy on /accessibility that you haven't reviewed:** the Services intro paragraph and all four FAQ answers. The first drafts of three answers scored above grade 10, so I tightened them before committing. The scores below are for the committed versions.
+4. **"from three pages that link it" is now "five"** in the /accessibility proof section. The home page made the old count wrong.
+
+### Readability (textstat; Flesch-Kincaid grade, Gunning Fog)
+
+Approved copy, flagged and **not rewritten**:
+
+| Block | FK | Fog | |
+|---|---|---|---|
+| Home subhead | 21.3 | 27.4 | **above 10**: one 23-word sentence with a stacked noun phrase |
+| Home lede | 9.3 | 10.2 | |
+| Card: Conformance Report | 7.2 | 9.8 | |
+| Card: Document Inventory and Triage | 12.0 | 15.0 | **above 10** |
+| Card: Program and Policy Setup | 22.0 | 21.5 | **above 10**: one 25-word sentence, mostly multisyllable nouns |
+| Dates line | 11.0 | 13.4 | **above 10**: dates and conditions; hard to lower without splitting |
+| Proof | 12.6 | 11.3 | **above 10**: "re-evaluated … by-ear screen reader testing" clause |
+| AI paragraph | 11.3 | 13.9 | **above 10** |
+| Sirius tile | 7.8 | 9.4 | |
+| Elsewhere line | 9.1 | 4.4 | |
+
+New copy I wrote:
+
+| Block | FK | Fog |
+|---|---|---|
+| /accessibility Services intro | 9.6 | 10.7 |
+| FAQ: ACR vs audit | 9.3 | 10.9 |
+| FAQ: Title II by April 2027 | 7.6 | 7.6 |
+| FAQ: PDFs | 7.0 | 9.3 |
+| FAQ: remediation | 7.6 | 8.5 |
+
+All home and accessibility copy taken together scores FK 10.5, Flesch reading ease 48.6.
+
+### Search terms (counted in the rendered `<main>` of each page)
+
+| Term | Home | /accessibility |
+|---|---|---|
+| web accessibility | lede | FAQ, ACR vs audit |
+| accessibility audit | Conformance card | Services H3 copy, FAQ |
+| ADA coordinator | Program card | Services intro, Program H3 copy |
+| county | lede | Services intro |
+| city | lede | Services intro |
+| school district | lede | Services intro |
+| special district | dates line (plural "special districts") | dates card, Services intro, FAQ |
+| accessibility statement | Program card | Program H3 copy, proof section |
+| a11y | not on home, as the brief specified | "digital accessibility (a11y)", Services intro |
+
+### Build, typecheck, lint
+
+- `tsc --noEmit` and `eslint .` both passed with no output.
+- `next build` passed. Its only warning is Node's DEP0205 (`module.register()` deprecated), which comes from the toolchain, not the site.
+- `next build` doesn't run the scanner, so its heading-order and alt checks didn't run here, despite section 4's assumption. I checked the rendered heading sequence by hand. Home: h1, h2, h3×3, h2, h2, h2, h3×5. /accessibility: h1, then h2s and h3s with no skipped levels. /documents: h1, h2. All three pages have six nav links and the skip link.
+
+### Left alone, worth a look
+
+- **The /accessibility proof section still describes the August 30 report:** "Nineteen pages", 31/18/1, "August 30, 2026". The home page now cites the October 8 report. It belongs with the ACR regeneration.
+- **The /accessibility meta description is unchanged.** The brief only set the title.
+- **The headshot alt reads "Director of AI, Analytics and Automation"** and now sits under an H1 that names the LLC. It's unchanged per section 3.
+- **This file is still in the repo.** The global rule is to delete the TODO in the commit that lands the work, but the scan section below still has to be filled in. Delete it in the scan commit.
+
+## Scan and ACR delta (to fill in after Brian signs off on the copy)
+
+- a11y-audit scan:
+- ACR regeneration and delta note:

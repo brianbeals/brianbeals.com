@@ -7,8 +7,33 @@ const stats = [
     label: "Mainline Information Systems Business Analytics, five years",
   },
   {
-    figure: "$20M → $78M",
-    label: "Sirius Big Data & Analytics, 3.9× in under four years",
+    // Founded, not inherited. There was no practice and no leader before this
+    // one, only scattered product sales, so "$20M → $78M" misread as a takeover.
+    figure: "$78M",
+    label: "Founded the Big Data and Analytics group at Sirius and built it to $78M in under four years",
+  },
+];
+
+// Each card links to its section on /accessibility. Keep the ids in step with
+// the H3 ids there.
+const services = [
+  {
+    name: "Conformance Report",
+    href: "/accessibility#conformance-report",
+    description:
+      "Up to 25 pages across your site's templates, plus the documents linked from them, against all 50 WCAG 2.1 A and AA criteria. An ACR in VPAT 2.5 format, an accessibility audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
+  },
+  {
+    name: "Document Inventory and Triage",
+    href: "/accessibility#document-inventory",
+    description:
+      "Every PDF on your web properties cataloged and sorted: retire, replace with a web page, remediate, or leave under the rule's exceptions. A work order a remediation vendor can bid against, so per-page spend goes to the documents residents use.",
+  },
+  {
+    name: "Program and Policy Setup",
+    href: "/accessibility#program-and-policy",
+    description:
+      "The accessibility statement, ADA coordinator designation, grievance procedure and self-evaluation record the rule expects, and procurement language requiring an ACR before purchase.",
   },
 ];
 
@@ -93,29 +118,106 @@ export default function Home() {
           />
         </div>
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          Brian Beals
+          Brian Beals, LLC
         </h1>
         <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
-          I help enterprise organizations get real results out of their AI, analytics, and automation investments.
+          Independent digital accessibility evaluation for Florida public entities, and AI, analytics and automation consulting from someone who builds what he recommends.
         </p>
         <p className="text-base sm:text-lg leading-relaxed mb-12 text-neutral-800">
-          I've built and scaled enterprise data and AI practices three times, from a blank page to real revenue. The work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. The part where the technology either pays for itself or doesn't.
+          A veteran-owned firm in Punta Gorda. For a county, city, school district or hospital facing the ADA Title II and Section 504 dates, I tell you where your web accessibility stands against WCAG 2.1 Level AA and what to fix first, in a signed Accessibility Conformance Report. I write the report; I do not do the remediation, and that is what makes it independent.
         </p>
-        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 mb-12 pb-12 border-b border-neutral-200">
-          {stats.map((s) => (
-            <div key={s.figure}>
-              <dt
-                className="text-2xl sm:text-3xl font-semibold tracking-tight"
-                style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+        <section className="clear-both mb-12 pb-12 border-b border-neutral-200">
+          <h2
+            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
+            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+          >
+            Accessibility services
+          </h2>
+          {/* Every card is a real link. The anchor sits on the card title and
+              its ::after stretches over the whole card, so the click target is
+              the card while the link's accessible name stays the short title
+              rather than the whole description. */}
+          <ul className="grid grid-cols-1 gap-4 mb-6">
+            {services.map((c) => (
+              <li
+                key={c.href}
+                className="relative rounded-md border border-neutral-200 p-5 hover:border-neutral-400"
               >
-                {s.figure}
-              </dt>
-              <dd className="mt-2 text-sm text-neutral-600 leading-snug">
-                {s.label}
-              </dd>
-            </div>
-          ))}
-        </dl>
+                <h3 className="text-lg font-semibold tracking-tight mb-2">
+                  <Link
+                    href={c.href}
+                    className="underline underline-offset-4 after:absolute after:inset-0"
+                    style={{ color: "var(--link)" }}
+                  >
+                    {c.name}
+                  </Link>
+                </h3>
+                <p className="text-base leading-relaxed text-neutral-800">
+                  {c.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+          {/* Dates match /accessibility and /accessibility/healthcare, which
+              carries the HHS extension of May 11, 2026, document 2026-09266.
+              Change all three together. */}
+          <p className="text-base leading-relaxed text-neutral-800">
+            <Link
+              href="/accessibility"
+              className="underline underline-offset-4 hover:no-underline"
+              style={{ color: "var(--link)" }}
+            >
+              Dates: April 26, 2027 for public entities serving 50,000 or more and for every state entity; April 26, 2028 for smaller entities and special districts. Hospitals and health centers under Section 504: May 11, 2027 for 15 or more employees, May 10, 2028 under 15.
+            </Link>
+          </p>
+        </section>
+        <section className="mb-12 pb-12 border-b border-neutral-200">
+          <h2
+            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
+            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+          >
+            Proof
+          </h2>
+          <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+            This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 8, 2026 with scripted and by-ear screen reader testing, is public.
+          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
+            <a href="/conformance-report.html" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
+              Read the Accessibility Conformance Report
+            </a>
+            <Link href="/documents" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
+              Capability statements
+            </Link>
+          </div>
+        </section>
+        <section className="mb-12 pb-12 border-b border-neutral-200">
+          <h2
+            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
+            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+          >
+            AI, analytics and automation
+          </h2>
+          {/* Positioning only: no services list, no pricing, no engagement
+              names. That waits until the AI page joins /accessibility. */}
+          <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
+            The second practice. I&apos;ve built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn&apos;t.
+          </p>
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
+            {stats.map((s) => (
+              <div key={s.figure}>
+                <dt
+                  className="text-2xl sm:text-3xl font-semibold tracking-tight"
+                  style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+                >
+                  {s.figure}
+                </dt>
+                <dd className="mt-2 text-sm text-neutral-600 leading-snug">
+                  {s.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">
           <h2
             className="text-2xl sm:text-3xl font-semibold tracking-tight mb-8"

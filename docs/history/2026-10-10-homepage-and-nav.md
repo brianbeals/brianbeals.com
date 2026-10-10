@@ -246,7 +246,68 @@ My first drafts of paragraphs 1 and 3 scored 14.8 and 12.1, so I tightened them 
 
 All three passed. The only warning is the same Node DEP0205 deprecation from the toolchain. Rendered headings: home is h1, h2, h3×3, h2 Proof, h2 Who does the work, h2 AI, h2 Building in public, h3×5. /accessibility has no skipped levels. The home page has one image, alt "Brian Beals".
 
-## Scan and ACR delta (to fill in after Brian signs off on the copy)
+## Scan and ACR delta
 
-- a11y-audit scan:
-- ACR regeneration and delta note:
+### First attempt, 2026-10-10 morning: blocked
+
+The first scan ran after the final copy commit (`4c8b056`). It found 30 pages and 6 documents, with no automated verdict changed. The checklist marked 2.4.6 stale, and the report couldn't be regenerated until Brian re-read it, re-signed the answers, and decided what to do about the screen reader pass. He did all three. The final run is below.
+
+### Final run, 2026-10-10
+
+**Site changes before the final scan:**
+
+| Commit | Change |
+|---|---|
+| `93d5047` | Revised bio line in "Who does the work". No years and no employer; the sentence period is outside `<strong>`. |
+| `4e544c4` | The October 8 report is archived at `/conformance-report-2026-10-08.html`, the same way as the August one: a distinct title, a superseded notice, and listings in both site maps. The August archive's notice now points at it. The proof copy on /accessibility and the home page moved to October 10, and the page and link counts were updated. |
+
+Both were deployed before the final scan, so the archive is in the evaluated set.
+
+**Scan** (`findings-2026-10-10c.json`, same settings as October 8):
+- 31 pages. That's 30 plus the October 8 archive.
+- All 6 documents pass veraPDF. axe found no violations. The scan raised no advisories and hit no check errors.
+- **No automated verdict changed.** The October 8 and October 10 findings evaluate identically: 17 Supports, 9 Not Applicable, 22 human, 2 screen reader.
+
+**Scripted keyboard pass, rerun on all 31 live pages:**
+- Tab to the end and back, then a hover on every link.
+- No keyboard traps. Every Tab stop showed a visible focus outline, and nothing appeared on hover.
+- Record: `keyboard-pass-2026-10-10.json` in a11y-audit's `clients/brian-beals-llc/`.
+
+**Checklist** (`verify-2026-10-10.yml`):
+- 23 answers. Brian confirmed 2.4.6 against the new home and /accessibility outlines, so its review marker is deleted, and its note records the October 10 re-read.
+- Re-signed: "reviewed and signed by Brian Beals 2026-10-10".
+
+**Screen reader:**
+- The October 8 hand pass is carried into the new file **with its own date**, October 8, so the report doesn't claim a 12-page listen happened today.
+- The home and /accessibility page notes now record Brian's October 10 re-listen. The four criterion notes say what the October 10 capture did and didn't hear.
+- The capture is credited as its own scripted run.
+
+**VoiceOver capture** (`vo-capture-2026-10-10.yml`): the same 12 pages, against the live site, in keyboard mode.
+- `vo_analyze`: 84 of 84 checks agree with the October 8 hand pass, 60 Pass and 24 N/A, with nothing flagged. Validation: `vo-capture-validation-2026-10-10.md`.
+- On home and /accessibility the capture agrees with Brian's by-ear read. All seven checks are Pass or N/A, and the heading outlines match.
+- **No disagreement anywhere.** No verdict rests on screen reader evidence the capture didn't produce. The capture records heading lists but doesn't judge their meaning, so 2.4.6's meaning judgment rests on Brian's re-read, and the report says so.
+- **Observation, not a finding:** on the home page VoiceOver says "Brian Beals image" and then "Brian Beals. Navy veteran…", so the name is heard twice in a row. `vo_analyze` doesn't flag it, because the neighbouring text isn't an exact match. It doesn't fail 1.1.1. It's the same doubling the essay byline fix removed. The alt was left as Brian chose it.
+
+**A fix in a11y-audit:**
+- `report.py`'s delta said "A screen reader pass … new in this evaluation" and "previously decided by the scan" for a pass the prior report had already cited.
+- It now recognises a carried pass (same tester and date in the prior answers) and says "No new hand pass … carried forward".
+- `prior_verdicts` now folds in the prior report's screen reader answers, so 4.1.2 no longer rebuilds as "needs AT".
+- `tests/run_tests.py` passes.
+
+**ACR, October 10, 2026, published at `/conformance-report.html`:**
+- 31 pages and 6 documents: 33 Supports and 17 Not Applicable. No criterion changed its conformance level.
+- It cites `/conformance-report-2026-10-08.html` as the prior report.
+- The delta prints five `changes_since_prior` lines:
+  1. The home page and navigation were reorganized for public-sector buyers.
+  2. /accessibility gained the Services and Common questions sections.
+  3. The evaluated set grew to 31 pages with the October 8 archive.
+  4. Answers carried forward, with the 2.4.6 re-read and the keyboard pass rerun.
+  5. Screen reader: the October 8 pass stands, re-heard on two pages and confirmed by the October 10 capture on 84 of 84 checks.
+- The answer notes still count the pages evaluated on October 8, and the delta says so.
+
+**Print copy:** `LLC/FL-VBE/Accessibility-Practice/ACR_brianbeals.com_2026-10-10_PRINT.pdf`. It's 10 pages, passes PDF/UA-1 under veraPDF, and its footer is dated October 10, 2026. The audit report and ACR HTML also went to `clients/brianbeals-com/` in the same folder, `report.py`'s default location.
+
+**Site references updated:**
+- /accessibility proof: thirty-one pages, October 10, and both earlier reports at their own addresses. The method paragraph now includes the October 10 capture.
+- Home page Proof: October 10.
+- Site map: the current report is "linked from seven pages, two of them the archived reports", and the October 8 archive is listed.

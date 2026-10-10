@@ -1,16 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// No employer names and no tenure counts on the home page. /about carries the
+// career narrative.
 const stats = [
   {
-    figure: "$0 → $20M",
-    label: "Mainline Information Systems Business Analytics, five years",
+    figure: "$0 to $20M",
+    label: "Built a business analytics practice from nothing",
   },
   {
     // Founded, not inherited. There was no practice and no leader before this
     // one, only scattered product sales, so "$20M → $78M" misread as a takeover.
     figure: "$78M",
-    label: "Founded the Big Data and Analytics group at Sirius and built it to $78M in under four years",
+    label: "Founded a big data and analytics group and built it to $78M in under four years",
   },
 ];
 
@@ -200,9 +202,14 @@ export default function Home() {
                   emitted `src` resolved to w=3840. Overstating `sizes` to chase the
                   index is a performance regression that buys nothing the sitemap has
                   not already delivered. */}
+              {/* Decorative here: the bio beside it names Brian in its first
+                  words, and with alt="Brian Beals" VoiceOver read the name twice
+                  in a row (heard in the October 10 capture). The JSON-LD Person
+                  image and the image sitemap still identify the photo. */}
               <Image
                 src="/brian-beals.jpg"
-                alt="Brian Beals"
+                alt=""
+                aria-hidden="true"
                 width={400}
                 height={400}
                 sizes="(min-width: 640px) 200px, 180px"

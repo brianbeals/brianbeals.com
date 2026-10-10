@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const alt =
-  "Brian Beals. I help enterprise organizations get real results out of their AI, analytics, and automation investments.";
+  "Brian Beals, LLC. Independent digital accessibility evaluation for Florida public entities. AI, analytics and automation consulting.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,10 +15,10 @@ export const contentType = "image/png";
 // og-card.png so all four line up: mark 113px at 64,56, accent rule 163x9, domain
 // line in accent blue.
 //
-// Copy is deliberately personal-brand only. No LLC, no SDVOSB, no veteran status.
-// This URL is on the LinkedIn profile, so whatever is on this card is effectively
-// announced to LRS colleagues; the entity stays off it until that is a decision
-// rather than a side effect.
+// Copy matches the home page H1 and subhead since 2026-10-10, when the home page
+// moved to lead with the LLC. That was the decision this comment used to wait for:
+// this URL is on the LinkedIn profile, so the card is effectively announced to LRS
+// colleagues. Still no SDVOSB and no veteran status on the card.
 
 const NAVY = "#1E3A5F";
 const BLUE = "#2E86C1";
@@ -104,13 +104,15 @@ export default async function Image() {
         <div
           style={{
             display: "flex",
-            fontSize: 84,
+            // 84 until 2026-10-10. "Brian Beals, LLC" wraps at 84 in this column
+            // and pushes the domain line off the card; 72 keeps it on one line.
+            fontSize: 72,
             fontWeight: 700,
             letterSpacing: "-0.02em",
             marginBottom: 32,
           }}
         >
-          Brian Beals
+          Brian Beals, LLC
         </div>
 
         <div
@@ -133,7 +135,7 @@ export default async function Image() {
             marginBottom: 36,
           }}
         >
-          I help enterprise organizations get real results out of their AI, analytics, and automation investments.
+          Independent digital accessibility evaluation for Florida public entities. AI, analytics and automation consulting.
         </div>
 
         <div style={{ display: "flex", fontSize: 26, fontWeight: 700, color: BLUE }}>

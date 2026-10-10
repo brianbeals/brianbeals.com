@@ -161,7 +161,8 @@ export default function Accessibility() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Up to 25 pages across your site&apos;s templates, plus the documents linked from
-          them, against all 50 WCAG 2.1 A and AA criteria. An ACR in VPAT 2.5 format, an
+          them, against all 50 WCAG 2.1 A and AA web accessibility criteria. An ACR in VPAT
+          2.5 format, an
           accessibility audit report with evidence per criterion, and a prioritized
           remediation list. Two to four weeks.
         </p>
@@ -501,7 +502,7 @@ export default function Accessibility() {
         <H2>Getting started</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Twenty minutes is usually enough to tell whether this is worth your time. I will walk
+          Thirty minutes is usually enough to tell whether this is worth your time. I will walk
           you through what a sample of your site shows and what full scope would look like for
           an entity your size. If the timing is wrong, say so and I will leave it alone.
         </p>

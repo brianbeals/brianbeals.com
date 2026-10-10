@@ -21,7 +21,7 @@ const services = [
     name: "Conformance Report",
     href: "/accessibility#conformance-report",
     description:
-      "Up to 25 pages across your site's templates, plus the documents linked from them, against all 50 WCAG 2.1 A and AA criteria. An ACR in VPAT 2.5 format, an accessibility audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
+      "Up to 25 pages across your site's templates, plus the documents linked from them, against all 50 WCAG 2.1 A and AA web accessibility criteria. An ACR in VPAT 2.5 format, an accessibility audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
   },
   {
     name: "Document Inventory and Triage",

@@ -156,7 +156,7 @@ export default function Home() {
             Proof
           </h2>
           <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-            This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 8, 2026 with scripted and by-ear screen reader testing, is public.
+            This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 10, 2026 with scripted and by-ear screen reader testing, is public.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
             <a href="/conformance-report.html" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>

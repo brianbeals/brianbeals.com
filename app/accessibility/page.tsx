@@ -275,12 +275,12 @@ export default function Accessibility() {
 
         <H2>The proof</H2>
 
-        {/* Matches the October 8, 2026 report. Change these numbers only when the
+        {/* Matches the October 10, 2026 report. Change these numbers only when the
             report is regenerated, and change the home page Proof line with them. */}
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. It covers thirty pages
-          and all six published documents, tested against all 50 Level A and AA criteria.
-          The latest run was October 8, 2026. The result:{" "}
+          This site carries its own Accessibility Conformance Report. It covers thirty-one
+          pages and all six published documents, tested against all 50 Level A and AA criteria.
+          The latest run was October 10, 2026. The result:{" "}
           <strong style={{ color: "var(--head)" }}>33 Supports</strong> and{" "}
           <strong style={{ color: "var(--head)" }}>17 Not Applicable</strong>. Nothing is
           marked Partially Supports or Does Not Support, and nothing was left out. All six
@@ -290,9 +290,9 @@ export default function Accessibility() {
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The August 30 report marked one criterion Partially Supports: 2.4.5 Multiple Ways,
           because the report itself did not link the site map. Every page now does, the
-          report included, and the October 8 report marks it Supports. The August report
-          stays published at its own address, so the change is on the record rather than
-          quietly replaced. A firm that evaluates its own site should show its edges, and
+          report included, and the October 8 report marks it Supports. Both earlier
+          reports stay published at their own addresses, so the change is on the record
+          rather than quietly replaced. A firm that evaluates its own site should show its edges, and
           its fixes.
         </p>
 
@@ -300,7 +300,8 @@ export default function Accessibility() {
           A person, not the scan, settled 23 checklist answers. They came from a scripted
           keyboard pass: Tab to the end of every page and back, then hover on every link.
           Then a VoiceOver pass in Safari, across 12 pages, confirmed four criteria by ear.
-          Reading order can&apos;t be scored by a machine, and no report from this practice
+          On October 10 a scripted VoiceOver capture walked the same 12 pages and agreed with
+          the hand pass on all 84 checks. Reading order can&apos;t be scored by a machine, and no report from this practice
           will claim it was.
         </p>
 

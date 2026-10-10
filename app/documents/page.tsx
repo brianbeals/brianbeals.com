@@ -145,7 +145,7 @@ export default function Documents() {
         </h2>
         <p className="text-base leading-relaxed mb-3 text-neutral-800">
           brianbeals.com is evaluated against all 50 Level A and AA success
-          criteria and the result is published, including what it does not fully
+          criteria and the result is published, including anything it does not fully
           support.
         </p>
         <p className="text-sm">

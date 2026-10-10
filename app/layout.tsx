@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
+import { navLinks } from "./components/nav-links";
 import "./globals.css";
 
 const sourceSerif = Source_Serif_4({
@@ -155,19 +156,6 @@ const personJsonLd = {
     },
   ],
 };
-
-// Ordered for the public-sector buyer: what is sold, then the procurement
-// documents, then everything else. Services points at /accessibility until the
-// AI page joins it. /elsewhere is off the nav on purpose and linked from the
-// bottom of /about and from the site map.
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/accessibility", label: "Services" },
-  { href: "/documents", label: "Capability Statements" },
-  { href: "/writing", label: "Writing" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
 
 export default function RootLayout({
   children,

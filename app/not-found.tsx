@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { navLinks } from "./components/nav-links";
 
 export const metadata = {
   title: "Page not found",
@@ -15,18 +16,12 @@ export default function NotFound() {
           You probably want one of these instead.
         </p>
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-base">
-          <Link href="/" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-            Home
-          </Link>
-          <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-            About
-          </Link>
-          <Link href="/elsewhere" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-            Elsewhere
-          </Link>
-          <Link href="/contact" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-            Contact
-          </Link>
+          {/* Same six items as the main nav, in nav order, from one list. */}
+          {navLinks.map((l) => (
+            <Link key={l.href} href={l.href} className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
+              {l.label}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

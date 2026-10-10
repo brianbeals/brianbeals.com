@@ -23,14 +23,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ADA Title II Website Accessibility Evaluation | Brian Beals, LLC",
     description:
-      "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports for Florida public entities facing the April 2027 Title II deadline.",
+      "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports. ADA Title II for state and local government, Section 508 for federal agencies and the vendors who sell to them. SBA-certified service-disabled veteran-owned small business.",
     url: "/accessibility",
     type: "website",
   },
   twitter: {
     title: "ADA Title II Website Accessibility Evaluation | Brian Beals, LLC",
     description:
-      "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports for Florida public entities facing the April 2027 Title II deadline.",
+      "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports. ADA Title II for state and local government, Section 508 for federal agencies and the vendors who sell to them. SBA-certified service-disabled veteran-owned small business.",
   },
 };
 

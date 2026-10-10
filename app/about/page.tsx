@@ -37,6 +37,8 @@ export default function About() {
         </div>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I've built and grown three enterprise technology practices, each at a different stage.</p>
 
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The newest is Brian Beals, LLC, an independent digital accessibility evaluation practice for public entities: WCAG 2.1 AA conformance reports under ADA Title II, Section 504 and Section 508. I write the report and do not do the repair.</p>
+
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "var(--head)" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I founded and built to <strong style={{ color: "var(--head)" }}>$78M</strong> in under four years. Now I'm at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Before that, technical sales at Red Hat, Oracle, and MicroStrategy. The practice work I do now depends on knowing the products, the channels, and the customer's procurement model from inside, not from a marketing deck.</p>

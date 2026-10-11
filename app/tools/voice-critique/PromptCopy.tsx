@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const NAVY = "#1E3A5F";
 
 export default function PromptCopy() {
   const [text, setText] = useState("");
   const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState("");
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
   useEffect(() => {
     let active = true;
@@ -27,8 +31,19 @@ export default function PromptCopy() {
     if (!text) return;
     try {
       await navigator.clipboard.writeText(text);
+      timers.current.forEach(clearTimeout);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      // A second press inside two seconds left the text unchanged, so neither
+      // VoiceOver nor NVDA announced it (October 10, 2026 capture). Clear the
+      // region first, then set it, so every press is a change to announce.
+      setStatus("");
+      timers.current = [
+        setTimeout(() => setStatus("Prompt copied to the clipboard"), 150),
+        setTimeout(() => {
+          setCopied(false);
+          setStatus("");
+        }, 2000),
+      ];
     } catch {
       // Clipboard can be blocked; the user can still select the text manually.
     }
@@ -53,7 +68,7 @@ export default function PromptCopy() {
             region. The region is rendered empty from the start, because one
             inserted along with its text is often not announced at all. */}
         <span role="status" aria-live="polite" className="sr-only">
-          {copied ? "Prompt copied to the clipboard" : ""}
+          {status}
         </span>
       </div>
       {/* 2.1.1 Keyboard. This block scrolls (max-h-96 overflow-auto), so a

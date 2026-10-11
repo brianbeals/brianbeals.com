@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "Sixty Cents a Year",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           Sixty Cents a Year
         </h1>
+        <TopicLabel slug="sixty-cents-a-year" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Summer is winding down for most of the country. In Florida it just gets slightly less aggressive about it, and I&rsquo;ve spent the week thinking about ice cream: six tubs since February, two of them free. The thing that found the free ones costs sixty cents a year to run.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "I Built the Thing",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           I Built the Thing
         </h1>
+        <TopicLabel slug="i-built-the-thing" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           My Pi-hole showed talk.google.com blocked 32,000 times, and I had no idea why.

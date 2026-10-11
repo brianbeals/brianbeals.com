@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "An LLM With a Logo",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           An LLM With a Logo
         </h1>
+        <TopicLabel slug="an-llm-with-a-logo" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Pull ten artifacts from one company in 2026: the cold email, the proposal, the pitch deck, the homepage, the case study, the LinkedIn post, the press release, the white paper, the renewal letter, the follow-up note.

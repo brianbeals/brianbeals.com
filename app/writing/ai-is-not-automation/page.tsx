@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "AI Is Not Automation",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           AI Is Not Automation
         </h1>
+        <TopicLabel slug="ai-is-not-automation" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           I had two clients this year try to tell me that AI and automation are the same thing. Different companies, different rooms, same claim: they&rsquo;d been told to use AI, they&rsquo;d wrapped a few workflows in a model, and now AI was their automation strategy. Both times I pushed back, politely. They aren&rsquo;t the same thing, and treating them as if they are is how a large organization ends up paying more for slower, less reliable versions of systems it already had.

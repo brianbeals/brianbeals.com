@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "How I Review My Own Writing",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           How I Review My Own Writing
         </h1>
+        <TopicLabel slug="how-i-review-my-own-writing" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Three essays into this series, I&rsquo;ve said one thing three ways. Voice is the moat. AI-curated email erodes it one reply at a time. AI-assisted content fragments brands that used to sound like one company. Every piece ended on the same prescription: a named owner, a short standard, a review pass before anything ships.

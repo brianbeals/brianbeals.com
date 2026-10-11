@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "The Last Moat Is Your Voice",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           The Last Moat Is Your Voice
         </h1>
+        <TopicLabel slug="the-last-moat-is-your-voice" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Half the B2B marketing content I read this year could have been written by anyone, by any tool, for any company.

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "AI and the Poisoning of Professionalism",
@@ -60,6 +61,7 @@ export default function EssayPage() {
         >
           AI and the Poisoning of Professionalism
         </h1>
+        <TopicLabel slug="ai-and-the-poisoning-of-professionalism" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A colleague discovered AI for email replies last month. I can tell, we ALL can tell. The sender is the only one who can&rsquo;t.

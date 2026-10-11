@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TopicLabel from "@/app/components/TopicLabel";
 import EssayByline from "@/app/components/EssayByline";
 
 export const metadata: Metadata = {
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           Who Could Afford to Find Out
         </h1>
+        <TopicLabel slug="who-could-afford-to-find-out" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Uber turned on Claude Code in December 2025. By February, 32% of its engineers were using agentic coding tools. By March it was 84%. By April the company had burned through its entire 2026 AI coding budget, and Uber&rsquo;s chief technology officer said the company was back at the drawing board on its assumptions. He described running up $1,200 in a single two-hour session during a demo. The average engineer was costing $150 to $250 a month and the heaviest were reaching $2,000.

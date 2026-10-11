@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 // First essay on the accessibility track. Byline, title suffix, and publisher
 // are the practice's (Brian Beals, LLC), not the personal brand's.
@@ -63,6 +64,7 @@ export default function EssayPage() {
         >
           Eight of Twenty-Six
         </h1>
+        <TopicLabel slug="eight-of-twenty-six" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           <em>

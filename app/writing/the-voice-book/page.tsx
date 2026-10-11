@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "The Voice Book",
@@ -58,6 +59,7 @@ export default function EssayPage() {
         >
           The Voice Book
         </h1>
+        <TopicLabel slug="the-voice-book" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Essay 4 said to run every piece through a review pass against your voice rules. Fair question back: what voice rules? Here&rsquo;s mine. It&rsquo;s one page, and it&rsquo;s mostly a list of things I refuse to write.

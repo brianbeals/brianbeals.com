@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "Seeing the Next Rung",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           Seeing the Next Rung
         </h1>
+        <TopicLabel slug="seeing-the-next-rung" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           In a 1968 patrol car there was a small metal tray bolted to the dash, lit by a single bulb. It held the day&rsquo;s hot sheet, the list of stolen plates, so an officer could read it at night without pulling over. I spotted one in the background of an old show and had to stop the frame to work out what I was looking at.

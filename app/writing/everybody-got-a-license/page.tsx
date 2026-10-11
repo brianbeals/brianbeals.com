@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
+import TopicLabel from "@/app/components/TopicLabel";
 
 export const metadata: Metadata = {
   title: "Everybody Got a License",
@@ -59,6 +60,7 @@ export default function EssayPage() {
         >
           Everybody Got a License
         </h1>
+        <TopicLabel slug="everybody-got-a-license" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Early this year I paid $20 a month for an AI subscription. In August I paid $200.

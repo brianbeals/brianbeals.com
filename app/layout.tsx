@@ -23,10 +23,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  // The share cards drop "Florida" from "Florida public entities" on purpose: a
+  // link preview travels beyond the state. The meta description above keeps it
+  // for search.
   openGraph: {
     title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
     description:
-      "Independent ADA Title II and Section 504 digital accessibility evaluation for Florida public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
+      "Independent ADA Title II and Section 504 digital accessibility evaluation for public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     url: "/",
     siteName: "Brian Beals",
     images: ["/opengraph-image"],
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
     description:
-      "Independent ADA Title II and Section 504 digital accessibility evaluation for Florida public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
+      "Independent ADA Title II and Section 504 digital accessibility evaluation for public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     images: ["/opengraph-image"],
   },
 };

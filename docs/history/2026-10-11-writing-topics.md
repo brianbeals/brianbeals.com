@@ -64,3 +64,23 @@ Where it departs from the brief:
 - **"Thirteen essays" in "Not in this brief":** the site has twelve.
 
 Not done (needs Brian's ear first): the scan, the checklist carry-forward (4.1.2 and 4.1.3 re-read on /writing), the VoiceOver and NVDA captures on /writing and one essay page, and the delta note. When listening, check whether VoiceOver spells "ACCESSIBILITY" letter by letter. The caption is `text-transform: uppercase` over mixed-case text, so the DOM says "Accessibility", but Safari has spelled CSS-uppercased words before.
+
+## Report: ACR regen, 2026-10-11
+
+Brian listened to /writing with VoiceOver first. The filter buttons announced as toggle buttons with their state, each press announced the count, and the card captions read as whole words, so the VoiceOver spelling concern above didn't happen.
+
+- **Meta description** on /writing now covers all three topics (`b391f80`).
+- **Archive:** the October 10 report moved to `/conformance-report-2026-10-10.html` with a superseded notice, and it's in both site maps. The October 8 notice now points to it (`e837d5f`). This was deployed before the scan, as on October 10, so the archive is inside the evaluated set.
+- **Scan:** `findings-2026-10-11.json`, 33 pages and 6 documents, all passing veraPDF. Result unchanged: 33 Supports, 17 Not Applicable.
+- **Checklist:** `verify-2026-10-11.yml`, with 23 answers carried forward. One was marked stale: 1.1.1's note still said the home page headshot had descriptive alt, but it has been decorative since October 10. The note was corrected; the answer is unchanged.
+- **4.1.2 and 4.1.3, re-read on /writing:** both notes now record the four toggle buttons (name, role, pressed state) and the status message on each press, by Brian's ear and by scripted capture. `decided_by` on 4.1.3 is unchanged, so the report doesn't claim the criterion moved.
+- **Screen reader sample: 14 pages.** /writing/eight-of-twenty-six joined, `heard_by: scripted capture`. The VoiceOver capture (`vo-capture-2026-10-11.yml`) passed both pages. Agreement now reads "on every check both heard".
+- **NVDA: not run.** The VM came up, but NVDA's welcome dialog and an Edge first-run page held focus, so two runs captured 1 of 4 page-browser pairs, and that one isn't in the record. The ACR says the NVDA captures predate the filter. Steps to finish are below.
+- **Delta note:** four lines covering the essay, the filter and captions, the new sample page, and the corrected 1.1.1 note.
+- **Print:** `ACR_brianbeals.com_2026-10-11_PRINT.pdf` in Accessibility-Practice, 12 letter pages, PDF/UA-1 verified.
+
+### To finish NVDA
+
+1. In the Windows 11 VM, dismiss NVDA's welcome dialog and untick "Show this dialog when NVDA starts". Then open Edge and click through its first-run page.
+2. `cd ~/Code/a11y-audit && python3 scripts/nvda_run.py --urls https://brianbeals.com/writing https://brianbeals.com/writing/eight-of-twenty-six --vo clients/brian-beals-llc/vo-capture-2026-10-11.yml`
+3. If both agree, add a delta line ("Revised later on October 11: NVDA captured /writing with its filter and /writing/eight-of-twenty-six in Edge and Chrome …"), drop "Those captures predate the topic filter …" from `also.result`, regenerate with the same `report.py` command, and republish.

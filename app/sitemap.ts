@@ -57,6 +57,9 @@ const STATIC_PAGES: StaticEntry[] = [
   // The October 10, 2026 report, kept the same way once the October 11
   // re-evaluation took /conformance-report.html. The current report cites it.
   { path: "/conformance-report-2026-10-10.html", priority: 0.2, changeFrequency: "yearly" },
+  // The first October 11 report, superseded the same day when the second
+  // re-evaluation took /conformance-report.html. The current report cites it.
+  { path: "/conformance-report-2026-10-11.html", priority: 0.2, changeFrequency: "yearly" },
   // The human-readable site map. It exists to satisfy WCAG 2.4.5 Multiple Ways,
   // and it was reachable from the footer but absent from the XML sitemap, so
   // search engines had no idea it was there.

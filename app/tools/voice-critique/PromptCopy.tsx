@@ -7,7 +7,8 @@ const NAVY = "#1E3A5F";
 export default function PromptCopy() {
   const [text, setText] = useState("");
   const [copied, setCopied] = useState(false);
-  const [status, setStatus] = useState("");
+  // Two status regions, used in turn. See copy().
+  const [slot, setSlot] = useState<0 | 1 | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
@@ -33,15 +34,17 @@ export default function PromptCopy() {
       await navigator.clipboard.writeText(text);
       timers.current.forEach(clearTimeout);
       setCopied(true);
-      // A second press inside two seconds left the text unchanged, so neither
-      // VoiceOver nor NVDA announced it (October 10, 2026 capture). Clear the
-      // region first, then set it, so every press is a change to announce.
-      setStatus("");
+      // Every press announces, not only the first. One region set to the
+      // same text again is silent. Clearing it and setting it 150 ms later
+      // worked in VoiceOver but not in NVDA with Edge (October 10, 2026
+      // capture), presumably because Chromium batched the two updates and the
+      // region never looked empty. So the message moves to the other region
+      // each press and the first is emptied: always new text in a region.
+      setSlot((s) => (s === 0 ? 1 : 0));
       timers.current = [
-        setTimeout(() => setStatus("Prompt copied to the clipboard"), 150),
         setTimeout(() => {
           setCopied(false);
-          setStatus("");
+          setSlot(null);
         }, 2000),
       ];
     } catch {
@@ -65,11 +68,13 @@ export default function PromptCopy() {
         </button>
         {/* 4.1.3 Status Messages. The button's text change alone is not
             reliably announced, so the confirmation also goes to a polite live
-            region. The region is rendered empty from the start, because one
+            region. Both regions are rendered empty from the start, because one
             inserted along with its text is often not announced at all. */}
-        <span role="status" aria-live="polite" className="sr-only">
-          {status}
-        </span>
+        {([0, 1] as const).map((n) => (
+          <span key={n} role="status" aria-live="polite" className="sr-only">
+            {slot === n ? "Prompt copied to the clipboard" : ""}
+          </span>
+        ))}
       </div>
       {/* 2.1.1 Keyboard. This block scrolls (max-h-96 overflow-auto), so a
           keyboard user needs to be able to focus it to scroll it. Without

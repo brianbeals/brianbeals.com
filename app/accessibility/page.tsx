@@ -300,10 +300,10 @@ export default function Accessibility() {
           A person, not the scan, settled 23 checklist answers. They came from a scripted
           keyboard pass: Tab to the end of every page and back, then hover on every link.
           Then a VoiceOver pass in Safari, across 12 pages, confirmed four criteria by ear.
-          On October 10 the same 12 pages were captured by script with VoiceOver, and with
-          NVDA in Edge and Chrome, and heard again by ear with NVDA. Both readers agreed with
-          the hand pass on all 84 checks: VoiceOver on macOS 27.0 and NVDA 2026.2 on Windows
-          11, by hand and by scripted capture. Reading order can&apos;t be scored by a machine, and no report from this practice
+          On October 10 the sample grew to 13 pages, one per template, heard by two readers on
+          two operating systems, by hand and by scripted capture: VoiceOver on macOS 27.0 and
+          NVDA 2026.2 on Windows 11. The two readers agreed on every check, and both announced
+          the status message on the one page with a button. Reading order can&apos;t be scored by a machine, and no report from this practice
           will claim it was.
         </p>
 

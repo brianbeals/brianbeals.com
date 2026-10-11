@@ -365,23 +365,15 @@ export default function Accessibility() {
               Brian Beals, LLC. SBA-certified service-disabled veteran-owned small business,
               Florida Veteran Business Enterprise, Maryland Veteran-Owned Small Business
               Enterprise. Registered in SAM.gov and based in Punta Gorda, Florida. A
-              contracting officer can confirm the certification in SBA&apos;s{" "}
+              contracting officer can confirm the certification and registration in{" "}
               <a
-                href="https://veterans.certify.sba.gov/"
+                href="https://search.certifications.sba.gov/"
                 className="underline underline-offset-4 hover:no-underline"
                 style={{ color: "var(--link)" }}
               >
-                VetCert search
+                SBA&apos;s Small Business Search
               </a>{" "}
-              and the registration in{" "}
-              <a
-                href="https://sam.gov/"
-                className="underline underline-offset-4 hover:no-underline"
-                style={{ color: "var(--link)" }}
-              >
-                SAM
-              </a>
-              .
+              by UEI NJLEHNAQATJ6.
             </p>
             <dl className="text-base leading-relaxed text-neutral-800">
               <div className="flex gap-3">

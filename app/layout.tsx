@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
 import { navLinks } from "./components/nav-links";
+import SbaMark from "./components/SbaMark";
 import "./globals.css";
 
 const sourceSerif = Source_Serif_4({
@@ -203,6 +204,27 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="px-6 sm:px-12 py-6 text-xs" style={{ color: "var(--footer-ink)" }}>
+          {/* Certification strip, inside the contentinfo landmark: no new landmark,
+              no heading. Same --footer-ink as the line below it, at 13.5px. */}
+          <div
+            className="max-w-2xl mx-auto mb-4 flex flex-wrap items-center gap-x-4 gap-y-3 leading-snug"
+            style={{ fontSize: "13.5px" }}
+          >
+            <SbaMark height={72} />
+            <div className="flex-1 min-w-[16rem] space-y-1">
+              <p>
+                <strong>SBA-certified Service-Disabled Veteran-Owned Small Business</strong>
+                {" · "}Florida Veteran Business Enterprise · Maryland Veteran-Owned Small
+                Business Enterprise
+              </p>
+              <p>
+                UEI NJLEHNAQATJ6 · CAGE 22XM3 · NAICS 541512, 541511, 541618, 541990 ·{" "}
+                <Link href="/documents" className="underline underline-offset-4 hover:no-underline">
+                  Capability statements
+                </Link>
+              </p>
+            </div>
+          </div>
           <div className="max-w-2xl mx-auto flex flex-wrap gap-x-4 gap-y-1">
             <span>© {new Date().getFullYear()} Brian Beals</span>
             {/* 2.4.5 Multiple Ways. The second route to every page, reachable

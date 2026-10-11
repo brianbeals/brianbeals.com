@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SbaMark from "@/app/components/SbaMark";
 
 export const metadata: Metadata = {
   // absolute, so the layout's "%s | Brian Beals" template does not append a
@@ -357,21 +358,47 @@ export default function Accessibility() {
 
         <H2>The firm</H2>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Brian Beals, LLC. Service-disabled veteran-owned small business, registered in
-          SAM.gov and based in Punta Gorda, Florida.
-        </p>
-
-        <dl className="text-base leading-relaxed mb-8 text-neutral-800">
-          <div className="flex gap-3">
-            <dt className="font-semibold w-20">UEI</dt>
-            <dd className="font-mono">NJLEHNAQATJ6</dd>
+        <div className="flex flex-col items-start min-[600px]:flex-row gap-5 mb-8">
+          <SbaMark height={96} />
+          <div>
+            <p className="text-base sm:text-lg leading-relaxed mb-5 text-neutral-800">
+              Brian Beals, LLC. SBA-certified service-disabled veteran-owned small business,
+              Florida Veteran Business Enterprise, Maryland Veteran-Owned Small Business
+              Enterprise. Registered in SAM.gov and based in Punta Gorda, Florida. A
+              contracting officer can confirm the certification in SBA&apos;s{" "}
+              <a
+                href="https://veterans.certify.sba.gov/"
+                className="underline underline-offset-4 hover:no-underline"
+                style={{ color: "var(--link)" }}
+              >
+                VetCert search
+              </a>{" "}
+              and the registration in{" "}
+              <a
+                href="https://sam.gov/"
+                className="underline underline-offset-4 hover:no-underline"
+                style={{ color: "var(--link)" }}
+              >
+                SAM
+              </a>
+              .
+            </p>
+            <dl className="text-base leading-relaxed text-neutral-800">
+              <div className="flex gap-3">
+                <dt className="font-semibold w-20 flex-none">UEI</dt>
+                <dd className="font-mono">NJLEHNAQATJ6</dd>
+              </div>
+              <div className="flex gap-3">
+                <dt className="font-semibold w-20 flex-none">CAGE</dt>
+                <dd className="font-mono">22XM3</dd>
+              </div>
+              <div className="flex gap-3">
+                <dt className="font-semibold w-20 flex-none">NAICS</dt>
+                <dd className="font-mono">541512, 541511, 541618, 541990</dd>
+              </div>
+            </dl>
           </div>
-          <div className="flex gap-3">
-            <dt className="font-semibold w-20">CAGE</dt>
-            <dd className="font-mono">22XM3</dd>
-          </div>
-        </dl>
+        </div>
 
         <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
           <h2

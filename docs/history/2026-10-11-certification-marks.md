@@ -63,3 +63,21 @@ Shipped on its own, without the ACR regen: Brian chose to let the regen ride wit
 - 1.4.3: the footer strip text, figures above.
 - New links: "Capability statements" in every footer; "VetCert search" and "SAM" on /accessibility.
 - Delta note, if nothing else turns up: "SBA SDVOSB certification mark added to the footer and the firm block; no verdict changed."
+
+## Capability statements and the second October 11 ACR
+
+- All six statements carry the mark in the header (56 px, `.sba`), tagged in each PDF as one Figure with the alt text. The Florida VBE set-aside line in the ADA Title II and State-Local statements, and in their LLC mirrors, now reads "Florida-certified Veteran Business Enterprise, recognized under F.S. 295.187 in state agency procurement; many counties and cities run their own vendor programs." No statement claims county, municipal or university preference. The mirrors are older copies of the public files and took the wording only. No statement ever carried "in formation" wording; the note above was stale.
+- The six PDFs were re-rendered with `render_print_pdf.py --date "October 11, 2026"`; all pass PDF/UA-1 with page counts unchanged.
+- The first October 11 report moved to `/conformance-report-2026-10-11.html` ("first issue", superseded notice, both site maps).
+- Scan: 34 pages, 6 documents, no failures. 23 answers carried forward; 1.4.5 was stale (the mark contains text) and was re-read as an exempt logotype; 1.1.1 note adds the mark.
+- VoiceOver capture on the home page and /accessibility: every check passed or did not apply. Brian listened by ear to the footer and heard the alt text word for word.
+- Report: 33 Supports, 17 Not Applicable, no verdict changed. Print: `ACR_brianbeals.com_2026-10-11b_PRINT.pdf` in Accessibility-Practice, 12 pages, PDF/UA-1 verified.
+
+```
+python3 scripts/report.py clients/brian-beals-llc/findings-2026-10-11b.json \
+  --answers clients/brian-beals-llc/verify-2026-10-11b.yml --report-date 2026-10-11 \
+  --prior-findings clients/brian-beals-llc/findings-2026-10-11.json \
+  --prior-answers clients/brian-beals-llc/verify-2026-10-11.yml --prior-date 2026-10-11 \
+  --prior-url https://brianbeals.com/conformance-report-2026-10-11.html \
+  --site-map https://brianbeals.com/sitemap-page --outdir <dir>
+```

@@ -5,21 +5,21 @@ import { essays } from "./essays";
 export const metadata: Metadata = {
   title: "Writing",
   description:
-    "Essays from Brian Beals on enterprise AI, brand voice, and getting real results out of technology after the pilot.",
+    "Essays on digital accessibility for public entities, on AI in the enterprise, and on building things.",
   alternates: {
     canonical: "/writing",
   },
   openGraph: {
     title: "Writing | Brian Beals",
     description:
-      "Essays from Brian Beals on enterprise AI, brand voice, and getting real results out of technology after the pilot.",
+      "Essays on digital accessibility for public entities, on AI in the enterprise, and on building things.",
     url: "/writing",
     type: "website",
   },
   twitter: {
     title: "Writing | Brian Beals",
     description:
-      "Essays from Brian Beals on enterprise AI, brand voice, and getting real results out of technology after the pilot.",
+      "Essays on digital accessibility for public entities, on AI in the enterprise, and on building things.",
   },
 };
 

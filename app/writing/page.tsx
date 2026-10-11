@@ -25,6 +25,13 @@ export const metadata: Metadata = {
 const essays = [
   // Newest first. Add new essays to the top of this array.
   {
+    slug: "eight-of-twenty-six",
+    title: "Eight of Twenty-Six",
+    date: "2026-10-12",
+    summary:
+      "What the PDFs on one Florida city's website say about the April 2027 date, and why the forms library comes before the home page.",
+  },
+  {
     slug: "who-could-afford-to-find-out",
     title: "Who Could Afford to Find Out",
     date: "2026-10-03",

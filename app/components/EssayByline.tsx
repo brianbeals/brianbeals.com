@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 /**
  * EssayByline — the navy BB mark plus the author byline that closes every essay.
@@ -10,10 +11,13 @@ import type { ReactNode } from "react";
  * Attribution is controlled two ways:
  *  - `variant` picks a stock byline. Default is "personal" (neutral, no employer).
  *    Pass variant="lrs" on an essay that should carry the LRS attribution.
+ *    Pass variant="practice" on an accessibility-track essay: the byline names
+ *    Brian Beals, LLC and a footer line carries the practice's copyright and
+ *    address in place of the personal one. First used 2026-10-12.
  *  - `children` overrides the text entirely, for one-off bylines (e.g. an essay
  *    that points readers at a specific repo or artifact).
  */
-type Variant = "personal" | "lrs";
+type Variant = "personal" | "lrs" | "practice";
 
 const BYLINES: Record<Variant, ReactNode> = {
   personal: (
@@ -28,6 +32,12 @@ const BYLINES: Record<Variant, ReactNode> = {
       Solutions. Reach him at brian@brianbeals.com.
     </>
   ),
+  practice: (
+    <>
+      Brian Beals, LLC is an independent digital accessibility evaluation
+      practice for public entities. Reach Brian at brian@brianbeals.com.
+    </>
+  ),
 };
 
 export default function EssayByline({
@@ -37,7 +47,7 @@ export default function EssayByline({
   variant?: Variant;
   children?: ReactNode;
 }) {
-  return (
+  const byline = (
     <div className="mt-12 pt-6 border-t border-neutral-200 flex items-center gap-3">
       <svg
         viewBox="0 0 32 32"
@@ -66,5 +76,17 @@ export default function EssayByline({
         {children ?? BYLINES[variant]}
       </p>
     </div>
+  );
+  if (variant !== "practice") return byline;
+  return (
+    <>
+      {byline}
+      <p className="mt-3 text-xs text-neutral-600">
+        © Brian Beals, LLC ·{" "}
+        <Link href="/accessibility" className="underline underline-offset-4 hover:no-underline">
+          brianbeals.com/accessibility
+        </Link>
+      </p>
+    </>
   );
 }

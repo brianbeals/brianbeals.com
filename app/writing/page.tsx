@@ -27,7 +27,7 @@ const essays = [
   {
     slug: "eight-of-twenty-six",
     title: "Eight of Twenty-Six",
-    date: "2026-10-12",
+    date: "2026-10-11",
     summary:
       "What the PDFs on one Florida city's website say about the April 2027 date, and why the forms library comes before the home page.",
   },

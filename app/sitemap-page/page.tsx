@@ -48,7 +48,7 @@ const sections = [
       // The accessibility scan did not catch it, because its 2.4.5 check asks
       // whether every page links to this list, not whether this list links to
       // every page.
-      { href: "/writing/eight-of-twenty-six", label: "Eight of Twenty-Six", note: "October 12, 2026" },
+      { href: "/writing/eight-of-twenty-six", label: "Eight of Twenty-Six", note: "October 11, 2026" },
       { href: "/writing/who-could-afford-to-find-out", label: "Who Could Afford to Find Out", note: "October 3, 2026" },
       { href: "/writing/everybody-got-a-license", label: "Everybody Got a License", note: "September 19, 2026" },
       { href: "/writing/sixty-cents-a-year", label: "Sixty Cents a Year", note: "September 5, 2026" },

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "What the PDFs on one Florida city's website say about the April 2027 date, and why the forms library comes before the home page.",
     url: "/writing/eight-of-twenty-six",
     type: "article",
-    publishedTime: "2026-10-12T12:00:00.000Z",
+    publishedTime: "2026-10-11T12:00:00.000Z",
     authors: ["Brian Beals"],
   },
   twitter: {
@@ -34,7 +34,7 @@ const articleJsonLd = {
   headline: "Eight of Twenty-Six",
   description:
     "What the PDFs on one Florida city's website say about the April 2027 date, and why the forms library comes before the home page.",
-  datePublished: "2026-10-12",
+  datePublished: "2026-10-11",
   author: {
     "@type": "Person",
     name: "Brian Beals",

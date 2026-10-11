@@ -25,6 +25,14 @@ export const metadata: Metadata = {
     url: "/documents",
     type: "website",
   },
+  // Without its own twitter block this page inherited the root layout's, so X
+  // showed the home title, description and card here.
+  twitter: {
+    card: "summary_large_image",
+    title: "Capability statements | Brian Beals, LLC",
+    description:
+      "Capability statements for ADA Title II, Section 504 and Section 508 digital accessibility work, plus state and local AI and analytics consulting. HTML and PDF/UA-1 PDF.",
+  },
 };
 
 type Doc = {

@@ -3,7 +3,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { essays, topicLabel, TOPICS } from "@/app/writing/essays";
 
-// Shared pieces for the text-only social cards: /writing and one per essay.
+// Shared pieces for the text-only social cards: /writing, one per essay, and the
+// practice pages (/accessibility and its two children, /documents).
 // Same navy house style and geometry as app/opengraph-image.tsx (mark 113px at
 // 64,56, accent rule 163x9, domain line in accent blue), without the portrait.
 // Each card's og:image:alt is built from the same strings the card draws, so the
@@ -16,10 +17,11 @@ export const SUB = "#C6D5E6";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// The DejaVu subsets in app/fonts cover printable ASCII plus the middle dot and
-// the dashes. Every essay title so far is plain ASCII. A title with a curly quote
-// or an accented letter would render that glyph in Satori's fallback, so widen the
-// subset before publishing one.
+// The DejaVu subsets in app/fonts cover printable ASCII plus the middle dot, the
+// dashes and the section sign (added 2026-10-11 for the Maryland card's
+// "§ 3.5-311"). A card with a curly quote or an accented letter would render that
+// glyph in Satori's fallback, so widen the subset first: pyftsubset on DejaVu
+// Sans 2.37, the existing cmap plus the new code points, --no-hinting.
 export async function fonts() {
   const dir = join(process.cwd(), "app", "fonts");
   const [bold, regular] = await Promise.all([
@@ -128,6 +130,86 @@ export async function writingImage() {
   );
 }
 
+// Title, accent rule, one line under it. The essay cards set the line as an
+// uppercase caption to match the topic label under each essay's title; the page
+// cards set it in the regular subhead style.
+
+function TitleCard({ title, line, caption }: { title: string; line: string; caption?: boolean }) {
+  return (
+    <Card>
+      <div
+        style={{
+          display: "flex",
+          // 68 holds the longest title so far ("AI and the Poisoning of
+          // Professionalism") to two lines across the full card width.
+          fontSize: 68,
+          fontWeight: 700,
+          lineHeight: 1.15,
+          letterSpacing: "-0.02em",
+          marginBottom: 32,
+        }}
+      >
+        {title}
+      </div>
+      <Rule />
+      <div
+        style={
+          caption
+            ? {
+                display: "flex",
+                fontSize: 28,
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: SUB,
+              }
+            : { display: "flex", fontSize: 32, fontWeight: 400, color: SUB }
+        }
+      >
+        {line}
+      </div>
+    </Card>
+  );
+}
+
+// Practice pages. Each page's opengraph-image.tsx names its key.
+
+const PAGES = {
+  accessibility: {
+    title: "ADA Title II Website Accessibility Evaluation",
+    line: "April 26, 2027  ·  April 26, 2028  ·  WCAG 2.1 AA",
+  },
+  healthcare: {
+    title: "Section 504 Digital Accessibility for Healthcare",
+    line: "May 11, 2027  ·  45 CFR Part 84",
+  },
+  maryland: {
+    title: "Maryland Nonvisual Access",
+    line: "§ 3.5-311  ·  CATS+",
+  },
+  documents: {
+    title: "Capability Statements",
+    line: "ADA Title II  ·  Section 504  ·  Section 508  ·  State and Local",
+  },
+} as const;
+
+export type PageCard = keyof typeof PAGES;
+
+// The card spaces the middle dots out; the alt reads them as semicolons, since
+// the dates carry commas of their own.
+export function pageAlt(key: PageCard) {
+  const { title, line } = PAGES[key];
+  return `${title}. ${line.split(/\s+·\s+/).join("; ")}. ${DOMAIN}`;
+}
+
+export async function pageImage(key: PageCard) {
+  const { title, line } = PAGES[key];
+  return new ImageResponse(<TitleCard title={title} line={line} />, {
+    ...size,
+    fonts: await fonts(),
+  });
+}
+
 // One per essay. Title and topic come from app/writing/essays.ts by slug, the
 // same list /writing and the caption under each essay's title read.
 
@@ -144,38 +226,8 @@ export function essayAlt(slug: string) {
 
 export async function essayImage(slug: string) {
   const { title, topic } = essay(slug);
-  return new ImageResponse(
-    (
-      <Card>
-        <div
-          style={{
-            display: "flex",
-            // 68 holds the longest title so far ("AI and the Poisoning of
-            // Professionalism") to two lines across the full card width.
-            fontSize: 68,
-            fontWeight: 700,
-            lineHeight: 1.15,
-            letterSpacing: "-0.02em",
-            marginBottom: 32,
-          }}
-        >
-          {title}
-        </div>
-        <Rule />
-        <div
-          style={{
-            display: "flex",
-            fontSize: 28,
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: SUB,
-          }}
-        >
-          {topic}
-        </div>
-      </Card>
-    ),
-    { ...size, fonts: await fonts() }
-  );
+  return new ImageResponse(<TitleCard title={title} line={topic} caption />, {
+    ...size,
+    fonts: await fonts(),
+  });
 }

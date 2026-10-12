@@ -218,7 +218,7 @@ export default function RootLayout({
                 Business Enterprise
               </p>
               <p>
-                UEI NJLEHNAQATJ6 · CAGE 22XM3 · NAICS 541512, 541511, 541618, 541990 ·{" "}
+                UEI NJLEHNAQATJ6 · CAGE 22XM3 · NAICS 541512, 541511, 541519, 541611, 541618, 541990 ·{" "}
                 <Link href="/documents" className="underline underline-offset-4 hover:no-underline">
                   Capability statements
                 </Link>

@@ -288,12 +288,13 @@ export default function Accessibility() {
 
         <H2>The proof</H2>
 
-        {/* Matches the October 10, 2026 report. Change these numbers only when the
+        {/* Matches the October 11, 2026 report (second issue); checked against
+            public/conformance-report.html on 2026-10-12. Change these numbers only when the
             report is regenerated, and change the home page Proof line with them. */}
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. It covers thirty-one
+          This site carries its own Accessibility Conformance Report. It covers thirty-four
           pages and all six published documents, tested against all 50 Level A and AA criteria.
-          The latest run was October 10, 2026. The result:{" "}
+          The latest run was October 11, 2026. The result:{" "}
           <strong style={{ color: "var(--head)" }}>33 Supports</strong> and{" "}
           <strong style={{ color: "var(--head)" }}>17 Not Applicable</strong>. Nothing is
           marked Partially Supports or Does Not Support, and nothing was left out. All six

@@ -236,6 +236,18 @@ export default function Accessibility() {
           does not cover a Title II obligation.
         </p>
 
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Agencies and the vendors answering their solicitations have their own page.{" "}
+          <Link
+            href="/accessibility/federal"
+            className="underline underline-offset-4 font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            See how an agency buys a Section 508 conformance report
+          </Link>
+          .
+        </p>
+
         <H2>Why I do not remediate</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

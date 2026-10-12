@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { essays, topicLabel, TOPICS } from "@/app/writing/essays";
 
 // Shared pieces for the text-only social cards: /writing, one per essay, and the
-// practice pages (/accessibility and its two children, /documents).
+// practice pages (/accessibility and its three children, /documents).
 // Same navy house style and geometry as app/opengraph-image.tsx (mark 113px at
 // 64,56, accent rule 163x9, domain line in accent blue), without the portrait.
 // Each card's og:image:alt is built from the same strings the card draws, so the
@@ -186,6 +186,10 @@ const PAGES = {
   maryland: {
     title: "Maryland Nonvisual Access",
     line: "§ 3.5-311  ·  CATS+",
+  },
+  federal: {
+    title: "Section 508 for Federal Agencies and Their Vendors",
+    line: "36 CFR 1194  ·  VPAT 2.5  ·  SDVOSB",
   },
   documents: {
     title: "Capability Statements",

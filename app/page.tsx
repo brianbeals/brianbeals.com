@@ -149,6 +149,19 @@ export default function Home() {
               Dates: April 26, 2027 for public entities serving 50,000 or more and for every state entity; April 26, 2028 for smaller entities and special districts. Hospitals and health centers under Section 504: May 11, 2027 for 15 or more employees, May 10, 2028 under 15.
             </Link>
           </p>
+          {/* The one federal line on the home page (2026-10-12). The lede stays
+              Florida; federal readers get their own page. */}
+          <p className="text-base leading-relaxed text-neutral-800 mt-4">
+            Federal agencies and the vendors who sell to them:{" "}
+            <Link
+              href="/accessibility/federal"
+              className="underline underline-offset-4 hover:no-underline"
+              style={{ color: "var(--link)" }}
+            >
+              Section 508
+            </Link>
+            .
+          </p>
         </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">
           <h2

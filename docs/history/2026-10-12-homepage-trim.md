@@ -97,11 +97,15 @@ contact. Read the result once as a page; if a sentence now appears twice, keep t
   shows summaries; /about shows the full text under a new "Building in public"
   h2, placed after "Earlier" and before the Elsewhere line (/about has no
   contact section).
-- **AI paragraph.** Moved verbatim to the top of "How I think about this work"
-  on /about. No sentence appears twice on either page.
+- **AI paragraph.** Moved to the top of "How I think about this work" on
+  /about, verbatim except the opening, which Brian changed from "The second
+  practice." to "Enterprise data and AI is the second practice." No sentence appears twice on either page.
 - **Size.** Home main content 1,010 words before, 670 after. Page height at
   1280 wide 4,545px before, 4,293px after: 252px shorter, short of half a
   screen, because the new image adds about 350px.
 - **Next ACR regen.** The image is a 1.1.1 item; the home page is already in
-  the sample. /about now carries the seven project links (their names come
+  the sample. Fix the 2.4.3 remark first: it says "No positive tabindex
+  anywhere" twice, and that row is in the crop. Correct the note in the new
+  verify file, regenerate, then re-crop with `scripts/report_sample.py` so the
+  image shows the corrected remark. /about now carries the seven project links (their names come
   from `aria-label`, as on the home page).

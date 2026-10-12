@@ -125,7 +125,7 @@ export default function Home() {
             Proof
           </h2>
           <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-            This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 10, 2026 with scripted and by-ear screen reader testing, is public.
+            This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 11, 2026 with scripted and by-ear screen reader testing, is public.
           </p>
           {/* The one image on the page besides the headshot, and it is evidence:
               rows 2.2.2 to 2.4.4 of the live report's Level A table, screenshot

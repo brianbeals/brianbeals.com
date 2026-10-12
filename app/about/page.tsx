@@ -50,7 +50,7 @@ export default function About() {
         </h2>
 
         {/* Moved from the home page 2026-10-12, verbatim. */}
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The second practice. I&apos;ve built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn&apos;t.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Enterprise data and AI is the second practice. I&apos;ve built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn&apos;t.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Most enterprise AI doesn't fail at the model. It fails at the handoffs. Pilots that never reach production. Data foundations that never sustain real use. Demos that don't survive a procurement cycle. The technical part is rarely the hard part anymore. The hard part is everything that has to be right before the model is even running.</p>
 

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ProjectList from "@/app/components/ProjectList";
 
 // No employer names and no tenure counts on the home page. /about carries the
 // career narrative.
@@ -36,53 +37,6 @@ const services = [
     href: "/accessibility#program-and-policy",
     description:
       "The accessibility statement, ADA coordinator designation, grievance procedure and self-evaluation record the rule expects. Plus procurement language that requires an ACR before you buy.",
-  },
-];
-
-type ProjectLink = { label: string; href: string };
-
-const projects: { name: string; description: string; links: ProjectLink[] }[] = [
-  {
-    name: "Marine Forecast",
-    description:
-      "A live marine forecast for my home water, Charlotte Harbor and Pine Island Sound. It parses the NWS coastal waters product into wind, chop, and storm-risk cards, adds Port Boca Grande tides and a red-tide line from the state's sampling, and ends on a verdict: a plain call on whether to go, and the best window to be out. The browser samples NEXRAD over the harbor and the pass every few minutes, which catches a cell on the water that the inland airport observation misses. GitHub Actions republishes after each NWS issuance. Runs entirely on public NOAA endpoints and GitHub Pages, so hosting is free, making it the only part of this project that respected a budget.",
-    links: [
-      { label: "Live", href: "https://weather.brianbeals.com" },
-      { label: "Code", href: "https://github.com/brianbeals/marine-forecast" },
-    ],
-  },
-  {
-    name: "Harbor Spots",
-    description:
-      "A map of the artificial reefs, boat ramps, seagrass beds, and manatee zones in Charlotte Harbor and Pine Island Sound, assembled from live state GIS services. Pick where you're leaving from and it recomputes every reef's distance and magnetic bearing, redraws the 20 nm range ring, and refits the view. A strip in the corner reads today's conditions from the forecast above. Rebuilt weekly from FWC and DEP feature services. The one hand-entered piece is the marina list, because no GIS layer knows which docks people actually leave from.",
-    links: [
-      { label: "Live", href: "https://harbor.brianbeals.com" },
-      { label: "Code", href: "https://github.com/brianbeals/harbor-spots" },
-    ],
-  },
-  {
-    name: "Sector Rotation Screener",
-    description:
-      "A Python pipeline that scores the 11 SPDR sector ETFs against three signals: seasonality, economic-cycle fit, and relative strength. Backtests 15 years against SPY. Runs every Sunday via GitHub Actions, asks Claude for a plain-language read on the output, and commits the dashboard back to the repo. The banner up top reports whether the strategy is beating SPY net of trading costs, and it leads with that number whichever way it points. Fifteen years in, the two are close enough that the answer moves between runs, which is why the live page reports it and this one does not.",
-    links: [
-      { label: "Live", href: "https://sector.brianbeals.com" },
-      { label: "Code", href: "https://github.com/brianbeals/sector-rotation-screener" },
-    ],
-  },
-  {
-    name: "Lobo",
-    description:
-      "An always-on agent that lives on the Mac mini and texts like a member of the household. Every 30 minutes it checks the GitHub deploys for everything above, retries the transient failures, and texts me only when something stays broken. On Mondays it reads a legislative watch report and texts the highlights. It answers texts on its own iMessage identity, a dedicated Apple ID, because a bot on your own phone number can't tell your texts from its own echoes. Runs locally on OpenClaw with Claude doing the thinking. Getting iMessage working surfaced an upstream bug I reported and got fixed.",
-    links: [
-      { label: "Upstream fix", href: "https://github.com/openclaw/openclaw/issues/99638" },
-    ],
-  },
-  {
-    name: "This site",
-    description: "Next.js on Vercel.",
-    links: [
-      { label: "Code", href: "https://github.com/brianbeals/brianbeals.com" },
-    ],
   },
 ];
 
@@ -173,14 +127,37 @@ export default function Home() {
           <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
             This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 10, 2026 with scripted and by-ear screen reader testing, is public.
           </p>
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
-            <a href="/conformance-report.html" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
+          {/* The one image on the page besides the headshot, and it is evidence:
+              rows 2.2.2 to 2.4.4 of the live report's Level A table, screenshot
+              at 2x in the light theme. Regenerate it whenever the report is
+              regenerated (a11y-audit scripts/report_sample.py; the step is in its README) and update the
+              alt text if the rows change. The image and the text sit inside ONE
+              link, so a screen reader hears one link to the report rather than
+              two adjacent links with different names (2.4.4). */}
+          <a
+            href="/conformance-report.html"
+            className="group block mb-6"
+          >
+            <Image
+              src="/conformance-report-sample.png"
+              alt="A section of the conformance report's WCAG results table: criteria 2.2.2, 2.3.1 and 2.4.1 through 2.4.4 with their verdicts and remarks"
+              width={1906}
+              height={984}
+              sizes="(min-width: 768px) 672px, calc(100vw - 48px)"
+              className="w-full h-auto rounded-md border border-neutral-200"
+            />
+            <span
+              className="inline-block mt-3 text-base underline underline-offset-4 group-hover:no-underline"
+              style={{ color: "var(--link)" }}
+            >
               Read the Accessibility Conformance Report
-            </a>
+            </span>
+          </a>
+          <p className="text-base">
             <Link href="/documents" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
               Capability statements
             </Link>
-          </div>
+          </p>
         </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">
           <h2
@@ -254,8 +231,9 @@ export default function Home() {
           </h2>
           {/* Positioning only: no services list, no pricing, no engagement
               names. That waits until the AI page joins /accessibility. */}
+          {/* One sentence since 2026-10-12; the full paragraph is on /about. */}
           <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
-            The second practice. I&apos;ve built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn&apos;t.
+            The second practice: enterprise data and AI, from a blank page to the second budget cycle, for organizations past the pilot.
           </p>
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
             {stats.map((s) => (
@@ -280,48 +258,9 @@ export default function Home() {
           >
             Building in public
           </h2>
-          <div className="space-y-8">
-            {projects.map((p) => (
-              <div key={p.name}>
-                <h3
-                  className="text-xl font-semibold tracking-tight mb-2"
-                  style={{ color: "var(--head)" }}
-                >
-                  {p.name}
-                </h3>
-                <p className="text-base leading-relaxed text-neutral-800">
-                  {p.description}
-                </p>
-                {p.links.length > 0 && (
-                  <p className="mt-3 text-sm">
-                    {p.links.map((l, i) => (
-                      <span key={l.href}>
-                        {i > 0 && (
-                          <span aria-hidden="true" style={{ color: "var(--muted-ink)" }}>
-                            {" "}
-                            ·{" "}
-                          </span>
-                        )}
-                        {/* 2.4.4 Link Purpose. Seven links on this page read
-                            "Live" or "Code". A screen reader's links list shows
-                            them stripped of their card, so name the project. */}
-                        <a
-                          href={l.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`${l.label}: ${p.name}`}
-                          className="underline underline-offset-4 hover:no-underline"
-                          style={{ color: "var(--link)" }}
-                        >
-                          {l.label}
-                        </a>
-                      </span>
-                    ))}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
+          {/* One sentence each since 2026-10-12; the full descriptions are on
+              /about. Both read app/projects.ts. */}
+          <ProjectList text="summary" />
         </section>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           I don't sell technology I haven't tried to build myself.

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ProjectList from "@/app/components/ProjectList";
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -48,6 +49,9 @@ export default function About() {
           How I think about this work
         </h2>
 
+        {/* Moved from the home page 2026-10-12, verbatim. */}
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The second practice. I&apos;ve built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn&apos;t.</p>
+
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Most enterprise AI doesn't fail at the model. It fails at the handoffs. Pilots that never reach production. Data foundations that never sustain real use. Demos that don't survive a procurement cycle. The technical part is rarely the hard part anymore. The hard part is everything that has to be right before the model is even running.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The practices I've built are vendor-neutral on purpose. We've represented IBM, Microsoft, AWS, Cisco, Dell, Snowflake, SAS, and dozens of others, and the practice grows because customers eventually figure out who's selling them what works versus what pays the rep best. That isn't a marketing line. It's the actual reason these practices compound.</p>
@@ -75,6 +79,15 @@ export default function About() {
         </h2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
+
+        {/* The full project write-ups, moved from the home page 2026-10-12. The
+            home page keeps one sentence each; both read app/projects.ts. */}
+        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
+          <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
+          Building in public
+        </h2>
+
+        <ProjectList text="description" />
 
         {/* Off the main nav since 2026-10-10. This line and the site map are its two routes. */}
         <p className="text-base sm:text-lg leading-relaxed mt-12 text-neutral-800"><Link href="/elsewhere" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>Elsewhere</Link>: adventure travel, mostly to places where the signal goes away.</p>

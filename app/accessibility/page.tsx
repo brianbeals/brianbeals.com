@@ -398,7 +398,7 @@ export default function Accessibility() {
               </div>
               <div className="flex gap-3">
                 <dt className="font-semibold w-20 flex-none">NAICS</dt>
-                <dd className="font-mono">541512, 541511, 541618, 541990</dd>
+                <dd className="font-mono">541512, 541511, 541519, 541611, 541618, 541990</dd>
               </div>
             </dl>
           </div>

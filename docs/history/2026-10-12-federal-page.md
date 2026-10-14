@@ -71,7 +71,8 @@ Brian edits it) to re-check those three citations monthly.
 **Identifiers.** UEI, CAGE, SDVOSB certification term (08/2026 to 08/2029 per the cap
 statement; confirm against `LLC/llc-profile.yml`), NAICS 541512, 541511, 541519, 541611,
 PSC DA01, R499. SBA Small Business Search link by UEI, same sentence as `/accessibility`.
-No SAM link until the public record resolves (see docs/history note from 2026-10-11).
+No SAM link: SAM.gov entity pages need a sign-in (FSD INC-GSAFSD21754095, resolved
+2026-10-13), so public proof is the SBA Small Business Search link.
 
 **Download.** `public/Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf`,
 already published; link it with its size.

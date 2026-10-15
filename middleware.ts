@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { COOKIE_NAME, verifySession } from "@/lib/gate";
 
-// Gate the tool page and its API. Everything else on the site stays public.
+// One login for everything private: the desk (/desk, its documents, and the
+// fed-intel and state-intel dashboards and data files under it) and /tools.
+// Everything else on the site stays public. Account Intel, which this gate was
+// built for, was retired 2026-10-15.
 export const config = {
-  matcher: ["/tools/:path*", "/api/account-intel/:path*"],
+  matcher: ["/tools/:path*", "/desk", "/desk/:path*"],
 };
 
 export async function middleware(req: NextRequest) {
@@ -19,11 +22,14 @@ export async function middleware(req: NextRequest) {
   const ok = Boolean(secret && cookie && (await verifySession(secret, cookie)));
   if (ok) return NextResponse.next();
 
-  if (req.nextUrl.pathname.startsWith("/api/")) {
+  // Data and assets answer 401; pages go to the sign-in form.
+  const last = path.split("/").pop() || "";
+  if (last.includes(".") && !last.endsWith(".html")) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
   const url = req.nextUrl.clone();
   url.pathname = "/login";
-  url.searchParams.set("next", req.nextUrl.pathname);
+  url.search = "";
+  url.searchParams.set("next", path);
   return NextResponse.redirect(url);
 }

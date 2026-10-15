@@ -451,3 +451,123 @@ body {
     break-inside: avoid;
   }
 }
+
+/* The private desk (/desk, 2026-10-15). Phone first: one column, large tap
+   targets, every number readable without zooming. Content comes from the private
+   desk repo as plain HTML using these classes. */
+.desk {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: inherit;
+}
+.desk .desk-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+}
+.desk .desk-jump a {
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--field-border);
+  border-radius: 999px;
+  color: var(--link);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+}
+.desk .desk-jump a:hover {
+  text-decoration: underline;
+}
+.desk section {
+  scroll-margin-top: 1rem;
+}
+.desk h2 {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: #1E3A5F;
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin: 2rem 0 1rem;
+}
+.desk h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--head);
+  margin: 1.5rem 0 0.5rem;
+}
+.desk h4 {
+  font-weight: 700;
+  color: var(--head);
+  margin: 1rem 0 0.25rem;
+}
+.desk p,
+.desk ul {
+  margin: 0 0 0.75rem;
+}
+.desk a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.desk .desk-list,
+.desk .desk-say ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+}
+.desk .desk-list li,
+.desk .desk-say li {
+  margin-bottom: 0.35rem;
+}
+.desk .desk-say {
+  border: 2px solid var(--head);
+  border-radius: 8px;
+  padding: 0.25rem 1rem 0.75rem;
+  font-size: 1.0625rem;
+}
+.desk .desk-say h3 {
+  margin-top: 0.75rem;
+}
+.desk .desk-dl {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 38%) 1fr;
+  gap: 0.35rem 0.9rem;
+  margin: 0.25rem 0 0.75rem;
+}
+.desk .desk-dl dt {
+  font-weight: 700;
+  color: var(--head);
+}
+.desk .desk-dl dd {
+  margin: 0;
+}
+.desk .desk-ids {
+  grid-template-columns: minmax(8rem, 35%) 1fr;
+}
+.desk .mono {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+.desk .desk-note,
+.desk .desk-src {
+  font-size: 0.875rem;
+  color: var(--muted-ink);
+}
+.desk .desk-quote {
+  border-left: 4px solid var(--link);
+  padding: 0.25rem 0 0.25rem 0.9rem;
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+}
+@media (max-width: 420px) {
+  .desk .desk-dl {
+    grid-template-columns: 1fr;
+    gap: 0 0;
+  }
+  .desk .desk-dl dd {
+    margin-bottom: 0.5rem;
+  }
+}

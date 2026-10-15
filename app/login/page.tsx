@@ -1,12 +1,14 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 function LoginForm() {
-  const router = useRouter();
   const params = useSearchParams();
-  const next = params.get("next") || "/tools/account-intel";
+  // Only a path on this site, never another origin: "//evil.example" and
+  // "https://..." both fall back to the desk.
+  const asked = params.get("next") || "";
+  const next = asked.startsWith("/") && !asked.startsWith("//") && !asked.startsWith("/\\") ? asked : "/desk";
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -22,8 +24,9 @@ function LoginForm() {
     });
     setBusy(false);
     if (res.ok) {
-      router.push(next);
-      router.refresh();
+      // A full load rather than router.push: the desk's dashboards are route
+      // handlers, not pages, and need a real navigation with the new cookie.
+      window.location.assign(next);
     } else {
       setError("Incorrect password.");
     }

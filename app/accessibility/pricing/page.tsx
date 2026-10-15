@@ -9,7 +9,13 @@ import Link from "next/link";
 // closes); the Prompt Payment Act line is marked as Florida terms; one line points
 // healthcare and federal work at their own pages; and the sample-report path is
 // the live /conformance-report.html. No SAM link: SAM entity pages need sign-in
-// (see docs commit 86318d0). If the sheet's prices change, change them here too.
+// (see docs commit 86318d0).
+//
+// "FROM" PRICES ONLY, decided 2026-10-15. The print sheet carries full ranges and
+// the document-count bands; this page shows each engagement's floor and nothing
+// else. Full ranges, document bands, hourly and unit rates, and the vendor ACR
+// card belong on the private /desk, never on a public page. If the sheet's floor
+// moves, change it here; never copy the sheet's price column over.
 export const metadata: Metadata = {
   title: { absolute: "Accessibility Services and Pricing for Public Entities | Brian Beals, LLC" },
   description:
@@ -79,36 +85,28 @@ const SERVICES: { name: string; what: string; price: React.ReactNode }[] = [
     what: "Up to 25 pages chosen across your site's templates, so a template defect is found once and reported everywhere it appears, plus the documents linked from those pages, validated against PDF/UA. All 50 WCAG 2.1 A and AA criteria. You receive the Accessibility Conformance Report (VPAT 2.5), an audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
     price: (
       <>
-        $3,500 to $5,000<small>sized for a department-level purchase</small>
+        From $3,500<small>sized for a department-level purchase</small>
       </>
     ),
   },
   {
     name: "Full Site Audit",
     what: "Every page plus a document sample, same deliverables at full coverage. For entities that need to say they covered everything.",
-    price: "$8,000 to $15,000",
+    price: "From $8,000",
   },
   {
     name: "Annual Re-evaluation",
     what: "Rescan, reissued ACR, and a delta against the prior report. Conformance drifts every time a template changes; this is how an entity shows it is still conforming a year later.",
     price: (
       <>
-        $1,500 to $2,500<small>per year</small>
+        From $1,500<small>per year</small>
       </>
     ),
   },
   {
     name: "Document Inventory and Triage",
     what: "Crawl and catalog every document on your web properties. Classify each as retire, replace with a web page, remediate, or leave under the rule's exceptions for archived and pre-existing documents. Prioritize by traffic, program criticality and exposure. You receive a scoped work order a remediation vendor can bid against, and a record of the decisions. Same deliverable at every band; the count comes from the recon.",
-    price: (
-      <>
-        Under 1,000 docs $2,500
-        <br />
-        1,000 to 5,000 $4,500
-        <br />
-        5,000 to 15,000 $7,500<small>above that, quoted</small>
-      </>
-    ),
+    price: "From $2,500",
   },
 ];
 
@@ -177,6 +175,12 @@ export default function AccessibilityPricing() {
             ))}
           </tbody>
         </table>
+
+        <p className={body}>
+          Most engagements fall under typical direct-purchase limits for county and city
+          departments. A written fixed fee follows a short scoping call and the no-charge
+          recon.
+        </p>
 
         <p className={body}>
           Healthcare (Section 504) and federal (Section 508) work is quoted on scope. See{" "}

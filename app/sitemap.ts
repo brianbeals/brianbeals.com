@@ -28,6 +28,9 @@ const STATIC_PAGES: StaticEntry[] = [
   { path: "/accessibility/healthcare", priority: 0.8, changeFrequency: "monthly" },
   { path: "/accessibility/maryland", priority: 0.7, changeFrequency: "monthly" },
   { path: "/accessibility/federal", priority: 0.8, changeFrequency: "monthly" },
+  // Ported from the approved print documents on 2026-10-15.
+  { path: "/accessibility/pricing", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/accessibility/before-we-start", priority: 0.7, changeFrequency: "monthly" },
   // Every capability statement in both formats. The short URL printed in the
   // footer of every PDF, so it has to resolve for as long as any of those PDFs
   // is in circulation, which is longer than any of them is current.

@@ -106,3 +106,226 @@ body {
   .divide-gray-200 > :not([hidden]) ~ :not([hidden]) { border-color: #2A3B4D; }
   .bg-white { background-color: #16202B; }
 }
+
+/* Ported print documents: /accessibility/pricing and /accessibility/before-we-start
+   (added 2026-10-15). Their tables and callouts, in both color schemes. */
+:root {
+  --rule: #DFE4EA;
+  --band: #D6EAF8;
+  /* 5.0:1 on white. Only used on the white callout card, never on the gradient. */
+  --caution: #8A6D08;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rule: #2A3B4D;
+    --band: #14283A;
+    --caution: #D9B84A;
+  }
+}
+
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  margin: 0.75rem 0 1.75rem;
+}
+.doc-table caption {
+  text-align: left;
+  font-weight: 700;
+  color: var(--head);
+  padding-bottom: 0.5rem;
+}
+.doc-table th,
+.doc-table td {
+  border: 1px solid var(--rule);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.doc-table thead th {
+  background: #1E3A5F;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+.doc-table tbody th {
+  background: var(--band);
+  color: var(--head);
+  font-weight: 700;
+}
+.doc-table .price {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.doc-table .price small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.8125rem;
+  color: var(--muted-ink);
+  white-space: normal;
+}
+.doc-table .blocker {
+  color: var(--err);
+  font-weight: 700;
+}
+/* --err (#C0392B) gives 4.4:1 on the --band row header and fails 1.4.3, found by
+   the scan on 2026-10-15. #A93226 gives 5.6:1 there. Dark mode keeps --err. */
+.doc-table tbody th.blocker {
+  color: #A93226;
+}
+@media (prefers-color-scheme: dark) {
+  .doc-table tbody th.blocker {
+    color: var(--err);
+  }
+}
+
+/* 1.4.10 Reflow. Below 640px each row becomes a card and each cell carries its
+   column name. display:block strips table semantics in Safari and Chrome, so
+   the markup restates them with explicit ARIA roles (role="table", "row",
+   "columnheader", "rowheader", "cell"). The label is decorative, "/ ''" keeps
+   it out of the accessibility tree, since the column header already names it. */
+@media screen and (max-width: 639px) {
+  .doc-table.stack,
+  .doc-table.stack tbody,
+  .doc-table.stack tr,
+  .doc-table.stack th,
+  .doc-table.stack td {
+    display: block;
+  }
+  .doc-table.stack caption {
+    display: block;
+  }
+  .doc-table.stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .doc-table.stack tr {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+  }
+  .doc-table.stack th,
+  .doc-table.stack td {
+    border: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .doc-table.stack tbody th {
+    border-top: 0;
+    /* The desktop column widths are inline styles; a card is full width. */
+    width: auto !important;
+  }
+  .doc-table.stack .price {
+    white-space: normal;
+  }
+  .doc-table.stack td[data-label]::before {
+    content: attr(data-label);
+    content: attr(data-label) / "";
+    display: block;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: var(--muted-ink);
+  }
+}
+
+.doc-note {
+  border-left: 4px solid var(--caution);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.1rem;
+  margin: 1.25rem 0 1.5rem;
+}
+.doc-note strong {
+  color: var(--caution);
+}
+.doc-note.stop {
+  border-left-color: var(--err);
+}
+.doc-note.stop strong {
+  color: var(--err);
+}
+
+/* The readiness checklist is a printed form, not a web form: blank lines and
+   empty boxes, filled in by hand. Both are decorative and aria-hidden. */
+.fill {
+  display: inline-block;
+  min-width: 9rem;
+  max-width: 100%;
+  border-bottom: 1px solid var(--muted-ink);
+  height: 1.1em;
+  vertical-align: baseline;
+}
+.box {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--muted-ink);
+  border-radius: 2px;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+
+/* Print, for pages that carry .print-doc only: light colors whatever the screen
+   scheme, no site nav, tables kept whole, and the checklist on a sheet of its own. */
+@media print {
+  body:has(.print-doc) {
+    background: #FFFFFF;
+    --head: #1E3A5F;
+    --link: #22688F;
+    --muted-ink: #5B6470;
+    --err: #C0392B;
+    --rule: #DFE4EA;
+    --band: #D6EAF8;
+    --caution: #8A6D08;
+    --footer-ink: rgba(30, 58, 95, 0.8);
+    color-scheme: light;
+  }
+  /* Screen sizes printed eight sheets. Tailwind sizes are in rem, so one root
+     size scales the whole page down to a letter sheet. */
+  html:has(.print-doc) {
+    font-size: 12px;
+  }
+  @page {
+    margin: 0.5in 0.55in 0.6in;
+  }
+  .print-doc {
+    padding: 0;
+  }
+  .print-doc article {
+    max-width: none;
+  }
+  body:has(.print-doc) > header,
+  body:has(.print-doc) .skip-link,
+  body:has(.print-doc) .no-print {
+    display: none;
+  }
+  body:has(.print-doc) .text-neutral-900,
+  body:has(.print-doc) .text-neutral-800 {
+    color: #1A1A2A;
+  }
+  body:has(.print-doc) .bg-white {
+    background-color: #FFFFFF;
+  }
+  .print-doc,
+  .print-doc * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .print-doc tr,
+  .print-doc .doc-note {
+    break-inside: avoid;
+  }
+  .print-doc h2 {
+    break-after: avoid;
+  }
+  .print-doc .print-break {
+    break-before: page;
+  }
+  .print-doc a {
+    color: inherit;
+  }
+}

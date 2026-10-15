@@ -22,6 +22,8 @@ const sections = [
       // left the nav on 2026-10-10 and is reachable from /about and here.
       { href: "/", label: "Home", note: "Accessibility services, the proof, the AI practice, and projects built in public." },
       { href: "/accessibility", label: "Services", note: "Accessibility evaluation: conformance reports, document triage, program setup, and common questions." },
+      { href: "/accessibility/pricing", label: "Services and Pricing for Public Entities", note: "Fixed prices for each engagement, how the evaluation is done, and what is not offered." },
+      { href: "/accessibility/before-we-start", label: "Pre-Engagement Requirements", note: "What has to be in place before a fixed fee is quoted, with a printable readiness checklist." },
       { href: "/accessibility/healthcare", label: "Section 504 for Healthcare", note: "45 CFR Part 84, the May 11 2027 date, and what it means for patient-facing documents." },
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },
       { href: "/accessibility/federal", label: "Section 508 for Federal Agencies and Their Vendors", note: "36 CFR 1194, the conformance report, and how an agency buys it: micro-purchase, SDVOSB sole source, and VA's Vets First." },

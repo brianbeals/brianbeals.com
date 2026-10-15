@@ -191,6 +191,14 @@ const PAGES = {
     title: "Section 508 for Federal Agencies and Their Vendors",
     line: "36 CFR 1194  ·  VPAT 2.5  ·  SDVOSB",
   },
+  pricing: {
+    title: "Accessibility Services and Pricing for Public Entities",
+    line: "Fixed prices  ·  WCAG 2.1 AA  ·  VPAT 2.5",
+  },
+  "before-we-start": {
+    title: "Pre-Engagement Requirements",
+    line: "Allowlist  ·  Page inventory  ·  Readiness checklist",
+  },
   documents: {
     title: "Capability Statements",
     line: "ADA Title II  ·  Section 504  ·  Section 508  ·  State and Local",

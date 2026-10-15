@@ -185,6 +185,25 @@ export default function Accessibility() {
           ACR before you buy.
         </p>
 
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          <Link
+            href="/accessibility/pricing"
+            className="underline underline-offset-4 hover:no-underline font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            Pricing
+          </Link>
+          : fixed prices for each engagement.{" "}
+          <Link
+            href="/accessibility/before-we-start"
+            className="underline underline-offset-4 hover:no-underline font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            Before we start
+          </Link>
+          : what has to be in place for a fixed fee to hold.
+        </p>
+
         <H2>What you get</H2>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

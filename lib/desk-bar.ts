@@ -23,7 +23,7 @@ const LINKS: [DeskSection | "logout", string, string][] = [
 
 /* Which section a source document belongs to, for aria-current. */
 export function sectionForDoc(slug: string): DeskSection {
-  if (/^(unit-rates|services-sheet|pricing-)/.test(slug)) return "pricing";
+  if (/^(unit-rates|services-sheet|pricing-|offering-)/.test(slug)) return "pricing";
   if (slug === "scope-and-limitations") return "before";
   if (slug === "recon-sample") return "recon";
   if (slug === "regime-cheat-sheet") return "rules";

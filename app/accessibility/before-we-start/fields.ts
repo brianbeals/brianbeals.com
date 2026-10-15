@@ -185,3 +185,19 @@ export function answers(get: (name: string) => string[]): [string, string][] {
     return [item.label, item.parts.length > 1 ? bits.join(". ") : bits[0] || ""] as [string, string];
   });
 }
+
+/* Groups for the email body, which puts a blank line between them. The page
+   itself has no section headings; these only space out the email. */
+export const SECTIONS: string[][] = [
+  ["domain", "waf", "allowlist"],
+  ["pages", "urls", "auth", "docs", "docs_scope"],
+  ["contact", "obligation"],
+  ["embeds", "prior", "overlay", "redesign"],
+  ["sr", "threshold", "target"],
+];
+
+/* answers(), split into SECTIONS. */
+export function answerSections(list: [string, string][]): [string, string][][] {
+  const byId = new Map(ITEMS.map((it, i) => [it.id, list[i]]));
+  return SECTIONS.map((ids) => ids.map((id) => byId.get(id)!));
+}

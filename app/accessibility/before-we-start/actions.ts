@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { answers, validate, type Errors } from "./fields";
+import { answerSections, answers, validate, type Errors } from "./fields";
 
 // Sends a submitted readiness checklist to Brian by email through Resend, and
 // keeps nothing. No database, no log of the answers, no copy to the submitter.
@@ -69,20 +69,31 @@ export async function sendReadiness(_prev: SendState, form: FormData): Promise<S
   const errors = validate(get);
   if (Object.keys(errors).length) return { status: "invalid", errors };
 
-  const domain = get("domain")[0].trim();
+  // Subject and body format set 2026-10-15: "Readiness checklist: <domain>
+  // (<contact name>)", then one "Label: answer" line per item with a blank line
+  // between sections (SECTIONS in fields.ts). Line breaks and runs of spaces in a
+  // typed value are flattened so every item stays on one line.
+  const flat = (v: string) => v.replace(/\s+/g, " ").trim();
+  const domain = flat(get("domain")[0]).slice(0, 120);
+  const name = flat(get("contact_name")[0]).slice(0, 120);
   const replyTo = get("contact_email")[0].trim();
-  const text = list.map(([k, v]) => `${k}: ${v || "(not answered)"}`).join("\n");
+  const sections = answerSections(list);
+  // "Label: answer", except a label that is a question takes no colon after its "?".
+  const lead = (k: string) => (k.endsWith("?") ? k : `${k}:`);
+  const text = sections
+    .map((sec) => sec.map(([k, v]) => `${lead(k)} ${flat(v) || "(not answered)"}`).join("\n"))
+    .join("\n\n");
   const html =
-    `<p>Readiness checklist submitted from brianbeals.com/accessibility/before-we-start.</p>` +
-    `<table cellpadding="6" style="border-collapse:collapse;font:14px -apple-system,Segoe UI,sans-serif">` +
-    list
+    `<div style="font:14px/1.5 -apple-system,Segoe UI,sans-serif">` +
+    sections
       .map(
-        ([k, v]) =>
-          `<tr><th align="left" valign="top" style="border-bottom:1px solid #DFE4EA">${esc(k)}</th>` +
-          `<td valign="top" style="border-bottom:1px solid #DFE4EA">${v ? esc(v) : "<i>not answered</i>"}</td></tr>`,
+        (sec) =>
+          `<p style="margin:0 0 14px">` +
+          sec.map(([k, v]) => `<b>${esc(lead(k))}</b> ${v ? esc(flat(v)) : "<i>not answered</i>"}`).join("<br>") +
+          `</p>`,
       )
       .join("") +
-    `</table>`;
+    `</div>`;
 
   if (process.env.READINESS_DRY_RUN === "1") return { status: "sent", answers: list };
 
@@ -97,7 +108,7 @@ export async function sendReadiness(_prev: SendState, form: FormData): Promise<S
         from: FROM,
         to: [TO],
         reply_to: replyTo,
-        subject: `Readiness checklist: ${domain}`,
+        subject: `Readiness checklist: ${domain} (${name})`,
         text,
         html,
       }),

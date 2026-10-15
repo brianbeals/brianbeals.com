@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ReadinessForm from "./ReadinessForm";
 
 // Ported 2026-10-15 from the approved print document
 // LLC/FL-VBE/Accessibility-Practice/Pre-Engagement-Requirements.html. Everything
@@ -7,10 +8,13 @@ import type { Metadata } from "next";
 // do not rewrite. The document's script-written footer year is gone; the site
 // footer stands in for it.
 //
-// The checklist stays a printable checklist, never a web form. Nothing on this
-// page collects data. Printing it (globals.css, .print-doc) drops the site nav,
-// forces light colors and starts the checklist on its own sheet; the client fills
-// it in by hand and returns it by email.
+// The readiness checklist is a form since 2026-10-15 (ReadinessForm.tsx, fields.ts,
+// actions.ts). A submission is emailed to Brian through Resend and stored nowhere:
+// no database, no log of the answers, no copy to the submitter. Without
+// RESEND_API_KEY the form renders as a printable checklist with "email it to
+// brian@brianbeals.com" in place of the send button. Printing (globals.css,
+// .print-doc) drops the site nav, forces light colors and puts the checklist on
+// a sheet of its own; after a send, printing gives only the submitted answers.
 export const metadata: Metadata = {
   title: { absolute: "Before We Start: Pre-Engagement Requirements | Brian Beals, LLC" },
   description:
@@ -33,9 +37,10 @@ export const metadata: Metadata = {
 };
 
 /* Section header as a full-width navy bar, matching app/accessibility/page.tsx. */
-function H2({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function H2({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
   return (
     <h2
+      id={id}
       className={`text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3 ${className}`}
       style={{
         color: "#FFFFFF",
@@ -64,9 +69,6 @@ function BBMarkInverse() {
 
 const body = "text-base sm:text-lg leading-relaxed mb-6 text-neutral-800";
 
-/* A blank line and an empty tick box, for filling in by hand on the printout. */
-const Fill = () => <span className="fill" aria-hidden="true" />;
-const Box = () => <span className="box" aria-hidden="true" />;
 
 const REQUIREMENTS: {
   n: number;
@@ -156,132 +158,6 @@ const REQUIREMENTS: {
     why: "It is the only way to fully verify two criteria and it cannot be automated. Excluding it is a legitimate choice; hiding the exclusion is not.",
     otherwise: "Excluded, and the report states which criteria are affected and why.",
   },
-];
-
-/* Tick-box options, kept on one line each so a box never wraps away from its label. */
-function Opts({ items }: { items: React.ReactNode[] }) {
-  return (
-    <span className="flex flex-wrap gap-x-4 gap-y-1">
-      {items.map((x, i) => (
-        <span key={i} className="whitespace-nowrap">
-          <Box />
-          {x}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-// Each item carries a one-line hint under its label: always visible, printed, and
-// tied to the row header by aria-describedby. Never a hover tooltip (1.4.13), and
-// a tooltip would not print. The row header is named by the label alone
-// (aria-labelledby), so a screen reader announces the short label as the header
-// for the answer cell and reads the hint as its description.
-const CHECKLIST: { q: string; hint: string; a: React.ReactNode }[] = [
-  { q: "Primary domain",
-    hint: "The main web address, e.g. yourcity.gov.", a: <Fill /> },
-  {
-    q: "Does the site use a WAF, CDN, or bot protection?",
-    hint: "Security services that sit in front of the site, such as Cloudflare, Akamai, or Imperva. Your IT or web team will know.",
-    a: (
-      <>
-        <Opts items={["Yes", "No", "Unknown"]} />
-        <span className="block">
-          If yes, which: <Fill />
-        </span>
-        <span className="block">
-          Who administers it: <Fill />
-        </span>
-      </>
-    ),
-  },
-  { q: "Can the evaluation tooling be allowlisted?",
-    hint: "Telling that security service to let our testing tool through. Usually one email to whoever runs it.", a: <Opts items={["Yes", "No", "Need to ask"]} /> },
-  { q: "Approximate page count",
-    hint: "A rough number is fine; your web team or CMS can give it.", a: <Fill /> },
-  { q: "URL list available?",
-    hint: "A list of the pages to test, or permission to start from the home page and follow links.", a: <Opts items={["Attached", "Crawl from home page is fine"]} /> },
-  {
-    q: "Authenticated areas in scope?",
-    hint: "Pages behind a login, like permit portals or payment accounts. If in scope, we need a test account.",
-    a: <Opts items={["Yes, credentials can be provided", "No, exclude them"]} />,
-  },
-  { q: "Approximate document count",
-    hint: "PDFs, Word files, and spreadsheets posted on the site. A rough number is fine.", a: <Fill /> },
-  { q: "Documents in scope?",
-    hint: "Whether this engagement covers those files or only the web pages.", a: <Opts items={["Yes", "No", "Scope separately"]} /> },
-  {
-    q: "Point of contact",
-    hint: "One person who can answer scope questions during the work.",
-    a: (
-      <>
-        <span className="block">
-          Name: <Fill />
-        </span>
-        <span className="block">
-          Title: <Fill />
-        </span>
-        <span className="block">
-          Email: <Fill />
-        </span>
-      </>
-    ),
-  },
-  {
-    q: "Which obligation applies?",
-    hint: "The rule that covers you. Cities, counties, school districts, and colleges are usually ADA Title II.",
-    a: (
-      <>
-        <Opts items={["ADA Title II", "Section 504", "Section 508 vendor", "ADA Title III", "Unsure"]} />
-        <span className="block">
-          <span aria-describedby="hint-census">If Title II, 2020 Census population:</span>{" "}
-          <Fill />
-        </span>
-        <span id="hint-census" className="hint">
-          Sets your compliance date: 50,000 or more is April 26, 2027; smaller entities and
-          special districts, April 26, 2028.
-        </span>
-      </>
-    ),
-  },
-  { q: "Third-party embeds in use",
-    hint: "Services from other companies running inside your pages: chat boxes, video players, maps, payment forms, scheduling tools. Not the same as an accessibility overlay, which is asked about below.", a: <Fill /> },
-  { q: "Prior audit, report, or accessibility statement?",
-    hint: "Any earlier accessibility review, conformance report, or published accessibility statement.", a: <Opts items={["Yes, attached", "None"]} /> },
-  {
-    q: "Accessibility overlay or monitoring product in use?",
-    hint: "An “accessibility” toolbar or widget (e.g. UserWay, accessiBe, or AudioEye), or a scanning service like Siteimprove or Monsido.",
-    a: (
-      <Opts
-        items={[
-          <>
-            Yes: <Fill />
-          </>,
-          "No",
-        ]}
-      />
-    ),
-  },
-  {
-    q: "Redesign, migration, or template change planned in the next 90 days?",
-    hint: "A new website, CMS change, or template redesign in the next 90 days changes what we would be testing.",
-    a: (
-      <Opts
-        items={[
-          <>
-            Yes: <Fill />
-          </>,
-          "No",
-        ]}
-      />
-    ),
-  },
-  { q: "Screen reader testing",
-    hint: "Testing with the software blind users rely on. It is the only way to confirm two of the criteria.", a: <Opts items={["Include", "Exclude", "Discuss"]} /> },
-  { q: "Direct-purchase threshold, if known",
-    hint: "The dollar amount your department can approve without a formal bid. Purchasing will know.", a: <Fill /> },
-  { q: "Target date for the report",
-    hint: "When you need it in hand.", a: <Fill /> },
 ];
 
 export default function BeforeWeStart() {
@@ -440,55 +316,24 @@ export default function BeforeWeStart() {
           </tbody>
         </table>
 
-        <H2 className="print-break">Readiness checklist</H2>
+        <section className="ck-section print-break" aria-labelledby="readiness">
+          <H2 id="readiness">Readiness checklist</H2>
 
-        <p className={body}>
-          Complete this and return it by email to{" "}
-          <a
-            href="mailto:brian@brianbeals.com"
-            className="underline underline-offset-4 hover:no-underline"
-            style={{ color: "var(--link)" }}
-          >
-            brian@brianbeals.com
-          </a>{" "}
-          before a fee is quoted. Anything unknown is fine; say so rather than guessing, and it
-          gets resolved on a short call.
-        </p>
+          <p className={body}>
+            Complete this before a fee is quoted: send it below, or print it and email it to{" "}
+            <a
+              href="mailto:brian@brianbeals.com"
+              className="underline underline-offset-4 hover:no-underline"
+              style={{ color: "var(--link)" }}
+            >
+              brian@brianbeals.com
+            </a>
+            . Anything unknown is fine; say so rather than guessing, and it gets resolved on a
+            short call.
+          </p>
 
-        <p className={`${body} no-print`}>
-          Print this page and the checklist starts on a sheet of its own. Nothing here is
-          submitted through the site.
-        </p>
-
-        <table role="table" className="doc-table stack text-neutral-800">
-          <caption>Client response</caption>
-          <thead role="rowgroup">
-            <tr role="row">
-              <th role="columnheader" scope="col" style={{ width: "42%" }}>
-                Item
-              </th>
-              <th role="columnheader" scope="col">Response</th>
-            </tr>
-          </thead>
-          <tbody role="rowgroup">
-            {CHECKLIST.map((c, i) => (
-              <tr role="row" key={c.q}>
-                <th
-                  role="rowheader"
-                  scope="row"
-                  aria-labelledby={`q-${i}`}
-                  aria-describedby={`hint-${i}`}
-                >
-                  <span id={`q-${i}`}>{c.q}</span>
-                  <span id={`hint-${i}`} className="hint">
-                    {c.hint}
-                  </span>
-                </th>
-                <td role="cell">{c.a}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <ReadinessForm canSend={Boolean(process.env.RESEND_API_KEY)} />
+        </section>
 
         <H2>What happens after this comes back</H2>
 

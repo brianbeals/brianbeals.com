@@ -1,7 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
-import { answerSections, answers, validate, type Errors } from "./fields";
+import { buildEmail } from "./email";
+import { TRAP, answers, validate, type Errors } from "./fields";
 
 // Sends a submitted readiness checklist to Brian by email through Resend, and
 // keeps nothing. No database, no log of the answers, no copy to the submitter.
@@ -21,6 +22,15 @@ const TO = "brian@brianbeals.com";
 // form rendering and the submit, and a per-IP limit. The limit lives in this
 // instance's memory, so it resets on a cold start and is not shared between
 // instances: it stops a loop hammering one instance, nothing more.
+//
+// NEVER DROP SILENTLY (2026-10-15). The honeypot and the timer used to discard a
+// submission and still show the confirmation. Safari AutoFill filled the honeypot
+// (then named company_website, labelled "Company website") and the submit came in
+// under the timer, so a real prospect's checklist vanished while the page said it
+// was received. Now a tripped guard still sends, with "[check: <reasons>]" at the
+// front of the subject, and Brian decides. Only a hard rate-limit breach is
+// refused, and that is said on the page. A reason code is logged; nothing about
+// the submission is.
 const MIN_FILL_MS = 5_000;
 const WINDOW_MS = 10 * 60_000;
 const PER_WINDOW = 5;
@@ -45,55 +55,31 @@ export type SendState =
   | { status: "sent"; answers: [string, string][] }
   | { status: "error"; message: string };
 
-function esc(s: string) {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
-}
-
 export async function sendReadiness(_prev: SendState, form: FormData): Promise<SendState> {
   const get = (n: string) => form.getAll(n).map(String);
   const list = answers(get);
 
-  // Honeypot filled, or submitted faster than a person could: report success
-  // and send nothing, so a bot learns nothing from the response.
+  const checks: string[] = [];
+  if ((form.get(TRAP) || "") !== "") checks.push("trap filled");
   const started = Number(form.get("t") || 0);
-  if ((form.get("company_website") || "") !== "" || !started || Date.now() - started < MIN_FILL_MS)
-    return { status: "sent", answers: list };
+  if (!started) checks.push("no timer");
+  else if (Date.now() - started < MIN_FILL_MS) checks.push("under 5s");
 
   const ip = ((await headers()).get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
-  if (limited(ip))
+  if (limited(ip)) {
+    console.log("readiness: refused, rate limit");
     return {
       status: "error",
       message: "Too many submissions from this connection. Wait ten minutes, or email brian@brianbeals.com.",
     };
+  }
 
   const errors = validate(get);
   if (Object.keys(errors).length) return { status: "invalid", errors };
 
-  // Subject and body format set 2026-10-15: "Readiness checklist: <domain>
-  // (<contact name>)", then one "Label: answer" line per item with a blank line
-  // between sections (SECTIONS in fields.ts). Line breaks and runs of spaces in a
-  // typed value are flattened so every item stays on one line.
-  const flat = (v: string) => v.replace(/\s+/g, " ").trim();
-  const domain = flat(get("domain")[0]).slice(0, 120);
-  const name = flat(get("contact_name")[0]).slice(0, 120);
+  const email = buildEmail(get, list, checks);
   const replyTo = get("contact_email")[0].trim();
-  const sections = answerSections(list);
-  // "Label: answer", except a label that is a question takes no colon after its "?".
-  const lead = (k: string) => (k.endsWith("?") ? k : `${k}:`);
-  const text = sections
-    .map((sec) => sec.map(([k, v]) => `${lead(k)} ${flat(v) || "(not answered)"}`).join("\n"))
-    .join("\n\n");
-  const html =
-    `<div style="font:14px/1.5 -apple-system,Segoe UI,sans-serif">` +
-    sections
-      .map(
-        (sec) =>
-          `<p style="margin:0 0 14px">` +
-          sec.map(([k, v]) => `<b>${esc(lead(k))}</b> ${v ? esc(flat(v)) : "<i>not answered</i>"}`).join("<br>") +
-          `</p>`,
-      )
-      .join("") +
-    `</div>`;
+  console.log(`readiness: sending${checks.length ? `, check=${checks.join("|").replace(/ /g, "-")}` : ""}`);
 
   if (process.env.READINESS_DRY_RUN === "1") return { status: "sent", answers: list };
 
@@ -108,9 +94,9 @@ export async function sendReadiness(_prev: SendState, form: FormData): Promise<S
         from: FROM,
         to: [TO],
         reply_to: replyTo,
-        subject: `Readiness checklist: ${domain} (${name})`,
-        text,
-        html,
+        subject: email.subject,
+        text: email.text,
+        html: email.html,
       }),
     });
     if (!res.ok) {

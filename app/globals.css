@@ -571,3 +571,23 @@ body {
     margin-bottom: 0.5rem;
   }
 }
+
+/* Print, every page (2026-10-15). The site footer carries the SBA certification
+   mark, and SBA's terms bar using it as letterhead, so no printout carries the
+   footer. The page layout is a full-height flex column on screen (min-h-screen,
+   flex-1); printed, that minimum height plus the padding ran one line past the
+   sheet and Safari added a blank second page to the one-page confirmation. */
+@media print {
+  body > footer {
+    display: none !important;
+  }
+  html,
+  body {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  body,
+  body > main {
+    display: block !important;
+  }
+}

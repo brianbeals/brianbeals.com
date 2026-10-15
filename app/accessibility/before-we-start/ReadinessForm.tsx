@@ -2,7 +2,7 @@
 
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import { sendReadiness, type SendState } from "./actions";
-import { ITEMS, validate, type Errors, type Item, type Part } from "./fields";
+import { ITEMS, TRAP, validate, type Errors, type Item, type Part } from "./fields";
 
 // The readiness checklist as a form. Each item is a row: label and hint on the
 // left, the answer on the right (stacked below 640px). Single fields use a real
@@ -251,13 +251,23 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
         })}
       </div>
 
-      {/* Honeypot: off screen, out of the tab order and the accessibility tree.
-          People never fill it; form-filling bots do. */}
+      {/* Honeypot: off screen, out of the tab order and the accessibility tree,
+          with a meaningless name and no label text, so AutoFill has nothing to match
+          (Safari filled the old "Company website" one). A filled trap no longer
+          drops the submission; it marks the email "[check: ...]" (actions.ts). */}
       <div aria-hidden="true" className="ck-hp">
-        <label>
-          Company website
-          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" defaultValue="" />
-        </label>
+        <input
+          type="text"
+          name={TRAP}
+          id={TRAP}
+          tabIndex={-1}
+          autoComplete="off"
+          data-1p-ignore=""
+          data-lpignore="true"
+          data-form-type="other"
+          aria-label="Leave empty"
+          defaultValue=""
+        />
       </div>
       <input ref={startRef} type="hidden" name="t" defaultValue="" />
 

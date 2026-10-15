@@ -201,3 +201,7 @@ export function answerSections(list: [string, string][]): [string, string][][] {
   const byId = new Map(ITEMS.map((it, i) => [it.id, list[i]]));
   return SECTIONS.map((ids) => ids.map((id) => byId.get(id)!));
 }
+
+/* The honeypot's field name. Deliberately meaningless: AutoFill matches names and
+   labels like "company", "website", "url" or "email", and fills off-screen fields. */
+export const TRAP = "f_k7q2";

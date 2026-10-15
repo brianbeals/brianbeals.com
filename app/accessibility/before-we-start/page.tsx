@@ -172,10 +172,17 @@ function Opts({ items }: { items: React.ReactNode[] }) {
   );
 }
 
-const CHECKLIST: { q: string; a: React.ReactNode }[] = [
-  { q: "Primary domain", a: <Fill /> },
+// Each item carries a one-line hint under its label: always visible, printed, and
+// tied to the row header by aria-describedby. Never a hover tooltip (1.4.13), and
+// a tooltip would not print. The row header is named by the label alone
+// (aria-labelledby), so a screen reader announces the short label as the header
+// for the answer cell and reads the hint as its description.
+const CHECKLIST: { q: string; hint: string; a: React.ReactNode }[] = [
+  { q: "Primary domain",
+    hint: "The main web address, e.g. yourcity.gov.", a: <Fill /> },
   {
     q: "Does the site use a WAF, CDN, or bot protection?",
+    hint: "Security services that sit in front of the site, such as Cloudflare, Akamai, or Imperva. Your IT or web team will know.",
     a: (
       <>
         <Opts items={["Yes", "No", "Unknown"]} />
@@ -188,17 +195,24 @@ const CHECKLIST: { q: string; a: React.ReactNode }[] = [
       </>
     ),
   },
-  { q: "Can the evaluation tooling be allowlisted?", a: <Opts items={["Yes", "No", "Need to ask"]} /> },
-  { q: "Approximate page count", a: <Fill /> },
-  { q: "URL list available?", a: <Opts items={["Attached", "Crawl from home page is fine"]} /> },
+  { q: "Can the evaluation tooling be allowlisted?",
+    hint: "Telling that security service to let our testing tool through. Usually one email to whoever runs it.", a: <Opts items={["Yes", "No", "Need to ask"]} /> },
+  { q: "Approximate page count",
+    hint: "A rough number is fine; your web team or CMS can give it.", a: <Fill /> },
+  { q: "URL list available?",
+    hint: "A list of the pages to test, or permission to start from the home page and follow links.", a: <Opts items={["Attached", "Crawl from home page is fine"]} /> },
   {
     q: "Authenticated areas in scope?",
+    hint: "Pages behind a login, like permit portals or payment accounts. If in scope, we need a test account.",
     a: <Opts items={["Yes, credentials can be provided", "No, exclude them"]} />,
   },
-  { q: "Approximate document count", a: <Fill /> },
-  { q: "Documents in scope?", a: <Opts items={["Yes", "No", "Scope separately"]} /> },
+  { q: "Approximate document count",
+    hint: "PDFs, Word files, and spreadsheets posted on the site. A rough number is fine.", a: <Fill /> },
+  { q: "Documents in scope?",
+    hint: "Whether this engagement covers those files or only the web pages.", a: <Opts items={["Yes", "No", "Scope separately"]} /> },
   {
     q: "Point of contact",
+    hint: "One person who can answer scope questions during the work.",
     a: (
       <>
         <span className="block">
@@ -215,19 +229,28 @@ const CHECKLIST: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "Which obligation applies?",
+    hint: "The rule that covers you. Cities, counties, school districts, and colleges are usually ADA Title II.",
     a: (
       <>
         <Opts items={["ADA Title II", "Section 504", "Section 508 vendor", "ADA Title III", "Unsure"]} />
         <span className="block">
-          If Title II, 2020 Census population: <Fill />
+          <span aria-describedby="hint-census">If Title II, 2020 Census population:</span>{" "}
+          <Fill />
+        </span>
+        <span id="hint-census" className="hint">
+          Sets your compliance date: 50,000 or more is April 26, 2027; smaller entities and
+          special districts, April 26, 2028.
         </span>
       </>
     ),
   },
-  { q: "Third-party embeds in use", a: <Fill /> },
-  { q: "Prior audit, report, or accessibility statement?", a: <Opts items={["Yes, attached", "None"]} /> },
+  { q: "Third-party embeds in use",
+    hint: "Services from other companies running inside your pages: chat boxes, video players, maps, payment forms, scheduling tools. Not the same as an accessibility overlay, which is asked about below.", a: <Fill /> },
+  { q: "Prior audit, report, or accessibility statement?",
+    hint: "Any earlier accessibility review, conformance report, or published accessibility statement.", a: <Opts items={["Yes, attached", "None"]} /> },
   {
     q: "Accessibility overlay or monitoring product in use?",
+    hint: "An “accessibility” toolbar or widget (e.g. UserWay, accessiBe, or AudioEye), or a scanning service like Siteimprove or Monsido.",
     a: (
       <Opts
         items={[
@@ -241,6 +264,7 @@ const CHECKLIST: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: "Redesign, migration, or template change planned in the next 90 days?",
+    hint: "A new website, CMS change, or template redesign in the next 90 days changes what we would be testing.",
     a: (
       <Opts
         items={[
@@ -252,9 +276,12 @@ const CHECKLIST: { q: string; a: React.ReactNode }[] = [
       />
     ),
   },
-  { q: "Screen reader testing", a: <Opts items={["Include", "Exclude", "Discuss"]} /> },
-  { q: "Direct-purchase threshold, if known", a: <Fill /> },
-  { q: "Target date for the report", a: <Fill /> },
+  { q: "Screen reader testing",
+    hint: "Testing with the software blind users rely on. It is the only way to confirm two of the criteria.", a: <Opts items={["Include", "Exclude", "Discuss"]} /> },
+  { q: "Direct-purchase threshold, if known",
+    hint: "The dollar amount your department can approve without a formal bid. Purchasing will know.", a: <Fill /> },
+  { q: "Target date for the report",
+    hint: "When you need it in hand.", a: <Fill /> },
 ];
 
 export default function BeforeWeStart() {
@@ -444,10 +471,18 @@ export default function BeforeWeStart() {
             </tr>
           </thead>
           <tbody role="rowgroup">
-            {CHECKLIST.map((c) => (
+            {CHECKLIST.map((c, i) => (
               <tr role="row" key={c.q}>
-                <th role="rowheader" scope="row">
-                  {c.q}
+                <th
+                  role="rowheader"
+                  scope="row"
+                  aria-labelledby={`q-${i}`}
+                  aria-describedby={`hint-${i}`}
+                >
+                  <span id={`q-${i}`}>{c.q}</span>
+                  <span id={`hint-${i}`} className="hint">
+                    {c.hint}
+                  </span>
                 </th>
                 <td role="cell">{c.a}</td>
               </tr>

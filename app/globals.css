@@ -259,6 +259,15 @@ body {
   height: 1.1em;
   vertical-align: baseline;
 }
+/* Plain-language hint under each checklist label. Always visible and printed. */
+.hint {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--muted-ink);
+}
 .box {
   display: inline-block;
   width: 14px;

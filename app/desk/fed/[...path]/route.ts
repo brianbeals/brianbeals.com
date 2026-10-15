@@ -8,4 +8,4 @@ const FILES =
   /^(index|opps|rates|teaming)\.html$|^(partners|status|a11y-market)\.json$|^bb-dash\.(css|js)$/;
 
 export const dynamic = "force-dynamic";
-export const GET = proxy(FED, (p) => FILES.test(p));
+export const GET = proxy(FED, (p) => FILES.test(p), "fed");

@@ -5,4 +5,4 @@ import { proxy } from "@/lib/desk-proxy";
 // the Action's build output (state.html, opportunities.json, status.json, the
 // tailored docs under docs/), so any page or data file in it is served.
 export const dynamic = "force-dynamic";
-export const GET = proxy(STATE, () => true);
+export const GET = proxy(STATE, () => true, "state");

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { DESK, deskConfigured, readSource, signedIn } from "@/lib/desk";
+import { deskBarHtml } from "@/lib/desk-bar";
+import { DESK, DeskError, deskProblem, readSource, signedIn } from "@/lib/desk";
 
 // The private desk: a quick reference for research and live phone calls. Behind
 // the site gate (middleware.ts, then signedIn() here), noindex, in neither
@@ -20,19 +21,23 @@ export default async function Desk() {
   if (!(await signedIn())) redirect("/login?next=/desk");
 
   let body: string | null = null;
-  let problem = "";
-  if (!deskConfigured()) problem = "The desk is not connected yet: DESK_GH_TOKEN is not set in Vercel.";
-  else {
+  let problem = deskProblem() || "";
+  if (!problem) {
     try {
       const bytes = await readSource(DESK, "desk.html");
       body = bytes ? new TextDecoder().decode(bytes) : null;
       if (!body) problem = "desk.html is missing from the desk repo.";
     } catch (e) {
-      problem = `Could not read the desk from GitHub (${(e as Error).message}).`;
+      problem = e instanceof DeskError ? e.message : "Could not read the desk from GitHub.";
     }
   }
 
   return (
+    <>
+      {/* The desk bar replaces the public site menu here (globals.css hides the
+          site header and its skip link when the bar is on the page). The bar
+          carries its own skip link, which becomes the first stop. */}
+      <div dangerouslySetInnerHTML={{ __html: deskBarHtml("desk", true) }} />
     <div className="flex-1 px-4 py-6 sm:px-12 sm:py-10">
       <article className="desk max-w-2xl mx-auto">
         <h1
@@ -51,5 +56,6 @@ export default async function Desk() {
         )}
       </article>
     </div>
+    </>
   );
 }

@@ -591,3 +591,10 @@ body {
     display: block !important;
   }
 }
+
+/* The desk (lib/desk-bar.ts): its own bar replaces the public site menu and the
+   site's skip link, so the desk reads as a different place. */
+body:has(.dkbar) > header,
+body:has(.dkbar) > .skip-link {
+  display: none;
+}

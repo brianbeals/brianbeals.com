@@ -144,6 +144,168 @@ body {
 .site-header :focus-visible {
   outline-color: #FFFFFF;
 }
+
+/* Header layout. Below 1024px: one row of brand, Menu button and call button, with
+   the nav list (HeaderMenu.tsx) on its own line below the row, collapsed under
+   html.js until the Menu button opens it. Without JavaScript html.js never appears,
+   the button stays hidden and the list shows. Every control in the row and the
+   list is at least 44px tall. From 1024px: brand, nav, call button in one 64px row,
+   as before the menu existed. */
+/* A grid below 1024px: the first row is fixed, so opening the list (row two)
+   never moves the Menu button, and the brand's column shrinks and lets the firm
+   name wrap rather than pushing the call button onto a new line. */
+.site-header-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-rows: minmax(64px, auto) auto;
+  align-items: center;
+  column-gap: 8px;
+}
+.site-brand {
+  grid-column: 1;
+  grid-row: 1;
+  /* The link is only as wide as the mark and name, not the whole column. */
+  justify-self: start;
+}
+.menu-btn {
+  grid-column: 2;
+  grid-row: 1;
+}
+.site-cta {
+  grid-column: 3;
+  grid-row: 1;
+}
+.site-nav {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.site-brand img {
+  flex: none;
+}
+.menu-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid #D6EAF8;
+  border-radius: 4px;
+  background: transparent;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.js .menu-btn {
+  display: inline-flex;
+}
+.site-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.cta-short {
+  display: none;
+}
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 12px;
+}
+.site-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+}
+.js .site-nav:not([data-open]) {
+  display: none;
+}
+/* Where the full call label does not fit beside the brand and the Menu button.
+   Measured 2026-10-16: the full label needs about 480px with the brand on one line. */
+@media (max-width: 479px) {
+  .cta-long {
+    display: none;
+  }
+  .cta-short {
+    display: inline;
+  }
+}
+/* 320 to 399px, and 400% zoom: a smaller mark and name, tighter buttons and no
+   menu icon, so brand, Menu and "Book a call" still share one row at 320px. */
+@media (max-width: 399px) {
+  .site-header-row {
+    column-gap: 6px;
+  }
+  .site-brand {
+    gap: 8px;
+    font-size: 0.9375rem;
+  }
+  .site-brand img {
+    width: 32px;
+    height: 32px;
+  }
+  .menu-btn {
+    padding: 0 8px;
+  }
+  .menu-btn svg {
+    display: none;
+  }
+  .site-cta {
+    padding: 0 8px;
+  }
+}
+@media (min-width: 640px) {
+  .site-brand {
+    font-size: 1.25rem;
+    gap: 12px;
+  }
+}
+@media (min-width: 1024px) {
+  .site-header-row {
+    display: flex;
+    column-gap: 24px;
+    height: 64px;
+  }
+  .menu-btn,
+  .js .menu-btn {
+    display: none;
+  }
+  .site-nav,
+  .js .site-nav:not([data-open]) {
+    display: block;
+    margin-left: auto;
+  }
+  .site-nav ul {
+    display: flex;
+    column-gap: 20px;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+  .site-nav a {
+    display: inline;
+    min-height: 0;
+    padding: 0;
+  }
+  .site-cta {
+    min-height: 0;
+    padding: 6px 12px;
+  }
+}
 /* Pinned only where the bar is one 68px row and the window is tall enough to spare
    it. Below either size it scrolls with the page, so a 320px viewport or 400% zoom
    never loses height to it (1.4.10). scroll-padding-top is the bar's height plus

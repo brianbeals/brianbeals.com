@@ -165,7 +165,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={sourceSerif.variable}>
+    // suppressHydrationWarning: the inline script below adds "js" (and HeaderMenu
+    // "menu-ready") to this element's class before React hydrates it.
+    <html lang="en" className={sourceSerif.variable} suppressHydrationWarning>
       <body
         className="min-h-screen flex flex-col antialiased text-neutral-900"
         style={{
@@ -176,6 +178,16 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        {/* Marks the page as scripted before first paint, so the mobile nav starts
+            collapsed instead of flashing open (globals.css, .js). If HeaderMenu has not
+            mounted three seconds later, the mark comes off and the links show:
+            the nav is never hidden by a script that failed. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(d){d.classList.add('js');setTimeout(function(){if(!d.classList.contains('menu-ready'))d.classList.remove('js')},3000)})(document.documentElement)",
+          }}
         />
         <a href="#main" className="skip-link">
           Skip to main content

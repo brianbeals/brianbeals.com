@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
 import TopicLabel from "@/app/components/TopicLabel";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 // Accessibility track. Byline, title suffix, and publisher are the practice's
 // (Brian Beals, LLC), not the personal brand's.
@@ -58,12 +60,7 @@ export default function EssayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <article className="max-w-2xl mx-auto">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          The Form That Sets the Price
-        </h1>
+        <PageHeading>The Form That Sets the Price</PageHeading>
         <TopicLabel slug="the-form-that-sets-the-price" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -84,17 +81,7 @@ export default function EssayPage() {
           The patients a sliding-fee scale exists for are the ones with the least room to work around a broken form. Some of them use screen readers. The document that sets their price is one they can&rsquo;t fill in on their own.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What the rule says
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What the rule says</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           In May 2024 the Department of Health and Human Services finalized its update to the Section 504 regulations, 45 CFR part 84. Subpart I covers web content and mobile apps: any recipient of HHS federal financial assistance has to meet WCAG 2.1 Level AA, by May 11, 2027 for recipients with 15 or more employees and May 10, 2028 for the smaller ones. Those are the dates after HHS pushed the original deadlines back a year, so anything printed in 2024 still shows 2026.
@@ -116,17 +103,7 @@ export default function EssayPage() {
           People will reach for a second exception, for documents about one patient that sit behind a password, like a lab result in the portal. It&rsquo;s real, and it covers that patient&rsquo;s own records. It doesn&rsquo;t cover the blank forms on the public site that every new patient is told to download.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          Why these three are on the site
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why these three are on the site</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Nobody posts them by accident. Section 330 requires every health center to run a sliding-fee discount program and to tell patients it exists, and the website is where most of them do the telling. Intake packets go online because filling them out at home saves twenty minutes at the front desk.
@@ -140,17 +117,7 @@ export default function EssayPage() {
           In the sample, the sliding-fee application runs four pages and every blank is a printed line. The intake packet runs ten, built the same way, and the consent forms live inside it. Nine sections, each with its own box to initial, and one signature at the end. One of those nine consents names the people who may hear about the patient&rsquo;s care, and it covers HIV, behavioral health, and substance use treatment.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What &ldquo;no tags&rdquo; means at the front desk
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What &ldquo;no tags&rdquo; means at the front desk</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A PDF has two layers: what you see, and a structure underneath that tells software what each part is. Heading, paragraph, list, table, form field. A screen reader reads the structure. Take it away and the reader gets text in whatever order it was drawn, or, for a scanned form, silence.
@@ -168,17 +135,7 @@ export default function EssayPage() {
           I&rsquo;ve filled out that clipboard in an ER waiting room, and I could at least see what I was writing. You get better privacy in a cubicle farm than at a check-in desk, and the patient who needs someone to read the form to them doesn&rsquo;t even get that.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What to do with that
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What to do with that</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Start by counting. Catalog every PDF on the health center&rsquo;s web properties and clinic microsites in four columns. Retire it, replace it with a web page or web form, remediate it, or leave it under the exception with a note saying why. Remediation vendors charge by the page, and the count is what turns that into a budget line instead of a guess.

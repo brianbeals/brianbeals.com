@@ -3,6 +3,7 @@ import Link from "next/link";
 import SbaMark from "@/app/components/SbaMark";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
   // absolute, so the layout's "%s | Brian Beals" template does not append a
@@ -75,12 +76,7 @@ export default function Accessibility() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Accessibility Conformance Reports
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Accessibility Conformance Reports</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             Independent WCAG 2.1 Level AA evaluation for public entities. I write the
             conformance report. I do not do the remediation, and that is the point.
@@ -97,13 +93,8 @@ export default function Accessibility() {
 
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Compliance dates
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance dates</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Public entities serving 50,000 or more</dt>
             <dd className="mb-3">April 26, 2027</dd>
@@ -395,13 +386,8 @@ export default function Accessibility() {
           </div>
         </div>
 
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Capability statement
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page each, for your procurement file. Six, because the rule and the
             certification that matter depend on who is buying. These four cover the

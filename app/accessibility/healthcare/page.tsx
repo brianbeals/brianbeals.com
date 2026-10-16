@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
   title: "Section 504 Web and Document Accessibility for Healthcare",
@@ -63,12 +65,7 @@ export default function AccessibilityHealthcare() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Section 504 for Healthcare
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Section 504 for Healthcare</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             The HHS final rule at 45 CFR Part 84 sets WCAG 2.1 Level AA as the standard
             for web content, mobile apps, and electronic documents. If you take Medicare
@@ -85,13 +82,8 @@ export default function AccessibilityHealthcare() {
 
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Compliance dates
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance dates</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Recipients with 15 or more employees</dt>
             <dd className="mb-3 font-mono">May 11, 2027</dd>
@@ -199,13 +191,8 @@ export default function AccessibilityHealthcare() {
           I am happy to refer a partner for the repair. I will not hold both ends.
         </p>
 
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            What this is not
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">What this is not</SubHeading>
           <p className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             Not an overlay, a widget, or a script you paste into your site. Those have
             been named in litigation rather than protecting against it, and OCR is not
@@ -260,13 +247,8 @@ export default function AccessibilityHealthcare() {
           fastest way to judge whether the work is any good is to read one.
         </p>
 
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Capability statement
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your file, written for Section 504.
           </p>

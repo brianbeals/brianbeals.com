@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
 import TopicLabel from "@/app/components/TopicLabel";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
   title: "I Built the Thing",
@@ -54,12 +56,7 @@ export default function EssayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <article className="max-w-2xl mx-auto">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          I Built the Thing
-        </h1>
+        <PageHeading>I Built the Thing</PageHeading>
         <TopicLabel slug="i-built-the-thing" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -78,17 +75,7 @@ export default function EssayPage() {
           My view has been that people who sell technology without ever having built it tend to oversell it. So I built the thing. I built it in my actual house, where that firewall carries my family&rsquo;s notifications and the security cameras, and one wrong move kills the music in every room.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The mystery
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The mystery</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           32,000 blocks against a single hostname is a fight.
@@ -102,17 +89,7 @@ export default function EssayPage() {
           Diagnosing that came down to knowing what a retry storm looks like from the outside, and being willing to consider that the blocklist doing its job was the problem. Almost no typing involved. The storm stopped that night, which is how I know the read was right.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          Version control before convenience
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Version control before convenience</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Before changing anything, I put both DNS servers in git. I did it to answer one specific question: if either box died tonight, could I rebuild it from nothing?
@@ -126,17 +103,7 @@ export default function EssayPage() {
           The sync container came out of the same question. Two DNS servers only help you if they agree, so something has to keep them in step without me remembering to do it.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          Where a mistake is permanent
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Where a mistake is permanent</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Then I moved to SSH keys and turned off password login.
@@ -150,17 +117,7 @@ export default function EssayPage() {
           So keep the working session open, open a second window, and prove the new way in actually works. Only then burn the old way. That&rsquo;s the discipline of not closing the door you&rsquo;re standing in, and no tool told me to do it.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The part a consultant would invoice for
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The part a consultant would invoice for</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           One-way firewall rules, so a compromised camera can reach the internet but can&rsquo;t reach my laptop. I understood that goal precisely. I could not have written the rule order from memory, and I didn&rsquo;t have to. The established and related allow, the rule that lets already-open connections back through, has to sit above the block, or you cut off your own ability to control the devices you&rsquo;re protecting.
@@ -174,17 +131,7 @@ export default function EssayPage() {
           At house scale, that kind of detail once meant hiring someone and now takes an afternoon. At enterprise scale it&rsquo;s still change control, a test window, and a blast radius, and I&rsquo;d be overselling this if I said otherwise.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          Nobody gets to the long tail
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Nobody gets to the long tail</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           I geo-blocked 11 countries, updated two access points sitting a firmware version behind, and finally dealt with a certificate warning I&rsquo;d clicked past for a year.
@@ -194,17 +141,7 @@ export default function EssayPage() {
           None of it was urgent. That&rsquo;s exactly why it had sat there for a year. Every organization I walk into has a version of this list, and it&rsquo;s rarely hard work. It belongs to nobody, and it never wins the argument for someone&rsquo;s afternoon.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What I didn&rsquo;t become
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What I didn&rsquo;t become</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           I directed the work and something else supplied the syntax. Whatever I knew when I did this for a living is long gone, and directing the work didn&rsquo;t give it back.
@@ -226,17 +163,7 @@ export default function EssayPage() {
           The work is all still there. The hard part just relocated, out of writing the commands and into recognizing a right answer when you see one.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The enterprise version
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The enterprise version</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           This is the conversation I keep having with CIOs. Most of them are still counting engineers, and for a growing share of the work, headcount was never the constraint.

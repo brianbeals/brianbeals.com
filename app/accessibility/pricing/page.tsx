@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 // Ported 2026-10-15 from the approved print sheet
 // LLC/FL-VBE/Accessibility-Practice/Services-Sheet-Public-Entities.html. Port the
@@ -112,12 +113,7 @@ export default function AccessibilityPricing() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Accessibility Services and Pricing for Public Entities
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Accessibility Services and Pricing for Public Entities</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             ADA Title II digital accessibility. Florida-Certified Veteran Business
             Enterprise · SBA-Certified SDVOSB.
@@ -266,7 +262,7 @@ export default function AccessibilityPricing() {
 
         {/* Ice card, #D6EAF8: background only, with fixed ink in both schemes,
             as on app/accessibility/page.tsx. */}
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
           <p className="text-base sm:text-lg leading-relaxed" style={{ color: "#1A1A2A" }}>
             <strong style={{ color: "#1E3A5F" }}>Why an independent report</strong>. A
             consultant who trains your staff and a vendor who remediates your site both have a

@@ -11,7 +11,7 @@ export default function ProjectList({ text }: { text: "summary" | "description" 
     <div className={text === "summary" ? "space-y-6" : "space-y-8"}>
       {projects.map((p) => (
         <div key={p.name}>
-          <SubHeading spacing="mt-0 mb-2" size="text-xl">
+          <SubHeading spacing="mt-0 mb-2">
             {p.name}
           </SubHeading>
           <p className="text-base leading-relaxed text-neutral-800">{p[text]}</p>

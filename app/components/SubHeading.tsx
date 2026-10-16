@@ -1,28 +1,49 @@
+import { HEADING_SCALE } from "./headingScale";
+
 /**
- * H3-level heading under a SectionHeading: navy serif text, no bar. --head turns
- * light blue in dark mode (globals.css). Sentence case (my-profile/voice.md).
+ * Navy serif heading with no bar, on the shared scale (headingScale.ts).
+ * Sentence case (my-profile/voice.md).
  *
- * `spacing` and `size` replace the defaults rather than adding to them; see
- * SectionHeading for why.
+ * level 3 (default): under a SectionHeading. level 2: where no bar sits above it,
+ * which is essay section heads and the callout titles, so heading levels never skip.
+ *
+ * tone "page" uses --head, which turns light blue in dark mode. tone "ice" is for
+ * the light-blue callout cards, whose background is #D6EAF8 in both schemes, so
+ * the ink stays #1E3A5F (8.9:1) rather than following the page.
+ *
+ * `spacing` replaces the default margins; it never carries a font size. ref and
+ * tabIndex are for a heading that takes focus after an action (the readiness form).
  */
 export default function SubHeading({
   children,
   id,
+  level = 3,
+  tone = "page",
   spacing = "mt-8 mb-3",
-  size = "text-lg sm:text-xl",
+  ref,
+  tabIndex,
 }: {
   children: React.ReactNode;
   id?: string;
+  level?: 2 | 3;
+  tone?: "page" | "ice";
   spacing?: string;
-  size?: string;
+  ref?: React.Ref<HTMLHeadingElement>;
+  tabIndex?: number;
 }) {
+  const Tag = level === 2 ? "h2" : "h3";
   return (
-    <h3
+    <Tag
       id={id}
-      className={`${size} font-semibold tracking-tight scroll-mt-6 ${spacing}`}
-      style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+      ref={ref}
+      tabIndex={tabIndex}
+      className={`${HEADING_SCALE.sub} scroll-mt-6 ${spacing}`}
+      style={{
+        color: tone === "ice" ? "#1E3A5F" : "var(--head)",
+        fontFamily: "var(--font-serif)",
+      }}
     >
       {children}
-    </h3>
+    </Tag>
   );
 }

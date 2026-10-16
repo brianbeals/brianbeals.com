@@ -138,6 +138,18 @@ body {
     .page-wide :where(p, ul, ol, blockquote) {
       max-width: 70ch;
     }
+    /* Callout boxes end where the text does. A .doc-note sets the same 16/18px
+       font as the paragraphs, so 70ch matches. A light-blue .callout card stays
+       at 16px while paragraphs go to 18px from 640px, so its 78.75ch there is
+       the paragraphs' 70ch. */
+    .page-wide :where(.callout, .doc-note) {
+      max-width: 70ch;
+    }
+  }
+  @media screen and (min-width: 640px) {
+    .page-wide :where(.callout) {
+      max-width: 78.75ch;
+    }
   }
 }
 

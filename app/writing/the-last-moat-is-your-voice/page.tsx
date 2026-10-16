@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
 import TopicLabel from "@/app/components/TopicLabel";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
   title: "The Last Moat Is Your Voice",
@@ -54,12 +56,7 @@ export default function EssayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <article className="max-w-2xl mx-auto">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          The Last Moat Is Your Voice
-        </h1>
+        <PageHeading>The Last Moat Is Your Voice</PageHeading>
         <TopicLabel slug="the-last-moat-is-your-voice" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -70,17 +67,7 @@ export default function EssayPage() {
           The content is fine. Grammatically clean, on-message, hits the right beats. The quality isn&rsquo;t the problem. The brand is, and most companies haven&rsquo;t priced it in yet.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "#2E86C1" }}
-          ></span>
-          Speed and cost stopped being the differentiator
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Speed and cost stopped being the differentiator</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Two years ago, &ldquo;AI lets us ship ten times faster&rdquo; was a real selling point. You could win meetings with it. In 2026 it&rsquo;s table stakes. Every competitor has the same models, the same agents, the same workflows, the same prompt libraries pulled from the same Substacks. The question moved from <em>can we produce this</em> to <em>does this still sound like us when we do</em>.
@@ -90,17 +77,7 @@ export default function EssayPage() {
           Most enterprise marketing budgets are still optimizing for the first question. The customers are already grading on the second.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "#2E86C1" }}
-          ></span>
-          Your AI sounds exactly like everyone else&rsquo;s AI
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Your AI sounds exactly like everyone else&rsquo;s AI</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Pull ten LinkedIn posts from ten different B2B companies this week. The vocabulary repeats. &ldquo;Leverage.&rdquo; &ldquo;Unlock.&rdquo; &ldquo;Empower.&rdquo; &ldquo;Seamless.&rdquo; &ldquo;Robust.&rdquo; &ldquo;Cutting-edge.&rdquo; &ldquo;Game-changing.&rdquo; Five of these in 400 words, every time, every company.
@@ -118,17 +95,7 @@ export default function EssayPage() {
           The companies producing this content think they&rsquo;re producing thought leadership. They&rsquo;re producing the wallpaper version. The reader scrolls past three of them on a coffee break and remembers none.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "#2E86C1" }}
-          ></span>
-          Why this kills brand equity faster than people realize
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why this kills brand equity faster than people realize</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Brand recognition requires distinctiveness. Distinctiveness can&rsquo;t be produced by a tool that thousands of other companies are also using, the same way, with the same defaults. The math is brutal: you&rsquo;re paying for the same model your competitor is paying for, you&rsquo;re getting output in the same statistical shape your competitor is getting, and you&rsquo;re spending real money to make yourself sound interchangeable with them.
@@ -142,17 +109,7 @@ export default function EssayPage() {
           The companies that figure this out two years late will spend the following five years trying to claw the voice back.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "#2E86C1" }}
-          ></span>
-          What discipline actually looks like
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What discipline actually looks like</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Four practices, in order of how hard they are to actually do.
@@ -178,17 +135,7 @@ export default function EssayPage() {
           I run the AI, Analytics &amp; Automation practice at LRS, and this is a common conversation I&rsquo;m having with executive buyers right now. The CIO and the CMO walk into the same room about it for the first time, sometimes ever.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "#2E86C1" }}
-          ></span>
-          The bet
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The bet</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Everyone adopted AI. The companies that win the next five years will be the ones who held the line on voice while the pressure to ship faster was strongest. Speed is a settled question now. Voice is the next one.

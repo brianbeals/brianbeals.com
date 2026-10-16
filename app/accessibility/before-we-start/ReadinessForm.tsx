@@ -1,6 +1,7 @@
 "use client";
 
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
+import SubHeading from "@/app/components/SubHeading";
 import { sendReadiness, type SendState } from "./actions";
 import { ITEMS, TRAP, validate, type Errors, type Item, type Part } from "./fields";
 
@@ -51,14 +52,9 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
   if (state.status === "sent") {
     return (
       <div className="ck-received">
-        <h3
-          ref={doneRef}
-          tabIndex={-1}
-          className="text-xl sm:text-2xl font-semibold mb-3 tracking-tight"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
+        <SubHeading ref={doneRef} tabIndex={-1} spacing="mt-0 mb-3">
           Checklist received
-        </h3>
+        </SubHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-4 text-neutral-800">
           Brian will reply within one business day. Your answers are below; print them for
           your file if you need a copy, since none was emailed to you.

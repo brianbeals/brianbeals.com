@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 // Every capability statement, in both formats, at one short URL.
 //
@@ -86,12 +87,7 @@ export default function Documents() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
-        <h1
-          className="text-4xl font-semibold tracking-tight mb-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          Capability statements
-        </h1>
+        <PageHeading spacing="mb-3">Capability statements</PageHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
           Each of these is published in two formats. The PDF conforms to PDF/UA-1
           (ISO 14289-1), verified with veraPDF rather than asserted by the tool

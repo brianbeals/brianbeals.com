@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 // Claims on this page come from the federal accessibility capability statement
 // (LLC/FL-VBE/Accessibility-Practice/Capability_Statement_Accessibility_Federal.html)
@@ -99,12 +101,7 @@ export default function AccessibilityFederal() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Section 508 for Federal Agencies and Their Vendors
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Section 508 for Federal Agencies and Their Vendors</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             Independent Section 508 conformance reports for federal agencies and the
             vendors who sell to them. SBA-certified service-disabled veteran-owned small
@@ -260,13 +257,8 @@ export default function AccessibilityFederal() {
           </div>
         </dl>
 
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Capability statement
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your procurement file, written for Section 508.
           </p>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
   title: "Elsewhere",
@@ -64,12 +65,7 @@ export default function Elsewhere() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          Elsewhere
-        </h1>
+        <PageHeading>Elsewhere</PageHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-12 text-neutral-800">
           Adventure travel, mostly to places where the signal goes away.
         </p>

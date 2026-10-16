@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,9 +22,7 @@ export default function Contact() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          Contact
-        </h1>
+        <PageHeading>Contact</PageHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Email is the fastest way to reach me. No form.
         </p>

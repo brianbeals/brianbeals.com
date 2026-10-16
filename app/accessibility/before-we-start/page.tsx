@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ReadinessForm from "./ReadinessForm";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 // Ported 2026-10-15 from the approved print document
 // LLC/FL-VBE/Accessibility-Practice/Pre-Engagement-Requirements.html. Everything
@@ -161,12 +162,7 @@ export default function BeforeWeStart() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Pre-Engagement Requirements
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Pre-Engagement Requirements</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             What has to be in place before a fixed fee can be quoted
           </p>

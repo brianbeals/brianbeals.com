@@ -3,6 +3,7 @@ import Link from "next/link";
 import ProjectList from "@/app/components/ProjectList";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 // No employer names and no tenure counts on the home page. /about carries the
 // career narrative.
@@ -46,9 +47,7 @@ export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          Brian Beals, LLC
-        </h1>
+        <PageHeading>Brian Beals, LLC</PageHeading>
         <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
           Independent digital accessibility evaluation for public entities. AI, analytics and automation consulting from someone who builds what he recommends.
         </p>
@@ -73,7 +72,7 @@ export default function Home() {
                 key={c.href}
                 className="relative rounded-md border border-neutral-200 p-5 hover:border-neutral-400"
               >
-                <SubHeading spacing="mt-0 mb-2" size="text-lg">
+                <SubHeading spacing="mt-0 mb-2">
                   <Link
                     href={c.href}
                     className="underline underline-offset-4 after:absolute after:inset-0"

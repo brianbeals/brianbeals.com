@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import TopicLabel from "@/app/components/TopicLabel";
 import EssayByline from "@/app/components/EssayByline";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
   title: "Who Could Afford to Find Out",
@@ -54,12 +56,7 @@ export default function EssayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <article className="max-w-2xl mx-auto">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          Who Could Afford to Find Out
-        </h1>
+        <PageHeading>Who Could Afford to Find Out</PageHeading>
         <TopicLabel slug="who-could-afford-to-find-out" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -82,17 +79,7 @@ export default function EssayPage() {
           That&rsquo;s what it looks like when a company can afford to find out.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The leaderboard
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The leaderboard</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Meta&rsquo;s leaderboard never got that far. An employee built a dashboard called Claudeonomics on their own initiative. It tracked token consumption across more than 85,000 people and displayed the top 250. High scorers got titles. Token Legend. Cache Wizard. Over one 30-day stretch, usage on it passed 60 trillion tokens. The highest-ranked individual averaged 281 billion. Fortune priced that at $5 per million tokens, the cheapest tier of one frontier model, as possibly more than $1.4 million for one person.
@@ -110,17 +97,7 @@ export default function EssayPage() {
           He&rsquo;s probably right about that engineer. The trouble starts when one engineer&rsquo;s result turns into a ranking of 85,000 people, which is what the dashboard did. A ranking of spend can&rsquo;t tell you whose spend is working, and Uber&rsquo;s eight months are the evidence.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The experiment most companies never got to run
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The experiment most companies never got to run</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Uber was asking a legitimate and very expensive question. What does this actually do for us with the brakes off? You can&rsquo;t buy that answer any other way. You have to let a lot of people use a lot of it badly for long enough to see what survives, and then you have to be able to absorb the bill when the answer isn&rsquo;t what you hoped.
@@ -130,17 +107,7 @@ export default function EssayPage() {
           That takes a budget somebody is willing to blow and eight months nobody is allowed to call a failure, which is more than most companies will approve.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What the rest of the market bought
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What the rest of the market bought</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           In late 2025, PwC asked 4,454 chief executives across 95 countries and territories what AI had actually returned. One in eight said it had delivered both cost and revenue benefits. More than half, 56%, said they&rsquo;d seen no significant financial benefit to date.
@@ -162,17 +129,7 @@ export default function EssayPage() {
           One of them bought an experiment. The other bought a subscription.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The seat was never the investment
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The seat was never the investment</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A $30 seat was never priced like an AI strategy. It&rsquo;s priced to be approved without a business case. At $150 a seat you get a committee, a stated problem, and a number somebody has to hit. At $30 you get a card and a pilot that never quite ends, and a year later nobody can say what came back, because nobody said in advance what would count.

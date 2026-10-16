@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
 import TopicLabel from "@/app/components/TopicLabel";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
   title: "Everybody Got a License",
@@ -54,12 +56,7 @@ export default function EssayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <article className="max-w-2xl mx-auto">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          Everybody Got a License
-        </h1>
+        <PageHeading>Everybody Got a License</PageHeading>
         <TopicLabel slug="everybody-got-a-license" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -78,17 +75,7 @@ export default function EssayPage() {
           That turns out to be the unusual part.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The meter is excellent now
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The meter is excellent now</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Two years ago you could argue that nobody could see what AI cost. That argument is finished.
@@ -110,17 +97,7 @@ export default function EssayPage() {
           Somebody built the meter and published the rate card. For a standalone assistant you went out and bought on purpose, cost visibility is a solved problem.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          And the question didn&rsquo;t go away
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">And the question didn&rsquo;t go away</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Wharton Human-AI Research and GBK Collective survey enterprise leaders every year. In the 2025 edition, 72% said their organizations formally track return on generative AI, and three in four reported positive returns.
@@ -138,17 +115,7 @@ export default function EssayPage() {
           The Wharton release contains the tell, and to its credit says so plainly. Leaders at VP and above were &ldquo;far more bullish&rdquo; on AI&rsquo;s financial impact than mid-managers were. The higher you sit, the better the returns look. That&rsquo;s the same gap appearing inside one dataset, among people looking at the same company.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          Buying for everyone is what makes it possible
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Buying for everyone is what makes it possible</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Microsoft passed 30 million paid Copilot seats this summer and added roughly 10 million of them in a single quarter, the fastest growth since the product launched. The number is real and so is the achievement.
@@ -162,17 +129,7 @@ export default function EssayPage() {
           Meanwhile, more than half of McKinsey&rsquo;s respondents still haven&rsquo;t scaled AI across the enterprise. The seats are bought. The workflows they were bought for mostly haven&rsquo;t been redesigned yet.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The part nobody is metering
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The part nobody is metering</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Standalone assistants are the well-instrumented corner of this. They have rate cards.
@@ -186,17 +143,7 @@ export default function EssayPage() {
           It&rsquo;s easier to argue about a bill you can see.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The standard is one release away
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The standard is one release away</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           FOCUS is the open specification that normalizes billing data across vendors. Version 1.4 was ratified on June 4 of this year and added two new datasets and 47 columns, aimed at reconciling usage to actual invoices.
@@ -210,17 +157,7 @@ export default function EssayPage() {
           Version 1.5 scopes native AI support, model identity and input and output token consumption, and it hasn&rsquo;t shipped. So the industry named a conference after the unit before the specification could carry it. Every vendor&rsquo;s meter is running. Nobody has finished writing the common language for comparing them.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The case for buying it anyway
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The case for buying it anyway</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Licensing broadly is a defensible bet, and the argument for it is stronger than its critics allow.
@@ -234,17 +171,7 @@ export default function EssayPage() {
           The fair criticism is narrower than the one usually made. Companies bought access without deciding in advance what evidence would count.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What I&rsquo;d actually want
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What I&rsquo;d actually want</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The number nobody can produce is the useful one: of everything generated, what share led to something a person actually used, net of retries, abandoned drafts, and output that failed review.

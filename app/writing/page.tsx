@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import SectionHeading from "@/app/components/SectionHeading";
 import EssayList from "./EssayList";
 import { essays } from "./essays";
+import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -27,12 +29,8 @@ export default function WritingIndex() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          Writing
-        </h1>
+        <PageHeading>Writing</PageHeading>
+        <SectionHeading spacing="mt-0 mb-6">Essays</SectionHeading>
         <EssayList essays={essays} />
       </div>
     </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProjectList from "@/app/components/ProjectList";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -27,7 +28,7 @@ export default function About() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>About</h1>
+        <PageHeading>About</PageHeading>
         <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
           <Image
             src="/brian-beals.jpg"

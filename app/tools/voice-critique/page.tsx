@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PromptCopy from "./PromptCopy";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 const DESCRIPTION =
   "A free prompt that grades any document on five dimensions: professionalism, writing style, leadership, AI authorship likelihood, and a snark meter. Paste it into any AI chat and get back a self-contained HTML critique.";
@@ -48,12 +49,7 @@ export default function VoiceCritiquePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
       />
       <div className="max-w-5xl mx-auto page-wide">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          voice-critique
-        </h1>
+        <PageHeading spacing="mb-6">voice-critique</PageHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A writing critic in a prompt. It grades any document on five dimensions, professionalism,

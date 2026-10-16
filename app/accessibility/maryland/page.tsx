@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
   title: "Maryland Nonvisual Access Requirements",
@@ -61,12 +63,7 @@ export default function AccessibilityMaryland() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Maryland Nonvisual Access Requirements
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Maryland Nonvisual Access Requirements</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             Md. Code, State Finance and Procurement § 3.5-311 puts a nonvisual access
             clause in every Maryland IT solicitation and contract. The obligation runs
@@ -84,13 +81,8 @@ export default function AccessibilityMaryland() {
 
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Who this reaches
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Who this reaches</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Applies to</dt>
             <dd className="mb-3">
@@ -262,13 +254,8 @@ export default function AccessibilityMaryland() {
           </div>
         </dl>
 
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Capability statement
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your procurement file, written for Maryland.
           </p>

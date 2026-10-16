@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PageHeading from "@/app/components/PageHeading";
-import { deskBarHtml } from "@/lib/desk-bar";
 import { DESK, DeskError, deskProblem, readSource, signedIn } from "@/lib/desk";
 
 // The private desk: a quick reference for research and live phone calls. Behind
@@ -35,10 +34,8 @@ export default async function Desk() {
 
   return (
     <>
-      {/* The desk bar replaces the public site menu here (globals.css hides the
-          site header and its skip link when the bar is on the page). The bar
-          carries its own skip link, which becomes the first stop. */}
-      <div dangerouslySetInnerHTML={{ __html: deskBarHtml("desk", true) }} />
+      {/* The desk's header comes from the root layout (HeaderSwitch picks
+          DeskHeader on /desk), with the site's own skip link as the first stop. */}
     {/* The public landing pages' container and heading scale (2026-10-16): max-w-5xl
         with running text held near 70ch (.page-wide), PageHeading for the one H1.
         desk.html's h2 and h3 carry the same scale classes (globals.css). */}

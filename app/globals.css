@@ -210,6 +210,15 @@ body {
 .js .menu-btn {
   display: inline-flex;
 }
+/* The desk header's Sign out: the call button's size, outlined like Menu. */
+.site-cta-quiet {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid #D6EAF8;
+}
+.site-cta-quiet:hover {
+  background: rgba(214, 234, 248, 0.12);
+}
 .site-cta {
   display: inline-flex;
   align-items: center;
@@ -441,6 +450,13 @@ body {
   @media screen and (min-width: 640px) {
     .page-wide :where(.callout) {
       max-width: 78.75ch;
+    }
+  }
+  /* The desk's callout box ("Say this on the phone") sets 17px type inside a page
+     whose paragraphs are 16px, so 70ch of the paragraphs is 70 x 16/17 of its own. */
+  @media screen {
+    .page-wide :where(.desk-say) {
+      max-width: calc(70ch * 16 / 17);
     }
   }
 }
@@ -789,25 +805,6 @@ body {
   line-height: 1.6;
   color: inherit;
 }
-.desk .desk-jump {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0 0 1.5rem;
-}
-.desk .desk-jump a {
-  display: inline-block;
-  padding: 0.45rem 0.8rem;
-  border: 1px solid var(--field-border);
-  border-radius: 999px;
-  color: var(--link);
-  font-weight: 600;
-  font-size: 0.9375rem;
-  text-decoration: none;
-}
-.desk .desk-jump a:hover {
-  text-decoration: underline;
-}
 .desk section {
   scroll-margin-top: 1rem;
 }
@@ -876,6 +873,15 @@ body {
 .desk .desk-list li,
 .desk .desk-say li {
   margin-bottom: 0.35rem;
+}
+/* "If they ask" price pairs: the shared table look (doc-table) with the label
+   column sized to its longest label and the value right beside it. */
+.desk-pairs {
+  width: 100%;
+}
+.desk-pairs th {
+  width: 1%;
+  white-space: nowrap;
 }
 .desk .desk-say {
   border: 2px solid var(--head);
@@ -947,9 +953,3 @@ body {
   }
 }
 
-/* The desk (lib/desk-bar.ts): its own bar replaces the public site menu and the
-   site's skip link, so the desk reads as a different place. */
-body:has(.dkbar) > header,
-body:has(.dkbar) > .skip-link {
-  display: none;
-}

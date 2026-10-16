@@ -1,6 +1,9 @@
-// The desk's own navigation bar (2026-10-15), on every gated page: /desk, the
-// source documents under /desk/doc, and the state and fed dashboards. It replaces
-// the public site menu on desk pages so the desk reads as a different place.
+// The desk's navigation bar for the gated pages served as built HTML: the source
+// documents under /desk/doc and the state and fed dashboards (2026-10-15). /desk
+// itself has a React header since 2026-10-16 (app/components/DeskHeader.tsx) with
+// the same section names, the same navy and the same --accent-stripe; this bar
+// keeps wrapping on narrow screens instead of a Menu button, because it is a string
+// injected into pages React does not render.
 //
 // One implementation, as a self-contained HTML string with its own <style>,
 // because three of the four places it appears are built HTML served as is
@@ -8,7 +11,7 @@
 // builds unchanged. Navy bar, white links: 11.5:1 in both color schemes, so it
 // needs no dark variant. Wraps at 320px, visible focus, hidden in print.
 
-export type DeskSection = "desk" | "pricing" | "before" | "recon" | "rules" | "state" | "fed";
+export type DeskSection = "desk" | "pricing" | "before" | "recon" | "rules" | "pitch" | "ids" | "state" | "fed";
 
 const LINKS: [DeskSection | "logout", string, string][] = [
   ["desk", "/desk", "Desk"],
@@ -16,6 +19,8 @@ const LINKS: [DeskSection | "logout", string, string][] = [
   ["before", "/desk#before", "Before we start"],
   ["recon", "/desk#recon", "Recon"],
   ["rules", "/desk#rules", "Rules & dates"],
+  ["pitch", "/desk#pitch", "Pitch"],
+  ["ids", "/desk#ids", "IDs"],
   ["state", "/desk/state", "State"],
   ["fed", "/desk/fed", "Fed"],
   ["logout", "/logout", "Sign out"],
@@ -27,13 +32,14 @@ export function sectionForDoc(slug: string): DeskSection {
   if (slug === "scope-and-limitations") return "before";
   if (slug === "recon-sample") return "recon";
   if (slug === "regime-cheat-sheet") return "rules";
+  if (slug === "positioning-and-pitch") return "pitch";
   return "desk";
 }
 
 const CSS = `
 .dkbar{all:initial;display:block;background:#1E3A5F;color:#FFFFFF;
   font:600 15px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  padding:6px 12px;box-sizing:border-box;width:100%}
+  padding:6px 12px;box-sizing:border-box;width:100%;border-bottom:4px solid #1E8449}
 .dkbar *{box-sizing:border-box}
 .dkbar ul{display:flex;flex-wrap:wrap;align-items:center;gap:4px 2px;margin:0 auto;padding:0;
   list-style:none;max-width:72rem}

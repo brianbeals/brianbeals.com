@@ -5,9 +5,13 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { navLinks } from "./nav-links";
 
+type NavLink = { href: string; label: string };
+
 /**
  * The main nav and, below 1024px, the Menu button that shows and hides it
- * (2026-10-16). From 1024px the button is hidden and the list is always shown in
+ * (2026-10-16). The public header passes nothing and gets the site's links; the
+ * desk header (DeskHeader.tsx) passes its own links, label and list id. From
+ * 1024px the button is hidden and the list is always shown in
  * the bar, as before.
  *
  * Source order is button, then list, so Tab from an open button moves straight
@@ -20,7 +24,20 @@ import { navLinks } from "./nav-links";
  * only shows there. If the script runs but this component never mounts, that
  * script removes html.js after three seconds, so the nav is never hidden for good.
  */
-export default function HeaderMenu() {
+export default function HeaderMenu({
+  links = navLinks,
+  label = "Main",
+  listId = "site-nav-list",
+  plain = false,
+}: {
+  links?: NavLink[];
+  label?: string;
+  listId?: string;
+  /* Plain <a> rather than next/link: for the desk, whose links are in-page anchors
+     and two dashboards served as built HTML, which client navigation and prefetch
+     must not touch. */
+  plain?: boolean;
+}) {
   // The path the list was opened on. It counts as open only there, so moving to
   // another page (a link, Back, Forward) leaves it closed without an effect.
   const pathname = usePathname();
@@ -60,7 +77,7 @@ export default function HeaderMenu() {
         type="button"
         className="menu-btn"
         aria-expanded={open}
-        aria-controls="site-nav-list"
+        aria-controls={listId}
         onClick={() => setOpenOn(open ? null : pathname)}
       >
         {/* Three bars, decorative: the word Menu is the name. */}
@@ -69,13 +86,19 @@ export default function HeaderMenu() {
         </svg>
         Menu
       </button>
-      <nav aria-label="Main" className="site-nav" data-open={open || undefined}>
-        <ul id="site-nav-list">
-          {navLinks.map((l) => (
+      <nav aria-label={label} className="site-nav" data-open={open || undefined}>
+        <ul id={listId}>
+          {links.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} onClick={close} className="hover:underline underline-offset-4">
-                {l.label}
-              </Link>
+              {plain ? (
+                <a href={l.href} onClick={close} className="hover:underline underline-offset-4">
+                  {l.label}
+                </a>
+              ) : (
+                <Link href={l.href} onClick={close} className="hover:underline underline-offset-4">
+                  {l.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

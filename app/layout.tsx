@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
-import SiteHeader from "./components/SiteHeader";
+import HeaderSwitch from "./components/HeaderSwitch";
 import SbaMark from "./components/SbaMark";
 import "./globals.css";
 
@@ -192,7 +192,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <SiteHeader />
+        <HeaderSwitch />
         {/* tabIndex -1 makes main a valid focus target for the skip link.
             Without it Chrome still advances the tab sequence, but Safari
             scrolls and leaves focus at the top of the nav, which makes the

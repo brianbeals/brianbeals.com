@@ -1,257 +1,148 @@
-import Image from "next/image";
 import Link from "next/link";
-import ProjectList from "@/app/components/ProjectList";
+import PageHeading from "@/app/components/PageHeading";
+import PeopleGraphic from "@/app/components/PeopleGraphic";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
-import PageHeading from "@/app/components/PageHeading";
 
-// No employer names and no tenure counts on the home page. /about carries the
-// career narrative.
-const stats = [
-  {
-    figure: "$0 to $20M",
-    label: "Built a business analytics practice from nothing",
-  },
-  {
-    // Founded, not inherited. There was no practice and no leader before this
-    // one, only scattered product sales, so "$20M → $78M" misread as a takeover.
-    figure: "$78M",
-    label: "Founded a big data and analytics group and built it to $78M in under four years",
-  },
-];
+// Homepage, pass 2b (2026-10-16): hero, trust strip, three service cards, proof
+// band, founder line. Copy approved by Brian; ask before changing wording. The
+// career stats and the projects list moved off the homepage; /about carries both.
+//
+// The hero statistic is the CDC's: 28.7% of U.S. adults reported a disability in
+// the 2022 BRFSS, the latest year in the Disability and Health Data System
+// (checked 2026-10-16; the CDC's "Disability Impacts All of Us" page, updated
+// 2026-05-05, says "more than 1 in 4"). Recheck when DHDS adds a year.
+const CDC_SOURCE = "https://www.cdc.gov/disability-and-health/articles-documents/disability-and-health-data-now.html";
 
-// Each card links to its section on /accessibility. Keep the ids in step with
-// the H3 ids there.
+// Dates match /accessibility, /accessibility/healthcare and /accessibility/federal.
+// Change them together.
 const services = [
   {
-    name: "Conformance report",
-    href: "/accessibility#conformance-report",
-    description:
-      "Up to 25 pages across your site's templates, plus the documents linked from them, against all 50 WCAG 2.1 A and AA web accessibility criteria. An ACR in VPAT 2.5 format, an accessibility audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
+    name: "ADA Title II",
+    href: "/accessibility",
+    text: "For cities, counties, school districts, and special districts. Web content and documents must meet WCAG 2.1 AA by April 26, 2027, or April 26, 2028 for smaller entities.",
   },
   {
-    name: "Document inventory and triage",
-    href: "/accessibility#document-inventory",
-    description:
-      "Every PDF on your web properties cataloged and sorted: retire, replace with a web page, remediate, or leave under the rule's exceptions. A work order a remediation vendor can bid against, so per-page spend goes to the documents residents use.",
+    name: "Section 504",
+    href: "/accessibility/healthcare",
+    text: "For health centers, hospitals, and any recipient of HHS funding. The deadline is May 11, 2027 with 15 or more employees, and May 10, 2028 for smaller ones.",
   },
   {
-    name: "Program and policy setup",
-    href: "/accessibility#program-and-policy",
-    description:
-      "The accessibility statement, ADA coordinator designation, grievance procedure and self-evaluation record the rule expects. Plus procurement language that requires an ACR before you buy.",
+    name: "Section 508",
+    href: "/accessibility/federal",
+    text: "For federal agencies and the vendors selling them software. It's in force now, and the VPAT is due with the bid.",
   },
 ];
+
+const link = "underline underline-offset-4 hover:no-underline";
+const body = "text-base sm:text-lg leading-relaxed text-neutral-800";
 
 export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
-        <PageHeading>Brian Beals, LLC</PageHeading>
-        <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
-          Independent digital accessibility evaluation for public entities. AI, analytics and automation consulting from someone who builds what he recommends.
-        </p>
-        {/* No hero image, on purpose. The text opens the page; the headshot
-            lives in "Who does the work" below and is the only photo. */}
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          A veteran-owned firm in Punta Gorda. If you run the website for a Florida county, city, school district or hospital, you have a date: April 26, 2027 for most public entities, April 26, 2028 for the smaller ones, and May 11, 2027 for hospitals under Section 504. I tell you where you stand against WCAG 2.1 Level AA and what to fix first, in a signed Accessibility Conformance Report.
-        </p>
-        {/* Its own paragraph, as a rule rather than a feature. */}
-        <p className="text-base sm:text-lg leading-relaxed mb-12 text-neutral-800">
-          I do not sell remediation. A conformance report from a firm that also sells the fix is a sales document. Mine is not, and that is the reason to hire me.
-        </p>
-        <section className="mb-12 pb-12 border-b border-neutral-200">
-          <SectionHeading spacing="mt-0 mb-6">Accessibility services</SectionHeading>
-          {/* Every card is a real link. The anchor sits on the card title and
-              its ::after stretches over the whole card, so the click target is
-              the card while the link's accessible name stays the short title
-              rather than the whole description. */}
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-none">
-            {services.map((c) => (
-              <li
-                key={c.href}
-                className="relative rounded-md border border-neutral-200 p-5 hover:border-neutral-400"
+        {/* Hero. The graphic follows the text in source order, so it stacks below
+            it on narrow screens and adds nothing to the reading order. */}
+        <section className="grid grid-cols-1 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-8 md:gap-12 items-center">
+          <div>
+            <PageHeading spacing="mb-6">
+              More than one in four U.S. adults has a disability. Can they use your forms?
+            </PageHeading>
+            <p className={`${body} mb-8`}>
+              Independent accessibility testing for cities, counties, schools, health centers, and the
+              vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
+              you what to fix first.
+            </p>
+            <div className="flex flex-wrap gap-3 mb-6">
+              <Link
+                href="/contact"
+                className="rounded px-5 py-2.5 font-semibold text-white hover:underline underline-offset-4"
+                style={{ backgroundColor: "var(--btn-bg)" }}
               >
-                <SubHeading spacing="mt-0 mb-2">
-                  <Link
-                    href={c.href}
-                    className="underline underline-offset-4 after:absolute after:inset-0"
-                    style={{ color: "var(--link)" }}
-                  >
-                    {c.name}
+                Book a 15-minute call
+              </Link>
+              <Link
+                href="/accessibility/before-we-start"
+                className="rounded border-2 px-5 py-2 font-semibold hover:underline underline-offset-4"
+                style={{ borderColor: "var(--link)", color: "var(--link)" }}
+              >
+                Run the readiness checklist
+              </Link>
+            </div>
+            <p className="text-sm" style={{ color: "var(--muted-ink)" }}>
+              Source:{" "}
+              <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>
+                CDC Disability and Health Data System
+              </a>
+              , 28.7% of U.S. adults, 2022 survey data.
+            </p>
+          </div>
+          <div className="flex justify-center md:justify-end">
+            <PeopleGraphic />
+          </div>
+        </section>
+
+        {/* Trust strip. Each item keeps its words together except the first, which is
+            longer than a 320px line; the dots are decoration, not content. */}
+        <p
+          className="mt-12 rounded-md px-5 py-3 text-sm sm:text-base font-semibold leading-relaxed max-w-none"
+          style={{ backgroundColor: "var(--band)", color: "var(--head)" }}
+        >
+          <span>SBA-certified service-disabled veteran-owned small business</span>
+          <span aria-hidden="true"> · </span>
+          <span className="whitespace-nowrap">Florida VBE</span>
+          <span aria-hidden="true"> · </span>
+          <span className="whitespace-nowrap">Maryland VSBE</span>
+          <span aria-hidden="true"> · </span>
+          <span className="whitespace-nowrap">Evaluation only, never remediation</span>
+        </p>
+
+        <section>
+          <SectionHeading>What I test</SectionHeading>
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-none">
+            {services.map((s) => (
+              <li key={s.href} className="flex flex-col rounded-md border border-neutral-200 p-5">
+                <SubHeading spacing="mt-0 mb-2">{s.name}</SubHeading>
+                <p className="text-base leading-relaxed text-neutral-800 mb-4">{s.text}</p>
+                <p className="mt-auto text-base">
+                  <Link href={s.href} className={link} style={{ color: "var(--link)" }}>
+                    Learn more<span className="sr-only"> about {s.name}</span>
                   </Link>
-                </SubHeading>
-                <p className="text-base leading-relaxed text-neutral-800">
-                  {c.description}
                 </p>
               </li>
             ))}
           </ul>
-          {/* Dates match /accessibility and /accessibility/healthcare, which
-              carries the HHS extension of May 11, 2026, document 2026-09266.
-              Change all three together. */}
-          <p className="text-base leading-relaxed text-neutral-800">
-            <Link
-              href="/accessibility"
-              className="underline underline-offset-4 hover:no-underline"
-              style={{ color: "var(--link)" }}
-            >
-              Dates: April 26, 2027 for public entities serving 50,000 or more and for every state entity; April 26, 2028 for smaller entities and special districts. Hospitals and health centers under Section 504: May 11, 2027 for 15 or more employees, May 10, 2028 under 15.
-            </Link>
+        </section>
+
+        <section>
+          <SectionHeading>What the documents show</SectionHeading>
+          <p className={`${body} mb-4`}>
+            A sample of one Florida city&apos;s website: 8 of 26 PDFs had no tags. A sample of one
+            Florida health center&apos;s: 4 of 5, including the sliding-fee application.
           </p>
-          {/* The one federal line on the home page (2026-10-12). The lede stays
-              Florida; federal readers get their own page. */}
-          <p className="text-base leading-relaxed text-neutral-800 mt-4">
-            Federal agencies and the vendors who sell to them:{" "}
-            <Link
-              href="/accessibility/federal"
-              className="underline underline-offset-4 hover:no-underline"
-              style={{ color: "var(--link)" }}
-            >
-              Section 508
-            </Link>
+          <ul className="mb-6 space-y-2 text-base sm:text-lg">
+            <li>
+              <Link href="/writing/eight-of-twenty-six" className={link} style={{ color: "var(--link)" }}>
+                Read Eight of Twenty-Six
+              </Link>
+            </li>
+          </ul>
+          <p className={body}>
+            This site gets the same test.{" "}
+            <a href="/conformance-report.html" className={link} style={{ color: "var(--link)" }}>
+              Read its Accessibility Conformance Report
+            </a>
             .
           </p>
         </section>
-        <section className="mb-12 pb-12 border-b border-neutral-200">
-          <SectionHeading spacing="mt-0 mb-6">Proof</SectionHeading>
-          <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-            This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 11, 2026 with scripted and by-ear screen reader testing, is public.
-          </p>
-          {/* The one image on the page besides the headshot, and it is evidence:
-              rows 2.2.2 to 2.4.4 of the live report's Level A table, screenshot
-              at 2x in the light theme. Regenerate it whenever the report is
-              regenerated (a11y-audit scripts/report_sample.py; the step is in its README) and update the
-              alt text if the rows change. The image and the text sit inside ONE
-              link, so a screen reader hears one link to the report rather than
-              two adjacent links with different names (2.4.4). */}
-          <a
-            href="/conformance-report.html"
-            className="group block mb-6 max-w-2xl"
-          >
-            <Image
-              src="/conformance-report-sample.png"
-              alt="A section of the conformance report's WCAG results table: criteria 2.2.2, 2.3.1 and 2.4.1 through 2.4.4 with their verdicts and remarks"
-              width={1906}
-              height={984}
-              sizes="(min-width: 768px) 672px, calc(100vw - 48px)"
-              className="w-full h-auto rounded-md border border-neutral-200"
-            />
-            <span
-              className="inline-block mt-3 text-base underline underline-offset-4 group-hover:no-underline"
-              style={{ color: "var(--link)" }}
-            >
-              Read the Accessibility Conformance Report
-            </span>
-          </a>
-          <p className="text-base">
-            <Link href="/documents" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-              Capability statements
-            </Link>
-          </p>
-        </section>
-        <section className="mb-12 pb-12 border-b border-neutral-200">
-          <SectionHeading spacing="mt-0 mb-6">Who does the work, and how long it takes</SectionHeading>
-          {/* Key Personnel is scored in public-sector RFPs, so this block names
-              the person. No certifications here: those live on /accessibility
-              and the capability statements, and nothing here may imply an IAAP
-              credential. */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div>
-              {/* TWO SEPARATE JOBS, DELIBERATELY NOT SOLVED BY THE SAME KNOB.
 
-                  Getting the high-resolution headshot into Google Images is the
-                  IMAGE SITEMAP's job (see app/sitemap.ts). That entry nominates the
-                  raw 3093x3369 /brian-beals.jpg, not a _next/image variant, so the
-                  crawler never has to choose among downscaled candidates.
-                  Person.image in the JSON-LD points at the same file.
-
-                  Rendering this element is a different job, and the only thing that
-                  matters here is being honest and fast. Until 2026-10-10 it sat at
-                  the top of the page with `priority` as the LCP element. It now sits
-                  below the fold, so `priority` is gone and it lazy-loads; the LCP is
-                  the H1 text.
-
-                  `sizes` MUST describe the real display width. An earlier pass set
-                  it to 640px against a 180px box; the browser believed it and pulled
-                  a 1280 or 1920 candidate on retina to paint a 180px square, and the
-                  emitted `src` resolved to w=3840. Overstating `sizes` to chase the
-                  index is a performance regression that buys nothing the sitemap has
-                  not already delivered. */}
-              {/* Decorative here: the bio beside it names Brian in its first
-                  words, and with alt="Brian Beals" VoiceOver read the name twice
-                  in a row (heard in the October 10 capture). The JSON-LD Person
-                  image and the image sitemap still identify the photo. */}
-              <Image
-                src="/brian-beals.jpg"
-                alt=""
-                aria-hidden="true"
-                width={400}
-                height={400}
-                sizes="(min-width: 640px) 200px, 180px"
-                className="rounded-md shadow-sm w-[180px] h-[180px] sm:w-[200px] sm:h-[200px] object-cover mb-5"
-              />
-              <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
-                <strong style={{ color: "var(--head)" }}>Brian Beals</strong>. Navy veteran, electronics technician by training. Built and led enterprise data and AI practices before this, and did the delivery underneath them. Every evaluation is done by me, by hand and by screen reader, and I sign it.
-              </p>
-            </div>
-            <div>
-              <ol className="list-decimal pl-6 space-y-3 text-base sm:text-lg leading-relaxed text-neutral-800 mb-6">
-                <li>First call, 30 minutes, free.</li>
-                <li>Scope and fixed quote within a week.</li>
-                <li>Evaluation, two to four weeks.</li>
-                <li>Signed report, remediation list and a walkthrough with your team.</li>
-              </ol>
-              <p className="text-base leading-relaxed text-neutral-800">
-                Purchase order or credit card. Under most direct-purchase thresholds, so no RFP.
-              </p>
-            </div>
-          </div>
-        </section>
-        <section className="mb-12 pb-12 border-b border-neutral-200">
-          <SectionHeading spacing="mt-0 mb-6">AI, analytics and automation</SectionHeading>
-          {/* Positioning only: no services list, no pricing, no engagement
-              names. That waits until the AI page joins /accessibility. */}
-          {/* One sentence since 2026-10-12; the full paragraph is on /about. */}
-          <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
-            The second practice: enterprise data and AI, from a blank page to the second budget cycle, for organizations past the pilot.
-          </p>
-          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10">
-            {stats.map((s) => (
-              <div key={s.figure}>
-                <dt
-                  className="text-2xl sm:text-3xl font-semibold tracking-tight"
-                  style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-                >
-                  {s.figure}
-                </dt>
-                <dd className="mt-2 text-sm text-neutral-600 leading-snug">
-                  {s.label}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-        <section className="mb-12 pb-12 border-b border-neutral-200">
-          <SectionHeading spacing="mt-0 mb-8">Building in public</SectionHeading>
-          {/* One sentence each since 2026-10-12; the full descriptions are on
-              /about. Both read app/projects.ts. */}
-          <ProjectList text="summary" />
-        </section>
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          I don't sell technology I haven't tried to build myself.
-        </p>
-        <p className="text-base sm:text-lg leading-relaxed mb-8 text-neutral-800">
-          This is where the work goes public. Each project above is a working answer to the same question: what can an enterprise sales leader build without an engineering team, now that the tooling has caught up. New work lands here as it ships.
-        </p>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-base">
-          <Link href="/about" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-            More about my work
+        <p className={`${body} mt-12`}>
+          I founded Brian Beals, LLC to do independent accessibility evaluation. I do the testing
+          myself and sign every report.{" "}
+          <Link href="/about" className={link} style={{ color: "var(--link)" }}>
+            About me
           </Link>
-          <Link href="/contact" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-            Get in touch
-          </Link>
-        </div>
+        </p>
       </div>
     </div>
   );

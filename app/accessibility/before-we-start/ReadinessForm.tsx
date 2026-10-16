@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import SubHeading from "@/app/components/SubHeading";
 import { sendReadiness, type SendState } from "./actions";
@@ -46,6 +47,8 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
     if (state.status === "sent") {
       doneRef.current?.focus();
       document.title = "Checklist received | Brian Beals, LLC";
+      // A conversion in Vercel Web Analytics (track, no new script).
+      track("readiness_submitted");
     }
   }, [state]);
 

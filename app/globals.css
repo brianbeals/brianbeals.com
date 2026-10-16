@@ -109,6 +109,48 @@ body {
   .bg-white { background-color: #16202B; }
 }
 
+/* The site header (app/components/SiteHeader.tsx), 2026-10-16. Navy with white ink
+   in both color schemes, over a 4px stripe in the capability statements' green.
+   The stripe is decorative, so it carries no contrast requirement; it is one
+   token, used unchanged in dark mode. */
+:root {
+  --accent-stripe: #1E8449;
+  /* The pinned bar: a 60px row plus the 4px stripe. */
+  --header-h: 64px;
+}
+.site-header {
+  background-color: #1E3A5F;
+  color: #FFFFFF;
+  border-bottom: 4px solid var(--accent-stripe);
+}
+/* The global focus ring is --link, which is barely visible on navy. White gives
+   11.5:1 against the bar. */
+.site-header :focus-visible {
+  outline-color: #FFFFFF;
+}
+/* Pinned only where the bar is one 64px row and the window is tall enough to spare
+   it. Below either size it scrolls with the page, so a 320px viewport or 400% zoom
+   never loses height to it (1.4.10). scroll-padding-top is the bar's height plus
+   8px, so a focused element's ring and an anchor's heading land clear of the bar
+   rather than flush with its edge (2.4.11). The skip link (z-index 100) still
+   draws above it. */
+@media (min-width: 1024px) and (min-height: 600px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  html {
+    scroll-padding-top: calc(var(--header-h) + 8px);
+  }
+}
+/* Not printed: white ink on a background most browsers do not print. */
+@media print {
+  .site-header {
+    display: none;
+  }
+}
+
 /* Section headings (app/components/SectionHeading.tsx), 2026-10-16. The bar is
    --head and the text --head-ink: white on #1E3A5F (11.5:1) in light mode;
    #0F1822 on #A9C9E8 (10.4:1) in dark mode, where a navy slab would sit almost

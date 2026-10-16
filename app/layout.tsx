@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
-import { navLinks } from "./components/nav-links";
+import SiteHeader from "./components/SiteHeader";
 import SbaMark from "./components/SbaMark";
 import "./globals.css";
 
@@ -180,22 +180,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <header className="px-6 sm:px-12 pt-8 pb-2">
-          {/* 1.4.10 Reflow. On one line the nav needs 403px, so at the 320px
-              WCAG target it overflowed and forced horizontal scrolling. The
-              links wrap, and the gap tightens on narrow viewports. Six items
-              since 2026-10-10, so it wraps sooner than it did; that is fine. */}
-          <nav
-            aria-label="Main"
-            className="max-w-5xl mx-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm sm:gap-x-6"
-          >
-            {navLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:underline underline-offset-4">
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-        </header>
+        <SiteHeader />
         {/* tabIndex -1 makes main a valid focus target for the skip link.
             Without it Chrome still advances the tab sequence, but Safari
             scrolls and leaves focus at the top of the nav, which makes the

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
 import TopicLabel from "@/app/components/TopicLabel";
+import PageHeading from "@/app/components/PageHeading";
+import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
   title: "Sixty Cents a Year",
@@ -54,29 +56,14 @@ export default function EssayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <article className="max-w-2xl mx-auto">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          Sixty Cents a Year
-        </h1>
+        <PageHeading>Sixty Cents a Year</PageHeading>
         <TopicLabel slug="sixty-cents-a-year" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Summer is winding down for most of the country. In Florida it just gets slightly less aggressive about it, and I&rsquo;ve spent the week thinking about ice cream: six tubs since February, two of them free. The thing that found the free ones costs sixty cents a year to run.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What it actually does
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What it actually does</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           It&rsquo;s a cron job that pulls the weekly grocery ad, filters it, matches what&rsquo;s on sale against what I actually buy, and emails me when something lands. Those are four steps a computer has done reliably since before I had a driver&rsquo;s license, and there&rsquo;s exactly one model call in the whole thing, sitting at the very end.
@@ -90,17 +77,7 @@ export default function EssayPage() {
           On August 10 the email came. I walked out with five tubs and paid for three.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          Why there&rsquo;s a model in there at all
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why there&rsquo;s a model in there at all</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Because of lines like this one, printed on the July receipt:
@@ -117,17 +94,7 @@ export default function EssayPage() {
           You can&rsquo;t write an assertion for that, because a rule doesn&rsquo;t know whether it&rsquo;s ice cream or a typo. Every receipt invents new abbreviations for things it has printed a thousand times before. So one model call reads the line, turns it into a brand and a product and a price, and hands it back, and then the boring machinery takes over again.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The part I&rsquo;ve stopped trying to resolve
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The part I&rsquo;ve stopped trying to resolve</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           There is an enormous conversation happening right now about enterprise AI. I&rsquo;m in a lot of it, most weeks, with people who are serious about it.
@@ -141,17 +108,7 @@ export default function EssayPage() {
           Both of those are true at the same time, and I&rsquo;ve given up trying to make them resolve into something tidier.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          The thing has a name
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">The thing has a name</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           When I mentioned the cost in a comment thread a couple of weeks ago, someone replied: &ldquo;There&rsquo;s still room for expert systems!&rdquo;
@@ -165,17 +122,7 @@ export default function EssayPage() {
           Deterministic rules never stopped working. They stopped being fashionable, which is a different thing, and fashion comes back around.
         </p>
 
-        <h2
-          className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          <span
-            aria-hidden="true"
-            className="inline-block w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: "var(--link)" }}
-          ></span>
-          What it saved, which is almost nothing
-        </h2>
+        <SubHeading level={2} spacing="mt-12 mb-4">What it saved, which is almost nothing</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           On ice cream, the robot has saved me $13.10.

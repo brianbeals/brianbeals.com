@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProjectList from "@/app/components/ProjectList";
+import SectionHeading from "@/app/components/SectionHeading";
+import SubHeading from "@/app/components/SubHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 // No employer names and no tenure counts on the home page. /about carries the
 // career narrative.
@@ -21,19 +24,19 @@ const stats = [
 // the H3 ids there.
 const services = [
   {
-    name: "Conformance Report",
+    name: "Conformance report",
     href: "/accessibility#conformance-report",
     description:
       "Up to 25 pages across your site's templates, plus the documents linked from them, against all 50 WCAG 2.1 A and AA web accessibility criteria. An ACR in VPAT 2.5 format, an accessibility audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
   },
   {
-    name: "Document Inventory and Triage",
+    name: "Document inventory and triage",
     href: "/accessibility#document-inventory",
     description:
       "Every PDF on your web properties cataloged and sorted: retire, replace with a web page, remediate, or leave under the rule's exceptions. A work order a remediation vendor can bid against, so per-page spend goes to the documents residents use.",
   },
   {
-    name: "Program and Policy Setup",
+    name: "Program and policy setup",
     href: "/accessibility#program-and-policy",
     description:
       "The accessibility statement, ADA coordinator designation, grievance procedure and self-evaluation record the rule expects. Plus procurement language that requires an ACR before you buy.",
@@ -43,10 +46,8 @@ const services = [
 export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          Brian Beals, LLC
-        </h1>
+      <div className="max-w-5xl mx-auto page-wide">
+        <PageHeading>Brian Beals, LLC</PageHeading>
         <p className="text-xl sm:text-2xl leading-snug font-medium mb-8">
           Independent digital accessibility evaluation for public entities. AI, analytics and automation consulting from someone who builds what he recommends.
         </p>
@@ -60,23 +61,18 @@ export default function Home() {
           I do not sell remediation. A conformance report from a firm that also sells the fix is a sales document. Mine is not, and that is the reason to hire me.
         </p>
         <section className="mb-12 pb-12 border-b border-neutral-200">
-          <h2
-            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
-            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-          >
-            Accessibility services
-          </h2>
+          <SectionHeading spacing="mt-0 mb-6">Accessibility services</SectionHeading>
           {/* Every card is a real link. The anchor sits on the card title and
               its ::after stretches over the whole card, so the click target is
               the card while the link's accessible name stays the short title
               rather than the whole description. */}
-          <ul className="grid grid-cols-1 gap-4 mb-6">
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-none">
             {services.map((c) => (
               <li
                 key={c.href}
                 className="relative rounded-md border border-neutral-200 p-5 hover:border-neutral-400"
               >
-                <h3 className="text-lg font-semibold tracking-tight mb-2">
+                <SubHeading spacing="mt-0 mb-2">
                   <Link
                     href={c.href}
                     className="underline underline-offset-4 after:absolute after:inset-0"
@@ -84,7 +80,7 @@ export default function Home() {
                   >
                     {c.name}
                   </Link>
-                </h3>
+                </SubHeading>
                 <p className="text-base leading-relaxed text-neutral-800">
                   {c.description}
                 </p>
@@ -118,12 +114,7 @@ export default function Home() {
           </p>
         </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">
-          <h2
-            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
-            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-          >
-            Proof
-          </h2>
+          <SectionHeading spacing="mt-0 mb-6">Proof</SectionHeading>
           <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
             This site is evaluated under the same method I sell. The current Accessibility Conformance Report, re-evaluated October 11, 2026 with scripted and by-ear screen reader testing, is public.
           </p>
@@ -136,7 +127,7 @@ export default function Home() {
               two adjacent links with different names (2.4.4). */}
           <a
             href="/conformance-report.html"
-            className="group block mb-6"
+            className="group block mb-6 max-w-2xl"
           >
             <Image
               src="/conformance-report-sample.png"
@@ -160,12 +151,7 @@ export default function Home() {
           </p>
         </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">
-          <h2
-            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
-            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-          >
-            Who does the work, and how long it takes
-          </h2>
+          <SectionHeading spacing="mt-0 mb-6">Who does the work, and how long it takes</SectionHeading>
           {/* Key Personnel is scored in public-sector RFPs, so this block names
               the person. No certifications here: those live on /accessibility
               and the capability statements, and nothing here may imply an IAAP
@@ -223,12 +209,7 @@ export default function Home() {
           </div>
         </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">
-          <h2
-            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6"
-            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-          >
-            AI, analytics and automation
-          </h2>
+          <SectionHeading spacing="mt-0 mb-6">AI, analytics and automation</SectionHeading>
           {/* Positioning only: no services list, no pricing, no engagement
               names. That waits until the AI page joins /accessibility. */}
           {/* One sentence since 2026-10-12; the full paragraph is on /about. */}
@@ -252,12 +233,7 @@ export default function Home() {
           </dl>
         </section>
         <section className="mb-12 pb-12 border-b border-neutral-200">
-          <h2
-            className="text-2xl sm:text-3xl font-semibold tracking-tight mb-8"
-            style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-          >
-            Building in public
-          </h2>
+          <SectionHeading spacing="mt-0 mb-8">Building in public</SectionHeading>
           {/* One sentence each since 2026-10-12; the full descriptions are on
               /about. Both read app/projects.ts. */}
           <ProjectList text="summary" />

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SbaMark from "@/app/components/SbaMark";
+import SectionHeading from "@/app/components/SectionHeading";
+import SubHeading from "@/app/components/SubHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
   // absolute, so the layout's "%s | Brian Beals" template does not append a
@@ -35,37 +38,6 @@ export const metadata: Metadata = {
   },
 };
 
-/* Section header as a full-width navy bar, per my-profile/output-conventions.md.
-   White on #1E3A5F measures 11.5:1, so this adds brand presence without touching
-   the contrast work in globals.css, where several tokens are tuned against the
-   gradient focal point rather than the flat page background. */
-function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      className="text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3"
-      style={{
-        color: "#FFFFFF",
-        backgroundColor: "#1E3A5F",
-        fontFamily: "var(--font-serif)",
-      }}
-    >
-      {children}
-    </h2>
-  );
-}
-
-function H3({ id, children }: { id?: string; children: React.ReactNode }) {
-  return (
-    <h3
-      id={id}
-      className="text-lg sm:text-xl font-semibold mt-8 mb-3 tracking-tight scroll-mt-6"
-      style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-    >
-      {children}
-    </h3>
-  );
-}
-
 /* The BB mark, inverse (white square, navy letters) for use on the navy band.
    Decorative here: it sits beside text that already names the company, so
    labelling it would make a screen reader announce the name twice. */
@@ -88,7 +60,7 @@ function BBMarkInverse() {
 export default function Accessibility() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-5xl mx-auto page-wide">
         {/* Navy band. Carries the mark and the one-line position, so a reader who
             arrived from an email sees a firm rather than a personal homepage. */}
         <div
@@ -104,12 +76,7 @@ export default function Accessibility() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Accessibility Conformance Reports
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Accessibility Conformance Reports</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             Independent WCAG 2.1 Level AA evaluation for public entities. I write the
             conformance report. I do not do the remediation, and that is the point.
@@ -126,13 +93,8 @@ export default function Accessibility() {
 
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Compliance dates
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance dates</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Public entities serving 50,000 or more</dt>
             <dd className="mb-3">April 26, 2027</dd>
@@ -149,7 +111,7 @@ export default function Accessibility() {
 
         {/* The three homepage cards link here by id. Keep the ids in step with
             the services array in app/page.tsx. The H3 copy matches the cards. */}
-        <H2>Services</H2>
+        <SectionHeading>Services</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           These are built for a county, city, school district or special district getting
@@ -158,7 +120,7 @@ export default function Accessibility() {
           around it. None of them is the repair.
         </p>
 
-        <H3 id="conformance-report">Conformance Report</H3>
+        <SubHeading id="conformance-report">Conformance report</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Up to 25 pages across your site&apos;s templates, plus the documents linked from
@@ -168,7 +130,7 @@ export default function Accessibility() {
           remediation list. Two to four weeks.
         </p>
 
-        <H3 id="document-inventory">Document Inventory and Triage</H3>
+        <SubHeading id="document-inventory">Document inventory and triage</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Every PDF on your web properties cataloged and sorted: retire, replace with a web
@@ -177,7 +139,7 @@ export default function Accessibility() {
           residents use.
         </p>
 
-        <H3 id="program-and-policy">Program and Policy Setup</H3>
+        <SubHeading id="program-and-policy">Program and policy setup</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The accessibility statement, ADA coordinator designation, grievance procedure and
@@ -204,7 +166,7 @@ export default function Accessibility() {
           : what has to be in place for a fixed fee to hold.
         </p>
 
-        <H2>What you get</H2>
+        <SectionHeading>What you get</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           An Accessibility Conformance Report in VPAT 2.5 format, the same document your
@@ -225,7 +187,7 @@ export default function Accessibility() {
           record leaves you with nothing to show.
         </p>
 
-        <H2>Federal: Section 508</H2>
+        <SectionHeading>Federal: Section 508</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Section 508 of the Rehabilitation Act, at{" "}
@@ -267,7 +229,7 @@ export default function Accessibility() {
           .
         </p>
 
-        <H2>Why I do not remediate</H2>
+        <SectionHeading>Why I do not remediate</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A conformance claim written by whoever repaired the site is a self-assessment. The
@@ -282,7 +244,7 @@ export default function Accessibility() {
           both ends.
         </p>
 
-        <H2>How the evaluation runs</H2>
+        <SectionHeading>How the evaluation runs</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Automated scanning across a representative sample of pages, then manual testing for
@@ -305,7 +267,7 @@ export default function Accessibility() {
           library does not.
         </p>
 
-        <H2>The proof</H2>
+        <SectionHeading>The proof</SectionHeading>
 
         {/* Matches the October 11, 2026 report (second issue); checked against
             public/conformance-report.html on 2026-10-12. Change these numbers only when the
@@ -354,7 +316,7 @@ export default function Accessibility() {
           whether the work is any good is to read one.
         </p>
 
-        <H2>Healthcare: Section 504</H2>
+        <SectionHeading>Healthcare: Section 504</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Healthcare organizations answer to a different rule with an earlier date. The
@@ -373,7 +335,7 @@ export default function Accessibility() {
           .
         </p>
 
-        <H2>Maryland: CATS+ contractors</H2>
+        <SectionHeading>Maryland: CATS+ contractors</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Maryland runs its own version of this obligation through a different statute.
@@ -388,7 +350,7 @@ export default function Accessibility() {
           .
         </p>
 
-        <H2>The firm</H2>
+        <SectionHeading>The firm</SectionHeading>
 
         <div className="flex flex-col items-start min-[600px]:flex-row gap-5 mb-8">
           <SbaMark height={96} />
@@ -424,13 +386,8 @@ export default function Accessibility() {
           </div>
         </div>
 
-        <div className="my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <h2
-            className="text-lg font-semibold mb-3 tracking-tight"
-            style={{ color: "#1E3A5F", fontFamily: "var(--font-serif)" }}
-          >
-            Capability statement
-          </h2>
+        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page each, for your procurement file. Six, because the rule and the
             certification that matter depend on who is buying. These four cover the
@@ -517,9 +474,9 @@ export default function Accessibility() {
           </p>
         </div>
 
-        <H2>Common questions</H2>
+        <SectionHeading>Common questions</SectionHeading>
 
-        <H3>Is an Accessibility Conformance Report the same as an audit?</H3>
+        <SubHeading>Is an Accessibility Conformance Report the same as an audit?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           They overlap. An accessibility audit finds the web accessibility problems and
@@ -528,7 +485,7 @@ export default function Accessibility() {
           You get both.
         </p>
 
-        <H3>What does ADA Title II require by April 2027?</H3>
+        <SubHeading>What does ADA Title II require by April 2027?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Every state entity, and every local government serving 50,000 or more, must have its
@@ -537,7 +494,7 @@ export default function Accessibility() {
           entities and special districts have until April 26, 2028.
         </p>
 
-        <H3>Does the rule cover PDFs?</H3>
+        <SubHeading>Does the rule cover PDFs?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Yes. The rule calls them conventional electronic documents. They have to meet the
@@ -545,7 +502,7 @@ export default function Accessibility() {
           content, and older files nobody uses to apply for or reach a service.
         </p>
 
-        <H3>Do you do the remediation?</H3>
+        <SubHeading>Do you do the remediation?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           No. A report written by whoever fixed the site is the vendor grading their own
@@ -553,7 +510,7 @@ export default function Accessibility() {
           independent. It also gives your remediation vendor a clear spec to bid against.
         </p>
 
-        <H2>Getting started</H2>
+        <SectionHeading>Getting started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Thirty minutes is usually enough to tell whether this is worth your time. I will walk

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ProjectList from "@/app/components/ProjectList";
+import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
 export const metadata: Metadata = {
   title: "About",
   description:
@@ -25,8 +27,8 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <article className="max-w-2xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>About</h1>
+      <article className="max-w-5xl mx-auto page-wide">
+        <PageHeading>About</PageHeading>
         <div className="mb-8 sm:float-right sm:ml-8 sm:mb-6">
           <Image
             src="/brian-beals.jpg"
@@ -44,10 +46,7 @@ export default function About() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Before that, technical sales at Red Hat, Oracle, and MicroStrategy. The practice work I do now depends on knowing the products, the channels, and the customer's procurement model from inside, not from a marketing deck.</p>
 
-        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
-          How I think about this work
-        </h2>
+        <SectionHeading>How I think about this work</SectionHeading>
 
         {/* Moved from the home page 2026-10-12, verbatim. */}
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Enterprise data and AI is the second practice. I&apos;ve built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn&apos;t.</p>
@@ -73,19 +72,13 @@ export default function About() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I maintain 65+ active technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter.</p>
 
-        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
-          Earlier
-        </h2>
+        <SectionHeading>Earlier</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
 
         {/* The full project write-ups, moved from the home page 2026-10-12. The
             home page keeps one sentence each; both read app/projects.ts. */}
-        <h2 className="text-2xl font-semibold mt-12 mb-4 tracking-tight flex items-center gap-3" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          <span aria-hidden="true" className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#2E86C1" }}></span>
-          Building in public
-        </h2>
+        <SectionHeading>Building in public</SectionHeading>
 
         <ProjectList text="description" />
 

@@ -24,7 +24,9 @@ html {
   --footer-ink: rgba(30, 58, 95, 0.8);
   /* 4.66:1 at the gradient focus. #646C78 gave 4.90:1 flat but 4.12:1 there. */
   --muted-ink: #5B6470;
-  --err: #C0392B;
+  /* 5.14:1 at the gradient focus, 5.36:1 on --band, 6.62:1 on white. #C0392B gave
+     5.02:1 flat but 4.21:1 at the focus, flagged by the scan on 2026-10-16. */
+  --err: #A93226;
   --pill-ok-bg: #D6EAF8;
   --pill-err-bg: #FDEDEC;
   /* 1.4.11 Non-text Contrast. A form control's border is the only thing that
@@ -107,6 +109,50 @@ body {
   .bg-white { background-color: #16202B; }
 }
 
+/* Section headings (app/components/SectionHeading.tsx), 2026-10-16. The bar is
+   --head and the text --head-ink: white on #1E3A5F (11.5:1) in light mode;
+   #0F1822 on #A9C9E8 (10.4:1) in dark mode, where a navy slab would sit almost
+   invisibly on the dark page. */
+:root {
+  --head-ink: #FFFFFF;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --head-ink: #0F1822;
+  }
+}
+.section-heading {
+  color: var(--head-ink);
+  background-color: var(--head);
+}
+
+/* Landing and service pages (2026-10-16): the container is max-w-5xl so bars,
+   tables, bands and grids can use the width, while running text stays near 70ch.
+   In @layer base, because Tailwind v4 utilities live in a cascade layer and any
+   unlayered rule beats them whatever its specificity; from base, a max-w-* on an
+   element (max-w-none on a card grid) still wins. Essays keep their own max-w-2xl.
+   Screen only: the printed readiness checklist is measured to one letter sheet
+   at the full print width (see the print block below). */
+@layer base {
+  @media screen {
+    .page-wide :where(p, ul, ol, blockquote) {
+      max-width: 70ch;
+    }
+    /* Callout boxes end where the text does. A .doc-note sets the same 16/18px
+       font as the paragraphs, so 70ch matches. A light-blue .callout card stays
+       at 16px while paragraphs go to 18px from 640px, so its 78.75ch there is
+       the paragraphs' 70ch. */
+    .page-wide :where(.callout, .doc-note) {
+      max-width: 70ch;
+    }
+  }
+  @media screen and (min-width: 640px) {
+    .page-wide :where(.callout) {
+      max-width: 78.75ch;
+    }
+  }
+}
+
 /* Ported print documents: /accessibility/pricing and /accessibility/before-we-start
    (added 2026-10-15). Their tables and callouts, in both color schemes. */
 :root {
@@ -168,16 +214,6 @@ body {
 .doc-table .blocker {
   color: var(--err);
   font-weight: 700;
-}
-/* --err (#C0392B) gives 4.4:1 on the --band row header and fails 1.4.3, found by
-   the scan on 2026-10-15. #A93226 gives 5.6:1 there. Dark mode keeps --err. */
-.doc-table tbody th.blocker {
-  color: #A93226;
-}
-@media (prefers-color-scheme: dark) {
-  .doc-table tbody th.blocker {
-    color: var(--err);
-  }
 }
 
 /* 1.4.10 Reflow. Below 640px each row becomes a card and each cell carries its
@@ -313,9 +349,10 @@ body {
   body:has(.print-doc) {
     background: #FFFFFF;
     --head: #1E3A5F;
+    --head-ink: #FFFFFF;
     --link: #22688F;
     --muted-ink: #5B6470;
-    --err: #C0392B;
+    --err: #A93226;
     --rule: #DFE4EA;
     --band: #D6EAF8;
     --caution: #8A6D08;

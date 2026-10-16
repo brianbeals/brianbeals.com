@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import { TOPICS, topicLabel, type Essay, type Topic } from "./essays";
+import SubHeading from "@/app/components/SubHeading";
 
 // The topic filter on /writing. The URL hash carries the filter, so
 // /writing#accessibility opens filtered and a link from an email or a
@@ -125,12 +126,9 @@ export default function EssayList({ essays }: { essays: Essay[] }) {
               >
                 {topicLabel(e.topic)}
               </p>
-              <h2
-                className="text-2xl font-semibold tracking-tight group-hover:underline underline-offset-4"
-                style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-              >
-                {e.title}
-              </h2>
+              <SubHeading spacing="mt-0 mb-0">
+                <span className="group-hover:underline underline-offset-4">{e.title}</span>
+              </SubHeading>
               <p className="text-sm mt-1" style={{ color: "var(--muted-ink)" }}>
                 {new Date(e.date).toLocaleDateString("en-US", {
                   year: "numeric",

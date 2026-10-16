@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import ReadinessForm from "./ReadinessForm";
+import SectionHeading from "@/app/components/SectionHeading";
+import PageHeading from "@/app/components/PageHeading";
 
 // Ported 2026-10-15 from the approved print document
 // LLC/FL-VBE/Accessibility-Practice/Pre-Engagement-Requirements.html. Everything
@@ -35,23 +37,6 @@ export const metadata: Metadata = {
       "What has to be in place before a fixed-fee accessibility evaluation can be quoted: the allowlist, the page inventory, authenticated areas, and a printable readiness checklist.",
   },
 };
-
-/* Section header as a full-width navy bar, matching app/accessibility/page.tsx. */
-function H2({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
-  return (
-    <h2
-      id={id}
-      className={`text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3 ${className}`}
-      style={{
-        color: "#FFFFFF",
-        backgroundColor: "#1E3A5F",
-        fontFamily: "var(--font-serif)",
-      }}
-    >
-      {children}
-    </h2>
-  );
-}
 
 /* The BB mark, inverse, matching app/accessibility/page.tsx. Decorative. */
 function BBMarkInverse() {
@@ -163,7 +148,7 @@ const REQUIREMENTS: {
 export default function BeforeWeStart() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16 print-doc">
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-5xl mx-auto page-wide">
         <div
           className="rounded-lg px-6 py-8 sm:px-8 sm:py-10 mb-10"
           style={{ backgroundColor: "#1E3A5F" }}
@@ -177,12 +162,7 @@ export default function BeforeWeStart() {
               Brian Beals, LLC
             </span>
           </div>
-          <h1
-            className="text-3xl sm:text-4xl font-semibold tracking-tight mb-4"
-            style={{ color: "#FFFFFF", fontFamily: "var(--font-serif)" }}
-          >
-            Pre-Engagement Requirements
-          </h1>
+          <PageHeading tone="band" spacing="mb-4">Pre-Engagement Requirements</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             What has to be in place before a fixed fee can be quoted
           </p>
@@ -199,7 +179,7 @@ export default function BeforeWeStart() {
           so there are no surprises after a number has been quoted.
         </p>
 
-        <H2>The one that changes the price most</H2>
+        <SectionHeading>The one that changes the price most</SectionHeading>
 
         <div className="doc-note stop bg-white text-base sm:text-lg leading-relaxed text-neutral-800">
           <p className="mb-4">
@@ -267,7 +247,7 @@ export default function BeforeWeStart() {
           it turns two hours back into five minutes.
         </p>
 
-        <H2>Requirements</H2>
+        <SectionHeading>Requirements</SectionHeading>
 
         <p className={body}>
           Items marked <span className="font-bold" style={{ color: "var(--err)" }}>Blocker</span>{" "}
@@ -317,7 +297,7 @@ export default function BeforeWeStart() {
         </table>
 
         <section className="ck-section print-break" aria-labelledby="readiness">
-          <H2 id="readiness">Readiness checklist</H2>
+          <SectionHeading id="readiness">Readiness checklist</SectionHeading>
 
           <p className={body}>
             Complete this before a fee is quoted: send it below, or print it and email it to{" "}
@@ -335,7 +315,7 @@ export default function BeforeWeStart() {
           <ReadinessForm canSend={Boolean(process.env.RESEND_API_KEY)} />
         </section>
 
-        <H2>What happens after this comes back</H2>
+        <SectionHeading>What happens after this comes back</SectionHeading>
 
         <ol className="list-decimal pl-6 space-y-3 mb-6 text-base sm:text-lg leading-relaxed text-neutral-800">
           <li>A short call to resolve anything marked unknown, particularly the allowlist question.</li>

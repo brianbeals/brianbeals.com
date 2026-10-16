@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TopicLabel from "@/app/components/TopicLabel";
+import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
   title: "The Voice Book",
@@ -53,12 +54,7 @@ export default function EssayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <article className="max-w-2xl mx-auto">
-        <h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight mb-8"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          The Voice Book
-        </h1>
+        <PageHeading>The Voice Book</PageHeading>
         <TopicLabel slug="the-voice-book" />
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

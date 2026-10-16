@@ -24,7 +24,9 @@ html {
   --footer-ink: rgba(30, 58, 95, 0.8);
   /* 4.66:1 at the gradient focus. #646C78 gave 4.90:1 flat but 4.12:1 there. */
   --muted-ink: #5B6470;
-  --err: #C0392B;
+  /* 5.14:1 at the gradient focus, 5.36:1 on --band, 6.62:1 on white. #C0392B gave
+     5.02:1 flat but 4.21:1 at the focus, flagged by the scan on 2026-10-16. */
+  --err: #A93226;
   --pill-ok-bg: #D6EAF8;
   --pill-err-bg: #FDEDEC;
   /* 1.4.11 Non-text Contrast. A form control's border is the only thing that
@@ -201,16 +203,6 @@ body {
   color: var(--err);
   font-weight: 700;
 }
-/* --err (#C0392B) gives 4.4:1 on the --band row header and fails 1.4.3, found by
-   the scan on 2026-10-15. #A93226 gives 5.6:1 there. Dark mode keeps --err. */
-.doc-table tbody th.blocker {
-  color: #A93226;
-}
-@media (prefers-color-scheme: dark) {
-  .doc-table tbody th.blocker {
-    color: var(--err);
-  }
-}
 
 /* 1.4.10 Reflow. Below 640px each row becomes a card and each cell carries its
    column name. display:block strips table semantics in Safari and Chrome, so
@@ -348,7 +340,7 @@ body {
     --head-ink: #FFFFFF;
     --link: #22688F;
     --muted-ink: #5B6470;
-    --err: #C0392B;
+    --err: #A93226;
     --rule: #DFE4EA;
     --band: #D6EAF8;
     --caution: #8A6D08;

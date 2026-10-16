@@ -306,8 +306,8 @@ body {
     padding: 6px 12px;
   }
 }
-/* Pinned only where the bar is one 68px row and the window is tall enough to spare
-   it. Below either size it scrolls with the page, so a 320px viewport or 400% zoom
+/* Pinned where the bar is one 68px row and the window is tall enough to spare it:
+   from 1024px wide at 600px high, and below 1024px at 500px high (next rule). Below either size it scrolls with the page, so a 320px viewport or 400% zoom
    never loses height to it (1.4.10). scroll-padding-top is the bar's height plus
    8px, so a focused element's ring and an anchor's heading land clear of the bar
    rather than flush with its edge (2.4.11). The skip link (z-index 100) still
@@ -322,10 +322,63 @@ body {
     scroll-padding-top: calc(var(--header-h) + 8px);
   }
 }
+/* Below 1024px the bar is also one 68px row (brand, Menu, call button), so it pins
+   on phones held upright: 500px high or more. A landscape phone (375px high) and
+   320x256 (400% zoom) fall below that and scroll it away (1.4.10). When it is pinned
+   and the menu is open, the list scrolls inside whatever height is left under the
+   bar, so no link can sit below the bottom of the screen out of reach. */
+@media (max-width: 1023px) and (min-height: 500px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  html {
+    scroll-padding-top: calc(var(--header-h) + 8px);
+  }
+  .site-nav ul {
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
 /* Not printed: white ink on a background most browsers do not print. */
 @media print {
   .site-header {
     display: none;
+  }
+}
+
+/* Homepage service cards (app/page.tsx), 2026-10-16. The whole card is one link:
+   the heading's link carries an ::after over the card. Hover and keyboard focus
+   both light the card: a 2px border in --head (navy, light blue in dark mode) and a
+   soft shadow. Keyboard focus also draws the site's 3px ring around the whole card,
+   so the ring that matters is the card's, not one around the heading text alone. */
+.service-card {
+  border-color: var(--rule);
+  outline-offset: 2px;
+  transition: border-color 120ms, box-shadow 120ms;
+}
+.service-card:hover,
+.service-card:focus-within {
+  border-color: var(--head);
+  box-shadow: 0 0 0 1px var(--head), 0 6px 18px rgba(15, 24, 34, 0.12);
+}
+.service-card:has(a:focus-visible) {
+  outline: 3px solid var(--link);
+}
+.service-card a:focus-visible {
+  outline: none;
+}
+/* Focus scrolls the link clear of the pinned header (scroll-padding-top); the
+   card's own edge and ring sit 20px of padding plus 5px of ring above it, so the
+   link asks for that much more room. */
+.service-card a {
+  scroll-margin-top: 28px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-card {
+    transition: none;
   }
 }
 

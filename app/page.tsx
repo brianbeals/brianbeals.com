@@ -49,7 +49,7 @@ export default function Home() {
               More than one in four U.S. adults has a disability. Can they use your forms?
             </PageHeading>
             <p className={`${body} mb-8`}>
-              Independent accessibility testing for cities, counties, schools, health centers, and the
+              Independent accessibility testing for government agencies, health centers, schools, and the
               vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
               you what to fix first.
             </p>
@@ -98,16 +98,22 @@ export default function Home() {
 
         <section>
           <SectionHeading>What I test</SectionHeading>
+          {/* Whole-card links (globals.css, .service-card). The heading text is the one
+              link in each card; its ::after stretches over the card, so the whole card is
+              the click target while the link's name stays the short service name. The
+              arrow is decoration, hidden from assistive technology, and not a link. */}
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-none">
             {services.map((s) => (
-              <li key={s.href} className="flex flex-col rounded-md border border-neutral-200 p-5">
-                <SubHeading spacing="mt-0 mb-2">{s.name}</SubHeading>
-                <p className="text-base leading-relaxed text-neutral-800 mb-4">{s.text}</p>
-                <p className="mt-auto text-base">
-                  <Link href={s.href} className={link} style={{ color: "var(--link)" }}>
-                    Learn more<span className="sr-only"> about {s.name}</span>
+              <li key={s.href} className="service-card relative flex flex-col rounded-md border p-5">
+                <SubHeading spacing="mt-0 mb-2">
+                  <Link href={s.href} className="underline underline-offset-4 after:absolute after:inset-0 after:rounded-md" style={{ color: "var(--link)" }}>
+                    {s.name}
                   </Link>
-                </p>
+                </SubHeading>
+                <p className="text-base leading-relaxed text-neutral-800 mb-4">{s.text}</p>
+                <span aria-hidden="true" className="service-card-arrow mt-auto text-xl leading-none" style={{ color: "var(--link)" }}>
+                  →
+                </span>
               </li>
             ))}
           </ul>

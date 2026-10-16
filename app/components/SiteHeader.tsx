@@ -13,8 +13,10 @@ import HeaderMenu from "./HeaderMenu";
  *
  * Below 1024px: one row of brand, Menu button and call button, with the nav list
  * collapsed under the Menu button (HeaderMenu.tsx) and dropping below the row when
- * open, in the page flow. Never pinned there, so at 320px or 400% zoom the bar and
- * an open list scroll away with the page (1.4.10). The call button reads "Book a
+ * open. Pinned when the window is at least 500px high (a phone held upright); a
+ * landscape phone, 320px by 256px or 400% zoom scroll it away with the page
+ * (1.4.10). Pinned with the menu open, the list scrolls within the height left
+ * under the bar. The call button reads "Book a
  * call" where the full label does not fit beside the brand and the Menu button.
  * Tap targets in the row and the list are at least 44px.
  *

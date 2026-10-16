@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SectionHeading from "@/app/components/SectionHeading";
 
 // Claims on this page come from the federal accessibility capability statement
 // (LLC/FL-VBE/Accessibility-Practice/Capability_Statement_Accessibility_Federal.html)
@@ -25,22 +26,6 @@ export const metadata: Metadata = {
       "Section 508 conformance reports from outside the repair, and how an agency buys one: micro-purchase, SDVOSB sole source under FAR 19.1406, and VA's Vets First.",
   },
 };
-
-/* Section header as a full-width navy bar, matching app/accessibility/page.tsx. */
-function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      className="text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3"
-      style={{
-        color: "#FFFFFF",
-        backgroundColor: "#1E3A5F",
-        fontFamily: "var(--font-serif)",
-      }}
-    >
-      {children}
-    </h2>
-  );
-}
 
 /* The BB mark, inverse (white square, navy letters), matching app/accessibility/page.tsx.
    Decorative here: it sits beside text that already names the company, so
@@ -98,7 +83,7 @@ const KINGDOMWARE = "https://www.law.cornell.edu/supremecourt/text/14-916";
 export default function AccessibilityFederal() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-5xl mx-auto page-wide">
         {/* Navy band. Carries the mark and the one-line position, so a reader who
             arrived from an email sees a firm rather than a personal homepage. */}
         <div
@@ -127,7 +112,7 @@ export default function AccessibilityFederal() {
           </p>
         </div>
 
-        <H2>Who this is for</H2>
+        <SectionHeading>Who this is for</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Two readers. An agency Section 508 program manager or contracting officer who
@@ -141,7 +126,7 @@ export default function AccessibilityFederal() {
           technical approach.
         </p>
 
-        <H2>What applies</H2>
+        <SectionHeading>What applies</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Section 508 of the Rehabilitation Act, at{" "}
@@ -161,7 +146,7 @@ export default function AccessibilityFederal() {
           .
         </p>
 
-        <H2>What you get</H2>
+        <SectionHeading>What you get</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           An Accessibility Conformance Report in VPAT 2.5 format, every criterion marked
@@ -187,7 +172,7 @@ export default function AccessibilityFederal() {
           , produced by the same process a client gets.
         </p>
 
-        <H2>Why the report has to come from outside the repair</H2>
+        <SectionHeading>Why the report has to come from outside the repair</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A conformance claim written by whoever repaired the product is a
@@ -200,7 +185,7 @@ export default function AccessibilityFederal() {
           Available to subcontract the assessment layer under a remediation prime.
         </p>
 
-        <H2>How an agency buys this</H2>
+        <SectionHeading>How an agency buys this</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Three paths, depending on size and agency.
@@ -240,7 +225,7 @@ export default function AccessibilityFederal() {
           {THRESHOLDS_CHECKED}.
         </p>
 
-        <H2>Identifiers</H2>
+        <SectionHeading>Identifiers</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-5 text-neutral-800">
           Brian Beals, LLC. SBA-certified service-disabled veteran-owned small business,
@@ -307,7 +292,7 @@ export default function AccessibilityFederal() {
           </p>
         </div>
 
-        <H2>Getting started</H2>
+        <SectionHeading>Getting started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Twenty minutes is usually enough to tell whether this fits a specific

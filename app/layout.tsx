@@ -187,7 +187,7 @@ export default function RootLayout({
               since 2026-10-10, so it wraps sooner than it did; that is fine. */}
           <nav
             aria-label="Main"
-            className="max-w-2xl mx-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm sm:gap-x-6"
+            className="max-w-5xl mx-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-sm sm:gap-x-6"
           >
             {navLinks.map((l) => (
               <Link key={l.href} href={l.href} className="hover:underline underline-offset-4">
@@ -207,7 +207,7 @@ export default function RootLayout({
           {/* Certification strip, inside the contentinfo landmark: no new landmark,
               no heading. Same --footer-ink as the line below it, at 13.5px. */}
           <div
-            className="max-w-2xl mx-auto mb-4 flex flex-wrap items-center gap-x-4 gap-y-3 leading-snug"
+            className="max-w-5xl mx-auto mb-4 flex flex-wrap items-center gap-x-4 gap-y-3 leading-snug"
             style={{ fontSize: "13.5px" }}
           >
             <SbaMark height={72} />
@@ -225,7 +225,7 @@ export default function RootLayout({
               </p>
             </div>
           </div>
-          <div className="max-w-2xl mx-auto flex flex-wrap gap-x-4 gap-y-1">
+          <div className="max-w-5xl mx-auto flex flex-wrap gap-x-4 gap-y-1">
             <span>© {new Date().getFullYear()} Brian Beals</span>
             {/* 2.4.5 Multiple Ways. The second route to every page, reachable
                 from every page. A site map linked from nowhere satisfies

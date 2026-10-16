@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SectionHeading from "@/app/components/SectionHeading";
 
 // Ported 2026-10-15 from the approved print sheet
 // LLC/FL-VBE/Accessibility-Practice/Services-Sheet-Public-Entities.html. Port the
@@ -37,22 +38,6 @@ export const metadata: Metadata = {
   },
 };
 
-/* Section header as a full-width navy bar, matching app/accessibility/page.tsx. */
-function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      className="text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3"
-      style={{
-        color: "#FFFFFF",
-        backgroundColor: "#1E3A5F",
-        fontFamily: "var(--font-serif)",
-      }}
-    >
-      {children}
-    </h2>
-  );
-}
-
 /* The BB mark, inverse, matching app/accessibility/page.tsx. Decorative: it sits
    beside text that already names the company. */
 function BBMarkInverse() {
@@ -81,7 +66,7 @@ const SERVICES: { name: string; what: string; price: React.ReactNode }[] = [
     price: "No charge",
   },
   {
-    name: "Conformance Report",
+    name: "Conformance report",
     what: "Up to 25 pages chosen across your site's templates, so a template defect is found once and reported everywhere it appears, plus the documents linked from those pages, validated against PDF/UA. All 50 WCAG 2.1 A and AA criteria. You receive the Accessibility Conformance Report (VPAT 2.5), an audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
     price: (
       <>
@@ -90,12 +75,12 @@ const SERVICES: { name: string; what: string; price: React.ReactNode }[] = [
     ),
   },
   {
-    name: "Full Site Audit",
+    name: "Full site audit",
     what: "Every page plus a document sample, same deliverables at full coverage. For entities that need to say they covered everything.",
     price: "From $8,000",
   },
   {
-    name: "Annual Re-evaluation",
+    name: "Annual re-evaluation",
     what: "Rescan, reissued ACR, and a delta against the prior report. Conformance drifts every time a template changes; this is how an entity shows it is still conforming a year later.",
     price: (
       <>
@@ -104,7 +89,7 @@ const SERVICES: { name: string; what: string; price: React.ReactNode }[] = [
     ),
   },
   {
-    name: "Document Inventory and Triage",
+    name: "Document inventory and triage",
     what: "Crawl and catalog every document on your web properties. Classify each as retire, replace with a web page, remediate, or leave under the rule's exceptions for archived and pre-existing documents. Prioritize by traffic, program criticality and exposure. You receive a scoped work order a remediation vendor can bid against, and a record of the decisions. Same deliverable at every band; the count comes from the recon.",
     price: "From $2,500",
   },
@@ -113,7 +98,7 @@ const SERVICES: { name: string; what: string; price: React.ReactNode }[] = [
 export default function AccessibilityPricing() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-5xl mx-auto page-wide">
         <div
           className="rounded-lg px-6 py-8 sm:px-8 sm:py-10 mb-10"
           style={{ backgroundColor: "#1E3A5F" }}
@@ -148,7 +133,7 @@ export default function AccessibilityPricing() {
           can hand to counsel, a grant administrator or a complainant.
         </p>
 
-        <H2>Services</H2>
+        <SectionHeading>Services</SectionHeading>
 
         <table role="table" className="doc-table stack text-neutral-800">
           <caption className="sr-only">Services, what each covers, and its fixed price</caption>
@@ -206,7 +191,7 @@ export default function AccessibilityPricing() {
           are in place.
         </p>
 
-        <H2>How the evaluation is done</H2>
+        <SectionHeading>How the evaluation is done</SectionHeading>
 
         <ul className={list}>
           <li>
@@ -236,7 +221,7 @@ export default function AccessibilityPricing() {
           </li>
         </ul>
 
-        <H2>What we do not do</H2>
+        <SectionHeading>What we do not do</SectionHeading>
 
         <ul className={list}>
           <li>
@@ -255,7 +240,7 @@ export default function AccessibilityPricing() {
           </li>
         </ul>
 
-        <H2>Buying</H2>
+        <SectionHeading>Buying</SectionHeading>
 
         <ul className={list}>
           <li>

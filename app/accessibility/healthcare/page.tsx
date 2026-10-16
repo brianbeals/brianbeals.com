@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SectionHeading from "@/app/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Section 504 Web and Document Accessibility for Healthcare",
@@ -24,22 +25,6 @@ export const metadata: Metadata = {
   },
 };
 
-/* Section header as a full-width navy bar, matching app/accessibility/page.tsx. */
-function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      className="text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3"
-      style={{
-        color: "#FFFFFF",
-        backgroundColor: "#1E3A5F",
-        fontFamily: "var(--font-serif)",
-      }}
-    >
-      {children}
-    </h2>
-  );
-}
-
 /* The BB mark, inverse (white square, navy letters), matching app/accessibility/page.tsx.
    Decorative here: it sits beside text that already names the company, so
    labelling it would make a screen reader announce the name twice. */
@@ -62,7 +47,7 @@ function BBMarkInverse() {
 export default function AccessibilityHealthcare() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-5xl mx-auto page-wide">
         {/* Navy band. Carries the mark and the one-line position, so a reader who
             arrived from an email sees a firm rather than a personal homepage. */}
         <div
@@ -120,7 +105,7 @@ export default function AccessibilityHealthcare() {
           </p>
         </div>
 
-        <H2>Who counts as a recipient</H2>
+        <SectionHeading>Who counts as a recipient</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Any recipient of HHS federal financial assistance. Hospitals and health
@@ -144,7 +129,7 @@ export default function AccessibilityHealthcare() {
           right of action, so a complaint does not have to start with the agency.
         </p>
 
-        <H2>The part about your documents</H2>
+        <SectionHeading>The part about your documents</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The rule exempts electronic documents that existed before your compliance date.
@@ -180,7 +165,7 @@ export default function AccessibilityHealthcare() {
           tell OCR what you were doing about it without a number.
         </p>
 
-        <H2>Start with the count, not the repair</H2>
+        <SectionHeading>Start with the count, not the repair</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The first engagement is a baseline inventory: every patient-facing document
@@ -200,7 +185,7 @@ export default function AccessibilityHealthcare() {
           that was true once.
         </p>
 
-        <H2>Why I do not remediate</H2>
+        <SectionHeading>Why I do not remediate</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A conformance claim written by whoever repaired the documents is a
@@ -231,7 +216,7 @@ export default function AccessibilityHealthcare() {
           </p>
         </div>
 
-        <H2>An overlapping obligation worth knowing</H2>
+        <SectionHeading>An overlapping obligation worth knowing</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Public hospital districts and other government-operated providers are covered
@@ -256,7 +241,7 @@ export default function AccessibilityHealthcare() {
           if that is the side you are on.
         </p>
 
-        <H2>The proof</H2>
+        <SectionHeading>The proof</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           This site carries its own Accessibility Conformance Report. Fifteen pages and
@@ -307,7 +292,7 @@ export default function AccessibilityHealthcare() {
           </p>
         </div>
 
-        <H2>The firm</H2>
+        <SectionHeading>The firm</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Brian Beals, LLC. Service-disabled veteran-owned small business, based in Punta
@@ -329,7 +314,7 @@ export default function AccessibilityHealthcare() {
           </div>
         </dl>
 
-        <H2>Getting started</H2>
+        <SectionHeading>Getting started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Twenty minutes is usually enough to tell whether this is worth your time. I

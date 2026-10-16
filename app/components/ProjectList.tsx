@@ -1,4 +1,5 @@
 import { projects } from "@/app/projects";
+import SubHeading from "@/app/components/SubHeading";
 
 /**
  * The building-in-public list. The home page passes "summary" (one sentence per
@@ -10,12 +11,9 @@ export default function ProjectList({ text }: { text: "summary" | "description" 
     <div className={text === "summary" ? "space-y-6" : "space-y-8"}>
       {projects.map((p) => (
         <div key={p.name}>
-          <h3
-            className="text-xl font-semibold tracking-tight mb-2"
-            style={{ color: "var(--head)" }}
-          >
+          <SubHeading spacing="mt-0 mb-2" size="text-xl">
             {p.name}
-          </h3>
+          </SubHeading>
           <p className="text-base leading-relaxed text-neutral-800">{p[text]}</p>
           {p.links.length > 0 && (
             <p className={text === "summary" ? "mt-2 text-sm" : "mt-3 text-sm"}>

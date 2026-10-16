@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SectionHeading from "@/app/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Maryland Nonvisual Access Requirements",
@@ -21,22 +22,6 @@ export const metadata: Metadata = {
       "The nonvisual access clause, the 18-and-12 enforcement sequence, and independent conformance work for CATS+ master contractors ahead of the vehicle's April 2028 end date.",
   },
 };
-
-/* Section header as a full-width navy bar, matching app/accessibility/page.tsx. */
-function H2({ children }: { children: React.ReactNode }) {
-  return (
-    <h2
-      className="text-xl sm:text-2xl font-semibold mt-12 mb-5 tracking-tight rounded-md px-4 py-3"
-      style={{
-        color: "#FFFFFF",
-        backgroundColor: "#1E3A5F",
-        fontFamily: "var(--font-serif)",
-      }}
-    >
-      {children}
-    </h2>
-  );
-}
 
 /* The BB mark, inverse (white square, navy letters), matching app/accessibility/page.tsx.
    Decorative here: it sits beside text that already names the company, so
@@ -60,7 +45,7 @@ function BBMarkInverse() {
 export default function AccessibilityMaryland() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <article className="max-w-2xl mx-auto">
+      <article className="max-w-5xl mx-auto page-wide">
         {/* Navy band. Carries the mark and the one-line position, so a reader who
             arrived from an email sees a firm rather than a personal homepage. */}
         <div
@@ -133,7 +118,7 @@ export default function AccessibilityMaryland() {
           </p>
         </div>
 
-        <H2>The 18-and-12 sequence</H2>
+        <SectionHeading>The 18-and-12 sequence</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           For awards on or after January 1, 2020,{" "}
@@ -167,7 +152,7 @@ export default function AccessibilityMaryland() {
           carries no dollar ceiling in the statute. That gap is the part worth pricing.
         </p>
 
-        <H2>Why it never shows up in a solicitation</H2>
+        <SectionHeading>Why it never shows up in a solicitation</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A keyword search of eMMA, Maryland&apos;s procurement portal, for
@@ -178,7 +163,7 @@ export default function AccessibilityMaryland() {
           just as easy to forget you&apos;re holding it.
         </p>
 
-        <H2>The vehicle</H2>
+        <SectionHeading>The vehicle</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           CATS+ is Maryland&apos;s IT services vehicle, BPO 060B2490023, running through
@@ -192,7 +177,7 @@ export default function AccessibilityMaryland() {
           Internet Systems functional area where this work rides.
         </p>
 
-        <H2>15 of 650</H2>
+        <SectionHeading>15 of 650</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Of the 650 firms holding FA2, 15 are veteran-owned. Brian Beals, LLC holds
@@ -201,7 +186,7 @@ export default function AccessibilityMaryland() {
           status. The VB number is the credential.
         </p>
 
-        <H2>What I do</H2>
+        <SectionHeading>What I do</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The work is conformance evaluation, not remediation: VPAT 2.5 and
@@ -213,7 +198,7 @@ export default function AccessibilityMaryland() {
           self-assessment, not independent evidence.
         </p>
 
-        <H2>The proof</H2>
+        <SectionHeading>The proof</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Maryland&apos;s own regulations, at{" "}
@@ -243,7 +228,7 @@ export default function AccessibilityMaryland() {
           own on display.
         </p>
 
-        <H2>The firm</H2>
+        <SectionHeading>The firm</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Brian Beals, LLC. Service-disabled veteran-owned small business, based in
@@ -309,7 +294,7 @@ export default function AccessibilityMaryland() {
           </p>
         </div>
 
-        <H2>Getting started</H2>
+        <SectionHeading>Getting started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Twenty minutes is usually enough to tell whether this fits your capture plan

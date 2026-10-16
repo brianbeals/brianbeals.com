@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SectionHeading from "@/app/components/SectionHeading";
 
 // Every capability statement, in both formats, at one short URL.
 //
@@ -84,7 +85,7 @@ const docs: Doc[] = [
 export default function Documents() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-5xl mx-auto page-wide">
         <h1
           className="text-4xl font-semibold tracking-tight mb-3"
           style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
@@ -147,12 +148,7 @@ export default function Documents() {
           ))}
         </ul>
 
-        <h2
-          className="text-2xl font-semibold tracking-tight mt-12 mb-4"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          This site&rsquo;s own report
-        </h2>
+        <SectionHeading>This site&rsquo;s own report</SectionHeading>
         <p className="text-base leading-relaxed mb-3 text-neutral-800">
           brianbeals.com is evaluated against all 50 Level A and AA success
           criteria and the result is published, including anything it does not fully

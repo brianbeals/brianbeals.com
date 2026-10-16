@@ -187,6 +187,21 @@ export default function Accessibility() {
           record leaves you with nothing to show.
         </p>
 
+        <SectionHeading>State and local: ADA Title II</SectionHeading>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          Cities, counties, school districts, and special districts have their own page: the
+          dates, what I do, how to buy, and the one-page capability statement.{" "}
+          <Link
+            href="/accessibility/title-ii"
+            className="underline underline-offset-4 font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            See the ADA Title II page
+          </Link>
+          .
+        </p>
+
         <SectionHeading>Federal: Section 508</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

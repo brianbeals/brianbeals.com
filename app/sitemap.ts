@@ -25,6 +25,7 @@ const STATIC_PAGES: StaticEntry[] = [
   // never added here, so the XML sitemap never carried it. Found 2026-08-24
   // while adding the healthcare page. A page reachable only by crawl is a page
   // competing with a handicap.
+  { path: "/accessibility/title-ii", priority: 0.8, changeFrequency: "monthly" },
   { path: "/accessibility/healthcare", priority: 0.8, changeFrequency: "monthly" },
   { path: "/accessibility/maryland", priority: 0.7, changeFrequency: "monthly" },
   { path: "/accessibility/federal", priority: 0.8, changeFrequency: "monthly" },

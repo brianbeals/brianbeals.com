@@ -14,12 +14,13 @@ import SubHeading from "@/app/components/SubHeading";
 // 2026-05-05, says "more than 1 in 4"). Recheck when DHDS adds a year.
 const CDC_SOURCE = "https://www.cdc.gov/disability-and-health/articles-documents/disability-and-health-data-now.html";
 
-// Dates match /accessibility, /accessibility/healthcare and /accessibility/federal.
+// Dates match /accessibility, /accessibility/title-ii, /accessibility/healthcare and
+// /accessibility/federal.
 // Change them together.
 const services = [
   {
     name: "ADA Title II",
-    href: "/accessibility",
+    href: "/accessibility/title-ii",
     text: "For cities, counties, school districts, and special districts. Web content and documents must meet WCAG 2.1 AA by April 26, 2027, or April 26, 2028 for smaller entities.",
   },
   {

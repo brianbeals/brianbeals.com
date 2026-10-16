@@ -115,8 +115,24 @@ body {
    token, used unchanged in dark mode. */
 :root {
   --accent-stripe: #1E8449;
-  /* The pinned bar: a 60px row plus the 4px stripe. */
-  --header-h: 64px;
+  /* The pinned bar: a 64px row plus the 4px stripe. */
+  --header-h: 68px;
+  /* The primary call to action, "Book a 15-minute call" (header and homepage hero),
+     2026-10-16. White on #1E8449 is 4.71:1 and on the hover #196F3D 6.1:1, in both
+     color schemes, since the button carries its own background. */
+  --cta-bg: #1E8449;
+  --cta-bg-hover: #196F3D;
+}
+.btn-cta {
+  background-color: var(--cta-bg);
+  color: #FFFFFF;
+}
+.btn-cta:hover {
+  background-color: var(--cta-bg-hover);
+}
+/* On the navy bar the green's edge is close to the bar's, so a light border marks it. */
+.site-header .btn-cta {
+  border: 1px solid #D6EAF8;
 }
 .site-header {
   background-color: #1E3A5F;
@@ -128,7 +144,7 @@ body {
 .site-header :focus-visible {
   outline-color: #FFFFFF;
 }
-/* Pinned only where the bar is one 64px row and the window is tall enough to spare
+/* Pinned only where the bar is one 68px row and the window is tall enough to spare
    it. Below either size it scrolls with the page, so a 320px viewport or 400% zoom
    never loses height to it (1.4.10). scroll-padding-top is the bar's height plus
    8px, so a focused element's ring and an anchor's heading land clear of the bar

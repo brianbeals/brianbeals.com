@@ -3,12 +3,12 @@ import { navLinks } from "./nav-links";
 
 /**
  * The site header (2026-10-16): a navy bar with the BB mark and firm name linking
- * home, the main nav, and one call to action, over a 4px --accent-stripe border.
+ * home, the main nav, and one call to action in --cta-bg green, over a 4px --accent-stripe border.
  * The bar is #1E3A5F with white ink in both color schemes, like the band on the
  * /accessibility pages, so it needs no dark-mode variant.
  *
  * Sticky only where it fits on one row in a tall enough window: 1024px wide and
- * 600px high (globals.css, .site-header). Narrower, the nav wraps to a second row,
+ * 600px high (globals.css, .site-header), where it is one 68px row with the stripe. Narrower, the nav wraps to a second row,
  * and a pinned two-row bar would take a quarter of a small screen; at 320px or 400%
  * zoom it scrolls away with the page (1.4.10). When it is pinned, scroll-padding-top
  * keeps focus and anchor targets clear of it (2.4.11).
@@ -19,16 +19,16 @@ import { navLinks } from "./nav-links";
 export default function SiteHeader() {
   return (
     <header className="site-header px-6 sm:px-12">
-      <div className="max-w-5xl mx-auto flex flex-wrap items-center gap-x-6 gap-y-3 py-3 lg:py-0 lg:h-[60px]">
-        <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight hover:underline underline-offset-4">
+      <div className="max-w-5xl mx-auto flex flex-wrap items-center gap-x-6 gap-y-3 py-3 lg:py-0 lg:h-[64px]">
+        <Link href="/" className="flex items-center gap-3 text-xl font-semibold tracking-tight hover:underline underline-offset-4">
           {/* Decorative: the firm name beside it is the link's text. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='white'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='%231E3A5F' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E"
             alt=""
             aria-hidden="true"
-            width={28}
-            height={28}
+            width={36}
+            height={36}
           />
           <span>Brian Beals, LLC</span>
         </Link>
@@ -42,8 +42,7 @@ export default function SiteHeader() {
         </nav>
         <Link
           href="/contact"
-          className="rounded px-3 py-1.5 text-sm font-semibold hover:underline underline-offset-4"
-          style={{ backgroundColor: "#FFFFFF", color: "#1E3A5F" }}
+          className="btn-cta rounded px-3 py-1.5 text-sm font-semibold hover:underline underline-offset-4"
         >
           Book a 15-minute call
         </Link>

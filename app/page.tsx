@@ -56,8 +56,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 mb-6">
               <Link
                 href="/contact"
-                className="rounded px-5 py-2.5 font-semibold text-white hover:underline underline-offset-4"
-                style={{ backgroundColor: "var(--btn-bg)" }}
+                className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
               >
                 Book a 15-minute call
               </Link>

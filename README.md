@@ -10,6 +10,8 @@ The home page (pass 2b, 2026-10-16) is the accessibility practice only: a hero w
 
 ## The private desk
 
+Since 2026-10-16 `/desk` uses the public pages' system: the `max-w-5xl page-wide` container, `PageHeading` for its H1, and in the desk repo's `desk.html` the heading scale's classes (`section-heading h-section` on each `h2`, `h-sub` on each `h3`; the scale is `.h-page`, `.h-section` and `.h-sub` in `globals.css`, which the heading components also use) and one table markup: `div.table-scroll` (a labelled, focusable region that scrolls on a phone) around `table.doc-table.desk-table`, whose label column is 28% in every table. Styles only live here; the content stays in the private repo.
+
 `/desk` is a gated quick reference for research and live phone calls: pricing (a phone summary, unit rates, the full fixed-fee ranges, healthcare, vendor ACR, and the pricing method), before-we-start, recon, which rule and which date, the pitch, and the IDs buyers ask for. One login covers everything private: `middleware.ts` gates `/desk` and `/tools` (except the public `/tools/voice-critique`) with the signed cookie from `/login` (`SITE_GATE_PASSWORD`, `SITE_GATE_SECRET`), and every desk route checks the cookie again itself. Signed out, desk pages redirect to `/login` and data files answer 401. The login's default destination is `/desk`, and it only follows a `next` that is a path on this site. `/desk` is noindex, in neither sitemap, and linked from no public page.
 
 **None of the desk's content is in this repo, which is public.** `lib/desk.ts` reads it at request time from private repos with `DESK_GH_TOKEN`, a fine-grained read-only token (Contents: read on `desk`, `fed-intel` and `state-intel`) stored as a Vercel secret, and caches each read for two minutes:

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import PageHeading from "@/app/components/PageHeading";
 import { deskBarHtml } from "@/lib/desk-bar";
 import { DESK, DeskError, deskProblem, readSource, signedIn } from "@/lib/desk";
 
@@ -38,14 +39,12 @@ export default async function Desk() {
           site header and its skip link when the bar is on the page). The bar
           carries its own skip link, which becomes the first stop. */}
       <div dangerouslySetInnerHTML={{ __html: deskBarHtml("desk", true) }} />
+    {/* The public landing pages' container and heading scale (2026-10-16): max-w-5xl
+        with running text held near 70ch (.page-wide), PageHeading for the one H1.
+        desk.html's h2 and h3 carry the same scale classes (globals.css). */}
     <div className="flex-1 px-4 py-6 sm:px-12 sm:py-10">
-      <article className="desk max-w-2xl mx-auto">
-        <h1
-          className="text-3xl font-semibold tracking-tight mb-4"
-          style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
-        >
-          Desk
-        </h1>
+      <article className="desk max-w-5xl mx-auto page-wide">
+        <PageHeading spacing="mb-6">Desk</PageHeading>
         {body ? (
           // Trusted: written by Brian in a private repo only this token can read.
           <div dangerouslySetInnerHTML={{ __html: body }} />

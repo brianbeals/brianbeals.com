@@ -27,8 +27,7 @@ export default function SectionHeading({
   return (
     <h2
       id={id}
-      className={`section-heading ${HEADING_SCALE.section} rounded-md px-4 py-3 scroll-mt-6 ${spacing}`}
-      style={{ fontFamily: "var(--font-serif)" }}
+      className={`section-heading ${HEADING_SCALE.section} scroll-mt-6 ${spacing}`}
     >
       {children}
     </h2>

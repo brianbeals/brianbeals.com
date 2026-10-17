@@ -122,8 +122,23 @@ failures; these amend Run 3, 6 and 8:
    and the bytes decide. A candidate that turns out not to be a PDF is set aside and doesn't count.
    At most 15 document fetches per job.
 10. **No pages.** A job where axe ran on no page (a Southwest Florida city's CDN answered 403 to every request)
-    ends `no_pages` with the reason: retried once, then Brian is emailed, and the submitter gets
-    no report. It never produces a report saying nothing failed.
+    ends `no_pages` with the reason. It never produces a report saying nothing failed. After the
+    one retry the submitter gets one automatic note, sent without review: "Our automated check
+    couldn't reach your site, which happens when a firewall screens out automated browsers. I'll
+    follow up personally within two business days." Brian gets a note with the status code,
+    flagged as a warm lead.
+12. **Partial scans.** When the 180-second cap hits after at least one page was checked, the
+    pages and PDFs that finished are kept and the report says "Partial: N pages, M documents
+    checked" with a plain note that the test stops after three minutes. It goes through the
+    review gate like any other report; it is not retried. A job cut off before any page finished
+    is a timeout and is retried once.
+
+**Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
+request from the home internet address, including a normal browser with a default user agent;
+other sites on the same CDN load. The Mac mini shares that address, so a free test of that site
+from the mini fails the same way, and so would a paid engagement's scan. The fix, before the
+first paid engagement: a static IP from the ISP, plus the allowlist kit on /desk sent to the
+client's IT contact. Nothing in the free test or the scanner tries to get around a block.
 11. **Report additions.** The document findings add recon's tag-tree checks (images with no text
     alternative, more than one page and no headings, tables with no header cells) and use recon's
     no-text-layer test. The skip link is counted on every page checked. The scanner's own

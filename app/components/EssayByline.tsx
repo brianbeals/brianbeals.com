@@ -10,26 +10,19 @@ import Link from "next/link";
  *
  * Attribution is controlled two ways:
  *  - `variant` picks a stock byline. Default is "personal" (neutral, no employer).
- *    Pass variant="lrs" on an essay that should carry the LRS attribution.
  *    Pass variant="practice" on an accessibility-track essay: the byline names
  *    Brian Beals, LLC and a footer line carries the practice's copyright and
  *    address in place of the personal one. First used 2026-10-12.
  *  - `children` overrides the text entirely, for one-off bylines (e.g. an essay
  *    that points readers at a specific repo or artifact).
  */
-type Variant = "personal" | "lrs" | "practice";
+type Variant = "personal" | "practice";
 
 const BYLINES: Record<Variant, ReactNode> = {
   personal: (
     <>
       Brian Beals writes about AI, voice, and professional work at
       brianbeals.com. Reach him at brian@brianbeals.com.
-    </>
-  ),
-  lrs: (
-    <>
-      Brian Beals leads the AI, Analytics &amp; Automation practice at LRS IT
-      Solutions. Reach him at brian@brianbeals.com.
     </>
   ),
   practice: (

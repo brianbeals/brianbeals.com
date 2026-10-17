@@ -16,7 +16,7 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL("https://brianbeals.com"),
   title: {
-    default: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
+    default: "Brian Beals, LLC | Independent Digital Accessibility Evaluation",
     template: "%s | Brian Beals",
   },
   description:
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   // link preview travels beyond the state. The meta description above keeps it
   // for search.
   openGraph: {
-    title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
+    title: "Brian Beals, LLC | Independent Digital Accessibility Evaluation",
     description:
       "Independent ADA Title II and Section 504 digital accessibility evaluation for public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     url: "/",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
+    title: "Brian Beals, LLC | Independent Digital Accessibility Evaluation",
     description:
       "Independent ADA Title II and Section 504 digital accessibility evaluation for public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     images: ["/opengraph-image"],

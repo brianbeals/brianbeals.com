@@ -132,7 +132,7 @@ export default function EssayPage() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          I run the AI, Analytics &amp; Automation practice at LRS, and this is a common conversation I&rsquo;m having with executive buyers right now. The CIO and the CMO walk into the same room about it for the first time, sometimes ever.
+          I spend my days helping enterprise organizations get AI past the pilot stage, and this is a common conversation I&rsquo;m having with executive buyers right now. The CIO and the CMO walk into the same room about it for the first time, sometimes ever.
         </p>
 
         <SubHeading level={2} spacing="mt-12 mb-4">The bet</SubHeading>
@@ -145,7 +145,7 @@ export default function EssayPage() {
           Speed isn&rsquo;t a flex anymore. Not sounding like everyone else is.
         </p>
 
-        <EssayByline variant="lrs" />
+        <EssayByline />
       </article>
     </div>
   );

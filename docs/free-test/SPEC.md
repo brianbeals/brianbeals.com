@@ -145,6 +145,15 @@ failures; these amend Run 3, 6 and 8:
     need a person:", a five-item list, and the call; "My free recon" is gone. Every email is
     multipart, plain text plus HTML from the same content, and the HTML passes axe-core (WCAG 2.1 A
     and AA) in light and dark in the engine's test suite.
+14. **Daily cap backstop (2026-10-17).** When the daily cap holds a confirmed request, the
+    submitter is emailed once, right away: "Today's free checks are full, so yours is in line and
+    will run within 24 hours. You'll get the results by email. If you'd rather not wait, book a
+    15-minute call and I'll look at your site with you." with the call button. `/free-test` itself
+    doesn't know the cap is full; the site keeps no state and nothing reaches the mini. **Build the
+    status file when held requests show up on 3 or more days in a week:** the engine writes "full
+    until <time>" to the private desk repo (a fine-grained token, Contents read and write on
+    brianbeals/desk only), and the page reads it and shows "Today's free checks are full" with the
+    call button in place of the form. Brian's "global limit reached" note marks each day it happens.
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

@@ -68,7 +68,7 @@ const SERVICES: { name: string; what: string; price: React.ReactNode }[] = [
   },
   {
     name: "Conformance report",
-    what: "Up to 25 pages chosen across your site's templates, so a template defect is found once and reported everywhere it appears, plus the documents linked from those pages, validated against PDF/UA. All 50 WCAG 2.1 A and AA criteria. You receive the Accessibility Conformance Report (VPAT 2.5), an audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks.",
+    what: "Up to 25 pages chosen across your site's templates, so a template defect is found once and reported everywhere it appears, plus the documents linked from those pages, validated against PDF/UA. All 50 WCAG 2.1 A and AA criteria. You receive the Accessibility Conformance Report (VPAT 2.5), an audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks from scope sign-off.",
     price: (
       <>
         From $3,500<small>sized for a department-level purchase</small>

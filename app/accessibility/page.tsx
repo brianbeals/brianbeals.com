@@ -127,7 +127,7 @@ export default function Accessibility() {
           them, against all 50 WCAG 2.1 A and AA web accessibility criteria. An ACR in VPAT
           2.5 format, an
           accessibility audit report with evidence per criterion, and a prioritized
-          remediation list. Two to four weeks.
+          remediation list. Two to four weeks from scope sign-off.
         </p>
 
         <SubHeading id="document-inventory">Document inventory and triage</SubHeading>

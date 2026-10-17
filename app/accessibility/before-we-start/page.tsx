@@ -186,8 +186,9 @@ export default function BeforeWeStart() {
           <p className="mb-4">
             <strong>
               If the site blocks automated browsers, the evaluation still happens, and it costs
-              more.
+              more
             </strong>
+            .
           </p>
           <p className="mb-4">
             Many public sector sites sit behind a web application firewall or bot protection

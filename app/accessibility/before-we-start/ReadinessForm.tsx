@@ -205,7 +205,7 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
       {state.status === "error" ? (
         <div role="alert" className="doc-note stop bg-white mb-6">
           <p>
-            <strong>Not sent.</strong> {state.message}
+            <strong>Not sent</strong>. {state.message}
           </p>
         </div>
       ) : null}

@@ -190,13 +190,13 @@ export default function AccessibilityFederal() {
 
         <ul className="list-disc pl-6 space-y-4 mb-6 text-base sm:text-lg leading-relaxed text-neutral-800">
           <li>
-            <strong style={{ color: "var(--head)" }}>Micro-purchase.</strong> A
+            <strong style={{ color: "var(--head)" }}>Micro-purchase</strong>. A
             fixed-price verification pass on a remediated site or document set, bought
             on a government purchase card without competing quotes, at or under the
             $15,000 micro-purchase threshold (<Cite href={FAR_2_101}>FAR 2.101</Cite>).
           </li>
           <li>
-            <strong style={{ color: "var(--head)" }}>SDVOSB sole source.</strong> For a
+            <strong style={{ color: "var(--head)" }}>SDVOSB sole source</strong>. For a
             larger engagement, including one above the $350,000 simplified acquisition
             threshold (<Cite href={FAR_2_101}>FAR 2.101</Cite>), a contracting officer can
             award to an SBA-certified SDVOSB without competition when no second SDVOSB
@@ -204,7 +204,7 @@ export default function AccessibilityFederal() {
             <Cite href={FAR_19_1406}>FAR 19.1406</Cite>).
           </li>
           <li>
-            <strong style={{ color: "var(--head)" }}>VA, under Vets First.</strong> At the
+            <strong style={{ color: "var(--head)" }}>VA, under Vets First</strong>. At the
             Department of Veterans Affairs,{" "}
             <Cite href={USC_38_8127}>38 U.S.C. 8127</Cite> puts SDVOSB set-asides and
             sole source first in the order of priority, and the Supreme Court held in{" "}

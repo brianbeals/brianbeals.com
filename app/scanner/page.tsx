@@ -12,10 +12,13 @@ import SubHeading from "@/app/components/SubHeading";
 // it: the User-Agent strings (scan.py SCANNER_TOKEN, BROWSER_UA, MOBILE_UA;
 // notice_check.py UA), the pace (recon.py --delay 1.5 and Crawl-delay; scan.py's
 // goto_settled settle of 2.5s and --doc-delay 1.0; pdf_probe.py --delay 1.5, whose
-// User-Agent is BROWSER_UA imported from scan.py; notice_check.py PAUSE 4.0 and
+// User-Agent is BROWSER_UA imported from scan.py (so is the site check's:
+// hospital_targets.py 1.2s apart, resolve_domains.py in parallel across hosts;
+// pdf_probe retries a 401/403/405/429/503 once through Chromium); notice_check.py PAUSE 4.0 and
 // its 40 or 75 request budget), and robots.txt handling (recon.py and
 // batch_recon.py ask by SCANNER_NAME, notice_check.py by ROBOTS_NAME; scan.py, the
-// contracted evaluation, does not read it, and neither does pdf_probe.py). The desk's allowlist kit quotes the
+// contracted evaluation, does not read it; pdf_probe.py reads it under --recon and
+// not under --engagement; the site check does not). The desk's allowlist kit quotes the
 // same strings.
 const DESCRIPTION =
   "What the BrianBealsLLC-A11y and BrianBealsLLC-NoticeCheck scanners do, how fast they go, how they treat robots.txt, and how to stop or block them.";
@@ -83,7 +86,7 @@ export default function Scanner() {
         <p className={body}>
           The accessibility scanner. It loads a page in an ordinary browser engine and measures it
           against WCAG 2.1 A and AA: contrast, names on links and controls, headings, how the page
-          reflows at phone width, and the PDFs the page links. It runs in three ways.
+          reflows at phone width, and the PDFs the page links. The same name is on four kinds of request.
         </p>
 
         <ul className={list}>
@@ -99,13 +102,18 @@ export default function Scanner() {
           <li>
             <strong>Document probe</strong>: reads PDFs for tags, language, title, and form
             fields, either the documents linked from pages recon looked at or, for a document
-            inventory, every document on a site.
+            inventory, every document on a site. It runs either as part of recon or under a
+            signed engagement, and says which each time.
+          </li>
+          <li>
+            <strong>Site check</strong>: while a list of organizations is being built, one or two
+            requests to an organization&apos;s home page to confirm a web address belongs to it.
           </li>
         </ul>
 
         <SubHeading level={3}>How fast</SubHeading>
         <ul className={list}>
-          <li>One browser tab, one page at a time.</li>
+          <li>One browser tab, one page at a time, for recon and evaluation.</li>
           <li>
             Recon waits at least one and a half seconds between pages, longer if your robots.txt
             sets a longer Crawl-delay.
@@ -115,7 +123,12 @@ export default function Scanner() {
             one at a time, at least a second apart.
           </li>
           <li>
-            The document probe reads one PDF at a time, at least one and a half seconds apart.
+            The document probe reads one PDF at a time, at least one and a half seconds apart,
+            longer under recon if your robots.txt sets a longer Crawl-delay.
+          </li>
+          <li>
+            A site check asks each home page for itself once or twice; different organizations&apos;
+            sites can be checked at the same time.
           </li>
           <li>A page that scrolls sideways is loaded a second time at phone width.</li>
         </ul>
@@ -125,8 +138,10 @@ export default function Scanner() {
           Recon reads robots.txt before every page and document and skips anything disallowed,
           whether the rule names BrianBealsLLC-A11y or applies to all agents. An evaluation covers
           only the pages agreed in scope with the site owner, so anything to leave out goes into
-          that scope. The document probe doesn&apos;t read robots.txt: it fetches the document
-          addresses it&apos;s given, or the PDFs linked from one page.
+          that scope. The document probe follows robots.txt the same way as recon when it runs as
+          part of recon; under a signed engagement with an agreed document list it fetches that
+          list as given. A site check asks only for the home page and doesn&apos;t read
+          robots.txt.
         </p>
 
         <SubHeading level={3}>User-Agent</SubHeading>
@@ -167,7 +182,11 @@ export default function Scanner() {
           <li>Submit a form.</li>
           <li>Try to log in, or try to get past a CAPTCHA or a challenge.</li>
           <li>Load testing or vulnerability scanning.</li>
-          <li>Retry a refused request. A refusal is recorded and the reader moves on.</li>
+          <li>
+            Retry a refused page. A refusal is recorded and the reader moves on. The one
+            exception is the document probe: a PDF refused to a plain request is asked for once
+            more through the browser engine, then recorded either way.
+          </li>
         </ul>
 
         <SectionHeading>Stop or block</SectionHeading>

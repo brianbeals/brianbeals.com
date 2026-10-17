@@ -2,6 +2,11 @@
 
 Source: Claude Docs "Free Test: n8n Workflow Spec" (2026-10-17), amended to fit the existing stack. Where this file and the Docs version differ, this file wins.
 
+**Public repo rule.** This spec lives in the public brianbeals.com repo. Prospect and client names,
+and their findings, never go in it, its commits, or its PR text; they live in the private a11y-audit
+repo, findings under its gitignored `clients/`. A sample site here is "a Southwest Florida city" or
+"a Florida health center", with no figures quoted from it.
+
 ## Purpose and position
 
 An automated, no-cost first look at a public entity's website and linked documents, requested by someone with an email address on that site's domain. It sits before the existing free recon (4 to 6 pages, done by Brian) and the paid Accessibility Conformance Report:

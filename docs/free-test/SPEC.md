@@ -137,6 +137,14 @@ failures; these amend Run 3, 6 and 8:
     checked" with a plain note that the test stops after three minutes. It goes through the
     review gate like any other report; it is not retried. A job cut off before any page finished
     is a timeout and is retried once.
+13. **Report copy and HTML (2026-10-17, replaces Run 8's footer).** Two forms: clean (no automated
+    finding anywhere) and findings (a headline count, counts by impact, the top three issues, only
+    the nonzero PDF checks, a note when contrast leads with more than 50 instances, and a sentence
+    that off-site PDFs linked from the site count as part of it). Both say "the first N pages it
+    reached" and close with "Automated tools test only part of what WCAG 2.1 AA requires. These
+    need a person:", a five-item list, and the call; "My free recon" is gone. Every email is
+    multipart, plain text plus HTML from the same content, and the HTML passes axe-core (WCAG 2.1 A
+    and AA) in light and dark in the engine's test suite.
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

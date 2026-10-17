@@ -923,6 +923,57 @@ body {
   margin: 0 0 1rem;
   font-size: 1.0625rem;
 }
+/* The allowlist email on the desk: a boxed letter, paragraphs as written. */
+.desk .desk-email {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 0.75rem 1rem 0.25rem;
+  margin: 0.5rem 0 1.5rem;
+}
+.desk .desk-email p {
+  margin: 0 0 0.75rem;
+}
+/* Rows the copy leaves out (data-internal) inside a shareable table. */
+.desk [data-shareable] tr[data-internal] > * {
+  font-style: italic;
+}
+/* Copy buttons (DeskCopy.tsx): a real button, 44px target, the site focus ring. */
+.desk .desk-copy-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0;
+}
+.desk .desk-copy {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--head);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--head);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.desk .desk-copy:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.desk .desk-copy:focus-visible {
+  outline: 3px solid var(--link);
+  outline-offset: 2px;
+}
+.desk .desk-copy-note {
+  font-size: 0.875rem;
+  color: var(--muted-ink);
+}
+/* The clean copy selected when the Clipboard API is missing: off screen, selectable. */
+.desk-copy-holder {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
 @media (max-width: 420px) {
   .desk .desk-dl {
     grid-template-columns: 1fr;

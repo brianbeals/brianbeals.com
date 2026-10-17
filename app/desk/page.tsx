@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PageHeading from "@/app/components/PageHeading";
+import DeskCopy from "./DeskCopy";
 import { DESK, DeskError, deskProblem, readSource, signedIn } from "@/lib/desk";
 
 // The private desk: a quick reference for research and live phone calls. Behind
@@ -44,7 +45,11 @@ export default async function Desk() {
         <PageHeading spacing="mb-6">Desk</PageHeading>
         {body ? (
           // Trusted: written by Brian in a private repo only this token can read.
-          <div dangerouslySetInnerHTML={{ __html: body }} />
+          <>
+            <div dangerouslySetInnerHTML={{ __html: body }} />
+            {/* Copy buttons on the tables desk.html marks data-shareable (DeskCopy.tsx). */}
+            <DeskCopy />
+          </>
         ) : (
           <p role="alert" className="text-base text-neutral-800">
             {problem}

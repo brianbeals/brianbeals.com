@@ -10,6 +10,16 @@ The home page (pass 2b, 2026-10-16) is the accessibility practice only: a hero w
 
 **`/scanner`** (2026-10-17), "About our scanners", is the page both scanners' User-Agents link to (`BrianBealsLLC-A11y` and `BrianBealsLLC-NoticeCheck`, from the private a11y-audit repo): what each does, its pace, how it treats robots.txt, and how to stop or block it. It's in the site map and sitemap.xml and linked from before-we-start, not from the header. Its values come from a11y-audit and change with it; the page's header comment lists where each one lives.
 
+## No prospect or client names in this repo
+
+This repo is public. Prospect and client names, and anything found on their sites or documents,
+never go in it: not in code, docs, specs, commit messages, branch names, or PR text. They live in
+the private a11y-audit repo, with findings and per-client work under its `clients/` folder, which is
+gitignored. When a doc here needs an example, it says "a Southwest Florida city" or "a Florida health
+center", as the essays do, and quotes no figures from that site. "Punta Gorda, FL" on the public
+pages is the firm's own address. Rule added 2026-10-17, after free-test spec amendments named two
+sample organizations and quoted one's findings; that branch's history was rewritten the same day.
+
 ## The private desk
 
 Since 2026-10-16 `/desk` uses the public pages' system: the `max-w-5xl page-wide` container, `PageHeading` for its H1, and in the desk repo's `desk.html` the heading scale's classes (`section-heading h-section` on each `h2`, `h-sub` on each `h3`; the scale is `.h-page`, `.h-section` and `.h-sub` in `globals.css`, which the heading components also use) and one table markup: `div.table-scroll` (a labelled, focusable region that scrolls on a phone) around `table.doc-table.desk-table`, whose label column is 28% in every table. Styles only live here; the content stays in the private repo.

@@ -54,7 +54,8 @@ tripped honeypot and the in-memory rate limit send nothing and say the same.
 
 Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the engine's secret),
 `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are all set: off, every free-test
-route is a 404, and /scanner, `sitemap.xml` and `/sitemap-page` don't mention it (they read the flag
+route is a 404, and /scanner, `sitemap.xml`, `/sitemap-page` and the quiet "Free automated check" links
+(on `/accessibility`, `/accessibility/pricing` and `/contact`, launched 2026-10-17; never the header) don't mention it (they read the flag
 at build, so set it and redeploy). `freetest@forms.brianbeals.com` must be added as a Resend sender
 before the flag goes on. The form's copy says Brian reads each report first; change it if the engine's
 `REVIEW_MODE` goes off.

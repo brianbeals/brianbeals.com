@@ -20,7 +20,7 @@ export const metadata: Metadata = {
       "What one Florida health center's forms say about the May 2027 date, and why the sliding-fee application comes first.",
     url: "/writing/the-form-that-sets-the-price",
     type: "article",
-    publishedTime: "2026-10-19T12:00:00.000Z",
+    publishedTime: "2026-10-18T12:00:00.000Z",
     authors: ["Brian Beals"],
   },
   twitter: {
@@ -37,7 +37,7 @@ const articleJsonLd = {
   headline: "The Form That Sets the Price",
   description:
     "What one Florida health center's forms say about the May 2027 date, and why the sliding-fee application comes first.",
-  datePublished: "2026-10-19",
+  datePublished: "2026-10-18",
   author: {
     "@type": "Person",
     name: "Brian Beals",

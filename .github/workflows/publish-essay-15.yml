@@ -1,11 +1,12 @@
-name: Publish essay 15 on October 19
+name: Publish essay 15 on October 18
 
 # Scheduled merge of the essay-15-the-form-that-sets-the-price branch into main.
-# Runs once on Monday, October 19, 2026 at 13:07 UTC (9:07 AM ET, EDT).
+# Runs once on Sunday, October 18, 2026 at 13:07 UTC (9:07 AM ET, EDT). Moved from Monday,
+# October 19 on 2026-10-16.
 #
 # Seven minutes past the hour on purpose: essay 6's top-of-hour cron was dropped outright by
 # GitHub. Essay 10's cron at :07 still fired 3h16m late on September 19, so the offset is not a
-# guarantee, only a mitigation. workflow_dispatch is armed as the manual fallback. This is a Monday
+# guarantee, only a mitigation. workflow_dispatch is armed as the manual fallback. This is a Sunday
 # slot, and the n8n essay dispatcher only runs Saturdays, so nothing dispatches it automatically:
 # if the page is not up by 10:00, run `gh workflow run publish-essay-15.yml -R brianbeals/brianbeals.com`.
 #
@@ -17,8 +18,8 @@ name: Publish essay 15 on October 19
 
 on:
   schedule:
-    - cron: '7 13 19 10 *'    # 9:07 AM ET, primary
-    - cron: '37 13 19 10 *'   # 9:37 AM ET, backup if the first is dropped. The merge is
+    - cron: '7 13 18 10 *'    # 9:07 AM ET, primary
+    - cron: '37 13 18 10 *'   # 9:37 AM ET, backup if the first is dropped. The merge is
                               # idempotent: if the first already ran, this one is a no-op.
   workflow_dispatch:          # the reliable path. Dispatched runs are not deprioritized the way
                               # scheduled runs are. Fire it by hand if the crons miss.

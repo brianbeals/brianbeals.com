@@ -63,7 +63,8 @@ export const viewport: Viewport = {
 // endpoint returns a 1200x630 social card whose headshot is a 113px inset, which
 // is the wrong thing to hand Google as "this is what this person looks like."
 //
-// NO worksFor. Deliberate, permanent, do not add one.
+// NO worksFor. Deliberate, permanent, do not add one. Since 2026-10-16 nothing here
+// describes an employer role either: the Person is the LLC's founder.
 const personJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -71,14 +72,14 @@ const personJsonLd = {
       "@type": "Person",
       "@id": "https://brianbeals.com/#person",
       name: "Brian Beals",
-      jobTitle: "Director, AI, Analytics & Automation",
+      jobTitle: "Founder, Brian Beals, LLC",
       description:
-        "Brian Beals has built and scaled enterprise AI and analytics practices from scratch three times. I help organizations get real results out of the technology after the pilot, when it has to pay for itself.",
+        "Founder of Brian Beals, LLC, which does independent WCAG 2.1 AA evaluation and writes Accessibility Conformance Reports for government agencies, health centers, schools, and vendors. He has built three enterprise technology practices from a blank page.",
       // disambiguatingDescription exists in schema.org specifically to separate
       // entities that share a name. This is the property most directly aimed at
       // the problem, so keep it short, factual and distinctive.
       disambiguatingDescription:
-        "AI, analytics and automation practice leader based in Punta Gorda, Florida. Founder of Brian Beals, LLC, a service-disabled veteran-owned small business.",
+        "Digital accessibility evaluator based in Punta Gorda, Florida. Founder of Brian Beals, LLC, an SBA-certified service-disabled veteran-owned small business.",
       url: "https://brianbeals.com",
       image: "https://brianbeals.com/brian-beals.jpg",
       homeLocation: {
@@ -125,6 +126,8 @@ const personJsonLd = {
       "@type": "Organization",
       "@id": "https://brianbeals.com/#organization",
       name: "Brian Beals, LLC",
+      description:
+        "Independent WCAG 2.1 AA evaluation and Accessibility Conformance Reports for government agencies, health centers, schools, and vendors. Evaluation only, never remediation. SBA-certified service-disabled veteran-owned small business.",
       url: "https://brianbeals.com",
       founder: { "@id": "https://brianbeals.com/#person" },
       address: {

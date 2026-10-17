@@ -100,14 +100,36 @@ These win over anything above that they contradict.
    there) and served to the browser by the job, so a scan never contacts cdnjs. A scan still loads
    each page's own images, scripts and styles, as any browser does; every one goes through the
    guard. Nothing else is downloaded except the capped PDFs.
-5. **Retry.** The job returns `ok`, `timeout` or `error`; the one retry after 10 minutes and the
-   email to Brian after it are the workflow's.
+5. **Retry.** The job returns `ok`, `timeout`, `error` or `no_pages`; the one retry after 10
+   minutes and the email to Brian after it are the workflow's.
 6. **Mac mini packages** for build step 5: Playwright with its Chromium, pikepdf, tldextract (it
    uses its bundled public suffix list, no fetch at run time).
 7. **IMAP folder names.** Proton Bridge usually shows custom folders to IMAP under `Folders/`
    (`Folders/Free Test Requests`, `Folders/Free Test Requests/Processed`, `.../Rejected`). The
    names are configuration, and `engine.py check-imap` lists the folders on the mini before the
    workflow is turned on.
+
+**Validation against recorded recons (2026-10-17, before step 3).** Run on two sites with known
+failures; these amend Run 3, 6 and 8:
+
+8. **Off-site PDFs.** A PDF linked from a checked page and hosted elsewhere (a Florida health center
+   keeps every PDF on its site builder's CDN) is fetched for the document check only, by its
+   own address, through the guard, paced, after that host's robots.txt is asked; no page on that
+   host is loaded. Same-site and listed vendor documents fill the 10-PDF cap first, the report
+   names the host, and an unknown host counts only when its link ends `.pdf`.
+9. **Extensionless document addresses.** CivicPlus serves PDFs from
+   `/home/showpublisheddocument/<id>/<stamp>`; the job uses a11y-audit's shared document patterns,
+   and the bytes decide. A candidate that turns out not to be a PDF is set aside and doesn't count.
+   At most 15 document fetches per job.
+10. **No pages.** A job where axe ran on no page (a Southwest Florida city's CDN answered 403 to every request)
+    ends `no_pages` with the reason: retried once, then Brian is emailed, and the submitter gets
+    no report. It never produces a report saying nothing failed.
+11. **Report additions.** The document findings add recon's tag-tree checks (images with no text
+    alternative, more than one page and no headings, tables with no header cells) and use recon's
+    no-text-layer test. The skip link is counted on every page checked. The scanner's own
+    measurements (text contrast against a solid background, images with no alt attribute, no page
+    language) are reported for pages where axe found nothing for that rule, so nothing is counted
+    twice; on a Southwest Florida city's site, axe passed contrast failures that this measurement caught.
 
 **Proton Bridge on the mini (decided):** the mini stays as it is: FileVault on, no auto-login.
 Bridge runs in Brian's logged-in session, so after a restart nothing can be read until he logs

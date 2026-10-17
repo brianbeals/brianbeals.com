@@ -284,16 +284,16 @@ export default function Accessibility() {
 
         <SectionHeading>The proof</SectionHeading>
 
-        {/* Matches the October 11, 2026 report (second issue); checked against
-            public/conformance-report.html on 2026-10-12. Change these numbers only when the
+        {/* Matches the October 17, 2026 report; checked against
+            public/conformance-report.html on 2026-10-17. Change these numbers only when the
             report is regenerated, and change the home page Proof line with them. */}
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. It covers thirty-four
-          pages and all six published documents, tested against all 50 Level A and AA criteria.
-          The latest run was October 11, 2026. The result:{" "}
-          <strong style={{ color: "var(--head)" }}>33 Supports</strong> and{" "}
-          <strong style={{ color: "var(--head)" }}>17 Not Applicable</strong>. Nothing is
-          marked Partially Supports or Does Not Support, and nothing was left out. All six
+          This site carries its own Accessibility Conformance Report. It covers thirty-eight
+          pages and all four published documents, tested against all 50 Level A and AA criteria.
+          The latest run was October 17, 2026. The result:{" "}
+          <strong style={{ color: "var(--head)" }}>37 Supports</strong> and{" "}
+          <strong style={{ color: "var(--head)" }}>13 Not Applicable</strong>. Nothing is
+          marked Partially Supports or Does Not Support, and nothing was left out. All four
           PDFs are tagged and pass veraPDF.
         </p>
 

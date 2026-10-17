@@ -82,3 +82,66 @@ No part of the mini is reachable from the internet: n8n only makes outbound conn
 
 - Vercel plan: confirm current Hobby terms for a commercial site; Pro if required.
 - Proton Bridge on the Mac mini: confirm it can run headless alongside n8n (it's already used for IMAP elsewhere; check where), and that the Free Test Requests folder and filter can be created in Proton (Brian creates the filter if it needs the web UI).
+
+## Amendments, 2026-10-17 (after build step 1; accepted by Brian)
+
+These win over anything above that they contradict.
+
+1. **PDFs.** The job uses `pdf_probe.py`'s analysis (`pdf_probe.probe`) and its robots.txt reader
+   (`pdf_probe.Robots`, asking as BrianBealsLLC-A11y), but fetches each PDF itself through the SSRF
+   guard, capped at 20 MB. `pdf_probe.py`'s own fetch retries a refused PDF through a browser
+   outside the guard and has no size cap, so the job never calls it.
+2. **Unnamed PDF form fields** are counted by the job with pikepdf (a fillable field with no `/TU`
+   accessible name); `pdf_probe.py` reports only whether a form exists.
+3. **Page order.** The job picks its own pages: the home page, then same-site links from the
+   header and navigation in page order, then the rest of the page. Recon's `sample_pages` prefers
+   forms and content pages and is not used.
+4. **Downloads.** axe-core is bundled (a11y-audit `vendor/axe-core-4.10.2`, SHA-256 recorded
+   there) and served to the browser by the job, so a scan never contacts cdnjs. A scan still loads
+   each page's own images, scripts and styles, as any browser does; every one goes through the
+   guard. Nothing else is downloaded except the capped PDFs.
+5. **Retry.** The job returns `ok`, `timeout` or `error`; the one retry after 10 minutes and the
+   email to Brian after it are the workflow's.
+6. **Mac mini packages** for build step 5: Playwright with its Chromium, pikepdf, tldextract (it
+   uses its bundled public suffix list, no fetch at run time).
+7. **IMAP folder names.** Proton Bridge usually shows custom folders to IMAP under `Folders/`
+   (`Folders/Free Test Requests`, `Folders/Free Test Requests/Processed`, `.../Rejected`). The
+   names are configuration, and `engine.py check-imap` lists the folders on the mini before the
+   workflow is turned on.
+
+**Proton Bridge on the mini (decided):** the mini stays as it is: FileVault on, no auto-login.
+Bridge runs in Brian's logged-in session, so after a restart nothing can be read until he logs
+in. When the IMAP read fails, the workflow emails Brian once an hour until it recovers: "Free
+Test intake: can't reach Proton Bridge on the mini; log in to restore."
+
+**Vercel:** Brian checks the plan and upgrades to Pro if it is on Hobby. Nothing in the build
+changes billing.
+
+**Senders:** every request and event email is sent From `freetest@forms.brianbeals.com` with a
+subject beginning `[free-test]`, or the Proton filter will not file it. That address is added as
+a Resend sender on the verified forms.brianbeals.com domain when the form is built (step 3).
+
+**Workflow shape (build step 2).** The n8n workflow is a scheduler and an alarm: every 2 minutes
+it runs `engine.py tick`, nightly `engine.py retention`, and it hands failures to the existing
+Error Notifier. The intake, the signature check, the gates, the rate limits, the queue, the scan,
+the review gate, the cache and the IMAP alert are one Python engine with its own tests, which is
+how the mini's other n8n workflows already call code (Execute Command). n8n's IMAP node cannot
+move a message to Processed or Rejected, and a signature check, a SQLite rate limiter and the
+scanner are easier to hold to the acceptance tests in tested code than in Code nodes.
+
+**Signed message format.** The body's text part carries:
+
+```
+-----BEGIN FREE-TEST-----
+{"v":1,"type":"request","id":"<uuid4>","ts":<unix seconds>,"data":{...}}
+-----END FREE-TEST-----
+sig=<hex HMAC-SHA256 of the exact bytes of the JSON line, key FREE_TEST_SECRET>
+```
+
+`type` is `request` (data: `url`, `email`, `ip_hash`, the salted HMAC of the client IP computed on
+Vercel, never the IP), `confirmed` (data: `token`, the raw token from the link) or `approved`
+(data: `job`). The engine rejects a missing block, a bad signature, a timestamp older than 24
+hours or more than 5 minutes ahead, and an id it has seen before, and moves the message to
+Rejected. Approve links are `/free-test/approve?id=<job>&sig=<hex HMAC-SHA256 of "approve:<job>">`;
+Vercel checks the link's signature before it sends the `approved` event.
+

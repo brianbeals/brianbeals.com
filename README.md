@@ -28,6 +28,37 @@ Without the token every desk route says it is not connected and shows nothing. T
 
 **Copy buttons** (2026-10-17). `app/desk/DeskCopy.tsx` adds a real "Copy table" or "Copy email" button above every element `desk.html` marks `data-shareable="true"`, so a new client-facing table needs only the attribute (plus `data-copy-label`, which goes into the button's accessible name, "Copy table: Fixed fees"). A table copies as `text/html` with inline styles only, since Proton and Outlook strip classes (navy header row, `#D6EAF8` row headers, 1px `#BFBFBF` borders, 14px system font, a "Brian Beals, LLC · brianbeals.com" line under it), and as tab-separated `text/plain`; `data-copy-kind="email"` copies plain text with its paragraphs. Anything marked `data-internal` never reaches the clipboard: an internal row or element is dropped and an internal cell emptied. A polite live region says "Copied" or the error; without the Clipboard API the clean copy is selected instead and it says to press Cmd-C. Shareable today: the allowlist kit and its email, Fixed fees, Rules & dates, and IDs for buyers.
 
+## Free test (built, flag off)
+
+The site's half of the free automated test (spec: `docs/free-test/SPEC.md`; the engine is a11y-audit
+`free_test/`). `/free-test` is the form: website and work email, Cloudflare Turnstile checked on the
+server, a honeypot, and the contact form's error summary. `/free-test/confirm?token=` and
+`/free-test/approve?id=&sig=` are the links the engine emails, each a page with a button, so a mail
+scanner that opens every link can't confirm or approve anything; `/free-test/confirmed` follows a
+confirmation. Each request, confirmation and approval is one signed message (HMAC-SHA256 over the
+JSON line, `lib/free-test.ts`, byte for byte the engine's format) sent through Resend From
+`freetest@forms.brianbeals.com` to brian@brianbeals.com with the subject `[free-test] <type>`, which
+the Proton filter files into the "Free Test Requests" queue. The site keeps nothing. Once the fields
+are well formed and Turnstile passes, every request ends in the same "Check your email" message; a
+tripped honeypot and the in-memory rate limit send nothing and say the same.
+
+Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the engine's secret),
+`TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are all set: off, every free-test
+route is a 404, and /scanner, `sitemap.xml` and `/sitemap-page` don't mention it (they read the flag
+at build, so set it and redeploy). `freetest@forms.brianbeals.com` must be added as a Resend sender
+before the flag goes on. The form's copy says Brian reads each report first; change it if the engine's
+`REVIEW_MODE` goes off.
+
+Local end to end: `FREE_TEST_OUTBOX=<folder>` (refused on Vercel) writes each event there as an
+`.eml` instead of sending, and the engine reads the same folder with `FREE_TEST_QUEUE=dir:<folder>`,
+mail to Mailpit on 1026 (`FREE_TEST_MAIL=smtp://127.0.0.1:1026`, never 1025, which is Proton Bridge).
+Cloudflare's published test keys pass Turnstile on localhost (site `1x00000000000000000000AA`, secret
+`1x0000000000000000000000000000000AA`). Run that way on 2026-10-17 with a browser driving the form:
+request, confirmation, a scan of brianbeals.com, the review draft, approval and the report all went
+through, 19 of 19 checks; axe (WCAG 2.1 A and AA) found nothing on the new pages, the error and
+success states, in light and dark, and the page fits 320px (Turnstile drops to its compact size below
+380px).
+
 ## Stack
 
 Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4. Hosted on Vercel, DNS at Namecheap.

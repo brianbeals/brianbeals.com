@@ -146,6 +146,13 @@ client's IT contact. Nothing in the free test or the scanner tries to get around
     language) are reported for pages where axe found nothing for that rule, so nothing is counted
     twice; on a Southwest Florida city's site, axe passed contrast failures that this measurement caught.
 
+**Build step 3 (2026-10-17).** The confirm and approve links open a page with a button, and only
+the button sends the signed event: mail security scanners open every link in a message, and a GET
+that confirmed would start tests nobody asked for. Turnstile failure is the one intake answer that
+differs (the person has to retry); everything after it is the same "Check your email". The flag
+gates every route (404 when off) and the /scanner, sitemap and site map mentions. Local runs write
+events to a folder the engine reads (`FREE_TEST_OUTBOX`, refused on Vercel).
+
 **Proton Bridge on the mini (decided):** the mini stays as it is: FileVault on, no auto-login.
 Bridge runs in Brian's logged-in session, so after a restart nothing can be read until he logs
 in. When the IMAP read fails, the workflow emails Brian once an hour until it recovers: "Free

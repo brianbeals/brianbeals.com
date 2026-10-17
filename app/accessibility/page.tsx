@@ -404,9 +404,8 @@ export default function Accessibility() {
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
           <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
-            One page each, for your procurement file. Six, because the rule and the
-            certification that matter depend on who is buying. These four cover the
-            practice:
+            One page each, for your procurement file. Four, because the rule that matters
+            depends on who is buying. These two cover the practice:
           </p>
           <ul className="mb-4 space-y-3">
             <li>
@@ -434,32 +433,6 @@ export default function Accessibility() {
                 The same evaluation practice framed for 36 CFR 1194: conformance assessment and
                 VPAT for agencies and for vendors answering a solicitation. SDVOSB set-aside
                 eligible.
-              </span>
-            </li>
-            <li>
-              <a
-                href="/Brian-Beals-LLC-Capability-Statement-Federal.pdf"
-                className="underline underline-offset-4 font-semibold"
-                style={{ color: "#22688F" }}
-              >
-                Federal, SDVOSB
-              </a>
-              <span className="block text-base" style={{ color: "#1A1A2A" }}>
-                SBA-certified service-disabled veteran-owned small business, certified August
-                2026. Covers the broader AI, analytics and automation practice.
-              </span>
-            </li>
-            <li>
-              <a
-                href="/Brian-Beals-LLC-Capability-Statement-Florida.pdf"
-                className="underline underline-offset-4 font-semibold"
-                style={{ color: "#22688F" }}
-              >
-                Florida state and local, VBE
-              </a>
-              <span className="block text-base" style={{ color: "#1A1A2A" }}>
-                Florida-certified Veteran Business Enterprise. Same practice, written for state
-                and local procurement.
               </span>
             </li>
           </ul>

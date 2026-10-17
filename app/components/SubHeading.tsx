@@ -13,7 +13,7 @@ import { HEADING_SCALE } from "./headingScale";
  *
  * `spacing` replaces the default margins; it never carries a font size. ref and
  * tabIndex are for a heading that takes focus after an action (the readiness form).
- * describedBy is for the error summary's heading, whose description is the list of errors.
+ * label is for the error summary's heading, whose name carries every error.
  */
 export default function SubHeading({
   children,
@@ -23,7 +23,7 @@ export default function SubHeading({
   spacing = "mt-8 mb-3",
   ref,
   tabIndex,
-  describedBy,
+  label,
 }: {
   children: React.ReactNode;
   id?: string;
@@ -32,7 +32,7 @@ export default function SubHeading({
   spacing?: string;
   ref?: React.Ref<HTMLHeadingElement>;
   tabIndex?: number;
-  describedBy?: string;
+  label?: string;
 }) {
   const Tag = level === 2 ? "h2" : "h3";
   return (
@@ -40,7 +40,7 @@ export default function SubHeading({
       id={id}
       ref={ref}
       tabIndex={tabIndex}
-      aria-describedby={describedBy}
+      aria-label={label}
       className={`${HEADING_SCALE.sub} scroll-mt-6 ${spacing}`}
       style={{
         color: tone === "ice" ? "#1E3A5F" : "var(--head)",

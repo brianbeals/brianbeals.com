@@ -5,11 +5,13 @@ import SubHeading from "./SubHeading";
 
 /**
  * The error summary both forms show on a failed submit (2026-10-17). The form
- * moves focus to the "There are 2 problems" heading, whose description is the
- * list of errors, so VoiceOver reads the heading and then every error on arrival.
- * Heard by ear, October 17: a focused summary box, even with role="alert", was
- * announced as "There are 3 problems and 1 more item alert" with the list unread;
- * before that, "3 answers need attention and 1 more item group".
+ * moves focus to the "There are 2 problems" heading. Its accessible name starts
+ * with that visible text and then carries every error, so VoiceOver reads the
+ * heading and all of them on arrival. Heard by ear, October 17, on the way here:
+ * a focused box was "3 answers need attention and 1 more item group"; with
+ * role="alert", "There are 3 problems and 1 more item alert"; with the list as
+ * the heading's aria-describedby, only the first error, the rest moved to
+ * VoiceOver's "more content" menu.
  *
  * One link per error, naming the field and then the fix ("How to reach you:
  * enter an email address or a phone number, so I can reply"). A link moves focus
@@ -33,6 +35,8 @@ export default function ErrorSummary({
   className?: string;
 }) {
   const n = items.length;
+  const title = n === 1 ? "There is 1 problem" : `There are ${n} problems`;
+  const line = (it: SummaryItem) => `${it.label}: ${fix(it.message)}`;
   return (
     <div className={className}>
       <SubHeading
@@ -40,12 +44,12 @@ export default function ErrorSummary({
         id="error-summary-title"
         ref={ref}
         tabIndex={-1}
-        describedBy="error-summary-list"
+        label={`${title}. ${items.map(line).join(". ")}.`}
         spacing="mt-0 mb-2"
       >
-        {n === 1 ? "There is 1 problem" : `There are ${n} problems`}
+        {title}
       </SubHeading>
-      <ul id="error-summary-list" className="list-disc pl-6">
+      <ul className="list-disc pl-6">
         {items.map((it) => (
           <li key={it.target + it.label}>
             <a
@@ -60,7 +64,7 @@ export default function ErrorSummary({
                 el.focus();
               }}
             >
-              {it.label}: {fix(it.message)}
+              {line(it)}
             </a>
           </li>
         ))}

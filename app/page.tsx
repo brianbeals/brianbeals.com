@@ -97,15 +97,16 @@ export default function Home() {
             decoration, hidden from assistive technology. */}
         <ul
           role="list"
-          className="mt-12 rounded-md px-5 py-3 text-sm sm:text-base font-semibold leading-relaxed max-w-none list-none"
+          className="mt-12 rounded-md px-5 py-3 text-sm sm:text-base font-semibold leading-relaxed max-w-none list-none flex flex-wrap"
           style={{ backgroundColor: "var(--band)", color: "var(--head)" }}
         >
-          {/* Inline items with the dot trailing each one, so lines wrap after a dot as
-              the paragraph did. */}
+          {/* Each item is its own box with the dot trailing it. As inline items on one
+              line VoiceOver still read all four as a single item ("1 of 4", heard by ear
+              2026-10-17), so they are flex items; lines wrap after a dot. */}
           {TRUST.map((t, i) => (
-            <li key={t} className="inline">
+            <li key={t}>
               <span className={i ? "whitespace-nowrap" : undefined}>{t}</span>
-              {i < TRUST.length - 1 ? <span aria-hidden="true"> · </span> : null}
+              {i < TRUST.length - 1 ? <span aria-hidden="true">&nbsp;·&nbsp;</span> : null}
             </li>
           ))}
         </ul>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 
 // WCAG 2.4.5 Multiple Ways. Every page needs to be reachable by two
 // independent routes. The global navigation is one. This is the second.
@@ -25,6 +26,10 @@ const sections = [
       { href: "/accessibility/pricing", label: "Services and Pricing for Public Entities", note: "Fixed prices for each engagement, how the evaluation is done, and what is not offered." },
       { href: "/accessibility/before-we-start", label: "Pre-Engagement Requirements", note: "What has to be in place before a fixed fee is quoted, with a printable readiness checklist." },
       { href: "/scanner", label: "About our scanners", note: "What the BrianBealsLLC-A11y and BrianBealsLLC-NoticeCheck scanners do, their pace, robots.txt, and how to stop or block them." },
+      // Only once FREE_TEST_ENABLED is on (lib/free-test.ts).
+      ...(freeTestEnabled()
+        ? [{ href: "/free-test", label: "Free accessibility test", note: "An automated first look at up to 10 pages and 10 linked PDFs, for anyone with an email address on the site's own domain." }]
+        : []),
       { href: "/accessibility/title-ii", label: "ADA Title II Digital Accessibility", note: "28 CFR 35.200, the April 26 2027 and 2028 dates, what the practice does for cities, counties, school districts and special districts, and how to buy it." },
       { href: "/accessibility/healthcare", label: "Section 504 for Healthcare", note: "45 CFR Part 84, the May 11 2027 date, and what it means for patient-facing documents." },
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },

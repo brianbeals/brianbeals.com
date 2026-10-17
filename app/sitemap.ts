@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import type { Dirent } from "node:fs";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 
 const BASE_URL = "https://brianbeals.com";
 
@@ -34,6 +35,8 @@ const STATIC_PAGES: StaticEntry[] = [
   { path: "/accessibility/before-we-start", priority: 0.7, changeFrequency: "monthly" },
   // The page both scanners' User-Agents link to (2026-10-17). Not in the header nav.
   { path: "/scanner", priority: 0.4, changeFrequency: "monthly" },
+  // The free test's form, only once FREE_TEST_ENABLED is on (lib/free-test.ts).
+  ...(freeTestEnabled() ? [{ path: "/free-test", priority: 0.6, changeFrequency: "monthly" as const }] : []),
   // Every capability statement in both formats. The short URL printed in the
   // footer of every PDF, so it has to resolve for as long as any of those PDFs
   // is in circulation, which is longer than any of them is current.

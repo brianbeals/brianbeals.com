@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHeading from "@/app/components/PageHeading";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 
 // The page both scanners' User-Agents link to (2026-10-17): what each one does,
 // how fast it goes, how it treats robots.txt, and how to stop or block it. In the
@@ -71,6 +72,9 @@ function Agent({ label, value }: { label: string; value: string }) {
 }
 
 export default function Scanner() {
+  // The free test's request appears here only once FREE_TEST_ENABLED is on
+  // (SPEC "Public disclosure"; lib/free-test.ts).
+  const freeTest = freeTestEnabled();
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
@@ -86,7 +90,8 @@ export default function Scanner() {
         <p className={body}>
           The accessibility scanner. It loads a page in an ordinary browser engine and measures it
           against WCAG 2.1 A and AA: contrast, names on links and controls, headings, how the page
-          reflows at phone width, and the PDFs the page links. The same name is on four kinds of request.
+          reflows at phone width, and the PDFs the page links. The same name is on{" "}
+          {freeTest ? "five" : "four"} kinds of request.
         </p>
 
         <ul className={list}>
@@ -109,14 +114,26 @@ export default function Scanner() {
             <strong>Site check</strong>: while a list of organizations is being built, one or two
             requests to an organization&apos;s home page to confirm a web address belongs to it.
           </li>
+          {freeTest ? (
+            <li>
+              <strong>Free test</strong>: up to 10 pages of a site and up to 10 PDFs they link, only
+              after someone with an email address on that site&apos;s own domain{" "}
+              <Link href="/free-test" className={link} style={{ color: "var(--link)" }}>
+                asks for it
+              </Link>{" "}
+              and confirms the request. A PDF linked from those pages but kept on another host is
+              fetched by its own address; no page on that host is loaded.
+            </li>
+          ) : null}
         </ul>
 
         <SubHeading level={3}>How fast</SubHeading>
         <ul className={list}>
-          <li>One browser tab, one page at a time, for recon and evaluation.</li>
+          <li>One browser tab, one page at a time, for recon{freeTest ? ", the free test," : ""} and evaluation.</li>
           <li>
-            Recon waits at least one and a half seconds between pages, longer if your robots.txt
-            sets a longer Crawl-delay.
+            Recon{freeTest ? " and the free test wait" : " waits"} at least one and a half seconds
+            between pages, longer if your robots.txt sets a longer Crawl-delay.
+            {freeTest ? " A free test stops after three minutes." : ""}
           </li>
           <li>
             An evaluation loads no more than one page every three seconds and fetches documents
@@ -135,8 +152,9 @@ export default function Scanner() {
 
         <SubHeading level={3}>robots.txt</SubHeading>
         <p className={body}>
-          Recon reads robots.txt before every page and document and skips anything disallowed,
-          whether the rule names BrianBealsLLC-A11y or applies to all agents. An evaluation covers
+          Recon{freeTest ? " and the free test read" : " reads"} robots.txt before every page and
+          document and skip{freeTest ? "" : "s"} anything disallowed, whether the rule names
+          BrianBealsLLC-A11y or applies to all agents.{freeTest ? " For a PDF on another host, that host's robots.txt is the one asked." : ""} An evaluation covers
           only the pages agreed in scope with the site owner, so anything to leave out goes into
           that scope. The document probe follows robots.txt the same way as recon when it runs as
           part of recon; under a signed engagement with an agreed document list it fetches that

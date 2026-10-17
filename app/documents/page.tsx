@@ -7,7 +7,7 @@ import PageHeading from "@/app/components/PageHeading";
 //
 // WHY THIS PAGE EXISTS. The PDFs carry a footer line pointing here. That line
 // has to be short enough to retype off a printed page and stable enough that
-// adding or retiring a document never invalidates the ones already in circulation.
+// adding a seventh document never invalidates the six already in circulation.
 // A per-document URL in each footer would have been neither.
 //
 // The PDFs are PDF/UA-1 conformant and verified by veraPDF, so the HTML version
@@ -19,12 +19,12 @@ import PageHeading from "@/app/components/PageHeading";
 export const metadata: Metadata = {
   title: "Capability statements",
   description:
-    "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+    "Capability statements for ADA Title II, Section 504 and Section 508 digital accessibility work, plus state and local AI and analytics consulting. HTML and PDF/UA-1 PDF.",
   alternates: { canonical: "/documents" },
   openGraph: {
     title: "Capability statements | Brian Beals, LLC",
     description:
-      "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+      "Capability statements for ADA Title II, Section 504 and Section 508 digital accessibility work, plus state and local AI and analytics consulting. HTML and PDF/UA-1 PDF.",
     url: "/documents",
     type: "website",
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Capability statements | Brian Beals, LLC",
     description:
-      "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+      "Capability statements for ADA Title II, Section 504 and Section 508 digital accessibility work, plus state and local AI and analytics consulting. HTML and PDF/UA-1 PDF.",
   },
 };
 
@@ -70,6 +70,18 @@ const docs: Doc[] = [
     html: "/capability-statement-accessibility-maryland.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Maryland.pdf",
   },
+  {
+    name: "Capability Statement",
+    note: "General. AI, analytics, and enterprise technology.",
+    html: "/capability-statement.html",
+    pdf: "/Brian-Beals-LLC-Capability-Statement-Federal.pdf",
+  },
+  {
+    name: "Capability Statement, State and Local",
+    note: "General, framed for state and local buyers.",
+    html: "/capability-statement-state-local.html",
+    pdf: "/Brian-Beals-LLC-Capability-Statement-Florida.pdf",
+  },
 ];
 
 export default function Documents() {
@@ -80,8 +92,9 @@ export default function Documents() {
         <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
           Each of these is published in two formats. The PDF conforms to PDF/UA-1
           (ISO 14289-1), verified with veraPDF rather than asserted by the tool
-          that wrote it. For each statement the PDF is the one-page
-          version and the HTML is the full statement. The HTML is there for reading on
+          that wrote it. For the four accessibility statements the PDF is the
+          one-page version and the HTML is the full statement; for the two general
+          statements they are the same document. The HTML is there for reading on
           a phone or pasting into a portal.
         </p>
 

@@ -40,6 +40,8 @@ const STATIC_PAGES: StaticEntry[] = [
   // Linked only from /documents and never listed here, so the accessibility
   // scan's crawl never found them and the conformance report left all six out
   // of its evaluated set until 2026-10-08.
+  { path: "/capability-statement.html", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/capability-statement-state-local.html", priority: 0.5, changeFrequency: "monthly" },
   { path: "/capability-statement-accessibility.html", priority: 0.5, changeFrequency: "monthly" },
   { path: "/capability-statement-accessibility-federal.html", priority: 0.5, changeFrequency: "monthly" },
   { path: "/capability-statement-accessibility-healthcare.html", priority: 0.5, changeFrequency: "monthly" },

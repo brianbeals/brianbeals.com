@@ -33,7 +33,6 @@ export function sectionForDoc(slug: string): DeskSection {
   if (slug === "recon-sample") return "recon";
   if (slug === "regime-cheat-sheet") return "rules";
   if (slug === "positioning-and-pitch") return "pitch";
-  if (slug.startsWith("capability-statement")) return "ids";
   return "desk";
 }
 

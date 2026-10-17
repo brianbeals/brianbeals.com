@@ -38,6 +38,13 @@ const services = [
 const link = "underline underline-offset-4 hover:no-underline";
 const body = "text-base sm:text-lg leading-relaxed text-neutral-800";
 
+const TRUST = [
+  "SBA-certified service-disabled veteran-owned small business",
+  "Florida VBE",
+  "Maryland VSBE",
+  "Evaluation only, never remediation",
+];
+
 export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
@@ -82,20 +89,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Trust strip. Each item keeps its words together except the first, which is
-            longer than a 320px line; the dots are decoration, not content. */}
-        <p
-          className="mt-12 rounded-md px-5 py-3 text-sm sm:text-base font-semibold leading-relaxed max-w-none"
+        {/* Trust strip, a list since 2026-10-17: as one paragraph of spans VoiceOver ran
+            the items together ("small businessFlorida VBE"). Four list items, so it reads
+            "list, 4 items" with a pause between them. role="list" because Safari drops
+            list semantics from a ul with no bullets. Each item keeps its words together
+            except the first, which is longer than a 320px line; the dots are
+            decoration, hidden from assistive technology. */}
+        <ul
+          role="list"
+          className="mt-12 rounded-md px-5 py-3 text-sm sm:text-base font-semibold leading-relaxed max-w-none list-none"
           style={{ backgroundColor: "var(--band)", color: "var(--head)" }}
         >
-          <span>SBA-certified service-disabled veteran-owned small business</span>
-          <span aria-hidden="true"> · </span>
-          <span className="whitespace-nowrap">Florida VBE</span>
-          <span aria-hidden="true"> · </span>
-          <span className="whitespace-nowrap">Maryland VSBE</span>
-          <span aria-hidden="true"> · </span>
-          <span className="whitespace-nowrap">Evaluation only, never remediation</span>
-        </p>
+          {/* Inline items with the dot trailing each one, so lines wrap after a dot as
+              the paragraph did. */}
+          {TRUST.map((t, i) => (
+            <li key={t} className="inline">
+              <span className={i ? "whitespace-nowrap" : undefined}>{t}</span>
+              {i < TRUST.length - 1 ? <span aria-hidden="true"> · </span> : null}
+            </li>
+          ))}
+        </ul>
 
         <section>
           <SectionHeading>What I test</SectionHeading>

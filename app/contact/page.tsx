@@ -10,7 +10,7 @@ const DESCRIPTION =
   "Book a free 15-minute call about the ADA Title II, Section 504 or Section 508 dates, or send a message. Email and phone work too.";
 
 export const metadata: Metadata = {
-  title: "Let's talk",
+  title: { absolute: "Let's talk | Brian Beals, LLC" },
   description: DESCRIPTION,
   alternates: {
     canonical: "/contact",

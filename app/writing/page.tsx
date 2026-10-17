@@ -5,21 +5,21 @@ import { essays } from "./essays";
 import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
-  title: "Writing",
+  title: { absolute: "Writing | Brian Beals, LLC" },
   description:
     "Essays on digital accessibility for public entities, on AI in the enterprise, and on building things.",
   alternates: {
     canonical: "/writing",
   },
   openGraph: {
-    title: "Writing | Brian Beals",
+    title: "Writing | Brian Beals, LLC",
     description:
       "Essays on digital accessibility for public entities, on AI in the enterprise, and on building things.",
     url: "/writing",
     type: "website",
   },
   twitter: {
-    title: "Writing | Brian Beals",
+    title: "Writing | Brian Beals, LLC",
     description:
       "Essays on digital accessibility for public entities, on AI in the enterprise, and on building things.",
   },

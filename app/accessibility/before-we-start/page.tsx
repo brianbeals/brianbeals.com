@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ReadinessForm from "./ReadinessForm";
 import SectionHeading from "@/app/components/SectionHeading";
 import PageHeading from "@/app/components/PageHeading";
@@ -244,7 +245,12 @@ export default function BeforeWeStart() {
         <p className={body}>
           An allowlist entry usually takes one email to whoever administers the CDN or firewall.
           It is the single highest-value thing a client can do before the engagement starts, and
-          it turns two hours back into five minutes.
+          it turns two hours back into five minutes. The scanner&apos;s User-Agent, pace, and
+          limits are on{" "}
+          <Link href="/scanner" className="underline underline-offset-4" style={{ color: "var(--link)" }}>
+            About our scanners
+          </Link>
+          .
         </p>
 
         <SectionHeading>Requirements</SectionHeading>

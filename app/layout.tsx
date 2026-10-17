@@ -2,7 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
-import SiteHeader from "./components/SiteHeader";
+import HeaderSwitch from "./components/HeaderSwitch";
 import SbaMark from "./components/SbaMark";
 import "./globals.css";
 
@@ -16,7 +16,7 @@ const sourceSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL("https://brianbeals.com"),
   title: {
-    default: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
+    default: "Brian Beals, LLC | Independent Digital Accessibility Evaluation",
     template: "%s | Brian Beals",
   },
   description:
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   // link preview travels beyond the state. The meta description above keeps it
   // for search.
   openGraph: {
-    title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
+    title: "Brian Beals, LLC | Independent Digital Accessibility Evaluation",
     description:
       "Independent ADA Title II and Section 504 digital accessibility evaluation for public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     url: "/",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Beals, LLC | Digital Accessibility Evaluation, AI & Analytics",
+    title: "Brian Beals, LLC | Independent Digital Accessibility Evaluation",
     description:
       "Independent ADA Title II and Section 504 digital accessibility evaluation for public entities. Signed WCAG 2.1 AA conformance reports. Veteran-owned, Punta Gorda, Florida.",
     images: ["/opengraph-image"],
@@ -165,7 +165,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={sourceSerif.variable}>
+    // suppressHydrationWarning: the inline script below adds "js" (and HeaderMenu
+    // "menu-ready") to this element's class before React hydrates it.
+    <html lang="en" className={sourceSerif.variable} suppressHydrationWarning>
       <body
         className="min-h-screen flex flex-col antialiased text-neutral-900"
         style={{
@@ -177,10 +179,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        {/* Marks the page as scripted before first paint, so the mobile nav starts
+            collapsed instead of flashing open (globals.css, .js). If HeaderMenu has not
+            mounted three seconds later, the mark comes off and the links show:
+            the nav is never hidden by a script that failed. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(d){d.classList.add('js');setTimeout(function(){if(!d.classList.contains('menu-ready'))d.classList.remove('js')},3000)})(document.documentElement)",
+          }}
+        />
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <SiteHeader />
+        <HeaderSwitch />
         {/* tabIndex -1 makes main a valid focus target for the skip link.
             Without it Chrome still advances the tab sequence, but Safari
             scrolls and leaves focus at the top of the nav, which makes the

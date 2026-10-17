@@ -4,24 +4,24 @@ import Link from "next/link";
 import ProjectList from "@/app/components/ProjectList";
 import SectionHeading from "@/app/components/SectionHeading";
 import PageHeading from "@/app/components/PageHeading";
+const DESCRIPTION =
+  "Brian Beals, LLC: independent WCAG 2.1 AA evaluation and Accessibility Conformance Reports for government agencies, health centers, schools, and vendors. Evaluation only, never remediation. SBA-certified SDVOSB.";
+
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Three enterprise sales practices, built from scratch. How I think about getting AI, analytics, and automation to actually pay off.",
+  description: DESCRIPTION,
   alternates: {
     canonical: "/about",
   },
   openGraph: {
     title: "About | Brian Beals",
-    description:
-      "Three enterprise sales practices, built from scratch. How I think about getting AI, analytics, and automation to actually pay off.",
+    description: DESCRIPTION,
     url: "/about",
     type: "website",
   },
   twitter: {
     title: "About | Brian Beals",
-    description:
-      "Three enterprise sales practices, built from scratch. How I think about getting AI, analytics, and automation to actually pay off.",
+    description: DESCRIPTION,
   },
 };
 export default function About() {
@@ -38,41 +38,28 @@ export default function About() {
             className="rounded-md shadow-sm"
           />
         </div>
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I've built and grown three enterprise technology practices, each at a different stage.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I run Brian Beals, LLC, an independent digital accessibility practice for government agencies, health centers, schools, and the vendors who sell to them.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The newest is Brian Beals, LLC, an independent digital accessibility evaluation practice for public entities: WCAG 2.1 AA conformance reports under ADA Title II, Section 504 and Section 508. I write the report and do not do the repair.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I test websites, apps, and documents against WCAG 2.1 AA and write the Accessibility Conformance Report that marks and evidences every criterion. For an agency with years of PDFs online, I inventory the documents and sort each one into retire, replace, remediate, or leave, so the remediation budget goes to the files people actually use.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The first was Mainline Information Systems' Business Analytics group. Five years, <strong style={{ color: "var(--head)" }}>$0 to $20M</strong>. The next was Sirius Computer Solutions' Big Data and Analytics group, which I founded and built to <strong style={{ color: "var(--head)" }}>$78M</strong> in under four years. Now I'm at LRS IT Solutions, where I founded and lead the AI, Analytics &amp; Automation group. The specific numbers there belong to LRS, not me. The pattern from the first two carried: build the team, land the early reference customers, and let the practice compound from there.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Evaluation only, never remediation. I don&apos;t sell the repair, so the report has no stake in what it finds.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Before that, technical sales at Red Hat, Oracle, and MicroStrategy. The practice work I do now depends on knowing the products, the channels, and the customer's procurement model from inside, not from a marketing deck.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Brian Beals, LLC is an SBA-certified service-disabled veteran-owned small business, a Florida Veteran Business Enterprise, and a Maryland Veteran-Owned Small Business Enterprise.</p>
 
-        <SectionHeading>How I think about this work</SectionHeading>
-
-        {/* Moved from the home page 2026-10-12, verbatim. */}
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Enterprise data and AI is the second practice. I&apos;ve built and scaled enterprise data and AI practices three times, from a blank page to real revenue, and the work I care about is the unglamorous middle: data foundation, integration, governance, the second budget cycle. For organizations past the pilot and into the part where the technology either pays for itself or doesn&apos;t.</p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Most enterprise AI doesn't fail at the model. It fails at the handoffs. Pilots that never reach production. Data foundations that never sustain real use. Demos that don't survive a procurement cycle. The technical part is rarely the hard part anymore. The hard part is everything that has to be right before the model is even running.</p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">The practices I've built are vendor-neutral on purpose. We've represented IBM, Microsoft, AWS, Cisco, Dell, Snowflake, SAS, and dozens of others, and the practice grows because customers eventually figure out who's selling them what works versus what pays the rep best. That isn't a marketing line. It's the actual reason these practices compound.</p>
-
-        <div
-          className="my-8 flex flex-wrap items-center gap-x-8 sm:gap-x-10 gap-y-3"
-          style={{ color: "var(--muted-ink)" }}
-          aria-label="Vendors represented through the practice"
-        >
-          {["IBM", "Microsoft", "AWS", "Cisco", "Dell", "Snowflake", "SAS"].map((vendor) => (
-            <span
-              key={vendor}
-              className="text-base sm:text-lg font-medium tracking-wide"
-            >
-              {vendor}
-            </span>
-          ))}
-        </div>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I maintain 65+ active technical sales certifications across the practice. The certifications matter less than the muscle memory of having to learn a new platform every quarter.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">This site gets the same test.{" "}
+          <a href="/conformance-report.html" className="underline underline-offset-4 font-semibold" style={{ color: "var(--link)" }}>
+            Read its Accessibility Conformance Report
+          </a>
+          , or see{" "}
+          <Link href="/accessibility" className="underline underline-offset-4 font-semibold" style={{ color: "var(--link)" }}>
+            what I test and what it costs
+          </Link>
+          .
+        </p>
 
         <SectionHeading>Earlier</SectionHeading>
+
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I&apos;ve built three enterprise technology practices from a blank page. Before that, technical sales at Red Hat, Oracle, and MicroStrategy.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
 

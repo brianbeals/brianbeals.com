@@ -161,7 +161,7 @@ export default function EssayPage() {
           A logo at the top is not a through-line.
         </p>
 
-        <EssayByline variant="lrs" />
+        <EssayByline />
       </article>
     </div>
   );

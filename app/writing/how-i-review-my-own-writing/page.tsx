@@ -129,7 +129,7 @@ export default function EssayPage() {
           I run this on my own writing because somebody has to. I run it on writing I receive because nobody else will.
         </p>
 
-        <EssayByline variant="lrs" />
+        <EssayByline />
       </article>
     </div>
   );

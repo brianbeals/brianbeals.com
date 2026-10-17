@@ -179,6 +179,10 @@ const PAGES = {
     title: "ADA Title II Website Accessibility Evaluation",
     line: "April 26, 2027  ·  April 26, 2028  ·  WCAG 2.1 AA",
   },
+  "title-ii": {
+    title: "ADA Title II Digital Accessibility",
+    line: "April 26, 2027  ·  April 26, 2028  ·  WCAG 2.1 AA",
+  },
   healthcare: {
     title: "Section 504 Digital Accessibility for Healthcare",
     line: "May 11, 2027  ·  45 CFR Part 84",

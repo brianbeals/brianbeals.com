@@ -1,6 +1,8 @@
 /**
- * The one heading scale for the public site (2026-10-16). Every heading component
- * reads its size from here, and no page sets a heading's font size itself.
+ * The one heading scale for the site (2026-10-16). Every heading component reads
+ * its size from here, and no page sets a heading's font size itself. The sizes
+ * live in globals.css as .h-page, .h-section and .h-sub, so /desk's HTML, which
+ * cannot use these components, carries the same classes.
  *
  *   page     H1, PageHeading          36px, 48px from 640px
  *   section  H2, SectionHeading bar   20px, 24px from 640px
@@ -9,7 +11,7 @@
  *            section heads and the light-blue callout titles.
  */
 export const HEADING_SCALE = {
-  page: "text-4xl sm:text-5xl font-semibold tracking-tight",
-  section: "text-xl sm:text-2xl font-semibold tracking-tight",
-  sub: "text-lg sm:text-xl font-semibold tracking-tight",
+  page: "h-page",
+  section: "h-section",
+  sub: "h-sub",
 } as const;

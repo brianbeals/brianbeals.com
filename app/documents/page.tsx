@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SectionHeading from "@/app/components/SectionHeading";
 import PageHeading from "@/app/components/PageHeading";
 
@@ -140,6 +141,23 @@ export default function Documents() {
                   PDF
                 </a>
               </p>
+            </li>
+          ))}
+        </ul>
+
+        {/* The program page behind each accessibility statement (2026-10-16). */}
+        <SectionHeading>Program pages</SectionHeading>
+        <ul className="space-y-2 text-base sm:text-lg mb-6">
+          {[
+            ["/accessibility/title-ii", "ADA Title II, state and local government"],
+            ["/accessibility/healthcare", "Section 504, healthcare"],
+            ["/accessibility/federal", "Section 508, federal agencies and their vendors"],
+            ["/accessibility/maryland", "Maryland nonvisual access"],
+          ].map(([href, label]) => (
+            <li key={href}>
+              <Link href={href} className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
+                {label}
+              </Link>
             </li>
           ))}
         </ul>

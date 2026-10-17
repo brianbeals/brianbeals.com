@@ -17,7 +17,7 @@ export const contentType = "image/png";
 //
 // Copy matches the home page H1 and subhead since 2026-10-10, when the home page
 // moved to lead with the LLC. That was the decision this comment used to wait for:
-// this URL is on the LinkedIn profile, so the card is effectively announced to LRS
+// this URL is on the LinkedIn profile, so the card is effectively announced to
 // colleagues. Still no SDVOSB and no veteran status on the card.
 
 const NAVY = "#1E3A5F";

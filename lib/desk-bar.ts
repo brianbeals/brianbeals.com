@@ -55,7 +55,12 @@ const CSS = `
 .dk-skip{all:initial;position:absolute;left:-9999px;top:0;z-index:1000;background:#1E3A5F;color:#FFFFFF;
   padding:10px 16px;border-radius:0 0 6px 0;font:600 15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 .dk-skip:focus{left:0;outline:3px solid #FFFFFF;outline-offset:-3px}
-@media print{.dkbar{display:none!important}}
+.dk-sub{all:initial;display:block;background:#D6EAF8;color:#1E3A5F;box-sizing:border-box;width:100%;
+  font:600 15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:8px 12px}
+.dk-sub p{margin:0 auto;max-width:72rem}
+.dk-sub a{color:#1E3A5F;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:4px 0}
+.dk-sub a:focus-visible{outline:3px solid #1E3A5F;outline-offset:2px}
+@media print{.dkbar,.dk-sub{display:none!important}}
 `;
 
 /* withSkip adds a skip link ahead of the bar and a target after it, for pages
@@ -69,7 +74,14 @@ export function deskBarHtml(current: DeskSection, withSkip = false): string {
   }).join("");
   const skip = withSkip ? '<a class="dk-skip" href="#desk-content">Skip to content</a>' : "";
   const target = withSkip ? '<span id="desk-content" tabindex="-1"></span>' : "";
-  return `<style>${CSS}</style>${skip}<nav class="dkbar" aria-label="Desk"><ul>${items}</ul></nav>${target}`;
+  // The Fed dashboards (2026-10-17) link the federal pitch on /desk, for SOFWERX,
+  // prime and program office calls. Here rather than in fed-intel's pages, which
+  // its weekly Action rebuilds. Navy on #D6EAF8 is 8.9:1 in both color schemes.
+  const sub =
+    current === "fed"
+      ? '<div class="dk-sub"><p><a href="/desk#pitch-federal">Federal pitch, Section 508: SOFWERX, primes, program offices</a></p></div>'
+      : "";
+  return `<style>${CSS}</style>${skip}<nav class="dkbar" aria-label="Desk"><ul>${items}</ul></nav>${sub}${target}`;
 }
 
 /* Put the bar at the very top of a built HTML page: after the page's own skip

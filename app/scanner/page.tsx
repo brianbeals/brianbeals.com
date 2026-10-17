@@ -11,10 +11,11 @@ import SubHeading from "@/app/components/SubHeading";
 // Every value here comes from the private a11y-audit repo and has to change with
 // it: the User-Agent strings (scan.py SCANNER_TOKEN, BROWSER_UA, MOBILE_UA;
 // notice_check.py UA), the pace (recon.py --delay 1.5 and Crawl-delay; scan.py's
-// goto_settled settle of 2.5s and --doc-delay 1.0; notice_check.py PAUSE 4.0 and
+// goto_settled settle of 2.5s and --doc-delay 1.0; pdf_probe.py --delay 1.5, whose
+// User-Agent is BROWSER_UA imported from scan.py; notice_check.py PAUSE 4.0 and
 // its 40 or 75 request budget), and robots.txt handling (recon.py and
 // batch_recon.py ask by SCANNER_NAME, notice_check.py by ROBOTS_NAME; scan.py, the
-// contracted evaluation, does not read it). The desk's allowlist kit quotes the
+// contracted evaluation, does not read it, and neither does pdf_probe.py). The desk's allowlist kit quotes the
 // same strings.
 const DESCRIPTION =
   "What the BrianBealsLLC-A11y and BrianBealsLLC-NoticeCheck scanners do, how fast they go, how they treat robots.txt, and how to stop or block them.";
@@ -82,7 +83,7 @@ export default function Scanner() {
         <p className={body}>
           The accessibility scanner. It loads a page in an ordinary browser engine and measures it
           against WCAG 2.1 A and AA: contrast, names on links and controls, headings, how the page
-          reflows at phone width, and the PDFs the page links. It runs in two ways.
+          reflows at phone width, and the PDFs the page links. It runs in three ways.
         </p>
 
         <ul className={list}>
@@ -94,6 +95,11 @@ export default function Scanner() {
           <li>
             <strong>Evaluation</strong>: the pages a site owner has agreed to in a signed
             engagement, during a window agreed with their team.
+          </li>
+          <li>
+            <strong>Document probe</strong>: reads PDFs for tags, language, title, and form
+            fields, either the documents linked from pages recon looked at or, for a document
+            inventory, every document on a site.
           </li>
         </ul>
 
@@ -108,6 +114,9 @@ export default function Scanner() {
             An evaluation loads no more than one page every three seconds and fetches documents
             one at a time, at least a second apart.
           </li>
+          <li>
+            The document probe reads one PDF at a time, at least one and a half seconds apart.
+          </li>
           <li>A page that scrolls sideways is loaded a second time at phone width.</li>
         </ul>
 
@@ -116,11 +125,12 @@ export default function Scanner() {
           Recon reads robots.txt before every page and document and skips anything disallowed,
           whether the rule names BrianBealsLLC-A11y or applies to all agents. An evaluation covers
           only the pages agreed in scope with the site owner, so anything to leave out goes into
-          that scope.
+          that scope. The document probe doesn&apos;t read robots.txt: it fetches the document
+          addresses it&apos;s given, or the PDFs linked from one page.
         </p>
 
         <SubHeading level={3}>User-Agent</SubHeading>
-        <Agent label="Desktop" value={A11Y_DESKTOP} />
+        <Agent label="Desktop, and every document request" value={A11Y_DESKTOP} />
         <Agent label="Phone-width check" value={A11Y_PHONE} />
 
         <SectionHeading>BrianBealsLLC-NoticeCheck</SectionHeading>

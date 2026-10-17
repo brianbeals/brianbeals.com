@@ -5,10 +5,11 @@ import SubHeading from "./SubHeading";
 
 /**
  * The error summary both forms show on a failed submit (2026-10-17). The form
- * moves focus here; role="alert" makes VoiceOver read the whole summary on
- * arrival, the "There are 2 problems" heading and then the list. Before this,
- * VoiceOver announced only "3 answers need attention and 1 more item group"
- * (heard by ear, October 17).
+ * moves focus to the "There are 2 problems" heading, whose description is the
+ * list of errors, so VoiceOver reads the heading and then every error on arrival.
+ * Heard by ear, October 17: a focused summary box, even with role="alert", was
+ * announced as "There are 3 problems and 1 more item alert" with the list unread;
+ * before that, "3 answers need attention and 1 more item group".
  *
  * One link per error, naming the field and then the fix ("How to reach you:
  * enter an email address or a phone number, so I can reply"). A link moves focus
@@ -26,18 +27,25 @@ export default function ErrorSummary({
   className = "doc-note stop bg-white mb-6",
 }: {
   items: SummaryItem[];
-  ref: Ref<HTMLDivElement>;
+  ref: Ref<HTMLHeadingElement>;
   /* 2 on /contact; 3 inside the readiness checklist, which sits under its own h2. */
   level?: 2 | 3;
   className?: string;
 }) {
   const n = items.length;
   return (
-    <div ref={ref} tabIndex={-1} role="alert" className={className}>
-      <SubHeading level={level} id="error-summary-title" spacing="mt-0 mb-2">
+    <div className={className}>
+      <SubHeading
+        level={level}
+        id="error-summary-title"
+        ref={ref}
+        tabIndex={-1}
+        describedBy="error-summary-list"
+        spacing="mt-0 mb-2"
+      >
         {n === 1 ? "There is 1 problem" : `There are ${n} problems`}
       </SubHeading>
-      <ul className="list-disc pl-6">
+      <ul id="error-summary-list" className="list-disc pl-6">
         {items.map((it) => (
           <li key={it.target + it.label}>
             <a

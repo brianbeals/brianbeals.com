@@ -30,7 +30,7 @@ function firstName(item: Item) {
 export default function ReadinessForm({ canSend }: { canSend: boolean }) {
   const [state, action, pending] = useActionState<SendState, FormData>(sendReadiness, { status: "idle" });
   const [clientErrors, setClientErrors] = useState<Errors>({});
-  const summaryRef = useRef<HTMLDivElement>(null);
+  const summaryRef = useRef<HTMLHeadingElement>(null);
   const doneRef = useRef<HTMLHeadingElement>(null);
   const startRef = useRef<HTMLInputElement>(null);
 

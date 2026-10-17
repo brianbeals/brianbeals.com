@@ -28,7 +28,7 @@ const labelCls = "block font-semibold mb-1";
 export default function ContactForm({ canSend }: { canSend: boolean }) {
   const [state, action, pending] = useActionState<ContactState, FormData>(sendContact, { status: "idle" });
   const [clientErrors, setClientErrors] = useState<Errors>({});
-  const summaryRef = useRef<HTMLDivElement>(null);
+  const summaryRef = useRef<HTMLHeadingElement>(null);
   const doneRef = useRef<HTMLHeadingElement>(null);
   const startRef = useRef<HTMLInputElement>(null);
 

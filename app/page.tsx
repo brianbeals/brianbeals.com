@@ -3,6 +3,7 @@ import PageHeading from "@/app/components/PageHeading";
 import PeopleGraphic from "@/app/components/PeopleGraphic";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 
 // Homepage, pass 2b (2026-10-16): hero, trust strip, three service cards, proof
 // band, founder line. Copy approved by Brian; ask before changing wording. The
@@ -46,6 +47,7 @@ const TRUST = [
 ];
 
 export default function Home() {
+  const freeTest = freeTestEnabled();
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
@@ -61,7 +63,10 @@ export default function Home() {
               vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
               you what to fix first.
             </p>
-            <div className="flex flex-wrap gap-3 mb-6">
+            {/* The secondary button is the free test while it is on (2026-10-17),
+                with the readiness checklist as a text line under the buttons; with
+                the free test off, the checklist button takes the slot again. */}
+            <div className={`flex flex-wrap gap-3 ${freeTest ? "mb-3" : "mb-6"}`}>
               <Link
                 href="/contact"
                 className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
@@ -69,13 +74,22 @@ export default function Home() {
                 Book a 15-minute call
               </Link>
               <Link
-                href="/accessibility/before-we-start"
+                href={freeTest ? "/free-test" : "/accessibility/before-we-start"}
                 className="rounded border-2 px-5 py-2 font-semibold hover:underline underline-offset-4"
                 style={{ borderColor: "var(--link)", color: "var(--link)" }}
               >
-                Run the readiness checklist
+                {freeTest ? "Get a free automated check" : "Run the readiness checklist"}
               </Link>
             </div>
+            {freeTest ? (
+              <p className="text-base mb-6 text-neutral-800">
+                Not sure where you stand?{" "}
+                <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
+                  Run the readiness checklist
+                </Link>
+                .
+              </p>
+            ) : null}
             <p className="text-sm" style={{ color: "var(--muted-ink)" }}>
               Source:{" "}
               <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>

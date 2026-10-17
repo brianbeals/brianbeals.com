@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeading from "@/app/components/PageHeading";
 import ContactForm from "./ContactForm";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 
 // The contact page (form since 2026-10-16). The form sends through Resend like the
 // readiness checklist (actions.ts, lib/form-mail.ts). Email, phone and the
@@ -60,6 +61,17 @@ export default function Contact() {
                   (941) 979-6282
                 </a>
               </li>
+              {/* The free test's quiet entry point, only while it is on (lib/free-test.ts). */}
+              {freeTestEnabled() ? (
+                <li>
+                  <span className="block text-sm" style={{ color: "var(--muted-ink)" }}>
+                    A first look at your site
+                  </span>
+                  <Link href="/free-test" className={link} style={{ color: "var(--link)" }}>
+                    Free automated check
+                  </Link>
+                </li>
+              ) : null}
               <li>
                 <span className="block text-sm" style={{ color: "var(--muted-ink)" }}>
                   Getting ready for an evaluation

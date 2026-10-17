@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 import SbaMark from "@/app/components/SbaMark";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
@@ -524,6 +525,15 @@ export default function Accessibility() {
           </a>
           .
         </p>
+        {/* The free test's quiet entry point, only while it is on (lib/free-test.ts). */}
+        {freeTestEnabled() ? (
+          <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+            <Link href="/free-test" className="underline underline-offset-4" style={{ color: "var(--link)" }}>
+              Free automated check
+            </Link>{" "}
+            of up to 10 pages and 10 linked PDFs, emailed to you.
+          </p>
+        ) : null}
       </article>
     </div>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 import SectionHeading from "@/app/components/SectionHeading";
 import PageHeading from "@/app/components/PageHeading";
 
@@ -270,6 +271,16 @@ export default function AccessibilityPricing() {
             come from someone who does neither.
           </p>
         </div>
+
+        {/* The free test's quiet entry point, only while it is on (lib/free-test.ts). */}
+        {freeTestEnabled() ? (
+          <p className={body}>
+            <Link href="/free-test" className={link} style={{ color: "var(--link)" }}>
+              Free automated check
+            </Link>{" "}
+            of up to 10 pages and 10 linked PDFs, emailed to you.
+          </p>
+        ) : null}
 
         <p className={body}>
           Punta Gorda, Florida. Write to{" "}

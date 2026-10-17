@@ -17,7 +17,7 @@ import PageHeading from "@/app/components/PageHeading";
 // accessibility should not make anyone open a PDF to learn what it does.
 
 export const metadata: Metadata = {
-  title: "Capability statements",
+  title: { absolute: "Capability statements | Brian Beals, LLC" },
   description:
     "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
   alternates: { canonical: "/documents" },

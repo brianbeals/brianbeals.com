@@ -24,7 +24,7 @@ const DESCRIPTION =
   "What the BrianBealsLLC-A11y and BrianBealsLLC-NoticeCheck scanners do, how fast they go, how they treat robots.txt, and how to stop or block them.";
 
 export const metadata: Metadata = {
-  title: "About our scanners",
+  title: { absolute: "About our scanners | Brian Beals, LLC" },
   description: DESCRIPTION,
   alternates: { canonical: "/scanner" },
   openGraph: {

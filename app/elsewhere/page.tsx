@@ -3,21 +3,21 @@ import Image from "next/image";
 import PageHeading from "@/app/components/PageHeading";
 
 export const metadata: Metadata = {
-  title: "Elsewhere",
+  title: { absolute: "Elsewhere | Brian Beals, LLC" },
   description:
     "Adventure travel, mostly to places where the signal goes away.",
   alternates: {
     canonical: "/elsewhere",
   },
   openGraph: {
-    title: "Elsewhere | Brian Beals",
+    title: "Elsewhere | Brian Beals, LLC",
     description:
       "Adventure travel, mostly to places where the signal goes away.",
     url: "/elsewhere",
     type: "website",
   },
   twitter: {
-    title: "Elsewhere | Brian Beals",
+    title: "Elsewhere | Brian Beals, LLC",
     description:
       "Adventure travel, mostly to places where the signal goes away.",
   },

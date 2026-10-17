@@ -5,7 +5,7 @@ import PageHeading from "@/app/components/PageHeading";
 import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
-  title: "Maryland Nonvisual Access Requirements",
+  title: { absolute: "Maryland Nonvisual Access Requirements | Brian Beals, LLC" },
   description:
     "Md. Code, State Finance and Procurement § 3.5-311 nonvisual access requirements and VPAT 2.5 conformance work for CATS+ master contractors and their subcontractors. Maryland VSBE-certified, one of 15 veteran-owned firms holding CATS+ FA2.",
   alternates: {

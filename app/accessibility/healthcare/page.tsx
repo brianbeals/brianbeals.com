@@ -5,7 +5,7 @@ import PageHeading from "@/app/components/PageHeading";
 import SubHeading from "@/app/components/SubHeading";
 
 export const metadata: Metadata = {
-  title: "Section 504 Web and Document Accessibility for Healthcare",
+  title: { absolute: "Section 504 Web and Document Accessibility for Healthcare | Brian Beals, LLC" },
   description:
     "HHS Section 504 final rule at 45 CFR Part 84 requires WCAG 2.1 Level AA by May 11, 2027 for recipients with 15 or more employees, May 10, 2028 under 15. Independent conformance evaluation and patient-facing document inventory for hospitals, FQHCs, community health centers, and physician practices.",
   alternates: {

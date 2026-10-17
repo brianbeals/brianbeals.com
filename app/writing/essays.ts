@@ -25,7 +25,7 @@ export const essays: Essay[] = [
     slug: "the-form-that-sets-the-price",
     topic: "accessibility",
     title: "The Form That Sets the Price",
-    date: "2026-10-18",
+    date: "2026-10-17",
     summary:
       "What one Florida health center's forms say about the May 2027 date, and why the sliding-fee application comes first.",
   },

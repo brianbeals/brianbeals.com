@@ -8,7 +8,7 @@ import Link from "next/link";
 // for crawlers, not something a person can use to find a page. The distinction
 // gets missed often enough that it is worth writing down.
 export const metadata: Metadata = {
-  title: "Site map",
+  title: { absolute: "Site map | Brian Beals, LLC" },
   description:
     "Every page on brianbeals.com, in one list. A second way to reach any page, alongside the navigation.",
   alternates: { canonical: "/sitemap-page" },
@@ -55,7 +55,7 @@ const sections = [
       // The accessibility scan did not catch it, because its 2.4.5 check asks
       // whether every page links to this list, not whether this list links to
       // every page.
-      { href: "/writing/the-form-that-sets-the-price", label: "The Form That Sets the Price", note: "October 18, 2026" },
+      { href: "/writing/the-form-that-sets-the-price", label: "The Form That Sets the Price", note: "October 17, 2026" },
       { href: "/writing/eight-of-twenty-six", label: "Eight of Twenty-Six", note: "October 11, 2026" },
       { href: "/writing/who-could-afford-to-find-out", label: "Who Could Afford to Find Out", note: "October 3, 2026" },
       { href: "/writing/everybody-got-a-license", label: "Everybody Got a License", note: "September 19, 2026" },

@@ -8,19 +8,19 @@ const DESCRIPTION =
   "Brian Beals, LLC: independent WCAG 2.1 AA evaluation and Accessibility Conformance Reports for government agencies, health centers, schools, and vendors. Evaluation only, never remediation. SBA-certified SDVOSB.";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: { absolute: "About | Brian Beals, LLC" },
   description: DESCRIPTION,
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About | Brian Beals",
+    title: "About | Brian Beals, LLC",
     description: DESCRIPTION,
     url: "/about",
     type: "website",
   },
   twitter: {
-    title: "About | Brian Beals",
+    title: "About | Brian Beals, LLC",
     description: DESCRIPTION,
   },
 };

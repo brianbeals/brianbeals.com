@@ -170,6 +170,18 @@ export function validate(get: (name: string) => string[]): Errors {
   return e;
 }
 
+/* The field an error belongs to, as the error summary names it: the item's label,
+   plus the sub-field's when the item has several ("Point of contact, email"). */
+export function fieldLabel(name: string): string {
+  for (const item of ITEMS)
+    for (const p of item.parts)
+      if (p.name === name) {
+        const base = item.label.replace(/\?$/, "");
+        return p.type === "text" && p.label ? `${base}, ${p.label.toLowerCase()}` : base;
+      }
+  return name;
+}
+
 /* Every answer in checklist order, one [label, value] per item. An item with
    several fields reads as one line ("Unknown. If yes, which: Cloudflare."), with
    blank sub-fields left out. Blank items are kept, so the email and the

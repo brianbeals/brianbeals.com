@@ -4,7 +4,8 @@ import { track } from "@vercel/analytics";
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import SubHeading from "@/app/components/SubHeading";
 import { sendReadiness, type SendState } from "./actions";
-import { ITEMS, TRAP, validate, type Errors, type Item, type Part } from "./fields";
+import ErrorSummary from "@/app/components/ErrorSummary";
+import { ITEMS, TRAP, fieldLabel, validate, type Errors, type Item, type Part } from "./fields";
 
 // The readiness checklist as a form. Each item is a row: label and hint on the
 // left, the answer on the right (stacked below 640px). Single fields use a real
@@ -180,26 +181,12 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
   return (
     <form onSubmit={onSubmit} noValidate className="ck-form">
       {errorKeys.length ? (
-        <div
+        <ErrorSummary
           ref={summaryRef}
-          tabIndex={-1}
+          level={3}
           className="doc-note stop bg-white mb-6 no-print"
-        >
-          <p className="mb-2">
-            <strong>
-              {errorKeys.length === 1 ? "One answer needs" : `${errorKeys.length} answers need`} attention
-            </strong>
-          </p>
-          <ul className="list-disc pl-6">
-            {errorKeys.map((k) => (
-              <li key={k}>
-                <a href={`#f-${k}`} className="underline underline-offset-4" style={{ color: "var(--link)" }}>
-                  {errors[k]}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+          items={errorKeys.map((k) => ({ target: `f-${k}`, label: fieldLabel(k), message: errors[k] }))}
+        />
       ) : null}
 
       {state.status === "error" ? (

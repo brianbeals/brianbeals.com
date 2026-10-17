@@ -4,7 +4,8 @@ import { track } from "@vercel/analytics";
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import SubHeading from "@/app/components/SubHeading";
 import { sendContact, type ContactState } from "./actions";
-import { TRAP, errorTarget, validate, type Errors } from "./fields";
+import ErrorSummary from "@/app/components/ErrorSummary";
+import { TRAP, errorLabel, errorTarget, validate, type Errors } from "./fields";
 
 // The contact form. Same patterns as the readiness checklist
 // (app/accessibility/before-we-start/ReadinessForm.tsx): validation here first and
@@ -115,22 +116,10 @@ export default function ContactForm({ canSend }: { canSend: boolean }) {
   return (
     <form onSubmit={onSubmit} noValidate className="max-w-xl">
       {errorKeys.length ? (
-        <div ref={summaryRef} tabIndex={-1} className="doc-note stop bg-white mb-6">
-          <p className="mb-2">
-            <strong>
-              {errorKeys.length === 1 ? "One answer needs" : `${errorKeys.length} answers need`} attention
-            </strong>
-          </p>
-          <ul className="list-disc pl-6">
-            {errorKeys.map((k) => (
-              <li key={k}>
-                <a href={`#${errorTarget(k)}`} className="underline underline-offset-4" style={{ color: "var(--link)" }}>
-                  {errors[k]}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ErrorSummary
+          ref={summaryRef}
+          items={errorKeys.map((k) => ({ target: errorTarget(k), label: errorLabel[k] || k, message: errors[k] }))}
+        />
       ) : null}
 
       {state.status === "error" ? (

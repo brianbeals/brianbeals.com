@@ -36,6 +36,17 @@ export function validate(get: (name: string) => string): Errors {
   return e;
 }
 
+/* The field each error belongs to, as the summary names it ("How to reach you:
+   enter an email address or a phone number, so I can reply"). */
+export const errorLabel: Record<string, string> = {
+  name: "Name",
+  org: "Organization",
+  reach: "How to reach you",
+  email: "Email",
+  phone: "Phone",
+  message: "Message",
+};
+
 /* Where each error's summary link points: the field, or for "reach" the email
    field, the first of the pair. */
 export const errorTarget = (key: string) => (key === "reach" ? "c-email" : `c-${key}`);

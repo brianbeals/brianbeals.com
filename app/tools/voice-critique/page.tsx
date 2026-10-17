@@ -7,20 +7,20 @@ const DESCRIPTION =
   "A free prompt that grades any document on five dimensions: professionalism, writing style, leadership, AI authorship likelihood, and a snark meter. Paste it into any AI chat and get back a self-contained HTML critique.";
 
 export const metadata: Metadata = {
-  title: "voice-critique",
+  title: { absolute: "voice-critique | Brian Beals, LLC" },
   description: DESCRIPTION,
   alternates: {
     canonical: "/tools/voice-critique",
   },
   openGraph: {
-    title: "voice-critique | Brian Beals",
+    title: "voice-critique | Brian Beals, LLC",
     description: DESCRIPTION,
     url: "/tools/voice-critique",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "voice-critique | Brian Beals",
+    title: "voice-critique | Brian Beals, LLC",
     description: DESCRIPTION,
   },
 };

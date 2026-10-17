@@ -132,6 +132,11 @@ export default function Home() {
                 Read Eight of Twenty-Six
               </Link>
             </li>
+            <li>
+              <Link href="/writing/the-form-that-sets-the-price" className={link} style={{ color: "var(--link)" }}>
+                Read The Form That Sets the Price
+              </Link>
+            </li>
           </ul>
           <p className={body}>
             This site gets the same test.{" "}

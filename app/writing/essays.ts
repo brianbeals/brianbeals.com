@@ -22,6 +22,14 @@ export const essays: Essay[] = [
   // Newest first. Add new essays to the top of this array. Every essay
   // carries a topic; the publish skill maps essays.yml `track` to it.
   {
+    slug: "the-form-that-sets-the-price",
+    topic: "accessibility",
+    title: "The Form That Sets the Price",
+    date: "2026-10-18",
+    summary:
+      "What one Florida health center's forms say about the May 2027 date, and why the sliding-fee application comes first.",
+  },
+  {
     slug: "eight-of-twenty-six",
     topic: "accessibility",
     title: "Eight of Twenty-Six",

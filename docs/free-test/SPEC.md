@@ -49,7 +49,7 @@ No part of the mini is reachable from the internet: n8n only makes outbound conn
 ## Run
 
 1. One scan at a time from the queue.
-2. **Pages**: recon mode, same registrable domain, up to 10 pages (nav links first), **robots.txt honored under BrianBealsLLC-A11y, at least 1.5 seconds between pages (longer if Crawl-delay says so)**, matching /scanner.
+2. **Pages**: recon mode, same registrable domain, up to 10 pages checked, front doors first (amendment 18: the home page, then links that name a form, an application, a payment, a permit, registration, intake or new patients, then patients, contact or documents, then the rest with nav links first), **robots.txt honored under BrianBealsLLC-A11y, each host's own file, at least 1.5 seconds between pages (longer if Crawl-delay says so)**, matching /scanner.
 3. **Documents (added)**: up to 10 linked PDFs via pdf_probe.py in recon mode (robots honored), reporting untagged, scanned/no text layer, no title, and form fields without names.
 4. Checks: axe-core with **WCAG 2.1 A/AA tags only** (match the ACR standard), plus the skip-link check.
 5. SSRF guard at fetch time on every request, including redirects (re-resolve, abort private/loopback).
@@ -181,6 +181,22 @@ failures; these amend Run 3, 6 and 8:
     yours stands." with "WebAIM, 2026" linked to https://webaim.org/projects/million/ (same tab).
     Refresh the figure and the year each spring, when WebAIM publishes the new Million report
     (usually March). The line names the year so it never reads as current when it isn't.
+18. **Front doors first, and the crawl gaps (2026-10-18).** The 10 pages are chosen for the pages
+    people come to use. The home page; then priority links on the host the person entered (or the
+    one its home page redirects to): a strong word in the link text (form or forms, apply,
+    application, pay, payment, permit, register, registration, intake, new patient), then a strong
+    word in the address, then a weak word (patient, contact, documents) in the text, then in the
+    address, ties in the order found. Words match whole, so "taxpayer" and "information" don't
+    count. At most two priority pages from one site section (the first path segment). One step
+    out: a strong link found on a priority page joins the priority list; a page reached that way
+    adds no more. The rest are filled in the old order, nav links first, breadth first. Another
+    subdomain's links fill only. In the same change: a page whose redirect leaves the registrable
+    domain is never requested there and is counted under "Not checked" as redirecting to another
+    site; pages are deduped on the address they land on; a page that is off-site, a duplicate,
+    skipped by robots.txt or dead (4xx, 5xx, no answer, over the page cap) doesn't use a slot, and
+    the next candidate is tried inside the 180-second job cap; robots.txt is read per host, so a
+    subdomain answers for itself; and per RFC 9309 a robots.txt that answers 5xx or can't be
+    reached disallows that host, while a 4xx or missing one allows it, as before.
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

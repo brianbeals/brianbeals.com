@@ -215,6 +215,25 @@ failures; these amend Run 3, 6 and 8:
     Brian's warm-lead note says which case it was. That note, the held note, and the robots.txt
     note are titled "Your free accessibility check of <domain>", the domain as the request gave
     it: no scheme, and "www" only if the request had it.
+20. **Texts to Brian, the watchdog, and the approval path (2026-10-18).** Every alert text comes from
+    the Lobo iMessage account through the mini's `notify-lobo.sh`, never Brian's own Apple ID (a
+    text to himself arrives silent and already read); that covers the Free Test, the n8n Error
+    Notifier, and Repo Watch. No text carries a link or the requester's address. The engine texts
+    "Free Test: review ready for <domain>. Approve from email." with each review draft, and with
+    each warm lead "Free Test: <domain> couldn't be scanned. Follow up within 2 business days."
+    or "Free Test: <domain> blocks scanners in robots.txt." A watchdog on its own 5-minute
+    schedule, with no engine lock, reads only the arrival times in Free Test Requests: a message
+    waiting more than 10 minutes, or the folder unreadable that long, sends one email and one
+    text, "Free Test engine may be down.", until it clears. An unapproved review draft gets one
+    reminder text at 4 hours and one at 24, from 8 AM to 9 PM only. Nothing alerts while n8n or
+    the mini itself is down. The approval path: the link opens a page on Vercel and changes
+    nothing; its button posts to a server action that checks the link's signature and sends a
+    signed `[free-test] approved` email through Resend; Proton's server-side filter files it in
+    Free Test Requests; Bridge on the mini serves it over IMAP and the next tick sends the
+    report. It works from any network, since only Vercel and Proton are involved at the click.
+    With the mini or Bridge down, the click still succeeds and the approval waits in Proton;
+    the report goes when the engine reads it, if that is within 24 hours (signatures older are
+    refused as stale; the link doesn't expire, so a second click sends a fresh approval).
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

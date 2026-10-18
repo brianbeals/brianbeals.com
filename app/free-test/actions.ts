@@ -27,7 +27,7 @@ export type RequestState =
 const clientIp = async () => ((await headers()).get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
 
 export async function requestFreeTest(_prev: RequestState, form: FormData): Promise<RequestState> {
-  if (!enabled()) return { status: "error", message: "The free test is not open yet. Email brian@brianbeals.com." };
+  if (!enabled()) return { status: "error", message: "The free check is not open yet. Email brian@brianbeals.com." };
   const get = (n: string) => String(form.get(n) || "");
 
   const errors = validate(get);

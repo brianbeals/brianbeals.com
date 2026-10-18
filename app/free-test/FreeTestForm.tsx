@@ -67,7 +67,7 @@ export default function FreeTestForm({ siteKey }: { siteKey: string }) {
           Check your email
         </SubHeading>
         <p className="text-base sm:text-lg leading-relaxed text-neutral-800 mb-4">
-          A message from freetest@forms.brianbeals.com is on its way. The test starts only after you
+          A message from freetest@forms.brianbeals.com is on its way. The check starts only after you
           confirm it.
         </p>
         <p className="text-base leading-relaxed text-neutral-800">

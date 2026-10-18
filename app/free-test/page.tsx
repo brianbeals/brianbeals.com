@@ -75,7 +75,7 @@ export default function FreeTest() {
               How it works
             </SubHeading>
             <ol className="list-decimal pl-5 space-y-3 leading-relaxed text-neutral-800">
-              <li>You get an email with a link. The test starts only after you open it and confirm, within 24 hours.</li>
+              <li>You get an email with a link. The check starts only after you open it and confirm, within 24 hours.</li>
               <li>
                 My scanner checks up to 10 pages and 10 linked PDFs, one at a time and at a slow pace, and
                 asks robots.txt first.{" "}
@@ -88,7 +88,7 @@ export default function FreeTest() {
             </ol>
             <p className="mt-6 leading-relaxed text-neutral-800">
               The address has to be on the site&apos;s own domain. For a free email address or another
-              domain, nothing runs and I look at the site myself. One fresh test per site every 30 days;
+              domain, nothing runs and I look at the site myself. One fresh check per site every 30 days;
               a second request gets the same report.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-neutral-700">

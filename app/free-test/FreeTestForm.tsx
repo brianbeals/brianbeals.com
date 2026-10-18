@@ -146,7 +146,7 @@ export default function FreeTestForm({ siteKey }: { siteKey: string }) {
         </div>
       ) : null}
 
-      {field("url", "Website", "The home page of the site to test, such as www.yourcity.gov.", {
+      {field("url", "Website", "The home page of the site to check, such as www.yourcity.gov.", {
         type: "text",
         inputMode: "url",
         autoComplete: "url",

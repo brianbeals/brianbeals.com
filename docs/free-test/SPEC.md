@@ -192,11 +192,18 @@ failures; these amend Run 3, 6 and 8:
     adds no more. The rest are filled in the old order, nav links first, breadth first. Another
     subdomain's links fill only. In the same change: a page whose redirect leaves the registrable
     domain is never requested there and is counted under "Not checked" as redirecting to another
-    site; pages are deduped on the address they land on; a page that is off-site, a duplicate,
+    site; pages are deduped on the address they land on, then on their canonical link (same site
+    only, and not when a page other than the home page names the home page), then on an exact
+    match of title and main text, and a duplicate neither uses a slot nor counts toward the
+    section cap; a section ignores a trailing page extension, dot or no dot; a page that is off-site, a duplicate,
     skipped by robots.txt or dead (4xx, 5xx, no answer, over the page cap) doesn't use a slot, and
     the next candidate is tried inside the 180-second job cap; robots.txt is read per host, so a
     subdomain answers for itself; and per RFC 9309 a robots.txt that answers 5xx or can't be
-    reached disallows that host, while a 4xx or missing one allows it, as before.
+    reached disallows that host, while a 4xx or missing one allows it, as before. The report
+    says what it checked in that order: "It checked 10 pages, starting with forms, payment, and
+    contact pages, and 5 PDFs linked from them," or "starting with the home page and its main
+    menu" when the site has no such pages, and the limits list says "Pages beyond the 10 checked
+    here".
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

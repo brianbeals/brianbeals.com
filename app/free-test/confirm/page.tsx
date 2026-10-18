@@ -12,7 +12,7 @@ import { confirmFreeTest } from "../actions";
 // there, and /free-test/confirmed says so.
 
 export const metadata: Metadata = {
-  title: { absolute: "Confirm your free test | Brian Beals, LLC" },
+  title: { absolute: "Confirm your free check | Brian Beals, LLC" },
   robots: { index: false, follow: false },
 };
 
@@ -38,7 +38,7 @@ export default async function Confirm({
           <p className={p}>
             Copy the whole link from the confirmation email into your browser, or{" "}
             <Link href="/free-test" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-              request the test again
+              request the check again
             </Link>
             .
           </p>
@@ -50,7 +50,7 @@ export default async function Confirm({
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-2xl mx-auto">
-        <PageHeading>Confirm your free test</PageHeading>
+        <PageHeading>Confirm your free check</PageHeading>
         {problem === "send" ? (
           <div className="doc-note stop bg-white mb-6">
             <p>
@@ -60,7 +60,7 @@ export default async function Confirm({
           </div>
         ) : null}
         <p className={p}>
-          The test checks up to 10 pages and 10 linked PDFs, at a slow pace, and the report comes to the
+          The check covers up to 10 pages and 10 linked PDFs, at a slow pace, and the report comes to the
           address you gave.
         </p>
         <form action={confirmFreeTest}>
@@ -70,7 +70,7 @@ export default async function Confirm({
             className="rounded px-5 py-2.5 font-semibold text-white"
             style={{ backgroundColor: "var(--btn-bg)" }}
           >
-            Start the test
+            Start the check
           </button>
         </form>
       </article>

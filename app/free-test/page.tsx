@@ -14,20 +14,33 @@ import FreeTestForm from "./FreeTestForm";
 // the engine runs with REVIEW_MODE=true; change this page in the same commit that
 // turns review off.
 
+const TITLE = "Free accessibility check | Brian Beals, LLC";
 const DESCRIPTION =
-  "A free automated accessibility test of up to 10 pages and 10 linked PDFs, against WCAG 2.1 Level A and AA, for anyone with an email address on the site's own domain.";
+  "See where your site stands. A free automated check of up to 10 pages and 10 linked PDFs against WCAG 2.1 AA, reviewed by a person before it's sent.";
+
+// Static card in /public, drawn in the navy house style of app/og/card.tsx. The
+// date in the filename busts LinkedIn's and X's image caches: redraw it under a
+// new name rather than overwriting it.
+const IMAGE = {
+  url: "/og-free-test-20261018.png",
+  width: 1200,
+  height: 630,
+  alt: "Free accessibility check: 10 pages and 10 PDFs, WCAG 2.1 AA, reviewed by a person. brianbeals.com",
+};
 
 export const metadata: Metadata = {
-  title: { absolute: "Free accessibility test | Brian Beals, LLC" },
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: "/free-test" },
   openGraph: {
-    title: "Free accessibility test | Brian Beals, LLC",
+    title: TITLE,
     description: DESCRIPTION,
     url: "/free-test",
+    siteName: "Brian Beals",
     type: "website",
+    images: [IMAGE],
   },
-  twitter: { title: "Free accessibility test | Brian Beals, LLC", description: DESCRIPTION },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [IMAGE] },
 };
 
 export const dynamic = "force-dynamic";
@@ -40,7 +53,7 @@ export default function FreeTest() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        <PageHeading>Free accessibility test</PageHeading>
+        <PageHeading>Free accessibility check</PageHeading>
         {/* Refresh each spring with WebAIM's new Million report (SPEC.md, "The WebAIM line"). */}
         <p className={p}>
           95.9% of the web&apos;s top million home pages fail automated accessibility checks (

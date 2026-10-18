@@ -209,7 +209,7 @@ export default function FreeTestForm({ siteKey }: { siteKey: string }) {
         className="rounded px-5 py-2.5 font-semibold text-white disabled:opacity-70"
         style={{ backgroundColor: "var(--btn-bg)" }}
       >
-        {pending ? "Sending…" : "Request the free test"}
+        {pending ? "Sending…" : "Request the free check"}
       </button>
       <span role="status" className="sr-only">
         {pending ? "Sending…" : ""}

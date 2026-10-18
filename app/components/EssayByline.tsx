@@ -42,29 +42,16 @@ export default function EssayByline({
 }) {
   const byline = (
     <div className="mt-12 pt-6 border-t border-neutral-200 flex items-center gap-3">
-      <svg
-        viewBox="0 0 32 32"
-        width="22"
-        height="22"
+      {/* An image, like the header's mark, so the white "BB" is not page text: axe cannot
+          read a background off an SVG rect and returned it as "needs review". */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='-apple-system, system-ui, sans-serif' font-size='16' font-weight='800' letter-spacing='-0.04em'%3EBB%3C/text%3E%3C/svg%3E"
+        alt=""
+        width={22}
+        height={22}
         className="flex-none"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <rect width="32" height="32" rx="6" fill="#1E3A5F" />
-        <text
-          x="16"
-          y="15"
-          textAnchor="middle"
-          dominantBaseline="central"
-          fill="#fff"
-          fontFamily="-apple-system, system-ui, sans-serif"
-          fontSize="16"
-          fontWeight="800"
-          letterSpacing="-0.04em"
-        >
-          BB
-        </text>
-      </svg>
+      />
       <p className="text-sm text-neutral-600 italic">
         {children ?? BYLINES[variant]}
       </p>

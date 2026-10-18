@@ -8,7 +8,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <div className="flex-1 flex items-center justify-center px-6 py-16 sm:px-12">
-      <div className="max-w-2xl text-center">
+      <div className="max-w-2xl mx-auto text-center">
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
           That page isn't here.
         </h1>

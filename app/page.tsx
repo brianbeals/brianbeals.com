@@ -156,9 +156,23 @@ export default function Home() {
                   </Link>
                 </SubHeading>
                 <p className="text-base leading-relaxed text-neutral-800 mb-4">{s.text}</p>
-                <span aria-hidden="true" className="service-card-arrow mt-auto text-xl leading-none" style={{ color: "var(--link)" }}>
-                  →
-                </span>
+                {/* Drawn, not a "→" character: axe returns a lone symbol as contrast "needs review". */}
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  className="service-card-arrow mt-auto"
+                  style={{ color: "var(--link)" }}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 12h15M13 6l6 6-6 6" />
+                </svg>
               </li>
             ))}
           </ul>

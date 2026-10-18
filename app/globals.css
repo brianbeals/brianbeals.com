@@ -77,6 +77,40 @@ body {
     var(--page-bg);
 }
 
+/* Text never sits on the gradient, 2026-10-18. Each page's content column (the
+   .mx-auto element directly inside the page's wrapper in main) and the footer's
+   columns get a solid fill, so axe can measure every text block instead of returning
+   "needs review" on a gradient. The fill is --page-bg, the gradient's own base, and
+   the shadow spreads the same color past the column's edge, so the gradient fades in
+   at the margins with no visible seam. New pages built on the same wrapper pick this
+   up on their own. */
+:root {
+  --surface: var(--page-bg);
+}
+main > div > .mx-auto,
+footer > .mx-auto {
+  background-color: var(--surface);
+  box-shadow: 0 0 40px 28px var(--surface);
+}
+/* axe measures each line box, not the element box. A large serif heading's line box
+   rises about 9px above the h1, which sits flush with the column's top, and body text
+   can overshoot a side edge by a subpixel at 320px. Either puts part of the text past
+   the solid fill. The padding takes the fill past those edges, and the margins cancel
+   it: the column is 4px wider than its max width (or than the space it has, on a
+   phone) and pulled back 2px a side, so the text column is exactly as wide as before
+   at every viewport and no line rewraps. --col-max mirrors the column's max-w-* class. */
+main > div > .mx-auto {
+  --col-max: 100vw;
+  --col-w: min(calc(var(--col-max) + 4px), calc(100% + 4px));
+  padding: 12px 2px;
+  max-width: none;
+  width: var(--col-w);
+  margin: -12px calc((100% - var(--col-w)) / 2);
+}
+main > div > .max-w-5xl.mx-auto { --col-max: 64rem; }
+main > div > .max-w-2xl.mx-auto { --col-max: 42rem; }
+main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --head: #A9C9E8;
@@ -656,6 +690,7 @@ body {
 @media print {
   body:has(.print-doc) {
     background: #FFFFFF;
+    --surface: #FFFFFF;
     --head: #1E3A5F;
     --head-ink: #FFFFFF;
     --link: #22688F;
@@ -680,6 +715,12 @@ body {
   }
   .print-doc article {
     max-width: none;
+  }
+  body:has(.print-doc) main > div > .mx-auto {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
   }
   body:has(.print-doc) > header,
   body:has(.print-doc) .skip-link,

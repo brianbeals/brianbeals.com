@@ -176,6 +176,11 @@ failures; these amend Run 3, 6 and 8:
     (a11y-audit `free_test/config.py` `BLOCKED`, each with a reason, until Brian lifts it): a
     request for one or any subdomain is filed to Rejected, nothing is stored or sent to the
     submitter, Brian gets a "Free Test:" note, and the log records the reason.
+17. **The WebAIM line (2026-10-18).** /free-test carries one line under the H1: "95.9% of the
+    web's top million home pages fail automated accessibility checks (WebAIM, 2026). See where
+    yours stands." with "WebAIM, 2026" linked to https://webaim.org/projects/million/ (same tab).
+    Refresh the figure and the year each spring, when WebAIM publishes the new Million report
+    (usually March). The line names the year so it never reads as current when it isn't.
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

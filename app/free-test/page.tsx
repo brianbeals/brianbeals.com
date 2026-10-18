@@ -41,6 +41,14 @@ export default function FreeTest() {
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
         <PageHeading>Free accessibility test</PageHeading>
+        {/* Refresh each spring with WebAIM's new Million report (SPEC.md, "The WebAIM line"). */}
+        <p className={p}>
+          95.9% of the web&apos;s top million home pages fail automated accessibility checks (
+          <a href="https://webaim.org/projects/million/" className={link} style={{ color: "var(--link)" }}>
+            WebAIM, 2026
+          </a>
+          ). See where yours stands.
+        </p>
         <p className={`${p} mb-10`}>
           An automated first look at your website and the PDFs it links to, against WCAG 2.1 Level A
           and AA, sent to you by email.

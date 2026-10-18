@@ -154,6 +154,16 @@ failures; these amend Run 3, 6 and 8:
     until <time>" to the private desk repo (a fine-grained token, Contents read and write on
     brianbeals/desk only), and the page reads it and shows "Today's free checks are full" with the
     call button in place of the form. Brian's "global limit reached" note marks each day it happens.
+15. **Organization type and the call button (2026-10-17).** The form adds one optional dropdown,
+    "What kind of organization?": City or county, School district or college, Health center or
+    hospital, Federal agency or contractor, Other. It is stored with the submission and shown in
+    Brian's review draft. When set, the report (HTML and plain text) adds one line under the
+    result banner: "Your deadline: ADA Title II, April 26, 2027 or 2028, depending on population."
+    (city, county, school district, college); "Your deadline: Section 504, May 11, 2027 (15 or more
+    employees) or May 10, 2028." (health center or hospital); "Your standard: Section 508, in force
+    now." (federal). Other or blank adds nothing. The report's call button reads "Book a 15-minute
+    call to go over these results" and wraps inside its box at 320px. On the home page the free
+    test is the primary button while it is on, and the call is the outlined second.
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

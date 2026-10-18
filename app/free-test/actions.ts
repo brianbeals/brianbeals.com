@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { rateLimiter } from "@/lib/form-mail";
 import { approveOk, enabled, ipHash, sendEvent, tokenShape, turnstileOk } from "@/lib/free-test";
-import { TRAP, validate, type Errors } from "./fields";
+import { TRAP, orgKey, validate, type Errors } from "./fields";
 
 // The free test's three actions: a request from the form, a confirmation from the
 // link in the confirmation email, and Brian's approval from the review draft. Each
@@ -49,10 +49,12 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
     return { status: "sent" };
   }
 
+  const org = orgKey(get("org"));
   const ok = await sendEvent("request", {
     url: get("url").trim(),
     email: get("email").trim().toLowerCase(),
     ip_hash: ipHash(ip),
+    ...(org ? { org } : {}),
   });
   if (!ok)
     return {

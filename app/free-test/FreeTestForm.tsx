@@ -5,7 +5,7 @@ import { startTransition, useActionState, useEffect, useRef, useState } from "re
 import ErrorSummary from "@/app/components/ErrorSummary";
 import SubHeading from "@/app/components/SubHeading";
 import { requestFreeTest, type RequestState } from "./actions";
-import { TRAP, errorLabel, errorTarget, validate, type Errors } from "./fields";
+import { ORGS, TRAP, errorLabel, errorTarget, validate, type Errors } from "./fields";
 
 // The free-test request form. Same patterns as the contact form
 // (app/contact/ContactForm.tsx): validation here first and again on the server;
@@ -159,6 +159,26 @@ export default function FreeTestForm({ siteKey }: { siteKey: string }) {
         "An address on the site's own domain, such as name@yourcity.gov. The report goes here.",
         { type: "email", autoComplete: "email", spellCheck: false, autoCapitalize: "none" },
       )}
+
+      <div className="mb-5">
+        <label htmlFor="ft-org" className={labelCls}>
+          What kind of organization? <span className="font-normal">(optional)</span>
+        </label>
+        <select
+          id="ft-org"
+          name="org"
+          defaultValue=""
+          className={inputCls}
+          style={{ borderColor: "var(--field-border)" }}
+        >
+          <option value="">Choose one</option>
+          {ORGS.map(([k, label]) => (
+            <option key={k} value={k}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {/* Honeypot: off screen, out of the tab order and the accessibility tree,
           with a meaningless name. Filled, the request is answered like any other

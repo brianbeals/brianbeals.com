@@ -46,6 +46,9 @@ const TRUST = [
   "Evaluation only, never remediation",
 ];
 
+const outlined = "rounded border-2 px-5 py-2 font-semibold hover:underline underline-offset-4";
+const outlinedStyle = { borderColor: "var(--link)", color: "var(--link)" };
+
 export default function Home() {
   const freeTest = freeTestEnabled();
   return (
@@ -63,23 +66,36 @@ export default function Home() {
               vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
               you what to fix first.
             </p>
-            {/* The secondary button is the free test while it is on (2026-10-17),
-                with the readiness checklist as a text line under the buttons; with
-                the free test off, the checklist button takes the slot again. */}
+            {/* While the free test is on (2026-10-17), it is the primary button and
+                the call is the outlined second, with the readiness checklist as a
+                text line under the buttons. Off, the call is primary and the
+                checklist button takes the second slot. */}
             <div className={`flex flex-wrap gap-3 ${freeTest ? "mb-3" : "mb-6"}`}>
-              <Link
-                href="/contact"
-                className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
-              >
-                Book a 15-minute call
-              </Link>
-              <Link
-                href={freeTest ? "/free-test" : "/accessibility/before-we-start"}
-                className="rounded border-2 px-5 py-2 font-semibold hover:underline underline-offset-4"
-                style={{ borderColor: "var(--link)", color: "var(--link)" }}
-              >
-                {freeTest ? "Get a free automated check" : "Run the readiness checklist"}
-              </Link>
+              {freeTest ? (
+                <>
+                  <Link
+                    href="/free-test"
+                    className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+                  >
+                    Get a free automated check
+                  </Link>
+                  <Link href="/contact" className={outlined} style={outlinedStyle}>
+                    Book a 15-minute call
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/contact"
+                    className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+                  >
+                    Book a 15-minute call
+                  </Link>
+                  <Link href="/accessibility/before-we-start" className={outlined} style={outlinedStyle}>
+                    Run the readiness checklist
+                  </Link>
+                </>
+              )}
             </div>
             {freeTest ? (
               <p className="text-base mb-6 text-neutral-800">

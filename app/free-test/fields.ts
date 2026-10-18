@@ -25,6 +25,18 @@ export function validate(get: (name: string) => string): Errors {
   return e;
 }
 
+/* The optional "What kind of organization?" choices. The keys match the
+   engine's (a11y-audit free_test/emails.py ORGS), which adds a deadline line to
+   the report for each but "other". Anything else is not sent. */
+export const ORGS: [string, string][] = [
+  ["city", "City or county"],
+  ["school", "School district or college"],
+  ["health", "Health center or hospital"],
+  ["federal", "Federal agency or contractor"],
+  ["other", "Other"],
+];
+export const orgKey = (v: string) => (ORGS.some(([k]) => k === v) ? v : "");
+
 export const errorLabel: Record<string, string> = { url: "Website", email: "Work email" };
 export const errorTarget = (key: string) => `ft-${key}`;
 

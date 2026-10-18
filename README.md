@@ -56,11 +56,14 @@ Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the 
 `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are all set: off, every free-test
 route is a 404, and /scanner, `sitemap.xml`, `/sitemap-page` and the quiet "Free automated check" links
 (on `/accessibility`, `/accessibility/pricing` and `/contact`, launched 2026-10-17; never the header) don't mention it.
-On the home page the hero's secondary button is "Get a free automated check" while the free test is on,
-with "Not sure where you stand? Run the readiness checklist." under the buttons; off, the readiness
-checklist button takes the slot again (they read the flag
+On the home page, while the free test is on, the hero's primary (green) button is "Get a free
+automated check" and "Book a 15-minute call" is the outlined second, with "Not sure where you stand?
+Run the readiness checklist." under the buttons; off, the call is primary and the readiness
+checklist button takes the second slot (they read the flag
 at build, so set it and redeploy). `freetest@forms.brianbeals.com` must be added as a Resend sender
-before the flag goes on. The form's copy says Brian reads each report first; change it if the engine's
+before the flag goes on. The form has one optional field besides the two required ones, "What kind
+of organization?", whose key (`app/free-test/fields.ts` `ORGS`, matching the engine's) goes in the
+signed request. The form's copy says Brian reads each report first; change it if the engine's
 `REVIEW_MODE` goes off.
 
 Local end to end: `FREE_TEST_OUTBOX=<folder>` (refused on Vercel) writes each event there as an

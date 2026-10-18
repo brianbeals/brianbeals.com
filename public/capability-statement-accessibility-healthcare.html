@@ -5,127 +5,76 @@
 <meta name="color-scheme" content="light dark">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brian Beals, LLC Capability Statement: Section 504 Digital Accessibility for Healthcare</title>
+<meta name="description" content="A veteran-owned consultancy that tells a health center or health system how many patient-facing documents it has, which ones the rule reaches, and what to do with each. Delivered by the principal, a U.S. Navy veteran who founded and led three enterprise AI, data and analytics practices.">
+<link rel="canonical" href="https://brianbeals.com/capability-statement-accessibility-healthcare.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E3A5F'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='white' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E">
+<!-- Built by scripts/build_capability_web.py from Capability_Statement_Accessibility_Healthcare_ONEPAGE.html, the same source as the PDF. Edit the one-pager, not this file. -->
 <style>
-  :root{--navy:#1E3A5F;--accent:#2673A8;--card:#D6EAF8;--bg:#F4F6F9;--ink:#1A1A2A;--green:#1E8449;--muted:#6B7280;--alert:#B7791F;}
+  :root{--navy:#1E3A5F;--accent:#2673A8;--card:#D6EAF8;--bg:#F4F6F9;--ink:#1A1A2A;--green:#1E8449;
+        --muted:#5B6470;--side:#F5F8FC;--rule:#E1E6EC;--page:#fff;--intro:#2B2B36;--ok:#17693A;}
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
-  .page{max-width:780px;margin:0 auto;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
-  header{background:var(--navy);color:#fff;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.55;}
+  .page{max-width:880px;margin:0 auto;background:var(--page);}
+  @media (min-width:900px){.page{margin:24px auto;box-shadow:0 2px 8px rgba(0,0,0,.06);}}
+  /* The navy header keeps fixed light text in both schemes. */
+  .hdr{background:var(--navy);color:#fff;padding:20px 24px;display:flex;justify-content:space-between;
+    align-items:center;gap:16px;flex-wrap:wrap;}
   .brand{display:flex;align-items:center;gap:14px;}
-  .brand .name{font-size:25px;font-weight:800;letter-spacing:-0.01em;line-height:1.1;margin:0;color:inherit;}
-  .brand .tag{font-size:13px;color:var(--card);margin-top:3px;}
-  .contact{font-size:12px;text-align:right;line-height:1.7;color:#eaf1f8;white-space:nowrap;}
-  /* SBA VetCert SDVOSB icon as SBA supplies it; allowed on capability statements. */
-  .sba{height:56px;width:auto;margin-left:auto;flex:none;}
-  .contact a{color:#fff;text-decoration:none;}
-  .ribbon{background:var(--green);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;padding:7px 28px;}
-  .clock{background:#FEF6E7;border-bottom:1px solid #f0e2c4;color:#6b5410;font-size:12.5px;line-height:1.5;padding:9px 28px;}
-  .clock strong{color:#8a6a12;}
-  /* The right column FLOATS rather than sitting in a grid track. As a grid
-     item it stretched to the full height of the row, so the tinted panel ran
-     far below its own last line and left a tall empty box beside the
-     differentiators. Floated, the panel is only as tall as its content and the
-     text beneath it reclaims the full width.
-     This is why col-r comes FIRST in the markup: a float only wraps content
-     that follows it in source order. */
-  main{display:block;}
-  main::after{content:"";display:table;clear:both;}
-  .col-r{float:right;width:270px;padding:18px 28px 12px 20px;
-         border-left:1px solid #e5e8ec;background:#fbfcfe;}
-  .col-l{padding:18px 24px 8px 28px;}
-  h2{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;color:var(--navy);margin:16px 0 7px;}
-  h2:first-child{margin-top:0;}
-  ul{margin:0;padding-left:17px;}
-  li{font-size:13px;line-height:1.5;margin-bottom:4px;}
-  p{font-size:13px;line-height:1.5;margin:0 0 8px;}
-  .lead{font-size:13.5px;color:#333;}
-  .svc{margin:0 0 9px;}
-  /* h3 and p, not styled divs. These four service names look like headings
-     and behaved like decoration, which is the failure 1.3.1 describes and the
-     question this firm puts to its own clients. A screen reader user could
-     not jump between services because there was nothing to jump to. */
-  .svc .t{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 1px;
-          text-transform:none;letter-spacing:normal;line-height:1.35;}
-  .svc .d{font-size:12.5px;line-height:1.5;color:#333;margin:0;}
-  /* Real tables, not definition lists. A dl with div-wrapped dt/dd pairs
-     renders correctly and then arrives in the PDF as undifferentiated
-     NonStruct, so "UEI" and its value were two adjacent runs of text with
-     nothing joining them. That is 1.3.1 Level A, and it is the same finding
-     this firm raises against other people's fee schedules.
-     Chromium tags tables reliably through print-to-PDF, which the ACR
-     already proved, so th scope="row" is what makes the association survive. */
-  .snap{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.5;margin:0;}
-  .snap th,.snap td{padding:3px 0;border-bottom:1px solid #eef1f5;vertical-align:top;}
-  .snap tr:last-child th,.snap tr:last-child td{border-bottom:none;}
-  .snap .k{color:var(--muted);font-weight:600;text-align:left;}
-  .snap .v{text-align:right;font-weight:600;color:var(--ink);padding-left:10px;}
-  .cert-ok{color:var(--green);}
-  .vbe{display:inline-block;background:#e5f3ea;color:#1B7A42;font-weight:700;font-size:11.5px;border-radius:5px;padding:5px 9px;margin-top:2px;line-height:1.35;}
-  .proof{padding:6px 28px 14px;}
-  /* Multi-column rather than grid. A two-column grid lays items out in ROWS,
-     so each row is as tall as its tallest item and a short bullet beside a long
-     one leaves a hole. The tooling bullet is twice the height of the one next
-     to it, which opened a visible gap under Conformance report issued.
-     Columns let the items flow and fill instead, and DOM order is preserved so
-     the reading order a screen reader follows is unchanged. */
-  .proof .grid{column-count:2;column-gap:22px;display:block;}
-  .proof li{margin:0 0 9px;break-inside:avoid;-webkit-column-break-inside:avoid;
-            page-break-inside:avoid;}
-  footer{border-top:1px solid #e5e8ec;padding:11px 28px;color:#6B7280;font-size:11.5px;display:flex;align-items:center;gap:7px;}
+  .name{font-size:1.6rem;font-weight:800;letter-spacing:-0.01em;line-height:1.15;margin:0;color:#fff;}
+  .tag{font-size:.95rem;color:#D6EAF8;margin-top:2px;}
+  .doc-title{font-size:.85rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-top:4px;}
+  .contact{font-style:normal;font-size:.95rem;text-align:right;line-height:1.6;color:#EAF1F8;}
+  .contact a{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+  .ribbon{background:#1E8449;color:#fff;font-size:.9rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.02em;padding:7px 24px;}
+  .clock{background:#FEF6E7;border-bottom:1px solid #F0E2C4;color:#5E4A0E;padding:12px 24px;}
+  .clock strong{color:#6B5410;}
+  main{display:grid;grid-template-columns:64fr 36fr;}
+  .col-l{padding:20px 24px 16px;}
+  .col-r{padding:20px 22px 16px;background:var(--side);border-left:1px solid var(--rule);}
+  h2{font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--navy);margin:24px 0 8px;}
+  .col-r h2:first-child{margin-top:0;}
+  p{margin:0 0 12px;}
+  .intro{color:var(--intro);}
+  .serve strong,.cc .t,.pp .en{color:var(--navy);}
+  ul{margin:0;padding-left:20px;}
+  li{margin:0 0 8px;}
+  .cc .t{font-weight:700;}
+  table{width:100%;border-collapse:collapse;line-height:1.4;}
+  th,td{padding:6px 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  tr:last-child th,tr:last-child td{border-bottom:none;}
+  th{color:var(--muted);font-weight:600;text-align:left;white-space:nowrap;padding-right:10px;}
+  td{text-align:left;font-weight:600;overflow-wrap:anywhere;}
+  .codes td{font-weight:400;}
+  .ok{color:var(--ok);}
+  .nw{white-space:nowrap;}
+  footer{border-top:1px solid var(--rule);padding:14px 24px;color:var(--muted);font-size:.9rem;
+    display:flex;align-items:flex-start;gap:8px;}
+  footer img{flex:none;margin-top:3px;}
+  .brand img{flex:none;}
+  footer a{color:var(--accent);}
   .navhr{height:4px;background:var(--navy);}
-
-  /* Skip link. WCAG 2.4.1 Bypass Blocks. The header and brand lockup sit ahead
-     of the content with no keyboard route past them. Hidden until focused. */
-  .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--navy);
-    color:#fff;padding:10px 16px;font-weight:700;text-decoration:none;
-    border-radius:0 0 6px 0;font-size:13px;}
+  .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--navy);color:#fff;padding:10px 16px;
+    font-weight:700;text-decoration:none;border-radius:0 0 6px 0;}
   .skip:focus{left:0;}
   #main:focus{outline:none;}
-
-  /* Dark mode. Declared natively so Dark Reader and Safari's dark extensions
-     stand down rather than repainting the page themselves, which is what
-     produces unreadable results on a document like this.
-
-     Navy surfaces and the ice badge carry over unchanged. See the module
-     docstring for why --card is not touched. */
-  /* 1.4.10 Reflow, found 2026-10-08. At 320px the header contact block
-     (nowrap) and the 270px sidebar column pushed the page up to 133px wide
-     of the viewport. Below 640px the header stacks and the sidebar drops
-     under the main column. Screen only; print keeps its own layout. */
-  @media screen and (max-width:640px){
-    header{flex-direction:column;align-items:flex-start;}
-    .contact{text-align:left;white-space:normal;}
-    .sba{margin-left:0;}
+  /* 1.4.10 Reflow: below 760px the header stacks and the side column drops under the main one. */
+  @media (max-width:760px){
+    .hdr{flex-direction:column;align-items:flex-start;padding:18px 16px;}
+    .contact{text-align:left;}
+    .ribbon,.clock{padding-left:16px;padding-right:16px;}
     main{grid-template-columns:1fr;}
-    .col-r{border-left:none;border-top:1px solid #e5e8ec;}
-    .proof .grid{grid-template-columns:1fr;}
-    .snap .v{overflow-wrap:anywhere;}
+    .col-l,.col-r{padding-left:16px;padding-right:16px;}
+    .col-r{border-left:none;border-top:1px solid var(--rule);}
+    footer{padding-left:16px;padding-right:16px;}
   }
-
   @media (prefers-color-scheme:dark){
-    :root{--bg:#0F1822;--ink:#E6EDF3;--muted:#93A6B8;--accent:#7FB3D8;
-      --green:#5FCF8E;--alert:#D9B84A;}
-    html,body{background:var(--bg);color:var(--ink);}
-    .page{background:#16202B;box-shadow:0 2px 8px rgba(0,0,0,0.5);}
-    .col-r{background:#1B2836;border-left-color:#2A3B4D;}
+    :root{--bg:#0F1822;--ink:#E6EDF3;--muted:#93A6B8;--accent:#7FB3D8;--side:#1B2836;--rule:#2A3B4D;
+          --page:#16202B;--intro:#C3D0DC;--ok:#5FCF8E;}
     .clock{background:#2A2313;border-bottom-color:#3D3520;color:#E8D49B;}
     .clock strong{color:#F2E2AE;}
-    .lead,.svc .d{color:#C3D0DC;}
-    .snap .row,.snap th,.snap td{border-bottom-color:#2A3B4D;}
-    .vbe{background:#14301F;}
-    footer{border-top-color:#2A3B4D;color:var(--muted);}
-    /* 1.4.3, found 2026-10-08. Headings stayed navy on the dark page (1.3:1),
-       and the ribbon took the lightened dark-mode tint under white text
-       (about 2:1). Headings take the accent; the ribbon keeps its light-mode
-       color, which white clears at 4.5:1 or better. The badge text keeps the
-       bright green against its dark tint. */
-    h2,.svc .t{color:var(--accent);}
-    .ribbon{background:#1E8449;}
-    .vbe{color:var(--green);}
-    /* Ten paragraphs carry color:#555 as an inline style, which a media block
-       cannot reach without this. #555 on #16202B is roughly 3:1 and fails. */
-    .proof p[style]{color:#B4C2D0 !important;}
+    h2,.serve strong,.cc .t,.pp .en{color:var(--accent);}
   }
 </style>
 </head>
@@ -133,125 +82,45 @@
 <a class="skip" href="#main">Skip to main content</a>
 <div class="page">
   <header>
+  <div class="hdr">
     <div class="brand">
-      <svg viewBox="0 0 32 32" width="40" height="40" role="presentation" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="6" fill="#fff"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#1E3A5F" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+      <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%276%27%20fill%3D%27%23fff%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2715%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27central%27%20fill%3D%27%231E3A5F%27%20font-family%3D%27-apple-system%2Csystem-ui%2Csans-serif%27%20font-size%3D%2716%27%20font-weight%3D%27800%27%20letter-spacing%3D%27-0.04em%27%3EBB%3C/text%3E%3C/svg%3E" width="34" height="34" alt="">
       <div>
         <h1 class="name">Brian Beals, LLC</h1>
-        <div class="tag">Section 504 Digital Accessibility &middot; Independent Evaluation &amp; Document Inventory</div>
+        <div class="tag">Section 504 Digital Accessibility for Healthcare</div>
+        <div class="doc-title">Capability Statement</div>
       </div>
     </div>
-    <img class="sba" src="sba-sdvosb-certified.png" alt="SBA certified service-disabled veteran-owned small business" width="400" height="500">
-    <div class="contact">
-      Punta Gorda, FL &middot; nationwide<br>
+    <address class="contact">
+      Brian Beals, President<br>
       <a href="mailto:brian@brianbeals.com">brian@brianbeals.com</a><br>
+      (941) 979-6282<br>
       <a href="https://brianbeals.com/accessibility/healthcare">brianbeals.com/accessibility/healthcare</a><br>
-      (941) 979-6282
-    </div>
-  </header>
-  <div class="ribbon">SBA-Certified Service-Disabled Veteran-Owned Small Business &middot; Evaluation Only, Never Remediation</div>
-  <div class="clock">
-    <strong>The deadline</strong>. The HHS final rule at 45 CFR Part 84 requires WCAG 2.1 Level AA for web content, mobile apps, and electronic documents. Recipients with 15 or more employees must comply by <strong>May 11, 2027</strong>, under 15 by <strong>May 10, 2028</strong>. Billing Medicare or Medicaid makes an organization a recipient of federal financial assistance, which is what brings the rule to nearly every provider. Enforcement runs through HHS OCR, and Section 504 also carries a private right of action.
+      Free check: <a href="https://brianbeals.com/free-test">brianbeals.com/free-test</a>
+    </address>
   </div>
-
+  <div class="ribbon">SBA-Certified Service-Disabled Veteran-Owned Small Business &middot; Evaluation Only</div>
+  <div class="clock"><strong>The deadline</strong>. 45 CFR Part 84 requires WCAG 2.1 AA by <strong>May 11, 2027</strong> with 15 or more employees, <strong>May 10, 2028</strong> with fewer. Receiving HHS funding, including Medicaid, makes a provider a recipient.</div>
+  </header>
   <main id="main" tabindex="-1">
-    <div class="col-r">
-      <h2>Company Snapshot</h2>
-      <table class="snap">
-        <tr><th scope="row" class="k">SDVOSB</th><td class="v cert-ok">SBA-Certified</td></tr>
-        <tr><th scope="row" class="k">Certified</th><td class="v">August 2026</td></tr>
-        <tr><th scope="row" class="k">UEI</th><td class="v">NJLEHNAQATJ6</td></tr>
-        <tr><th scope="row" class="k">CAGE</th><td class="v">22XM3</td></tr>
-        <tr><th scope="row" class="k">D-U-N-S</th><td class="v">14-756-2650</td></tr>
-        <tr><th scope="row" class="k">Founded</th><td class="v">2026 &middot; Florida</td></tr>
-        <tr><th scope="row" class="k">Location</th><td class="v">Punta Gorda, FL</td></tr>
-      </table>
-      <div class="vbe">Independent evaluator. No remediation services offered, at any price.</div>
-
-      <h2>Standard Applied</h2>
-      <table class="snap">
-        <tr><th scope="row" class="k">WCAG</th><td class="v">2.1 Level AA</td></tr>
-        <tr><th scope="row" class="k">Rule</th><td class="v">45 CFR Part 84</td></tr>
-        <tr><th scope="row" class="k">Report</th><td class="v">VPAT 2.5 / ACR</td></tr>
-        <tr><th scope="row" class="k">Also</th><td class="v">Title II &middot; 508</td></tr>
-      </table>
-
-      <h2>Scope Covered</h2>
-      <table class="snap">
-        <tr><th scope="row" class="k">Documents</th><td class="v">PDF &amp; Office</td></tr>
-        <tr><th scope="row" class="k">Forms</th><td class="v">Intake &amp; fillable</td></tr>
-        <tr><th scope="row" class="k">Web</th><td class="v">Pages &amp; templates</td></tr>
-        <tr><th scope="row" class="k">Portal</th><td class="v">Patient-facing</td></tr>
-        <tr><th scope="row" class="k">Mobile</th><td class="v">Apps &amp; responsive</td></tr>
-        <tr><th scope="row" class="k">Third party</th><td class="v">Vendor VPAT review</td></tr>
-      </table>
-
-      <h2>Codes</h2>
-      <table class="snap">
-        <tr><th scope="row" class="k">541512</th><td class="v">Computer Systems Design</td></tr>
-        <tr><th scope="row" class="k">541511</th><td class="v">Custom Programming</td></tr>
-        <tr><th scope="row" class="k">541519</th><td class="v">Other IT Services</td></tr>
-        <tr><th scope="row" class="k">541611</th><td class="v">Management Consulting</td></tr>
-        <tr><th scope="row" class="k">80101507</th><td class="v">IT Consultation</td></tr>
-        <tr><th scope="row" class="k">81112000</th><td class="v">Data Services</td></tr>
-      </table>
-    </div>
-
     <div class="col-l">
-      <p class="lead">A veteran-owned consultancy that tells a health center or health system how many patient-facing documents it actually has, which ones the rule reaches, and what to do with each. The deliverable is a count and a prioritized list, not a repair invoice. Delivered by one principal with an enterprise data and automation background.</p>
-
-      <h2>Services</h2>
-
-      <div class="svc">
-        <h3>Baseline Patient-Facing Document Inventory</h3>
-        <p>Every document discovered across the organization&rsquo;s web properties and clinic microsites, each one probed for tag structure, declared language, headings, table headers, alternative text, document title, and whether the file is scanned paper with no readable text at all, then checked against veraPDF, the ISO reference validator for PDF/UA-1. The validator finds what no tag count can: content drawn on the page and never tagged, which assistive technology does not reach at all. Its results are reported as WCAG success criteria and never as a PDF/UA verdict, because the rule obligates WCAG 2.1 AA and PDF/UA is a wider standard no recipient is held to. Reading order and alt-text quality are not machine-detectable; they are reviewed by a person on a sample the probe selects, and the report says so on its face. Each document is then sorted by whether a patient uses it to apply for, access, or take part in a program, which is the line the rule actually draws. Deliverable is a count, a prioritized remediation specification a vendor can bid against, and a dated record of what was known and when. Fixed fee, scoped to the number of web properties.</p>
-      </div>
-
-      <div class="svc">
-        <h3>Accessibility Conformance Report</h3>
-        <p>All 50 WCAG 2.1 Level A and AA success criteria evaluated against the public site, each one marked Supports, Partially Supports, Does Not Support, or Not Applicable, each one evidenced. Issued in VPAT 2.5 format, the same document a procurement office already requires from software vendors. Dated and signed, with the method and its limits stated on the face of the report.</p>
-      </div>
-
-      <div class="svc">
-        <h3>Annual Re-Inventory</h3>
-        <p>Re-crawl, re-probe, and a delta against the prior baseline. A document library drifts in one direction: every form published without tags moves the count backward, and nobody publishing it is thinking about tags. A count taken once was true once.</p>
-      </div>
-
-      <div class="svc">
-        <h3>Program Support</h3>
-        <p>Published accessibility statement naming the standard and conformance level, a grievance path, procurement language requiring an ACR before purchase, and content governance so newly published material stops regressing.</p>
-      </div>
-
+      <p class="intro">A veteran-owned consultancy that tells a health center or health system how many patient-facing documents it has, which ones the rule reaches, and what to do with each. Delivered by the principal, a U.S. Navy veteran who founded and led three enterprise AI, data and analytics practices.</p>
+      <p class="serve"><strong>Who we serve</strong>: hospitals, health systems, community health centers, and other HHS-funded providers.</p>
+      <h2>Core Competencies</h2>
+      <ul class="cc"><li><strong class="t">Patient-Facing Document Inventory</strong>. Each document checked against PDF/UA-1, delivered as a count and a biddable specification.</li><li><strong class="t">Accessibility Conformance Report</strong>. All 50 WCAG 2.1 A and AA criteria, marked and evidenced, in VPAT 2.5 format.</li><li><strong class="t">Annual Re-Inventory</strong>. A re-crawl reported as a delta against the prior baseline.</li><li><strong class="t">Program Support</strong>. Accessibility statement, grievance path, and language requiring an ACR before purchase.</li></ul>
       <h2>Differentiators</h2>
-      <ul>
-        <li><strong>The legacy-document exemption is narrower than it reads</strong>. The rule exempts documents published before the compliance date, and the exemption stops at any document used to apply for, access, or take part in a program. Intake, consent, financial assistance, and portal documents stay in scope regardless of age. Most organizations plan against the exemption rather than against the carve-out inside it.</li>
-        <li><strong>Evaluation only, never the remediation</strong>. A conformance claim written by whoever repaired the documents is self-assessment. Staying out of the repair is what lets the report mean something, and it produces a specification a remediation vendor bids against rather than a per-page quote nobody can check.</li>
-        <li><strong>A tagged PDF is not a conforming PDF</strong>. Most checkers ask only whether tags exist. A document can carry them and still be unreadable: no headings, tables with no header cells, images with no alternative text. That is what an auto-tag pass leaves behind, and often what an organization receives after paying to have it fixed.</li>
-        <li><strong>Triage before spend</strong>. Remediation is priced per page. A library carries documents that are obsolete, duplicated, superseded, or should never have been PDFs. Sorting that out first is the cheapest money in the program, and it is the step that gets skipped.</li>
-        <li><strong>The report says what it did not check</strong>. Reading order, meaningful alternative text, and focus order are not machine-detectable. An unanswered criterion reports as Not Evaluated, never as Supports.</li>
-        <li><strong>Built for volume</strong>. An enterprise data and automation background applied to cataloging and classifying document libraries that run to five figures.</li>
-        <li><strong>No overlay, no platform license, no per-page quota</strong>. There is no product behind the recommendation, so the recommendation follows the findings.</li>
-      </ul>
+      <ul class="cc"><li><strong class="t">The legacy exemption is narrow</strong>: intake forms stay in scope.</li><li><strong class="t">Evaluation only, never the remediation</strong>: no self-assessment.</li><li><strong class="t">A tagged PDF is not a conforming PDF</strong>: veraPDF checks every one.</li><li><strong class="t">Triage before spend</strong>: remediation is priced per page, so sorting obsolete, duplicate, and superseded documents first is the cheapest money in the program.</li><li><strong class="t">No product to sell</strong>: no overlay, no platform license, no per-page quota.</li></ul>
+      <h2>Past Performance</h2>
+      <ul class="pp"><li><strong class="en">brianbeals.com</strong>: 38 pages, 4 PDF/UA-1 documents, all 50 criteria.</li><li><strong class="en">ACR, Oct. 17, 2026</strong>: no Partially Supports or Does Not Support.</li><li><strong class="en">Health center sample</strong>: one Florida community health center, 4 of 5 PDFs untagged, including the sliding-fee application.</li></ul>
+    </div>
+    <div class="col-r">
+      <h2>Company Data</h2><table><tr><th scope="row">UEI</th><td>NJLEHNAQATJ6</td></tr><tr><th scope="row">CAGE</th><td>22XM3</td></tr><tr><th scope="row">DUNS</th><td>14-756-2650</td></tr><tr><th scope="row">Founded</th><td>2026 &middot; Florida</td></tr><tr><th scope="row">Location</th><td>Punta Gorda, FL</td></tr></table><h2>How to Buy</h2><table><tr><th scope="row">Purchase</th><td>Purchase order, under purchasing limits</td></tr><tr><th scope="row">SAM.gov</th><td>Active &middot; UEI, CAGE</td></tr><tr><th scope="row">SBA</th><td class="ok">SDVOSB &middot; <span class='nw'>08/2026&nbsp;&ndash;&nbsp;08/2029</span></td></tr><tr><th scope="row">Florida</th><td class="ok">VBE certified</td></tr></table><h2>NAICS</h2><table class="codes"><tr><th scope="row">541512</th><td>Computer Systems Design (primary)</td></tr><tr><th scope="row">541519</th><td>Other IT Services</td></tr><tr><th scope="row">541611</th><td>Management Consulting</td></tr></table><h2>UNSPSC</h2><table class="codes"><tr><th scope="row">80101507</th><td>IT Consultation</td></tr><tr><th scope="row">81112000</th><td>Data Services</td></tr></table><h2>Standards Applied</h2><table><tr><th scope="row">WCAG</th><td>2.1 Level AA</td></tr><tr><th scope="row">Rule</th><td>45 CFR Part 84</td></tr><tr><th scope="row">Report</th><td>VPAT 2.5 / ACR</td></tr></table>
     </div>
   </main>
-
-  <div class="proof">
-    <h2>Demonstrated Capability</h2>
-    <ul class="grid">
-      <li><strong>Conformance report issued:</strong> a full evaluation of brianbeals.com against all 50 WCAG 2.1 Level A and AA success criteria, remediated to conformance and documented in an Accessibility Conformance Report in VPAT 2.5 format. Every defect found was fixed and re-verified, including a skip link that scrolled the page without moving keyboard focus.</li>
-      <li><strong>Purpose-built evaluation tooling:</strong> an assessment engine combining automated rule checking with the checks automation normally misses, among them 320-pixel reflow, dark color scheme contrast, and skip links that scroll without moving keyboard focus. Documents are read rather than counted: the tag tree is walked to find missing alternative text, tables with no header cells, and tagged files with no headings at all. A regression suite runs against fixture pages encoding known defects, so the engine is tested rather than trusted.</li>
-      <li><strong>Document probing at depth:</strong> the engine opens each document and reports what a screen reader would encounter, separating files with no tag structure from files that are tagged and still unreadable. A byte scan cannot see into a compressed object stream, so an untagged result from one is treated as a suspicion rather than a finding.</li>
-      <li><strong>Volume screening in practice:</strong> 22 public entities verified and sampled across four counties, producing per-entity findings mapped to specific success criteria. Third-party widget defects are attributed to the vendor rather than to the organization, so a client is never handed a finding it cannot act on.</li>
-      <li><strong>Large-scale content inventory:</strong> automation that polls a public records API, filters and classifies records by code and keyword, scores them, and publishes a live dashboard. The same pattern applied to a document library.</li>
-      <li><strong>Scheduled pipelines:</strong> screeners running on a schedule via CI and publishing to public web endpoints without manual intervention.</li>
-    </ul>
-    <p style="font-size:11.5px;color:#555;margin:6px 0 0;"><strong>Method</strong>. Findings are measured, not estimated. Where a check cannot be made honestly, for example text over a photograph where the background color is unknowable from the page, it is reported as indeterminate rather than asserted. A finding a client can disprove costs more than a finding never made.</p>
-    <p style="font-size:11.5px;color:#555;margin:6px 0 0;"><strong>Past performance</strong>. Newly formed, with no accessibility contract past performance to date. The reference implementation above is the firm&rsquo;s own site, evaluated and remediated end to end under the same method proposed here, with the resulting report available on request. Manual assistive-technology validation at depth and high-volume document remediation are delivered with a specialist partner. Available to subcontract the assessment, inventory, and program layer under a remediation prime.</p>
-  </div>
-
   <footer>
-    <svg viewBox="0 0 32 32" width="16" height="16" role="presentation" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="6" fill="#1E3A5F"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" fill="#fff" font-family="-apple-system,system-ui,sans-serif" font-size="16" font-weight="800" letter-spacing="-0.04em">BB</text></svg>
+    <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%276%27%20fill%3D%27%231E3A5F%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2715%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27central%27%20fill%3D%27%23fff%27%20font-family%3D%27-apple-system%2Csystem-ui%2Csans-serif%27%20font-size%3D%2716%27%20font-weight%3D%27800%27%20letter-spacing%3D%27-0.04em%27%3EBB%3C/text%3E%3C/svg%3E" width="16" height="16" alt="">
     <span>&copy; Brian Beals, LLC &middot; brianbeals.com/accessibility/healthcare &middot; <span class="yr">2026</span><br>
-    This document as HTML, and every capability statement in both formats: <a href="https://brianbeals.com/documents" style="color:var(--accent);white-space:nowrap"><strong>brianbeals.com/documents</strong></a> &middot; <a href="/sitemap-page" style="color:var(--accent)">Site map</a></span>
+    <a href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Healthcare.pdf">Download this statement as a PDF</a> &middot; Every capability statement in both formats: <a href="https://brianbeals.com/documents"><strong>brianbeals.com/documents</strong></a> &middot; <a href="/sitemap-page">Site map</a></span>
   </footer>
   <div class="navhr"></div>
 </div>

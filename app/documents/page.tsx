@@ -80,9 +80,8 @@ export default function Documents() {
         <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
           Each of these is published in two formats. The PDF conforms to PDF/UA-1
           (ISO 14289-1), verified with veraPDF rather than asserted by the tool
-          that wrote it. For each statement the PDF is the one-page
-          version and the HTML is the full statement. The HTML is there for reading on
-          a phone or pasting into a portal.
+          that wrote it. The HTML says the same thing as the one-page PDF and is
+          there for reading on a phone or pasting into a portal.
         </p>
 
         <ul className="space-y-6">

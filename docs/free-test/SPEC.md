@@ -204,6 +204,17 @@ failures; these amend Run 3, 6 and 8:
     contact pages, and 5 PDFs linked from them," or "starting with the home page and its main
     menu" when the site has no such pages, and the limits list says "Pages beyond the 10 checked
     here".
+19. **Why no page was checked, and the subjects (2026-10-18).** A `no_pages` result says why. When
+    the home host's robots.txt was read and keeps the scanner out (`Disallow: /` for
+    BrianBealsLLC-A11y or for every robot), the submitter's note reads: "Your site's robots.txt
+    asks automated scanners not to visit, so the check didn't run. If you'd like the free check,
+    your web team can allow our scanner; the details are at brianbeals.com/scanner. Or book a
+    15-minute call and I'll look at your site with you." It promises no follow-up and names no
+    firewall. The firewall note in item 10 stays for a site that refuses the scanner and for a
+    robots.txt that answered 5xx or couldn't be reached, and it now carries the call button too.
+    Brian's warm-lead note says which case it was. That note, the held note, and the robots.txt
+    note are titled "Your free accessibility check of <domain>", the domain as the request gave
+    it: no scheme, and "www" only if the request had it.
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

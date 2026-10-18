@@ -7,6 +7,12 @@ and their findings, never go in it, its commits, or its PR text; they live in th
 repo, findings under its gitignored `clients/`. A sample site here is "a Southwest Florida city" or
 "a Florida health center", with no figures quoted from it.
 
+**Counts only (standing rule, 2026-10-17).** The free report gives counts. It never names an
+individual PDF, never ties a failure to a specific page or element, and never says how to fix
+anything. The only URLs in it are the "Pages checked" list and the call link; pages not checked are
+counted, not listed. The engine's test suite (a11y-audit `tests/test_free_test_emails.py`) fails
+if a report body holds any PDF filename or URL, or any page URL outside "Pages checked".
+
 ## Purpose and position
 
 An automated, no-cost first look at a public entity's website and linked documents, requested by someone with an email address on that site's domain. It sits before the existing free recon (4 to 6 pages, done by Brian) and the paid Accessibility Conformance Report:
@@ -158,12 +164,18 @@ failures; these amend Run 3, 6 and 8:
     "What kind of organization?": City or county, School district or college, Health center or
     hospital, Federal agency or contractor, Other. It is stored with the submission and shown in
     Brian's review draft. When set, the report (HTML and plain text) adds one line under the
-    result banner: "Your deadline: ADA Title II, April 26, 2027 or 2028, depending on population."
-    (city, county, school district, college); "Your deadline: Section 504, May 11, 2027 (15 or more
+    result banner: "Your deadline: ADA Title II, April 26, 2027 (population 50,000 or more) or April
+    26, 2028." (city, county, school district, college); "Your deadline: Section 504, May 11, 2027 (15 or more
     employees) or May 10, 2028." (health center or hospital); "Your standard: Section 508, in force
     now." (federal). Other or blank adds nothing. The report's call button reads "Book a 15-minute
     call to go over these results" and wraps inside its box at 320px. On the home page the free
     test is the primary button while it is on, and the call is the outlined second.
+16. **Report trims and a blocklist (2026-10-17).** The scanner's own measurements are one line,
+    "Also found: <count> <plain name> (<WCAG ref>)", in place of their heading and list, with no
+    page counts or worst ratio. "Not checked" is a count. The engine keeps a list of blocked domains
+    (a11y-audit `free_test/config.py` `BLOCKED`, each with a reason, until Brian lifts it): a
+    request for one or any subdomain is filed to Rejected, nothing is stored or sent to the
+    submitter, Brian gets a "Free Test:" note, and the log records the reason.
 
 **Blocked egress address (recorded 2026-10-17).** A Southwest Florida city's CDN (Akamai) refuses every
 request from the home internet address, including a normal browser with a default user agent;

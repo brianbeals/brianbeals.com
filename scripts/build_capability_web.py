@@ -8,11 +8,15 @@ units, the per-variant fit variables, the Letter min-height), and wraps them in 
 readable 16px base, two columns from 760px and one below, dark mode, and the site's standard
 footer with the PDF link, /documents, and the site map.
 
+It also writes the /documents thumbnails (public/thumbs/<page>.png, page 1 of each PDF in public/,
+rendered with macOS sips), so copy the freshly rendered PDFs into public/ before running it.
+
     python3 scripts/build_capability_web.py            # writes public/capability-statement-accessibility*.html
 
 Then copy each output back over its LLC folder copy (the mapping is in that folder's README.md).
 """
 import html
+import subprocess
 import pathlib
 import re
 import sys
@@ -78,6 +82,11 @@ CSS = """
   .brand img{flex:none;}
   footer a{color:var(--accent);}
   .navhr{height:4px;background:var(--navy);}
+  /* Free-check QR beside the contact block (2026-10-19). White tile with the quiet zone intact. */
+  .reach{display:flex;align-items:center;gap:16px;}
+  .qr{text-align:center;line-height:1.2;}
+  .qr img{display:block;width:84px;height:84px;}
+  .qr .cap{font-size:.85rem;font-weight:700;color:#fff;margin-top:4px;}
   .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--navy);color:#fff;padding:10px 16px;
     font-weight:700;text-decoration:none;border-radius:0 0 6px 0;}
   .skip:focus{left:0;}
@@ -86,6 +95,7 @@ CSS = """
   @media (max-width:760px){
     .hdr{flex-direction:column;align-items:flex-start;padding:18px 16px;}
     .contact{text-align:left;}
+    .reach{flex-wrap:wrap;align-items:flex-start;}
     .ribbon,.clock{padding-left:16px;padding-right:16px;}
     main{grid-template-columns:1fr;}
     .col-l,.col-r{padding-left:16px;padding-right:16px;}
@@ -165,6 +175,13 @@ def build(name, page, pdf):
 """
     (OUT / page).write_text(out)
     print("wrote public/" + page)
+    # /documents thumbnail: page 1 of the published PDF, 360px wide (2x for a 180px slot).
+    thumbs = OUT / "thumbs"
+    thumbs.mkdir(exist_ok=True)
+    png = thumbs / page.replace(".html", ".png")
+    subprocess.run(["sips", "-s", "format", "png", "--resampleWidth", "360", str(OUT / pdf), "--out", str(png)],
+                   check=True, capture_output=True)
+    print("wrote public/thumbs/" + png.name)
 
 
 if __name__ == "__main__":

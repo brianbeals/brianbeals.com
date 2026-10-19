@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import SectionHeading from "@/app/components/SectionHeading";
 import PageHeading from "@/app/components/PageHeading";
@@ -43,6 +44,8 @@ type Doc = {
   note: string;
   html: string | null;
   pdf: string;
+  // Page 1 of the PDF, written by scripts/build_capability_web.py.
+  thumb: string;
 };
 
 const docs: Doc[] = [
@@ -51,24 +54,28 @@ const docs: Doc[] = [
     note: "45 CFR Part 84, WCAG 2.1 AA, and the May 11 2027 deadline for recipients of HHS funding.",
     html: "/capability-statement-accessibility-healthcare.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Healthcare.pdf",
+    thumb: "/thumbs/capability-statement-accessibility-healthcare.png",
   },
   {
     name: "ADA Title II Digital Accessibility",
     note: "28 CFR 35.200 for state and local government, and the April 26 2027 deadline.",
     html: "/capability-statement-accessibility.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf",
+    thumb: "/thumbs/capability-statement-accessibility.png",
   },
   {
     name: "Section 508 Digital Accessibility",
     note: "Federal agencies and their contractors.",
     html: "/capability-statement-accessibility-federal.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf",
+    thumb: "/thumbs/capability-statement-accessibility-federal.png",
   },
   {
     name: "Maryland Digital Accessibility and Nonvisual Access",
     note: "The § 3.5-311 nonvisual access clause, and the CATS+ vehicle.",
     html: "/capability-statement-accessibility-maryland.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Maryland.pdf",
+    thumb: "/thumbs/capability-statement-accessibility-maryland.png",
   },
 ];
 
@@ -86,47 +93,62 @@ export default function Documents() {
 
         <ul className="space-y-6">
           {docs.map((d) => (
-            <li key={d.pdf}>
-              <p className="font-semibold" style={{ color: "var(--head)" }}>
-                {d.name}
-              </p>
-              <p className="text-sm mb-1" style={{ color: "var(--muted-ink)" }}>
-                {d.note}
-              </p>
-              <p className="text-sm">
-                {/* The visible text stays "HTML" and "PDF", which is what a
-                    sighted reader needs beside a name they just read. The
-                    accessible name carries the document, because a screen
-                    reader's links list is flat: without this it reads twelve
-                    entries as HTML, PDF, HTML, PDF, with no way to tell which
-                    document any of them belongs to. WCAG 2.4.4.
+            <li key={d.pdf} className="flex gap-4 sm:gap-6 items-start">
+              {/* Thumbnail of the PDF's single page, linking to the PDF. The
+                  alt names the destination, since the image is the link's only
+                  content. */}
+              <a href={d.pdf} className="shrink-0">
+                <Image
+                  src={d.thumb}
+                  alt={`${d.name} capability statement, one-page PDF`}
+                  width={180}
+                  height={233}
+                  className="w-24 sm:w-[180px] h-auto rounded-sm border bg-white shadow-sm"
+                  style={{ borderColor: "var(--rule)" }}
+                />
+              </a>
+              <div>
+                <p className="font-semibold" style={{ color: "var(--head)" }}>
+                  {d.name}
+                </p>
+                <p className="text-sm mb-1" style={{ color: "var(--muted-ink)" }}>
+                  {d.note}
+                </p>
+                <p className="text-sm">
+                  {/* The visible text stays "HTML" and "PDF", which is what a
+                      sighted reader needs beside a name they just read. The
+                      accessible name carries the document, because a screen
+                      reader's links list is flat: without this it reads twelve
+                      entries as HTML, PDF, HTML, PDF, with no way to tell which
+                      document any of them belongs to. WCAG 2.4.4.
 
-                    Found by scanning this site on the day the page shipped,
-                    which is the argument for scanning your own work. */}
-                {d.html ? (
-                  <>
-                    <a
-                      href={d.html}
-                      aria-label={`${d.name}, HTML version`}
-                      className="underline underline-offset-4 hover:no-underline"
-                      style={{ color: "var(--link)" }}
-                    >
-                      HTML
-                    </a>
-                    <span aria-hidden="true" style={{ color: "var(--muted-ink)" }}>
-                      {" · "}
-                    </span>
-                  </>
-                ) : null}
-                <a
-                  href={d.pdf}
-                  aria-label={`${d.name}, PDF version`}
-                  className="underline underline-offset-4 hover:no-underline"
-                  style={{ color: "var(--link)" }}
-                >
-                  PDF
-                </a>
-              </p>
+                      Found by scanning this site on the day the page shipped,
+                      which is the argument for scanning your own work. */}
+                  {d.html ? (
+                    <>
+                      <a
+                        href={d.html}
+                        aria-label={`${d.name}, HTML version`}
+                        className="underline underline-offset-4 hover:no-underline"
+                        style={{ color: "var(--link)" }}
+                      >
+                        HTML
+                      </a>
+                      <span aria-hidden="true" style={{ color: "var(--muted-ink)" }}>
+                        {" · "}
+                      </span>
+                    </>
+                  ) : null}
+                  <a
+                    href={d.pdf}
+                    aria-label={`${d.name}, PDF version`}
+                    className="underline underline-offset-4 hover:no-underline"
+                    style={{ color: "var(--link)" }}
+                  >
+                    PDF
+                  </a>
+                </p>
+              </div>
             </li>
           ))}
         </ul>

@@ -55,6 +55,11 @@
   .brand img{flex:none;}
   footer a{color:var(--accent);}
   .navhr{height:4px;background:var(--navy);}
+  /* Free-check QR beside the contact block (2026-10-19). White tile with the quiet zone intact. */
+  .reach{display:flex;align-items:center;gap:16px;}
+  .qr{text-align:center;line-height:1.2;}
+  .qr img{display:block;width:84px;height:84px;}
+  .qr .cap{font-size:.85rem;font-weight:700;color:#fff;margin-top:4px;}
   .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--navy);color:#fff;padding:10px 16px;
     font-weight:700;text-decoration:none;border-radius:0 0 6px 0;}
   .skip:focus{left:0;}
@@ -63,6 +68,7 @@
   @media (max-width:760px){
     .hdr{flex-direction:column;align-items:flex-start;padding:18px 16px;}
     .contact{text-align:left;}
+    .reach{flex-wrap:wrap;align-items:flex-start;}
     .ribbon,.clock{padding-left:16px;padding-right:16px;}
     main{grid-template-columns:1fr;}
     .col-l,.col-r{padding-left:16px;padding-right:16px;}
@@ -91,6 +97,7 @@
         <div class="doc-title">Capability Statement</div>
       </div>
     </div>
+    <div class="reach">
     <address class="contact">
       Brian Beals, President<br>
       <a href="mailto:brian@brianbeals.com">brian@brianbeals.com</a><br>
@@ -98,6 +105,8 @@
       <a href="https://brianbeals.com/accessibility/healthcare">brianbeals.com/accessibility/healthcare</a><br>
       Free check: <a href="https://brianbeals.com/free-test">brianbeals.com/free-test</a>
     </address>
+    <div class="qr"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNzAiIGhlaWdodD0iMzcwIiBjbGFzcz0ic2Vnbm8iPjxnIHRyYW5zZm9ybT0ic2NhbGUoMTApIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAwaDM3djM3aC0zN3oiLz48cGF0aCBjbGFzcz0icXJsaW5lIiBzdHJva2U9IiMwMDAiIGQ9Ik00IDQuNWg3bTIgMGgzbTEgMGgxbTEgMGg1bTIgMGg3bS0yOSAxaDFtNSAwaDFtMSAwaDJtMSAwaDFtMSAwaDFtMSAwaDFtMSAwaDFtNCAwaDFtNSAwaDFtLTI5IDFoMW0xIDBoM20xIDBoMW0xIDBoMW0zIDBoNG0yIDBoM20xIDBoMW0xIDBoM20xIDBoMW0tMjkgMWgxbTEgMGgzbTEgMGgxbTIgMGgxbTEgMGgxbTEgMGgxbTMgMGgxbTQgMGgxbTEgMGgzbTEgMGgxbS0yOSAxaDFtMSAwaDNtMSAwaDFtMyAwaDFtMSAwaDVtMiAwaDFtMiAwaDFtMSAwaDNtMSAwaDFtLTI5IDFoMW01IDBoMW0yIDBoMW0yIDBoMW0xIDBoM20xIDBoMm0yIDBoMW01IDBoMW0tMjkgMWg3bTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGg3bS0yMCAxaDFtMiAwaDNtMSAwaDVtLTIwIDFoM20xIDBoMm0yIDBoMm0yIDBoMW0xIDBoNW02IDBoMm0tMjggMWg0bTEgMGgxbTIgMGgxbTIgMGg0bTEgMGgxbTIgMGg0bTEgMGgxbTMgMGgxbS0yOSAxaDJtNCAwaDFtMiAwaDNtMSAwaDFtMSAwaDFtMSAwaDFtNCAwaDFtMiAwaDFtMSAwaDFtLTI3IDFoMW0xIDBoMm02IDBoNG0xIDBoMW0xIDBoM20yIDBoM20yIDBoMW0tMjYgMWg2bTIgMGgxbTEgMGgxbTMgMGgxbTIgMGgybTEgMGgxbTIgMGgzbS0yOSAxaDFtMSAwaDNtMiAwaDFtMSAwaDFtMSAwaDFtNSAwaDFtMSAwaDFtMiAwaDJtMSAwaDRtLTI5IDFoMm0xIDBoMW0xIDBoMm0xIDBoMm0xIDBoMW0xIDBoNG0xIDBoMm0xIDBoMW0xIDBoM20xIDBoMm0tMjcgMWgxbTEgMGgybTEgMGgybTEgMGgxbTMgMGgxbTMgMGgybTIgMGgxbTEgMGgybTEgMGgxbS0yOCAxaDJtMyAwaDNtMiAwaDJtMSAwaDJtMyAwaDFtMSAwaDJtMSAwaDNtMSAwaDJtLTI4IDFoNG0yIDBoMm0yIDBoMW0xIDBoMW0yIDBoMm0yIDBoMW0yIDBoMW0yIDBoMW0tMjcgMWgxbTEgMGgxbTIgMGg0bTMgMGgxbTIgMGgxbTEgMGgxbTQgMGgybTIgMGgxbS0yNSAxaDJtMSAwaDFtMiAwaDFtMSAwaDNtMyAwaDJtMSAwaDRtMSAwaDNtLTI2IDFoMW0xIDBoMW0xIDBoMm0xIDBoMm0xIDBoMm0xIDBoMW0xIDBoMTFtMSAwaDFtLTIxIDFoM20zIDBoMW0xIDBoMW0xIDBoMW0xIDBoMW0zIDBoMm0xIDBoMm0tMjkgMWg3bTIgMGgybTEgMGgzbTEgMGg1bTEgMGgxbTEgMGgxbTEgMGgybS0yOCAxaDFtNSAwaDFtMSAwaDNtMSAwaDFtNSAwaDFtMSAwaDFtMyAwaDFtMiAwaDJtLTI5IDFoMW0xIDBoM20xIDBoMW0yIDBoMW0xIDBoN20yIDBoOG0tMjggMWgxbTEgMGgzbTEgMGgxbTEgMGgxbTIgMGgxbTEgMGgxbTEgMGg1bTQgMGgxbTEgMGgxbTEgMGgxbS0yOSAxaDFtMSAwaDNtMSAwaDFtMSAwaDJtMiAwaDFtNCAwaDFtMiAwaDFtMiAwaDFtMiAwaDFtMSAwaDFtLTI5IDFoMW01IDBoMW0xIDBoMW0xIDBoMW0xIDBoMW0xIDBoMW0zIDBoM20zIDBoMm0xIDBoMW0tMjggMWg3bTIgMGgxbTIgMGgzbTMgMGgzbTEgMGgybTMgMGgxIi8+PC9nPjwvc3ZnPgo=" width="75" height="75" alt="QR code for brianbeals.com/free-test, the free accessibility check"><div class="cap">Free check</div></div>
+    </div>
   </div>
   <div class="ribbon">SBA-Certified Service-Disabled Veteran-Owned Small Business &middot; Evaluation Only</div>
   <div class="clock"><strong>The deadline</strong>. 45 CFR Part 84 requires WCAG 2.1 AA by <strong>May 11, 2027</strong> with 15 or more employees, <strong>May 10, 2028</strong> with fewer. Receiving HHS funding, including Medicaid, makes a provider a recipient.</div>

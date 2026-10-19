@@ -55,6 +55,11 @@
   .brand img{flex:none;}
   footer a{color:var(--accent);}
   .navhr{height:4px;background:var(--navy);}
+  /* Free-check QR beside the contact block (2026-10-19). White tile with the quiet zone intact. */
+  .reach{display:flex;align-items:center;gap:16px;}
+  .qr{text-align:center;line-height:1.2;}
+  .qr img{display:block;width:84px;height:84px;}
+  .qr .cap{font-size:.85rem;font-weight:700;color:#fff;margin-top:4px;}
   .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--navy);color:#fff;padding:10px 16px;
     font-weight:700;text-decoration:none;border-radius:0 0 6px 0;}
   .skip:focus{left:0;}
@@ -63,6 +68,7 @@
   @media (max-width:760px){
     .hdr{flex-direction:column;align-items:flex-start;padding:18px 16px;}
     .contact{text-align:left;}
+    .reach{flex-wrap:wrap;align-items:flex-start;}
     .ribbon,.clock{padding-left:16px;padding-right:16px;}
     main{grid-template-columns:1fr;}
     .col-l,.col-r{padding-left:16px;padding-right:16px;}
@@ -87,10 +93,11 @@
       <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%276%27%20fill%3D%27%23fff%27/%3E%3Ctext%20x%3D%2716%27%20y%3D%2715%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27central%27%20fill%3D%27%231E3A5F%27%20font-family%3D%27-apple-system%2Csystem-ui%2Csans-serif%27%20font-size%3D%2716%27%20font-weight%3D%27800%27%20letter-spacing%3D%27-0.04em%27%3EBB%3C/text%3E%3C/svg%3E" width="34" height="34" alt="">
       <div>
         <h1 class="name">Brian Beals, LLC</h1>
-        <div class="tag">Section 508 Digital Accessibility &middot; Independent VPAT Reporting</div>
+        <div class="tag">Section 508 Digital Accessibility<br>Independent VPAT Reporting</div>
         <div class="doc-title">Capability Statement</div>
       </div>
     </div>
+    <div class="reach">
     <address class="contact">
       Brian Beals, President<br>
       <a href="mailto:brian@brianbeals.com">brian@brianbeals.com</a><br>
@@ -98,6 +105,8 @@
       <a href="https://brianbeals.com/accessibility/federal">brianbeals.com/accessibility/federal</a><br>
       Free check: <a href="https://brianbeals.com/free-test">brianbeals.com/free-test</a>
     </address>
+    <div class="qr"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNzAiIGhlaWdodD0iMzcwIiBjbGFzcz0ic2Vnbm8iPjxnIHRyYW5zZm9ybT0ic2NhbGUoMTApIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAwaDM3djM3aC0zN3oiLz48cGF0aCBjbGFzcz0icXJsaW5lIiBzdHJva2U9IiMwMDAiIGQ9Ik00IDQuNWg3bTIgMGgzbTEgMGgxbTEgMGg1bTIgMGg3bS0yOSAxaDFtNSAwaDFtMSAwaDJtMSAwaDFtMSAwaDFtMSAwaDFtMSAwaDFtNCAwaDFtNSAwaDFtLTI5IDFoMW0xIDBoM20xIDBoMW0xIDBoMW0zIDBoNG0yIDBoM20xIDBoMW0xIDBoM20xIDBoMW0tMjkgMWgxbTEgMGgzbTEgMGgxbTIgMGgxbTEgMGgxbTEgMGgxbTMgMGgxbTQgMGgxbTEgMGgzbTEgMGgxbS0yOSAxaDFtMSAwaDNtMSAwaDFtMyAwaDFtMSAwaDVtMiAwaDFtMiAwaDFtMSAwaDNtMSAwaDFtLTI5IDFoMW01IDBoMW0yIDBoMW0yIDBoMW0xIDBoM20xIDBoMm0yIDBoMW01IDBoMW0tMjkgMWg3bTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGgxbTEgMGg3bS0yMCAxaDFtMiAwaDNtMSAwaDVtLTIwIDFoM20xIDBoMm0yIDBoMm0yIDBoMW0xIDBoNW02IDBoMm0tMjggMWg0bTEgMGgxbTIgMGgxbTIgMGg0bTEgMGgxbTIgMGg0bTEgMGgxbTMgMGgxbS0yOSAxaDJtNCAwaDFtMiAwaDNtMSAwaDFtMSAwaDFtMSAwaDFtNCAwaDFtMiAwaDFtMSAwaDFtLTI3IDFoMW0xIDBoMm02IDBoNG0xIDBoMW0xIDBoM20yIDBoM20yIDBoMW0tMjYgMWg2bTIgMGgxbTEgMGgxbTMgMGgxbTIgMGgybTEgMGgxbTIgMGgzbS0yOSAxaDFtMSAwaDNtMiAwaDFtMSAwaDFtMSAwaDFtNSAwaDFtMSAwaDFtMiAwaDJtMSAwaDRtLTI5IDFoMm0xIDBoMW0xIDBoMm0xIDBoMm0xIDBoMW0xIDBoNG0xIDBoMm0xIDBoMW0xIDBoM20xIDBoMm0tMjcgMWgxbTEgMGgybTEgMGgybTEgMGgxbTMgMGgxbTMgMGgybTIgMGgxbTEgMGgybTEgMGgxbS0yOCAxaDJtMyAwaDNtMiAwaDJtMSAwaDJtMyAwaDFtMSAwaDJtMSAwaDNtMSAwaDJtLTI4IDFoNG0yIDBoMm0yIDBoMW0xIDBoMW0yIDBoMm0yIDBoMW0yIDBoMW0yIDBoMW0tMjcgMWgxbTEgMGgxbTIgMGg0bTMgMGgxbTIgMGgxbTEgMGgxbTQgMGgybTIgMGgxbS0yNSAxaDJtMSAwaDFtMiAwaDFtMSAwaDNtMyAwaDJtMSAwaDRtMSAwaDNtLTI2IDFoMW0xIDBoMW0xIDBoMm0xIDBoMm0xIDBoMm0xIDBoMW0xIDBoMTFtMSAwaDFtLTIxIDFoM20zIDBoMW0xIDBoMW0xIDBoMW0xIDBoMW0zIDBoMm0xIDBoMm0tMjkgMWg3bTIgMGgybTEgMGgzbTEgMGg1bTEgMGgxbTEgMGgxbTEgMGgybS0yOCAxaDFtNSAwaDFtMSAwaDNtMSAwaDFtNSAwaDFtMSAwaDFtMyAwaDFtMiAwaDJtLTI5IDFoMW0xIDBoM20xIDBoMW0yIDBoMW0xIDBoN20yIDBoOG0tMjggMWgxbTEgMGgzbTEgMGgxbTEgMGgxbTIgMGgxbTEgMGgxbTEgMGg1bTQgMGgxbTEgMGgxbTEgMGgxbS0yOSAxaDFtMSAwaDNtMSAwaDFtMSAwaDJtMiAwaDFtNCAwaDFtMiAwaDFtMiAwaDFtMiAwaDFtMSAwaDFtLTI5IDFoMW01IDBoMW0xIDBoMW0xIDBoMW0xIDBoMW0xIDBoMW0zIDBoM20zIDBoMm0xIDBoMW0tMjggMWg3bTIgMGgxbTIgMGgzbTMgMGgzbTEgMGgybTMgMGgxIi8+PC9nPjwvc3ZnPgo=" width="75" height="75" alt="QR code for brianbeals.com/free-test, the free accessibility check"><div class="cap">Free check</div></div>
+    </div>
   </div>
   <div class="ribbon">SBA-Certified Service-Disabled Veteran-Owned Small Business &middot; Set-Aside Eligible</div>
   <div class="clock"><strong>What applies</strong>. Section 508 covers the ICT federal agencies develop, procure, maintain, or use. It has no compliance date: it is in force now, and a VPAT is due with the bid.</div>

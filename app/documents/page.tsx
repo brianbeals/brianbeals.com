@@ -137,7 +137,8 @@ export default function Documents() {
                 </p>
               </div>
               {/* Thumbnail of the PDF's single page, beside the text on every
-                  width. A second way to the same PDF, so it is out of the tab
+                  width: 120px, or 64px below 480px so the text column keeps
+                  its room on a phone. A second way to the same PDF, so it is out of the tab
                   order and hidden from screen readers: the PDF link beside it
                   already names it. */}
               <a href={d.pdf} className="shrink-0" tabIndex={-1} aria-hidden="true">
@@ -146,7 +147,7 @@ export default function Documents() {
                   alt=""
                   width={120}
                   height={155}
-                  className="w-[120px] h-auto rounded-sm border bg-white shadow-sm"
+                  className="w-16 min-[480px]:w-[120px] h-auto rounded-sm border bg-white shadow-sm"
                   style={{ borderColor: "var(--rule)" }}
                 />
               </a>

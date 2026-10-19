@@ -93,21 +93,8 @@ export default function Documents() {
 
         <ul className="space-y-6">
           {docs.map((d) => (
-            <li key={d.pdf} className="flex gap-4 sm:gap-6 items-start">
-              {/* Thumbnail of the PDF's single page, linking to the PDF. The
-                  alt names the destination, since the image is the link's only
-                  content. */}
-              <a href={d.pdf} className="shrink-0">
-                <Image
-                  src={d.thumb}
-                  alt={`${d.name} capability statement, one-page PDF`}
-                  width={180}
-                  height={233}
-                  className="w-24 sm:w-[180px] h-auto rounded-sm border bg-white shadow-sm"
-                  style={{ borderColor: "var(--rule)" }}
-                />
-              </a>
-              <div>
+            <li key={d.pdf} className="flex gap-4 sm:gap-6 items-start justify-between">
+              <div className="min-w-0">
                 <p className="font-semibold" style={{ color: "var(--head)" }}>
                   {d.name}
                 </p>
@@ -149,6 +136,20 @@ export default function Documents() {
                   </a>
                 </p>
               </div>
+              {/* Thumbnail of the PDF's single page, beside the text on every
+                  width. A second way to the same PDF, so it is out of the tab
+                  order and hidden from screen readers: the PDF link beside it
+                  already names it. */}
+              <a href={d.pdf} className="shrink-0" tabIndex={-1} aria-hidden="true">
+                <Image
+                  src={d.thumb}
+                  alt=""
+                  width={120}
+                  height={155}
+                  className="w-[120px] h-auto rounded-sm border bg-white shadow-sm"
+                  style={{ borderColor: "var(--rule)" }}
+                />
+              </a>
             </li>
           ))}
         </ul>

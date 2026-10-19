@@ -137,7 +137,8 @@ def build(name, page, pdf):
     icon = grab(r'(<link rel="icon"[^>]*>)', src, "icon", name)
     header = grab(r"<header>(.*?)</header>", src, "header", name)
     main = grab(r'<main id="main" tabindex="-1">(.*?)</main>', src, "main", name)
-    site = grab(r'href="https://(brianbeals\.com/accessibility[^"]*)"', header, "site link", name)
+    # The contact block's site line (brianbeals.com on all four since 2026-10-19), for the footer.
+    site = grab(r'href="https://(brianbeals\.com[^"]*)"', header, "site link", name)
     intro = grab(r'<p class="intro">(.*?)</p>', main, "intro", name)
     desc = html.escape(re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", intro))).strip(), quote=True)
     # The contact block is an address on the web; same lines, same order.

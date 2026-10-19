@@ -5,6 +5,7 @@ import PageHeading from "@/app/components/PageHeading";
 import SubHeading from "@/app/components/SubHeading";
 import { enabled, turnstileSiteKey } from "@/lib/free-test";
 import FreeTestForm from "./FreeTestForm";
+import { refKey } from "./fields";
 
 // The free automated test (docs/free-test/SPEC.md, build step 3). A 404 until
 // FREE_TEST_ENABLED is "true" and every key is set (lib/free-test.ts); not in the
@@ -48,8 +49,14 @@ export const dynamic = "force-dynamic";
 const link = "underline underline-offset-4 hover:no-underline";
 const p = "text-base sm:text-lg leading-relaxed mb-4 text-neutral-800";
 
-export default function FreeTest() {
+export default async function FreeTest({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   if (!enabled()) notFound();
+  const q = (await searchParams).ref;
+  const ref = refKey(typeof q === "string" ? q : "");
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
@@ -68,7 +75,7 @@ export default function FreeTest() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_18rem] gap-10 md:gap-12">
-          <FreeTestForm siteKey={turnstileSiteKey()} />
+          <FreeTestForm siteKey={turnstileSiteKey()} source={ref} />
 
           <aside aria-labelledby="ft-how" className="text-base">
             <SubHeading level={2} id="ft-how" spacing="mt-0 mb-3">

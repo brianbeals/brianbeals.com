@@ -285,7 +285,7 @@ sig=<hex HMAC-SHA256 of the exact bytes of the JSON line, key FREE_TEST_SECRET>
 ```
 
 `type` is `request` (data: `url`, `email`, `ip_hash`, the salted HMAC of the client IP computed on
-Vercel, never the IP), `confirmed` (data: `token`, the raw token from the link) or `approved`
+Vercel, never the IP, and when given `org` and `ref`, the page's `?ref=` source slug, 2026-10-19), `confirmed` (data: `token`, the raw token from the link) or `approved`
 (data: `job`). The engine rejects a missing block, a bad signature, a timestamp older than 24
 hours or more than 5 minutes ahead, and an id it has seen before, and moves the message to
 Rejected. Approve links are `/free-test/approve?id=<job>&sig=<hex HMAC-SHA256 of "approve:<job>">`;

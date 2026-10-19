@@ -32,7 +32,7 @@ declare global {
 const inputCls = "w-full rounded border px-3 py-2 text-base bg-white text-neutral-900";
 const labelCls = "block font-semibold mb-1";
 
-export default function FreeTestForm({ siteKey }: { siteKey: string }) {
+export default function FreeTestForm({ siteKey, source }: { siteKey: string; source: string }) {
   const [state, action, pending] = useActionState<RequestState, FormData>(requestFreeTest, { status: "idle" });
   const [clientErrors, setClientErrors] = useState<Errors>({});
   const summaryRef = useRef<HTMLHeadingElement>(null);
@@ -125,6 +125,8 @@ export default function FreeTestForm({ siteKey }: { siteKey: string }) {
 
   return (
     <form onSubmit={onSubmit} noValidate className="max-w-xl">
+      {/* The QR or link the visitor arrived by (?ref=), for the request event. */}
+      {source ? <input type="hidden" name="ref" value={source} /> : null}
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
         strategy="afterInteractive"

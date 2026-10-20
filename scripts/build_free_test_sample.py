@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the /free-test/sample report from the a11y-audit free-check template.
 
-Renders a fictional result for "City of Example, FL" (example.gov) through
+Renders a fictional result for "City of Example, FL" (example.org), population over 50,000, through
 free_test/emails.py report_parts, the same code that writes every real report,
 adds a "Sample report" line under the heading, and writes the HTML as a string
 module the page shows in a frame (app/free-test/sample/report.ts). Every number
@@ -16,12 +16,17 @@ import time
 
 A11Y = pathlib.Path.home() / "Code/a11y-audit"
 sys.path.insert(0, str(A11Y))
-from free_test import emails  # noqa: E402
+from free_test import deadlines, emails  # noqa: E402
 
 OUT = pathlib.Path(__file__).resolve().parent.parent / "app/free-test/sample/report.ts"
-SITE = "https://example.gov/"
+SITE = "https://example.org/"
 WHEN = time.mktime((2026, 10, 19, 9, 0, 0, 0, 0, -1))
-SAMPLE = ("Sample report. The City of Example, FL and example.gov are fictional, and every number "
+# The fictional city is on no deadline roster, so it gets the one-date line a city
+# on record gets, with the reason in the same form as deadlines._reason.
+DEADLINE = ("April 26, 2027", "the City of Example's 2020 population is over 50,000")
+deadlines.lookup = lambda origin: DEADLINE if "example.org" in origin else None
+
+SAMPLE = ("Sample report. The City of Example, FL and example.org are fictional, and every number "
           "here is made up. A real report has this form.")
 
 PAGES = ["", "pay-utility-bill", "permits/apply", "contact", "agendas-minutes", "jobs", "parks/reservations",

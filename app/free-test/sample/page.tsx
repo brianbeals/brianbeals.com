@@ -5,6 +5,7 @@ import PageHeading from "@/app/components/PageHeading";
 import { enabled } from "@/lib/free-test";
 import ReportFrame from "./ReportFrame";
 import { REPORT } from "./report";
+import { IMAGE } from "../og";
 
 // A sample free-check report, linked from /free-test. The report is the
 // a11y-audit template's own output for a fictional city (report.ts, written by
@@ -19,6 +20,15 @@ export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: "/free-test/sample" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/free-test/sample",
+    siteName: "Brian Beals",
+    type: "website",
+    images: [IMAGE],
+  },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [IMAGE] },
 };
 
 export const dynamic = "force-dynamic";
@@ -33,7 +43,7 @@ export default function FreeTestSample() {
       <article className="max-w-3xl mx-auto">
         <PageHeading>Sample report</PageHeading>
         <p className={p}>
-          This is a sample. The City of Example, FL and example.gov are fictional, and every number in it
+          This is a sample. The City of Example, FL and example.org are fictional, and every number in it
           is made up. A real report comes by email in this form, by the next business day.
         </p>
         <p className={`${p} mb-8`}>
@@ -41,7 +51,7 @@ export default function FreeTestSample() {
             Request a free check of your site
           </Link>
         </p>
-        <ReportFrame html={REPORT} title="Sample free check report for example.gov, a fictional city" />
+        <ReportFrame html={REPORT} title="Sample free check report for example.org, a fictional city" />
       </article>
     </div>
   );

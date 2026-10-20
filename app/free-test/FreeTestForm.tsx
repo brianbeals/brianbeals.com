@@ -67,12 +67,12 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
           Check your email
         </SubHeading>
         <p className="text-base sm:text-lg leading-relaxed text-neutral-800 mb-4">
-          A message from freetest@forms.brianbeals.com is on its way. The check starts only after you
+          A confirmation email is on its way. The check starts only after you
           confirm it.
         </p>
         <p className="text-base leading-relaxed text-neutral-800">
-          If nothing arrives within ten minutes, check your spam folder, or email
-          brian@brianbeals.com.
+          The confirmation email comes from freetest@forms.brianbeals.com. If it hasn&apos;t arrived in
+          10 minutes, check spam or quarantine, or email brian@brianbeals.com.
         </p>
       </div>
     );

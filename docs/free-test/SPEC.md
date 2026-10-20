@@ -63,6 +63,7 @@ No part of the mini is reachable from the internet: n8n only makes outbound conn
 
 - Add the free test to /scanner (what it fetches, pace, robots behavior, that it runs only after the requester confirms an address on the site's own domain).
 - Public page `/free-test` (form) and `/free-test/confirmed`. Not in the header nav until the flag is on.
+- `/free-test/sample` (2026-10-20): a sample report for the fictional City of Example, FL (example.gov), made-up numbers, linked under the /free-test intro. The report is the a11y-audit template's own output (`free_test/emails.py` `report_parts`), written to `app/free-test/sample/report.ts` by `scripts/build_free_test_sample.py`; rerun it after a template change. Off with the flag like the other routes.
 
 ## Build order
 

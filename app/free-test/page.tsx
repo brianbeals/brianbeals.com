@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHeading from "@/app/components/PageHeading";
@@ -53,26 +54,42 @@ export default async function FreeTest({
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
         <PageHeading>Free accessibility check</PageHeading>
-        <p className="text-lg sm:text-xl leading-relaxed mb-4 font-semibold text-neutral-800">
-          By the next business day: which of your pages and PDFs fail, and the WCAG rule each one fails.
-        </p>
-        {/* Refresh each spring with WebAIM's new Million report (SPEC.md, "The WebAIM line"). */}
-        <p className={p}>
-          95.9% of the web&apos;s top million home pages fail automated accessibility checks (
-          <a href="https://webaim.org/projects/million/" className={link} style={{ color: "var(--link)" }}>
-            WebAIM, 2026
-          </a>
-          ).
-        </p>
-        <p className={p}>
-          An automated first look at your website and the PDFs it links to, against WCAG 2.1 Level A
-          and AA, sent to you by email.
-        </p>
-        <p className={`${p} mb-10`}>
-          <Link href="/free-test/sample" className={link} style={{ color: "var(--link)" }}>
+        <div className="mb-10 sm:grid sm:grid-cols-[minmax(0,1fr)_220px] sm:gap-10 sm:items-start">
+          <div>
+            <p className="text-lg sm:text-xl leading-relaxed mb-4 font-semibold text-neutral-800">
+              By the next business day: which of your pages and PDFs fail, and the WCAG rule each one fails.
+            </p>
+            {/* Refresh each spring with WebAIM's new Million report (SPEC.md, "The WebAIM line"). */}
+            <p className={p}>
+              95.9% of the web&apos;s top million home pages fail automated accessibility checks (
+              <a href="https://webaim.org/projects/million/" className={link} style={{ color: "var(--link)" }}>
+                WebAIM, 2026
+              </a>
+              ).
+            </p>
+            <p className={p}>
+              An automated first look at your website and the PDFs it links to, against WCAG 2.1 Level A
+              and AA, sent to you by email.
+            </p>
+          </div>
+          {/* One link: the text is its name, the thumbnail (public/thumbs/free-test-sample.png,
+              written by scripts/build_free_test_sample.py) is decoration. */}
+          <Link
+            href="/free-test/sample"
+            className={`${link} group block w-3/5 mt-2 sm:w-auto sm:mt-1 text-base sm:text-lg`}
+            style={{ color: "var(--link)" }}
+          >
+            <Image
+              src="/thumbs/free-test-sample.png"
+              alt=""
+              width={220}
+              height={254}
+              className="block w-full h-auto mb-2 rounded-sm border bg-white shadow-md group-hover:shadow-lg"
+              style={{ borderColor: "var(--rule)" }}
+            />
             See a sample report
           </Link>
-        </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_18rem] gap-10 md:gap-12">
           <FreeTestForm siteKey={turnstileSiteKey()} source={ref} />

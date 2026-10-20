@@ -26,8 +26,8 @@ export default function Confirmed() {
           arrives within one business day, from freetest@forms.brianbeals.com.
         </p>
         <p className={p}>
-          If the link was more than 24 hours old or had already been used, nothing runs. Request the check
-          again, or email brian@brianbeals.com.
+          If the link had expired (it works for three business days) or had already been used, nothing
+          runs. Request the check again, or email brian@brianbeals.com.
         </p>
       </article>
     </div>

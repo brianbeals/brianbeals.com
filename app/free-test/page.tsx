@@ -54,29 +54,29 @@ export default async function FreeTest({
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
         <PageHeading>Free accessibility check</PageHeading>
-        <div className="mb-10 sm:grid sm:grid-cols-[minmax(0,1fr)_220px] sm:gap-10 sm:items-start">
-          <div>
-            <p className="text-lg sm:text-xl leading-relaxed mb-4 font-semibold text-neutral-800">
-              By the next business day: which of your pages and PDFs fail, and the WCAG rule each one fails.
-            </p>
-            {/* Refresh each spring with WebAIM's new Million report (SPEC.md, "The WebAIM line"). */}
-            <p className={p}>
-              95.9% of the web&apos;s top million home pages fail automated accessibility checks (
-              <a href="https://webaim.org/projects/million/" className={link} style={{ color: "var(--link)" }}>
-                WebAIM, 2026
-              </a>
-              ).
-            </p>
-            <p className={p}>
-              An automated first look at your website and the PDFs it links to, against WCAG 2.1 Level A
-              and AA, sent to you by email.
-            </p>
-          </div>
+        <p className="text-lg sm:text-xl leading-relaxed mb-4 font-semibold text-neutral-800">
+          By the next business day: which of your pages and PDFs fail, and the WCAG rule each one fails.
+        </p>
+        {/* Refresh each spring with WebAIM's new Million report (SPEC.md, "The WebAIM line"). */}
+        <p className={p}>
+          95.9% of the web&apos;s top million home pages fail automated accessibility checks (
+          <a href="https://webaim.org/projects/million/" className={link} style={{ color: "var(--link)" }}>
+            WebAIM, 2026
+          </a>
+          ).
+        </p>
+        <p className={`${p} mb-10`}>
+          An automated first look at your website and the PDFs it links to, against WCAG 2.1 Level A
+          and AA, sent to you by email.
+        </p>
+
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_18rem] md:grid-rows-[auto_1fr] md:gap-x-12 md:gap-y-8">
           {/* One link: the text is its name, the thumbnail (public/thumbs/free-test-sample.png,
-              written by scripts/build_free_test_sample.py) is decoration. */}
+              written by scripts/build_free_test_sample.py) is decoration. From 768px it tops the
+              right column, above How it works; narrower, it sits under the intro, ahead of the form. */}
           <Link
             href="/free-test/sample"
-            className={`${link} group block w-3/5 mt-2 sm:w-auto sm:mt-1 text-base sm:text-lg`}
+            className={`${link} group block w-3/5 sm:w-[220px] md:col-start-2 md:row-start-1 text-base sm:text-lg`}
             style={{ color: "var(--link)" }}
           >
             <Image
@@ -89,17 +89,19 @@ export default async function FreeTest({
             />
             See a sample report
           </Link>
-        </div>
+          <div className="md:col-start-1 md:row-start-1 md:row-span-2">
+            <FreeTestForm siteKey={turnstileSiteKey()} source={ref} />
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_18rem] gap-10 md:gap-12">
-          <FreeTestForm siteKey={turnstileSiteKey()} source={ref} />
-
-          <aside aria-labelledby="ft-how" className="text-base">
+          <aside aria-labelledby="ft-how" className="text-base md:col-start-2 md:row-start-2">
             <SubHeading level={2} id="ft-how" spacing="mt-0 mb-3">
               How it works
             </SubHeading>
             <ol className="list-decimal pl-5 space-y-3 leading-relaxed text-neutral-800">
-              <li>You get an email with a link. The check starts only after you open it and confirm, within 24 hours.</li>
+              <li>
+                To make sure the report goes to someone at the organization, you get a confirmation link by
+                email. The check starts once you click it, any time in the next three business days.
+              </li>
               <li>
                 My scanner checks up to 10 pages and 10 linked PDFs, one at a time and at a slow pace, and
                 asks robots.txt first.{" "}

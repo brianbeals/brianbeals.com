@@ -223,8 +223,9 @@ export default function AccessibilityPricing() {
         <ul className={list}>
           <li>
             <strong style={{ color: "var(--head)" }}>Remediation</strong>. Fixing what the
-            audit finds is separate work, and doing it would have to be disclosed in any later
-            report on the same property. Declining it is what makes the evaluation independent.
+            audit finds is your team&apos;s work or another vendor&apos;s. Brian Beals, LLC
+            never does it, at any price, so a report never grades its own work. Re-testing after
+            the fixes is available.
           </li>
           <li>
             <strong style={{ color: "var(--head)" }}>Document remediation at volume</strong>. We

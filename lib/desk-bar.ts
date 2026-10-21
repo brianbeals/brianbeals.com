@@ -13,9 +13,10 @@
 //
 // Pinned since 2026-10-21, on DeskHeader's rule: from 1024px wide at 600px high,
 // and below 1024px at 500px high, so a landscape phone or 400% zoom scrolls it
-// away (1.4.10). The bar and the Fed strip pin together in .dk-pin. Because the bar
-// wraps, its height is measured (ResizeObserver) into --dk-bar-h, 0px when it is not
-// pinned. The dashboards' title band (.bb-hdr in the shared bb-dash.css of
+// away (1.4.10). The Fed pitch strip pins under it only from 640px wide, where it
+// is one line; on a phone it scrolls with the page (2026-10-21). Because the bar
+// wraps, what is actually pinned, bar plus strip, is measured (ResizeObserver) into
+// --dk-bar-h, 0px when nothing is pinned. The dashboards' title band (.bb-hdr in the shared bb-dash.css of
 // state-intel and fed-intel) pins under it at top: var(--dk-bar-h), and
 // --dk-stick-h, the bar plus a pinned band, sets html scroll-padding-top so anchor
 // jumps, the skip link's target and keyboard focus land clear of both (2.4.11).
@@ -49,9 +50,6 @@ export function sectionForDoc(slug: string): DeskSection {
 }
 
 const CSS = `
-.dk-pin{all:initial;display:block}
-@media (min-width:1024px) and (min-height:600px),(max-width:1023px) and (min-height:500px){
-  .dk-pin{position:sticky;top:0;z-index:50}}
 html{scroll-padding-top:calc(var(--dk-stick-h,0px) + 8px)}
 html:not(.dk-js) .bb-hdr{position:static!important}
 .dkbar{all:initial;display:block;background:#1E3A5F;color:#FFFFFF;
@@ -77,18 +75,24 @@ html:not(.dk-js) .bb-hdr{position:static!important}
 .dk-sub p{margin:0 auto;max-width:72rem}
 .dk-sub a{color:#1E3A5F;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:4px 0}
 .dk-sub a:focus-visible{outline:3px solid #1E3A5F;outline-offset:2px}
-@media print{.dk-pin,.dkbar,.dk-sub{display:none!important}}
+@media (min-width:1024px) and (min-height:600px),(max-width:1023px) and (min-height:500px){
+  .dkbar{position:sticky;top:0;z-index:50}}
+@media (min-width:1024px) and (min-height:600px),(min-width:640px) and (max-width:1023px) and (min-height:500px){
+  .dk-sub{position:sticky;top:var(--dk-nav-h,0px);z-index:49}}
+@media print{.dkbar,.dk-sub{display:none!important}}
 `;
 
-/* Measures the pinned bar and band into --dk-bar-h and --dk-stick-h. Runs where
+/* Measures whatever is pinned (bar, Fed strip, band) into --dk-nav-h (the bar,
+   the strip's offset), --dk-bar-h (bar plus strip, the band's offset) and
+   --dk-stick-h (all three, the scroll padding). Runs where
    it is injected, before the page's own markup, so the band is picked up once the
    document has parsed. */
-const PIN_JS = `(function(){var r=document.documentElement,p=document.getElementById("dk-pin");
+const PIN_JS = `(function(){var r=document.documentElement,p=document.getElementById("dk-pin"),s=document.getElementById("dk-sub");
 if(!p||!window.ResizeObserver)return;r.classList.add("dk-js");
 function h(e){return e&&getComputedStyle(e).position==="sticky"?e.getBoundingClientRect().height:0}
-function u(){var b=h(p);r.style.setProperty("--dk-bar-h",b+"px");
+function u(){var n=h(p),b=n+h(s);r.style.setProperty("--dk-nav-h",n+"px");r.style.setProperty("--dk-bar-h",b+"px");
 r.style.setProperty("--dk-stick-h",b+h(document.querySelector(".bb-hdr"))+"px")}
-var o=new ResizeObserver(u);o.observe(p);addEventListener("resize",u);
+var o=new ResizeObserver(u);o.observe(p);if(s)o.observe(s);addEventListener("resize",u);
 document.addEventListener("DOMContentLoaded",function(){var d=document.querySelector(".bb-hdr");if(d)o.observe(d);u()});u()})();`;
 
 /* withSkip adds a skip link ahead of the bar and a target after it, for pages
@@ -109,9 +113,9 @@ export function deskBarHtml(current: DeskSection, withSkip = false): string {
   // (axe "region").
   const sub =
     current === "fed"
-      ? '<nav class="dk-sub" aria-label="Federal pitch"><p><a href="/desk#pitch-federal">Federal pitch, Section 508: SOFWERX, primes, program offices</a></p></nav>'
+      ? '<nav class="dk-sub" id="dk-sub" aria-label="Federal pitch"><p><a href="/desk#pitch-federal">Federal pitch, Section 508: SOFWERX, primes, program offices</a></p></nav>'
       : "";
-  return `<style>${CSS}</style>${skip}<div class="dk-pin" id="dk-pin"><nav class="dkbar" aria-label="Desk"><ul>${items}</ul></nav>${sub}</div><script>${PIN_JS}</script>${target}`;
+  return `<style>${CSS}</style>${skip}<nav class="dkbar" id="dk-pin" aria-label="Desk"><ul>${items}</ul></nav>${sub}<script>${PIN_JS}</script>${target}`;
 }
 
 /* Put the bar at the very top of a built HTML page: after the page's own skip

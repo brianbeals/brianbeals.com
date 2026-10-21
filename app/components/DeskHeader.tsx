@@ -18,6 +18,7 @@ export const DESK_LINKS = [
   { href: "/desk#before", label: "Before we start" },
   { href: "/desk#recon", label: "Recon" },
   { href: "/desk#rules", label: "Rules & dates" },
+  { href: "/desk#overlays", label: "Overlays" },
   { href: "/desk#pitch", label: "Pitch" },
   { href: "/desk#ids", label: "IDs" },
   { href: "/desk/state", label: "State" },

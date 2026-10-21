@@ -11,7 +11,7 @@
 // builds unchanged. Navy bar, white links: 11.5:1 in both color schemes, so it
 // needs no dark variant. Wraps at 320px, visible focus, hidden in print.
 
-export type DeskSection = "desk" | "pricing" | "before" | "recon" | "rules" | "pitch" | "ids" | "state" | "fed";
+export type DeskSection = "desk" | "pricing" | "before" | "recon" | "rules" | "overlays" | "pitch" | "ids" | "state" | "fed";
 
 const LINKS: [DeskSection | "logout", string, string][] = [
   ["desk", "/desk", "Desk"],
@@ -19,6 +19,7 @@ const LINKS: [DeskSection | "logout", string, string][] = [
   ["before", "/desk#before", "Before we start"],
   ["recon", "/desk#recon", "Recon"],
   ["rules", "/desk#rules", "Rules & dates"],
+  ["overlays", "/desk#overlays", "Overlays"],
   ["pitch", "/desk#pitch", "Pitch"],
   ["ids", "/desk#ids", "IDs"],
   ["state", "/desk/state", "State"],
@@ -32,6 +33,7 @@ export function sectionForDoc(slug: string): DeskSection {
   if (slug === "scope-and-limitations") return "before";
   if (slug === "recon-sample") return "recon";
   if (slug === "regime-cheat-sheet") return "rules";
+  if (slug === "overlays") return "overlays";
   if (slug === "positioning-and-pitch") return "pitch";
   return "desk";
 }

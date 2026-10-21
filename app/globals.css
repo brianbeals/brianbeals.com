@@ -900,6 +900,8 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
 .desk p,
 .desk ul {
   margin: 0 0 0.75rem;
+  /* A bare URL or host list breaks rather than widening the page on a phone. */
+  overflow-wrap: break-word;
 }
 .desk a {
   color: var(--link);

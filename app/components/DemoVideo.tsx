@@ -13,6 +13,7 @@ import { INTRO, NOTE, SCENES } from "@/app/free-test/transcript";
 //
 // The duration badge sits over the poster until the video first plays, then goes.
 // It is real text in the reading order ("Length 1:54", what the player shows for 114.7 s). Change LENGTH with a recut.
+// Under the player, before the transcript: one plain semibold line (2026-10-22).
 const LENGTH = "1:54";
 
 const link = "underline underline-offset-4 hover:no-underline";
@@ -68,6 +69,9 @@ export default function DemoVideo({ labelledBy }: { labelledBy: string }) {
           </span>
         )}
       </div>
+      <p className="mt-3 text-base sm:text-lg leading-relaxed font-semibold text-neutral-800">
+        Hear what your documents sound like. Nobody should have to listen to nonsense.
+      </p>
       <details className="mt-3 text-base sm:text-lg">
         <summary className={`cursor-pointer ${link}`} style={{ color: "var(--link)" }}>
           Read the transcript

@@ -59,7 +59,8 @@ default>`) and SRT, and the described transcript, which `app/free-test/transcrip
 "Read the transcript" disclosure. One player, `app/components/DemoVideo.tsx`: native `<video>`, no
 player script, no autoplay, `preload="metadata"`, its 16:9 box reserved by width, height and
 `aspect-video` so nothing shifts on load, a duration badge ("1:54", what the player shows) over the
-poster until the first play, and the transcript disclosure under it. It appears in three places,
+poster until the first play, then the line "Hear what your documents sound like. Nobody should have
+to listen to nonsense." (semibold body text) and the transcript disclosure under it. It appears in three places,
 each only while the free test is on, since the end card points at /free-test: the home page, in a
 band directly below the hero ("Hear what a screen reader hears", "A two-minute demo. Captions on,
 sound optional.", text then video on phones); /free-test, below the form as `#demo`, "Not sure what

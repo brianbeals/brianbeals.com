@@ -151,6 +151,31 @@ export default function Home() {
           </section>
         ) : null}
 
+        {/* Why I do this (2026-10-22): four paragraphs, wording approved by Brian. */}
+        <section>
+          <SectionHeading>Why I do this</SectionHeading>
+          <p className={`${body} mb-4`}>
+            I set out to start an IT consulting company, and I did the paperwork the way everyone does:
+            articles of organization, a business tax receipt, a property use form. Most of it wasn&apos;t
+            online. What was came as PDFs to print, and the boxes were too small for what they asked. So I
+            sat in a government lobby while a clerk worked through what I&apos;d written and typed every
+            field back into a computer.
+          </p>
+          <p className={`${body} mb-4`}>
+            She was patient. The form was the problem, and my handwriting didn&apos;t help.
+          </p>
+          <p className={`${body} mb-4`}>
+            I&apos;ve spent my career helping large organizations get value from their data, and that
+            morning I saw the other end of it. A form that gave me trouble shuts out someone who can&apos;t
+            see it, can&apos;t hold a pen, or fills it in with a screen reader. The new federal rules say
+            those forms have to work for everyone.
+          </p>
+          <p className={body}>
+            My job is to test them, independently, and tell you plainly what works before a resident finds
+            out what doesn&apos;t.
+          </p>
+        </section>
+
         {/* Trust strip, a list since 2026-10-17: as one paragraph of spans VoiceOver ran
             the items together ("small businessFlorida VBE"). Four list items, so it reads
             "list, 4 items" with a pause between them. role="list" because Safari drops

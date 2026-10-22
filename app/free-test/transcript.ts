@@ -31,7 +31,7 @@ export const SCENES: string[][] = [
   ],
   [
     "[On screen: a card. What a screen reader hears: Reading order. 2 of 4.]",
-    "Narrator: Two columns on the page. Listen.",
+    "Narrator: Two columns on the page.",
     "[On screen: Not accessible. It reads across both columns, line by line.]",
     "Narrator: Not accessible.",
     "Narrator: Listen as it jumps between columns.",

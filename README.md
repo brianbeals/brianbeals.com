@@ -71,7 +71,7 @@ and the SRT (the VTT's cues, not a11y-audit's booth SRT), and updates the badge.
 Recut 2026-10-22 (114.6 s) so the narrator speaks every visual-only cue, which is the video's audio
 description (1.2.5). Since the same day the web cut has no captions burned in: the browser draws them
 from the VTT (a11y-audit's `booth-demo-web.vtt`, short cues of at most two lines of 32 characters,
-each with its "Narrator:" or "Screen reader:" label), so they can be turned off or resized.
+each with its "Narrator:" or "Screen reader:" label), so they can be turned off or resized. Each cue carries `line:76%` (2026-10-22) so the full screen control bar doesn't cover it; the file is a byte copy of a11y-audit's.
 Burned-in captions plus the default track had shown two overlapping sets in Safari. The booth and
 LinkedIn cuts keep theirs burned in. Recut again the same day (114.7 s): the opening says "More
 than one in four American adults", CDC's figure as updated May 2026. Recut a third time (a11y-audit 4848af8, 114.7 s): the

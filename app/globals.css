@@ -164,6 +164,14 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
 .btn-cta:hover {
   background-color: var(--cta-bg-hover);
 }
+/* The home hero's "Get a free automated check" (2026-10-22), so "Hear both" is the
+   hero's one green button. Site navy with white text (11.5:1) in light mode; in dark
+   mode the section-heading pair, #0F1822 on #A9C9E8 (10.4:1), since a navy slab all
+   but disappears on the dark page. --head-ink is set further down. */
+.btn-navy {
+  background-color: var(--head);
+  color: var(--head-ink);
+}
 /* On the navy bar the green's edge is close to the bar's, so a light border marks it. */
 .site-header .btn-cta {
   border: 1px solid #D6EAF8;

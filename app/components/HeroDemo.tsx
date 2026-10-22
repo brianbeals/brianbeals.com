@@ -21,9 +21,17 @@ import { LENGTH, LENGTH_SPOKEN, LINE, LINE_CLASS } from "./demoLength";
 // hidden, so the cell keeps their height and nothing below moves. Before playback
 // the transcript is a link to its text file; after, the player's own "Read the
 // transcript" disclosure takes its place and the link is hidden in its spot.
+//
+// Since 2026-10-22 the quotes sit under one label, "What a screen reader reads
+// aloud:", centered across both covers, and the jump in the broken guide is a
+// bracketed stage direction, upright and muted, where the speech is italic.
 const COVERS = [
-  { src: "/home-hero-broken-page2.png", heard: "…start a business and a / Every Saturday from 8 AM to noon, the" },
-  { src: "/home-hero-fixed-page2.png", heard: "…start a business and a better place to grow one." },
+  {
+    src: "/home-hero-broken-page2.png",
+    heard: ["\u2026start a business and a", "Every Saturday from 8 AM to noon, the"],
+    jump: "[jumps to the sidebar]",
+  },
+  { src: "/home-hero-fixed-page2.png", heard: ["\u2026start a business and a better place to grow one."], jump: "" },
 ];
 
 const link = "underline underline-offset-4 hover:no-underline";
@@ -33,24 +41,37 @@ export default function HeroDemo({ demo }: { demo: boolean }) {
   const playing = start > 0;
   return (
     <>
-      <div className="mt-6 mx-auto grid max-w-[560px]">
-        <div className={`[grid-area:1/1] grid grid-cols-2 gap-4 sm:gap-8 ${playing ? "invisible" : ""}`}>
+      <div className="mt-5 mx-auto grid max-w-[560px]">
+        <div
+          className={`[grid-area:1/1] mx-auto grid w-full max-w-[476px] grid-cols-2 gap-x-4 sm:gap-x-8 ${playing ? "invisible" : ""}`}
+        >
           {COVERS.map((c, i) => (
-            <div key={c.src}>
-              <Image
-                src={c.src}
-                alt={i === 0 ? "Two copies of the same city guide, side by side. They look identical." : ""}
-                width={900}
-                height={1165}
-                preload
-                sizes="(min-width: 640px) 264px, calc(50vw - 32px)"
-                className="block w-full h-auto rounded-sm border shadow-lg"
-                style={{ borderColor: "var(--rule)" }}
-              />
-              <p className="mt-2 text-sm italic leading-snug" style={{ color: "var(--muted-ink)" }}>
-                {c.heard}
-              </p>
-            </div>
+            <Image
+              key={c.src}
+              src={c.src}
+              alt={i === 0 ? "Two copies of the same city guide, side by side. They look identical." : ""}
+              width={900}
+              height={1165}
+              preload
+              sizes="(min-width: 640px) 222px, calc(50vw - 32px)"
+              className="block w-full h-auto rounded-sm border shadow-lg"
+              style={{ borderColor: "var(--rule)" }}
+            />
+          ))}
+          <p className="col-span-2 mt-2 text-sm sm:text-base text-neutral-800">What a screen reader reads aloud:</p>
+          {COVERS.map((c) => (
+            <p key={c.src} className="mt-1 text-sm italic leading-snug text-neutral-800">
+              {c.heard[0]}
+              {c.jump ? (
+                <>
+                  {" "}
+                  <span className="not-italic" style={{ color: "var(--muted-ink)" }}>
+                    {c.jump}
+                  </span>{" "}
+                  {c.heard[1]}
+                </>
+              ) : null}
+            </p>
           ))}
         </div>
         {playing ? (
@@ -65,7 +86,7 @@ export default function HeroDemo({ demo }: { demo: boolean }) {
             type="button"
             onClick={() => setStart((n) => n + 1)}
             aria-label={`Hear both (${LENGTH}), play the ${LENGTH_SPOKEN} demo`}
-            className="btn-cta mt-6 inline-flex items-center gap-2 rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+            className="btn-cta mt-4 inline-flex items-center gap-2 rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
           >
             <svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
               <path d="M4 2.5v11l9-5.5z" />

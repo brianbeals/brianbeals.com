@@ -64,21 +64,30 @@ export default function Home() {
               More than one in four U.S. adults has a disability. Can they use your forms and documents?
             </PageHeading>
           </div>
-          <p className={`${body} mb-5 mx-auto`}>
+          <p className={`${body} mb-2 mx-auto`}>
             Independent accessibility testing for government agencies, health centers, schools, and the
             vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
             you what to fix first.
           </p>
-          {/* While the free test is on (2026-10-17), it is the primary button and
+          {/* The headline's source, as a footnote under the subtext (2026-10-22). */}
+          <p className="text-xs sm:text-sm mb-5 mx-auto" style={{ color: "var(--muted-ink)" }}>
+            Source:{" "}
+            <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>
+              CDC Disability and Health Data System
+            </a>
+            , 28.7% of U.S. adults, 2022 survey data.
+          </p>
+          {/* While the free test is on (2026-10-17), it is the primary button (navy since
+              2026-10-22, so "Hear both" below is the hero's one green button) and
               the call is the outlined second, with the readiness checklist as a
               text line under the buttons. Off, the call is primary and the
               checklist button takes the second slot. */}
-          <div className={`flex flex-wrap justify-center gap-3 ${freeTest ? "mb-3" : "mb-6"}`}>
+          <div className={`flex flex-wrap justify-center gap-3 ${freeTest ? "mb-3" : ""}`}>
             {freeTest ? (
               <>
                 <Link
                   href="/free-test"
-                  className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+                  className="btn-navy rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
                 >
                   Get a free automated check
                 </Link>
@@ -101,7 +110,7 @@ export default function Home() {
             )}
           </div>
           {freeTest ? (
-            <p className="text-base mb-3 mx-auto text-neutral-800">
+            <p className="text-base mx-auto text-neutral-800">
               Not sure where you stand?{" "}
               <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
                 Run the readiness checklist
@@ -109,13 +118,6 @@ export default function Home() {
               .
             </p>
           ) : null}
-          <p className="text-sm mx-auto" style={{ color: "var(--muted-ink)" }}>
-            Source:{" "}
-            <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>
-              CDC Disability and Health Data System
-            </a>
-            , 28.7% of U.S. adults, 2022 survey data.
-          </p>
 
           <HeroDemo demo={freeTest} />
         </section>

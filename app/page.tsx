@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import DemoVideo from "@/app/components/DemoVideo";
 import PageHeading from "@/app/components/PageHeading";
-import PeopleGraphic from "@/app/components/PeopleGraphic";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
 import { enabled as freeTestEnabled } from "@/lib/free-test";
@@ -55,8 +55,12 @@ export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
-        {/* Hero. The graphic follows the text in source order, so it stacks below
-            it on narrow screens and adds nothing to the reading order. */}
+        {/* Hero. The image follows the text in source order, so it stacks below it on
+            narrow screens. Since 2026-10-22 it is the two demo city guides, broken and
+            fixed, overlapped on navy with no labels, because they look the same
+            (public/home-hero-guides.png, built by scripts/build_home_hero.py; it replaced
+            the four-figure PeopleGraphic). Preloaded and sized, so it neither shifts the
+            page nor waits behind it; next.config.ts serves it as AVIF or WebP. */}
         <section className="grid grid-cols-1 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-8 md:gap-12 items-center">
           <div>
             <PageHeading spacing="mb-6">
@@ -116,7 +120,15 @@ export default function Home() {
             </p>
           </div>
           <div className="flex justify-center md:justify-end">
-            <PeopleGraphic />
+            <Image
+              src="/home-hero-guides.png"
+              alt="Two copies of the same city guide, side by side. They look identical."
+              width={1600}
+              height={1389}
+              preload
+              sizes="(min-width: 1024px) 400px, (min-width: 768px) 40vw, calc(100vw - 48px)"
+              className="block w-full h-auto rounded-md"
+            />
           </div>
         </section>
 

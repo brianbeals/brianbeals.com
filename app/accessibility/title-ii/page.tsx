@@ -13,7 +13,7 @@ import SubHeading from "@/app/components/SubHeading";
 // Left out on purpose: the one-pager's DUNS and founding year, which no other
 // page shows.
 //
-// "The proof" quotes the current conformance report (38 pages, October 17, 2026).
+// "The proof" quotes the current conformance report (39 pages, October 22, 2026).
 // Change it when the report is reissued, with the /accessibility and healthcare
 // proof lines.
 const DESCRIPTION =
@@ -169,8 +169,8 @@ export default function AccessibilityTitleII() {
 
         <ul className={list}>
           <li>
-            brianbeals.com: 38 pages, 4 PDF/UA-1 documents, all 50 criteria. The Accessibility
-            Conformance Report of October 17, 2026 marks nothing Partially Supports or Does Not
+            brianbeals.com: 39 pages, 4 PDF/UA-1 documents, all 50 criteria. The Accessibility
+            Conformance Report of October 22, 2026 marks nothing Partially Supports or Does Not
             Support.{" "}
             <a href="/conformance-report.html" className={link} style={{ color: "var(--link)" }}>
               Read the conformance report

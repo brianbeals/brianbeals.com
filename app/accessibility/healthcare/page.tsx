@@ -231,9 +231,9 @@ export default function AccessibilityHealthcare() {
         <SectionHeading>The proof</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. Thirty-eight pages and
+          This site carries its own Accessibility Conformance Report. Thirty-nine pages and
           all four published documents evaluated against all 50 Level A and AA criteria
-          on October 17, 2026: 37 Supports and 13 Not Applicable, with zero criteria
+          on October 22, 2026: 40 Supports and 10 Not Applicable, with zero criteria
           failing. The document layer passed too, every PDF tagged with structure,
           language, and headings verified.{" "}
           <a

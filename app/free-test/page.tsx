@@ -85,8 +85,9 @@ export default async function FreeTest({
         </p>
 
         {/* The screen reader demo (a11y-audit docs/demo/video, the web cut, whose end-card QR
-            carries ?ref=video). Self-hosted, no player script: public/video/. Captions are
-            burned in; the track is there too, for players that list or restyle them. The
+            carries ?ref=video). Self-hosted, no player script: public/video/. This cut has no
+            captions burned in: the browser draws them from the default track, so they can be
+            turned off or resized (burned in as well, Safari showed two sets). The
             image inside <video> is fallback for a browser that cannot play it, and carries
             the poster's alt text. The home page links here as /free-test#demo. */}
         <section id="demo" aria-labelledby="demo-heading" className="mb-12">
@@ -113,7 +114,7 @@ export default async function FreeTest({
               width={1920}
               height={1080}
             />
-            <a href="/video/screen-reader-demo.mp4">Download the video (MP4, 4.5 MB)</a>
+            <a href="/video/screen-reader-demo.mp4">Download the video (MP4, 3.9 MB)</a>
           </video>
           <p className="mt-4 text-base sm:text-lg">
             <a href="#check" className={link} style={{ color: "var(--link)" }}>

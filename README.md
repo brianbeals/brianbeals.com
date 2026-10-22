@@ -55,11 +55,16 @@ tripped honeypot and the in-memory rate limit send nothing and say the same.
 Above the form (2026-10-22), "Hear what a screen reader hears" is the screen reader demo video, the
 web cut from a11y-audit `docs/demo/video/` (its end-card QR carries `?ref=video`), self-hosted in
 `public/video/screen-reader-demo.*`: the MP4 (faststart, so it streams by range request), the poster,
-the SRT and its WebVTT conversion (the `<track>`, though the captions are burned in), and the
+the captions as WebVTT (the `<track kind="captions" default>`) and SRT, and the
 described transcript, which `app/free-test/transcript.ts` carries for the page's "Read the
 transcript" disclosure. Native `<video>`, no player script, no autoplay, `preload="metadata"`. A recut
 replaces all five files and regenerates `transcript.ts`. Recut 2026-10-22 (114.6 s) so the
-narrator speaks every visual-only cue, which is the video's audio description (1.2.5). The section is `#demo`; while the free test
+narrator speaks every visual-only cue, which is the video's audio description (1.2.5). Since the
+same day the web cut has no captions burned in: the browser draws them from the VTT
+(a11y-audit's `booth-demo-web.vtt`, short cues of at most two lines of 32 characters, each with
+its "Narrator:" or "Screen reader:" label), so they can be turned off or resized. Burned-in
+captions plus the default track had shown two overlapping sets in Safari. The SRT here is the
+same cues. The booth and LinkedIn cuts keep theirs burned in. The section is `#demo`; while the free test
 is on, the home hero links to it ("See it in under two minutes").
 
 Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the engine's secret),

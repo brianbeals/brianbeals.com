@@ -37,7 +37,7 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
   if (!(await turnstileOk(get("cf-turnstile-response"), ip)))
     return {
       status: "error",
-      message: "The check that you're a person didn't finish. Wait for it to show a tick, then send again.",
+      message: "The security check hasn't finished yet. Wait a few seconds, then send again.",
     };
 
   if (get(TRAP) !== "") {

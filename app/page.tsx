@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DemoVideo from "@/app/components/DemoVideo";
 import PageHeading from "@/app/components/PageHeading";
 import PeopleGraphic from "@/app/components/PeopleGraphic";
 import SectionHeading from "@/app/components/SectionHeading";
@@ -106,16 +107,6 @@ export default function Home() {
                 .
               </p>
             ) : null}
-            {/* The screen reader demo sits on /free-test, so the link shows only while that page is up. */}
-            {freeTest ? (
-              <p className="text-base mb-6 text-neutral-800">
-                Hear what a screen reader makes of a broken PDF.{" "}
-                <Link href="/free-test#demo" className={link} style={{ color: "var(--link)" }}>
-                  See it in under two minutes
-                </Link>
-                .
-              </p>
-            ) : null}
             <p className="text-sm" style={{ color: "var(--muted-ink)" }}>
               Source:{" "}
               <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>
@@ -128,6 +119,25 @@ export default function Home() {
             <PeopleGraphic />
           </div>
         </section>
+
+        {/* The screen reader demo (2026-10-22), app/components/DemoVideo.tsx, also on
+            /free-test and /accessibility. Text then video in source order, so it stacks
+            that way on phones. Its end card sends viewers to /free-test, so it shows only
+            while that page is up. */}
+        {freeTest ? (
+          <section
+            aria-labelledby="home-demo"
+            className="mt-12 grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-6 md:gap-10 items-center"
+          >
+            <div>
+              <SubHeading level={2} id="home-demo" spacing="mt-0 mb-3">
+                Hear what a screen reader hears
+              </SubHeading>
+              <p className={body}>A two-minute demo. Captions on, sound optional.</p>
+            </div>
+            <DemoVideo labelledBy="home-demo" />
+          </section>
+        ) : null}
 
         {/* Trust strip, a list since 2026-10-17: as one paragraph of spans VoiceOver ran
             the items together ("small businessFlorida VBE"). Four list items, so it reads

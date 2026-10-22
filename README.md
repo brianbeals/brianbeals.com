@@ -52,20 +52,29 @@ the Proton filter files into the "Free Test Requests" queue. The site keeps noth
 are well formed and Turnstile passes, every request ends in the same "Check your email" message; a
 tripped honeypot and the in-memory rate limit send nothing and say the same.
 
-Above the form (2026-10-22), "Hear what a screen reader hears" is the screen reader demo video, the
-web cut from a11y-audit `docs/demo/video/` (its end-card QR carries `?ref=video`), self-hosted in
-`public/video/screen-reader-demo.*`: the MP4 (faststart, so it streams by range request), the poster,
-the captions as WebVTT (the `<track kind="captions" default>`) and SRT, and the
-described transcript, which `app/free-test/transcript.ts` carries for the page's "Read the
-transcript" disclosure. Native `<video>`, no player script, no autoplay, `preload="metadata"`. A recut
-replaces all five files and regenerates `transcript.ts`. Recut 2026-10-22 (114.6 s) so the
-narrator speaks every visual-only cue, which is the video's audio description (1.2.5). Since the
-same day the web cut has no captions burned in: the browser draws them from the VTT
-(a11y-audit's `booth-demo-web.vtt`, short cues of at most two lines of 32 characters, each with
-its "Narrator:" or "Screen reader:" label), so they can be turned off or resized. Burned-in
-captions plus the default track had shown two overlapping sets in Safari. The SRT here is the
-same cues. The booth and LinkedIn cuts keep theirs burned in. The section is `#demo`; while the free test
-is on, the home hero links to it ("See it in under two minutes").
+The screen reader demo video, the web cut from a11y-audit `docs/demo/video/` (its end-card QR
+carries `?ref=video`), is self-hosted in `public/video/screen-reader-demo.*`: the MP4 (faststart, so
+it streams by range request), the poster, the captions as WebVTT (the `<track kind="captions"
+default>`) and SRT, and the described transcript, which `app/free-test/transcript.ts` carries for the
+"Read the transcript" disclosure. One player, `app/components/DemoVideo.tsx`: native `<video>`, no
+player script, no autoplay, `preload="metadata"`, its 16:9 box reserved by width, height and
+`aspect-video` so nothing shifts on load, a duration badge ("1:54", what the player shows) over the
+poster until the first play, and the transcript disclosure under it. It appears in three places,
+each only while the free test is on, since the end card points at /free-test: the home page, in a
+band directly below the hero ("Hear what a screen reader hears", "A two-minute demo. Captions on,
+sound optional.", text then video on phones); /free-test, below the form as `#demo`, "Not sure what
+we look for? Watch first."; and /accessibility, smaller, under the opening paragraph. The essays
+Eight of Twenty-Six and The Form That Sets the Price close with "Hear it for yourself: a two-minute
+demo." linking to `/free-test#demo`. A recut replaces all five files, regenerates `transcript.ts`
+and the SRT (the VTT's cues, not a11y-audit's booth SRT), and updates the badge.
+
+Recut 2026-10-22 (114.6 s) so the narrator speaks every visual-only cue, which is the video's audio
+description (1.2.5). Since the same day the web cut has no captions burned in: the browser draws them
+from the VTT (a11y-audit's `booth-demo-web.vtt`, short cues of at most two lines of 32 characters,
+each with its "Narrator:" or "Screen reader:" label), so they can be turned off or resized.
+Burned-in captions plus the default track had shown two overlapping sets in Safari. The booth and
+LinkedIn cuts keep theirs burned in. Recut again the same day (114.7 s): the opening says "More
+than one in four American adults", CDC's figure as updated May 2026.
 
 Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the engine's secret),
 `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are all set: off, every free-test

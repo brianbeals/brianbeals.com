@@ -11,7 +11,7 @@ export const SCENES: string[][] = [
     "[On screen: the opening card. Two copies of the same city guide. They look the same. Listen to what a screen reader hears.]",
     "Narrator: Imagine you use a screen reader.",
     "Narrator: Maybe you do.",
-    "Narrator: Up to one in four American adults has a disability, and for many of them, a city's website and documents are how they get things done.",
+    "Narrator: More than one in four American adults has a disability, and for many of them, a city's website and documents are how they get things done.",
     "Narrator: Here's what a screen reader hears when a document isn't built for it."
   ],
   [

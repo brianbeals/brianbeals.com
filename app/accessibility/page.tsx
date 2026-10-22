@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { enabled as freeTestEnabled } from "@/lib/free-test";
+import DemoVideo from "@/app/components/DemoVideo";
 import SbaMark from "@/app/components/SbaMark";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
@@ -91,6 +92,18 @@ export default function Accessibility() {
           extended the compliance dates by one year in an interim final rule published in
           the Federal Register on April 20, 2026, document 2026-07663.
         </p>
+
+        {/* The screen reader demo, smaller here (2026-10-22): app/components/DemoVideo.tsx,
+            the same player, captions and transcript as the home page and /free-test. Its
+            end card sends viewers to /free-test, so it shows only while that page is up. */}
+        {freeTestEnabled() ? (
+          <section aria-labelledby="acc-demo" className="my-8 max-w-xl">
+            <SubHeading level={2} id="acc-demo" spacing="mt-0 mb-3">
+              Hear what a screen reader hears
+            </SubHeading>
+            <DemoVideo labelledBy="acc-demo" />
+          </section>
+        ) : null}
 
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}

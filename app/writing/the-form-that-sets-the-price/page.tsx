@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { enabled as freeTestEnabled } from "@/lib/free-test";
 import type { Metadata } from "next";
 import EssayByline from "@/app/components/EssayByline";
 import TopicLabel from "@/app/components/TopicLabel";
@@ -160,6 +162,17 @@ export default function EssayPage() {
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           I write Accessibility Conformance Reports and document inventories for health centers, and I don&rsquo;t do the remediation. Start with the form that sets the price.
         </p>
+
+        {/* The screen reader demo (2026-10-22), on /free-test, so only while it is up. */}
+        {freeTestEnabled() ? (
+          <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+            Hear it for yourself:{" "}
+            <Link href="/free-test#demo" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
+              a two-minute demo
+            </Link>
+            .
+          </p>
+        ) : null}
 
         <hr className="my-10 border-neutral-200" />
 

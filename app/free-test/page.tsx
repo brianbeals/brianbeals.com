@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import DemoVideo from "@/app/components/DemoVideo";
 import PageHeading from "@/app/components/PageHeading";
 import SubHeading from "@/app/components/SubHeading";
 import { enabled, turnstileSiteKey } from "@/lib/free-test";
 import FreeTestForm from "./FreeTestForm";
 import { IMAGE } from "./og";
 import { refKey } from "./fields";
-import { INTRO, NOTE, SCENES } from "./transcript";
 
 // The free automated test (docs/free-test/SPEC.md, build step 3). A 404 until
 // FREE_TEST_ENABLED is "true" and every key is set (lib/free-test.ts); not in the
@@ -43,19 +43,6 @@ export const dynamic = "force-dynamic";
 const link = "underline underline-offset-4 hover:no-underline";
 const p = "text-base sm:text-lg leading-relaxed mb-4 text-neutral-800";
 
-// "Narrator: ..." and "Screen reader: ..." lines get the speaker in bold; the
-// bracketed lines, what is on screen, stay as written.
-function Line({ text }: { text: string }) {
-  const m = /^(Narrator|Screen reader): (.*)$/.exec(text);
-  return m ? (
-    <p>
-      <strong>{m[1]}:</strong> {m[2]}
-    </p>
-  ) : (
-    <p style={{ color: "var(--muted-ink)" }}>{text}</p>
-  );
-}
-
 export default async function FreeTest({
   searchParams,
 }: {
@@ -83,61 +70,6 @@ export default async function FreeTest({
           An automated first look at your website and the PDFs it links to, against WCAG 2.1 Level A
           and AA, sent to you by email.
         </p>
-
-        {/* The screen reader demo (a11y-audit docs/demo/video, the web cut, whose end-card QR
-            carries ?ref=video). Self-hosted, no player script: public/video/. This cut has no
-            captions burned in: the browser draws them from the default track, so they can be
-            turned off or resized (burned in as well, Safari showed two sets). The
-            image inside <video> is fallback for a browser that cannot play it, and carries
-            the poster's alt text. The home page links here as /free-test#demo. */}
-        <section id="demo" aria-labelledby="demo-heading" className="mb-12">
-          <SubHeading level={2} id="demo-heading" spacing="mt-0 mb-4">
-            Hear what a screen reader hears
-          </SubHeading>
-          <video
-            controls
-            preload="metadata"
-            poster="/video/screen-reader-demo-poster.jpg"
-            width={1920}
-            height={1080}
-            playsInline
-            aria-labelledby="demo-heading"
-            className="block w-full h-auto rounded-sm border bg-black"
-            style={{ borderColor: "var(--rule)" }}
-          >
-            <source src="/video/screen-reader-demo.mp4" type="video/mp4" />
-            <track kind="captions" src="/video/screen-reader-demo.vtt" srcLang="en" label="English" default />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/video/screen-reader-demo-poster.jpg"
-              alt="Two copies of the same city guide side by side, titled Listen to what a screen reader hears."
-              width={1920}
-              height={1080}
-            />
-            <a href="/video/screen-reader-demo.mp4">Download the video (MP4, 3.9 MB)</a>
-          </video>
-          <p className="mt-4 text-base sm:text-lg">
-            <a href="#check" className={link} style={{ color: "var(--link)" }}>
-              Try the free check
-            </a>
-          </p>
-          <details className="mt-3 text-base sm:text-lg">
-            <summary className="cursor-pointer underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
-              Read the transcript
-            </summary>
-            <div className="mt-4 space-y-3 leading-relaxed text-neutral-800">
-              <p>{INTRO}</p>
-              <p>{NOTE}</p>
-              {SCENES.map((scene, i) => (
-                <div key={i} className="space-y-1 pt-3">
-                  {scene.map((line, j) => (
-                    <Line key={j} text={line} />
-                  ))}
-                </div>
-              ))}
-            </div>
-          </details>
-        </section>
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_18rem] md:grid-rows-[auto_1fr] md:gap-x-12 md:gap-y-8">
           {/* One link: the text is its name, the thumbnail (public/thumbs/free-test-sample.png,
@@ -193,6 +125,31 @@ export default async function FreeTest({
             </p>
           </aside>
         </div>
+
+        {/* The screen reader demo, below the form (2026-10-22): app/components/DemoVideo.tsx.
+            The form's grid already fills both columns, so the video gets its own band, the
+            heading and links beside the player from 768px and above it on phones. The
+            essays and the home page link here as /free-test#demo. */}
+        <section
+          id="demo"
+          aria-labelledby="demo-heading"
+          className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10 md:items-start"
+        >
+          <div>
+            <SubHeading level={2} id="demo-heading" spacing="mt-0 mb-3">
+              Not sure what we look for? Watch first.
+            </SubHeading>
+            <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
+              A screen reader reads a broken PDF, then its accessible twin. Captions on, sound optional.
+            </p>
+            <p className="mt-4 text-base sm:text-lg">
+              <a href="#check" className={link} style={{ color: "var(--link)" }}>
+                Back to the free check
+              </a>
+            </p>
+          </div>
+          <DemoVideo labelledBy="demo-heading" />
+        </section>
       </article>
     </div>
   );

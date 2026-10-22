@@ -106,6 +106,16 @@ export default function Home() {
                 .
               </p>
             ) : null}
+            {/* The screen reader demo sits on /free-test, so the link shows only while that page is up. */}
+            {freeTest ? (
+              <p className="text-base mb-6 text-neutral-800">
+                Hear what a screen reader makes of a broken PDF.{" "}
+                <Link href="/free-test#demo" className={link} style={{ color: "var(--link)" }}>
+                  See it in 90 seconds
+                </Link>
+                .
+              </p>
+            ) : null}
             <p className="text-sm" style={{ color: "var(--muted-ink)" }}>
               Source:{" "}
               <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>

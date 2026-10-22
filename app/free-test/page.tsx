@@ -8,6 +8,7 @@ import { enabled, turnstileSiteKey } from "@/lib/free-test";
 import FreeTestForm from "./FreeTestForm";
 import { IMAGE } from "./og";
 import { refKey } from "./fields";
+import { INTRO, NOTE, SCENES } from "./transcript";
 
 // The free automated test (docs/free-test/SPEC.md, build step 3). A 404 until
 // FREE_TEST_ENABLED is "true" and every key is set (lib/free-test.ts); not in the
@@ -42,6 +43,19 @@ export const dynamic = "force-dynamic";
 const link = "underline underline-offset-4 hover:no-underline";
 const p = "text-base sm:text-lg leading-relaxed mb-4 text-neutral-800";
 
+// "Narrator: ..." and "Screen reader: ..." lines get the speaker in bold; the
+// bracketed lines, what is on screen, stay as written.
+function Line({ text }: { text: string }) {
+  const m = /^(Narrator|Screen reader): (.*)$/.exec(text);
+  return m ? (
+    <p>
+      <strong>{m[1]}:</strong> {m[2]}
+    </p>
+  ) : (
+    <p style={{ color: "var(--muted-ink)" }}>{text}</p>
+  );
+}
+
 export default async function FreeTest({
   searchParams,
 }: {
@@ -70,6 +84,60 @@ export default async function FreeTest({
           and AA, sent to you by email.
         </p>
 
+        {/* The screen reader demo (a11y-audit docs/demo/video, the web cut, whose end-card QR
+            carries ?ref=video). Self-hosted, no player script: public/video/. Captions are
+            burned in; the track is there too, for players that list or restyle them. The
+            image inside <video> is fallback for a browser that cannot play it, and carries
+            the poster's alt text. The home page links here as /free-test#demo. */}
+        <section id="demo" aria-labelledby="demo-heading" className="mb-12">
+          <SubHeading level={2} id="demo-heading" spacing="mt-0 mb-4">
+            Hear what a screen reader hears
+          </SubHeading>
+          <video
+            controls
+            preload="metadata"
+            poster="/video/screen-reader-demo-poster.jpg"
+            width={1920}
+            height={1080}
+            playsInline
+            aria-labelledby="demo-heading"
+            className="block w-full h-auto rounded-sm border bg-black"
+            style={{ borderColor: "var(--rule)" }}
+          >
+            <source src="/video/screen-reader-demo.mp4" type="video/mp4" />
+            <track kind="captions" src="/video/screen-reader-demo.vtt" srcLang="en" label="English" default />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/video/screen-reader-demo-poster.jpg"
+              alt="Two copies of the same city guide side by side, titled Listen to what a screen reader hears."
+              width={1920}
+              height={1080}
+            />
+            <a href="/video/screen-reader-demo.mp4">Download the video (MP4, 4 MB)</a>
+          </video>
+          <p className="mt-4 text-base sm:text-lg">
+            <a href="#check" className={link} style={{ color: "var(--link)" }}>
+              Try the free check
+            </a>
+          </p>
+          <details className="mt-3 text-base sm:text-lg">
+            <summary className="cursor-pointer underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
+              Read the transcript
+            </summary>
+            <div className="mt-4 space-y-3 leading-relaxed text-neutral-800">
+              <p>{INTRO}</p>
+              <p>{NOTE}</p>
+              {SCENES.map((scene, i) => (
+                <div key={i} className="space-y-1 pt-3">
+                  {scene.map((line, j) => (
+                    <Line key={j} text={line} />
+                  ))}
+                </div>
+              ))}
+            </div>
+          </details>
+        </section>
+
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,1fr)_18rem] md:grid-rows-[auto_1fr] md:gap-x-12 md:gap-y-8">
           {/* One link: the text is its name, the thumbnail (public/thumbs/free-test-sample.png,
               written by scripts/build_free_test_sample.py) is decoration. From 768px it tops the
@@ -89,7 +157,7 @@ export default async function FreeTest({
             />
             See a sample report
           </Link>
-          <div className="md:col-start-1 md:row-start-1 md:row-span-2">
+          <div id="check" className="md:col-start-1 md:row-start-1 md:row-span-2">
             <FreeTestForm siteKey={turnstileSiteKey()} source={ref} />
           </div>
 

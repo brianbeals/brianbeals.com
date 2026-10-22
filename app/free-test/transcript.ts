@@ -1,0 +1,86 @@
+// The described transcript of the screen reader demo on /free-test, from
+// public/video/screen-reader-demo-transcript.txt (a11y-audit docs/demo/video,
+// booth-demo-transcript.txt). Square brackets say what is shown on screen.
+// Regenerate both together if the video is recut.
+
+export const INTRO = "A screen reader reads a broken PDF, then its accessible twin. Transcript, with what is shown in square brackets.";
+export const NOTE = "Screen reader speech re-voiced for clarity; the words are exactly what NVDA read.";
+
+export const SCENES: string[][] = [
+  [
+    "[On screen: the opening card. Two copies of the same city guide. They look the same. Listen to what a screen reader hears.]",
+    "Narrator: Imagine you use a screen reader.",
+    "Narrator: Maybe you do.",
+    "Narrator: Up to one in four American adults has a disability, and for many of them, a city's website and documents are how they get things done.",
+    "Narrator: Here's what a screen reader hears when a document isn't built for it."
+  ],
+  [
+    "[On screen: a card. What a screen reader hears: The title. 1 of 4.]",
+    "Narrator: First, the title.",
+    "[On screen: Not accessible. No title, so it reads out the file name.]",
+    "[On screen: Slowed down for this demo. Many screen reader users listen two to three times faster.]",
+    "[The window's title bar is highlighted. It reads \"Visitor_Guide_FINAL_v3.pdf - Adobe Acrobat Reader (32-bit)\".]",
+    "Screen reader: Visitor Guide FINAL v 3 dot pdf - Adobe Acrobat Reader (32-bit)",
+    "[On screen: Accessible. The document's own title.]",
+    "Narrator: When it's built right, it says what the document is.",
+    "[The window's title bar is highlighted. It reads \"City of Example Visitor and Business Guide - Adobe Acrobat Reader (32-bit)\".]",
+    "Screen reader: City of Example Visitor and Business Guide - Adobe Acrobat Reader (32-bit)"
+  ],
+  [
+    "[On screen: a card. What a screen reader hears: Reading order. 2 of 4.]",
+    "Narrator: Two columns on the page. Listen.",
+    "[On screen: Not accessible. It reads across both columns, line by line.]",
+    "[The highlight is on the left column.]",
+    "Screen reader: Example is a good place to start a business and a better",
+    "[The highlight jumps from the left column to the right column, the sidebar.]",
+    "Screen reader: Every Saturday from 8 a dot m.",
+    "[The highlight moves down the right column, the sidebar.]",
+    "Screen reader: to noon,",
+    "[The highlight jumps from the right column, the sidebar to the left column.]",
+    "Screen reader: place to grow one.",
+    "[On screen: Accessible. It reads down each column.]",
+    "Narrator: Built right: one column, then the next.",
+    "[The highlight is on the left column.]",
+    "Screen reader: Example is a good place to start a business and a better",
+    "[The highlight moves down the left column.]",
+    "Screen reader: place to grow one."
+  ],
+  [
+    "[On screen: a card. What a screen reader hears: A table. 3 of 4.]",
+    "Narrator: A table of distances.",
+    "[On screen: Not accessible. Text set out like a table: every place, then every distance.]",
+    "[The highlight is on the place names.]",
+    "Screen reader: Heron Springs",
+    "[The highlight moves down the place names.]",
+    "Screen reader: Cypress Bend",
+    "[The highlight moves down the place names.]",
+    "Screen reader: Lakeview Junction",
+    "[The highlight jumps from the place names to the distances.]",
+    "Screen reader: 14 miles",
+    "[The highlight moves down the distances.]",
+    "Screen reader: 9 miles",
+    "[On screen: Accessible. A real table: each place with its distance.]",
+    "Narrator: Built right: each place with its distance.",
+    "[The highlight is on the place names.]",
+    "Screen reader: row 2, Place, column 1, Sandpiper Shores",
+    "[The highlight moves across the row to the distances.]",
+    "Screen reader: From City Hall, column 2, 14 miles"
+  ],
+  [
+    "[On screen: a card. What a screen reader hears: Images. 4 of 4.]",
+    "Narrator: Photos with no description are skipped in silence.",
+    "[On screen: Not accessible. No alt text: the photo is skipped in silence.]",
+    "[The photo of the pier is highlighted. Nothing is said for 2.4 seconds.]",
+    "[The highlight is on \"Welcome to Example\" on the page.]",
+    "Screen reader: Welcome to Example",
+    "[On screen: Accessible. Alt text, read aloud.]",
+    "Narrator: Built right, you hear what's there.",
+    "[The photo of the pier is highlighted.]",
+    "Screen reader: graphic, The Example city pier at sunset, with palm trees along the shore and boats on the water."
+  ],
+  [
+    "[On screen: the end card. The BB mark, \"Hear what your documents sound like.\", brianbeals.com/free-test, a QR code to the free test, Brian Beals, LLC. Statistic: CDC, Disability Impacts All of Us.]",
+    "Narrator: Nobody should have to listen to nonsense.",
+    "Narrator: Hear what your documents sound like at brianbeals.com/free-test."
+  ]
+];

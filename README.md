@@ -52,6 +52,15 @@ the Proton filter files into the "Free Test Requests" queue. The site keeps noth
 are well formed and Turnstile passes, every request ends in the same "Check your email" message; a
 tripped honeypot and the in-memory rate limit send nothing and say the same.
 
+Above the form (2026-10-22), "Hear what a screen reader hears" is the screen reader demo video, the
+web cut from a11y-audit `docs/demo/video/` (its end-card QR carries `?ref=video`), self-hosted in
+`public/video/screen-reader-demo.*`: the MP4 (faststart, so it streams by range request), the poster,
+the SRT and its WebVTT conversion (the `<track>`, though the captions are burned in), and the
+described transcript, which `app/free-test/transcript.ts` carries for the page's "Read the
+transcript" disclosure. Native `<video>`, no player script, no autoplay, `preload="metadata"`. A recut
+replaces all five files and regenerates `transcript.ts`. The section is `#demo`; while the free test
+is on, the home hero links to it ("See it in 90 seconds").
+
 Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the engine's secret),
 `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are all set: off, every free-test
 route is a 404, and /scanner, `sitemap.xml`, `/sitemap-page` and the quiet "Free automated check" links

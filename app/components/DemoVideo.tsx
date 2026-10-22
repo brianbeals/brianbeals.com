@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { INTRO, NOTE, SCENES } from "@/app/free-test/transcript";
+import { LENGTH } from "./demoLength";
 
 // The screen reader demo (a11y-audit docs/demo/video, the web cut, whose end-card QR
 // carries ?ref=video), on the home page, /free-test and /accessibility. Self-hosted,
@@ -12,9 +13,8 @@ import { INTRO, NOTE, SCENES } from "@/app/free-test/transcript";
 // aspect-video reserve the 16:9 box before the poster loads, so nothing shifts.
 //
 // The duration badge sits over the poster until the video first plays, then goes.
-// It is real text in the reading order ("Length 1:54", what the player shows for 114.7 s). Change LENGTH with a recut.
+// It is real text in the reading order ("Length 1:54"); LENGTH lives in demoLength.ts.
 // Under the player, before the transcript: one plain semibold line (2026-10-22).
-const LENGTH = "1:54";
 
 const link = "underline underline-offset-4 hover:no-underline";
 

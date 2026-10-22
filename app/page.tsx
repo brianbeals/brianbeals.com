@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import DemoVideo from "@/app/components/DemoVideo";
+import { LENGTH } from "@/app/components/demoLength";
 import PageHeading from "@/app/components/PageHeading";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
@@ -37,6 +38,14 @@ const services = [
   },
 ];
 
+// The hero covers and, under each, the exact line NVDA read from that guide in the
+// demo's reading-order scene: across both columns in the broken one, down the column
+// in the fixed one.
+const COVERS = [
+  { src: "/home-hero-broken.png", heard: "\u2026start a business and a / Every Saturday from 8 AM to noon, the" },
+  { src: "/home-hero-fixed.png", heard: "\u2026start a business and a better place to grow one." },
+];
+
 const link = "underline underline-offset-4 hover:no-underline";
 const body = "text-base sm:text-lg leading-relaxed text-neutral-800";
 
@@ -55,81 +64,99 @@ export default function Home() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
-        {/* Hero. The image follows the text in source order, so it stacks below it on
-            narrow screens. Since 2026-10-22 it is the two demo city guides, broken and
-            fixed, overlapped on navy with no labels, because they look the same
-            (public/home-hero-guides.png, built by scripts/build_home_hero.py; it replaced
-            the four-figure PeopleGraphic). Preloaded and sized, so it neither shifts the
-            page nor waits behind it; next.config.ts serves it as AVIF or WebP. */}
-        <section className="grid grid-cols-1 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-8 md:gap-12 items-center">
-          <div>
+        {/* Hero, option C (2026-10-22): the headline and everything under it centered
+            across the full width, then the two demo city guides side by side at the same
+            size with no labels, because they look the same (public/home-hero-broken.png
+            and -fixed.png, page 1 of each PDF, built by scripts/build_home_hero.py; they
+            replaced the four-figure PeopleGraphic). Under each, in small italic text, what
+            NVDA read from that guide in the demo's reading-order scene (a11y-audit
+            docs/demo/speech/*.lines.json, page 2). The first cover's alt text covers both,
+            so the second is empty. Sized, so nothing shifts; preloaded and served as AVIF
+            or WebP (next.config.ts). "Hear both" is a link to the player, which never
+            autoplays, and shows only with the demo. */}
+        <section className="text-center">
+          <div className="text-balance">
             <PageHeading spacing="mb-6">
-              More than one in four U.S. adults has a disability. Can they use your forms?
+              More than one in four U.S. adults has a disability. Can they use your forms and documents?
             </PageHeading>
-            <p className={`${body} mb-8`}>
-              Independent accessibility testing for government agencies, health centers, schools, and the
-              vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
-              you what to fix first.
-            </p>
-            {/* While the free test is on (2026-10-17), it is the primary button and
-                the call is the outlined second, with the readiness checklist as a
-                text line under the buttons. Off, the call is primary and the
-                checklist button takes the second slot. */}
-            <div className={`flex flex-wrap gap-3 ${freeTest ? "mb-3" : "mb-6"}`}>
-              {freeTest ? (
-                <>
-                  <Link
-                    href="/free-test"
-                    className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
-                  >
-                    Get a free automated check
-                  </Link>
-                  <Link href="/contact" className={outlined} style={outlinedStyle}>
-                    Book a 15-minute call
-                  </Link>
-                </>
-              ) : (
-                <>
-                  <Link
-                    href="/contact"
-                    className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
-                  >
-                    Book a 15-minute call
-                  </Link>
-                  <Link href="/accessibility/before-we-start" className={outlined} style={outlinedStyle}>
-                    Run the readiness checklist
-                  </Link>
-                </>
-              )}
-            </div>
+          </div>
+          <p className={`${body} mb-8 mx-auto`}>
+            Independent accessibility testing for government agencies, health centers, schools, and the
+            vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
+            you what to fix first.
+          </p>
+          {/* While the free test is on (2026-10-17), it is the primary button and
+              the call is the outlined second, with the readiness checklist as a
+              text line under the buttons. Off, the call is primary and the
+              checklist button takes the second slot. */}
+          <div className={`flex flex-wrap justify-center gap-3 ${freeTest ? "mb-3" : "mb-6"}`}>
             {freeTest ? (
-              <p className="text-base mb-6 text-neutral-800">
-                Not sure where you stand?{" "}
-                <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
+              <>
+                <Link
+                  href="/free-test"
+                  className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+                >
+                  Get a free automated check
+                </Link>
+                <Link href="/contact" className={outlined} style={outlinedStyle}>
+                  Book a 15-minute call
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/contact"
+                  className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+                >
+                  Book a 15-minute call
+                </Link>
+                <Link href="/accessibility/before-we-start" className={outlined} style={outlinedStyle}>
                   Run the readiness checklist
                 </Link>
-                .
-              </p>
-            ) : null}
-            <p className="text-sm" style={{ color: "var(--muted-ink)" }}>
-              Source:{" "}
-              <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>
-                CDC Disability and Health Data System
-              </a>
-              , 28.7% of U.S. adults, 2022 survey data.
+              </>
+            )}
+          </div>
+          {freeTest ? (
+            <p className="text-base mb-6 mx-auto text-neutral-800">
+              Not sure where you stand?{" "}
+              <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
+                Run the readiness checklist
+              </Link>
+              .
             </p>
+          ) : null}
+          <p className="text-sm mx-auto" style={{ color: "var(--muted-ink)" }}>
+            Source:{" "}
+            <a href={CDC_SOURCE} className={link} style={{ color: "var(--link)" }}>
+              CDC Disability and Health Data System
+            </a>
+            , 28.7% of U.S. adults, 2022 survey data.
+          </p>
+
+          <div className="mt-10 mx-auto grid max-w-[600px] grid-cols-2 gap-4 sm:gap-8">
+            {COVERS.map((c, i) => (
+              <div key={c.src}>
+                <Image
+                  src={c.src}
+                  alt={i === 0 ? "Two copies of the same city guide, side by side. They look identical." : ""}
+                  width={900}
+                  height={1165}
+                  preload
+                  sizes="(min-width: 640px) 284px, calc(50vw - 32px)"
+                  className="block w-full h-auto rounded-sm border shadow-lg"
+                  style={{ borderColor: "var(--rule)" }}
+                />
+                <p className="mt-3 text-sm italic leading-snug" style={{ color: "var(--muted-ink)" }}>
+                  {c.heard}
+                </p>
+              </div>
+            ))}
           </div>
-          <div className="flex justify-center md:justify-end">
-            <Image
-              src="/home-hero-guides.png"
-              alt="Two copies of the same city guide, side by side. They look identical."
-              width={1600}
-              height={1389}
-              preload
-              sizes="(min-width: 1024px) 400px, (min-width: 768px) 40vw, calc(100vw - 48px)"
-              className="block w-full h-auto rounded-md"
-            />
-          </div>
+          {freeTest ? (
+            <a href="#demo" className={`${outlined} mt-6 inline-block`} style={outlinedStyle}>
+              Hear both ({LENGTH})
+            </a>
+          ) : null}
         </section>
 
         {/* The screen reader demo (2026-10-22), app/components/DemoVideo.tsx, also on
@@ -138,6 +165,7 @@ export default function Home() {
             while that page is up. */}
         {freeTest ? (
           <section
+            id="demo"
             aria-labelledby="home-demo"
             className="mt-12 grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-6 md:gap-10 items-center"
           >
@@ -145,7 +173,7 @@ export default function Home() {
               <SubHeading level={2} id="home-demo" spacing="mt-0 mb-3">
                 Hear what a screen reader hears
               </SubHeading>
-              <p className={body}>A two-minute demo. Captions on, sound optional.</p>
+              <p className={body}>A two-minute demo. Best with sound; captions on.</p>
             </div>
             <DemoVideo labelledBy="home-demo" />
           </section>

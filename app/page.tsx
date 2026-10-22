@@ -42,8 +42,8 @@ const services = [
 // demo's reading-order scene: across both columns in the broken one, down the column
 // in the fixed one.
 const COVERS = [
-  { src: "/home-hero-broken.png", heard: "\u2026start a business and a / Every Saturday from 8 AM to noon, the" },
-  { src: "/home-hero-fixed.png", heard: "\u2026start a business and a better place to grow one." },
+  { src: "/home-hero-broken-page2.png", heard: "\u2026start a business and a / Every Saturday from 8 AM to noon, the" },
+  { src: "/home-hero-fixed-page2.png", heard: "\u2026start a business and a better place to grow one." },
 ];
 
 const link = "underline underline-offset-4 hover:no-underline";
@@ -62,25 +62,25 @@ const outlinedStyle = { borderColor: "var(--link)", color: "var(--link)" };
 export default function Home() {
   const freeTest = freeTestEnabled();
   return (
-    <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
+    <div className="flex-1 px-6 pt-8 pb-12 sm:px-12 sm:pt-10 sm:pb-16">
       <div className="max-w-5xl mx-auto page-wide">
         {/* Hero, option C (2026-10-22): the headline and everything under it centered
             across the full width, then the two demo city guides side by side at the same
-            size with no labels, because they look the same (public/home-hero-broken.png
-            and -fixed.png, page 1 of each PDF, built by scripts/build_home_hero.py; they
+            size with no labels, because they look the same (public/home-hero-broken-page2.png
+            and -fixed-page2.png, page 2 of each PDF, the page the quotes come from, built by scripts/build_home_hero.py; they
             replaced the four-figure PeopleGraphic). Under each, in small italic text, what
             NVDA read from that guide in the demo's reading-order scene (a11y-audit
-            docs/demo/speech/*.lines.json, page 2). The first cover's alt text covers both,
+            docs/demo/speech/*.lines.json). The first cover's alt text covers both,
             so the second is empty. Sized, so nothing shifts; preloaded and served as AVIF
             or WebP (next.config.ts). "Hear both" is a link to the player, which never
             autoplays, and shows only with the demo. */}
         <section className="text-center">
           <div className="text-balance">
-            <PageHeading spacing="mb-6">
+            <PageHeading scale="hero" spacing="mb-4">
               More than one in four U.S. adults has a disability. Can they use your forms and documents?
             </PageHeading>
           </div>
-          <p className={`${body} mb-8 mx-auto`}>
+          <p className={`${body} mb-5 mx-auto`}>
             Independent accessibility testing for government agencies, health centers, schools, and the
             vendors who sell to them. I test your website and documents against WCAG 2.1 AA and tell
             you what to fix first.
@@ -117,7 +117,7 @@ export default function Home() {
             )}
           </div>
           {freeTest ? (
-            <p className="text-base mb-6 mx-auto text-neutral-800">
+            <p className="text-base mb-3 mx-auto text-neutral-800">
               Not sure where you stand?{" "}
               <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
                 Run the readiness checklist
@@ -133,7 +133,7 @@ export default function Home() {
             , 28.7% of U.S. adults, 2022 survey data.
           </p>
 
-          <div className="mt-10 mx-auto grid max-w-[600px] grid-cols-2 gap-4 sm:gap-8">
+          <div className="mt-6 mx-auto grid max-w-[560px] grid-cols-2 gap-4 sm:gap-8">
             {COVERS.map((c, i) => (
               <div key={c.src}>
                 <Image
@@ -142,11 +142,11 @@ export default function Home() {
                   width={900}
                   height={1165}
                   preload
-                  sizes="(min-width: 640px) 284px, calc(50vw - 32px)"
+                  sizes="(min-width: 640px) 264px, calc(50vw - 32px)"
                   className="block w-full h-auto rounded-sm border shadow-lg"
                   style={{ borderColor: "var(--rule)" }}
                 />
-                <p className="mt-3 text-sm italic leading-snug" style={{ color: "var(--muted-ink)" }}>
+                <p className="mt-2 text-sm italic leading-snug" style={{ color: "var(--muted-ink)" }}>
                   {c.heard}
                 </p>
               </div>

@@ -453,6 +453,9 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
   .h-page {
     @apply text-4xl sm:text-5xl font-semibold tracking-tight;
   }
+  .h-hero {
+    @apply text-4xl sm:text-[2.5rem] font-semibold tracking-tight;
+  }
   .h-section {
     @apply text-xl sm:text-2xl font-semibold tracking-tight;
   }

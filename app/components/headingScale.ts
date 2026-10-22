@@ -5,6 +5,8 @@
  * cannot use these components, carries the same classes.
  *
  *   page     H1, PageHeading          36px, 48px from 640px
+ *   hero     H1, the home page hero   36px, 40px from 640px (2026-10-22, so the
+ *            covers and the lines under them fit above the fold at 1440x900)
  *   section  H2, SectionHeading bar   20px, 24px from 640px
  *   sub      SubHeading               18px, 20px from 640px. An H3 under a
  *            SectionHeading, or an H2 where there is no bar above it: essay
@@ -12,6 +14,7 @@
  */
 export const HEADING_SCALE = {
   page: "h-page",
+  hero: "h-hero",
   section: "h-section",
   sub: "h-sub",
 } as const;

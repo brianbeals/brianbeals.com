@@ -149,7 +149,7 @@ export default async function FreeTest({
               Not sure what we look for? Watch first.
             </SubHeading>
             <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
-              A screen reader reads a broken PDF, then its accessible twin. Captions on, sound optional.
+              A screen reader reads a broken PDF, then its accessible twin. Best with sound; captions on.
             </p>
             <p className="mt-4 text-base sm:text-lg">
               <a href="#check" className={link} style={{ color: "var(--link)" }}>

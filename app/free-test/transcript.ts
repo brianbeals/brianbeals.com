@@ -26,8 +26,8 @@ export const SCENES: string[][] = [
     "[On screen: Accessible. The document's own title.]",
     "Narrator: Accessible.",
     "Narrator: When it's built right, it says what the document is.",
-    "[The window's title bar is highlighted. It reads \"City of Example Visitor and Business Guide - Adobe Acrobat Reader (32-bit)\".]",
-    "Screen reader: City of Example Visitor and Business Guide - Adobe Acrobat Reader (32-bit)"
+    "[The window's title bar is highlighted. It reads \"City of Coquina Bay Visitor and Business Guide - Adobe Acrobat Reader (32-bit)\".]",
+    "Screen reader: City of Coquina Bay Visitor and Business Guide - Adobe Acrobat Reader (32-bit)"
   ],
   [
     "[On screen: a card. What a screen reader hears: Reading order. 2 of 4.]",
@@ -36,20 +36,18 @@ export const SCENES: string[][] = [
     "Narrator: Not accessible.",
     "Narrator: Listen as it jumps between columns.",
     "[The highlight is on the left column.]",
-    "Screen reader: Example is a good place to start a business and a better",
+    "Screen reader: Coquina Bay is a good place to start a business and a",
     "[The highlight jumps from the left column to the right column, the sidebar.]",
-    "Screen reader: Every Saturday from 8 a dot m.",
-    "[The highlight moves down the right column, the sidebar.]",
-    "Screen reader: to noon,",
+    "Screen reader: Every Saturday from 8 AM to noon, the",
     "[The highlight jumps from the right column, the sidebar to the left column.]",
-    "Screen reader: place to grow one.",
+    "Screen reader: better place to grow one.",
     "[On screen: Accessible. It reads down each column.]",
     "Narrator: Accessible.",
     "Narrator: Built right: one column, then the next.",
     "[The highlight is on the left column.]",
-    "Screen reader: Example is a good place to start a business and a better",
+    "Screen reader: Coquina Bay is a good place to start a business and a",
     "[The highlight moves down the left column.]",
-    "Screen reader: place to grow one."
+    "Screen reader: better place to grow one."
   ],
   [
     "[On screen: a card. What a screen reader hears: A table. 3 of 4.]",
@@ -82,7 +80,7 @@ export const SCENES: string[][] = [
     "Narrator: Accessible.",
     "Narrator: Built right, you hear what's there.",
     "[The photo of the pier is highlighted.]",
-    "Screen reader: graphic, The Example city pier at sunset, with palm trees along the shore and boats on the water."
+    "Screen reader: graphic, The Coquina Bay city pier at sunset, with palm trees along the shore and boats on the water."
   ],
   [
     "[On screen: the end card. The BB mark, \"Hear what your documents sound like.\", brianbeals.com/free-test, a QR code to the free test, Brian Beals, LLC. Statistic: CDC, Disability Impacts All of Us.]",

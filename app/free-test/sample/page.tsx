@@ -43,7 +43,7 @@ export default function FreeTestSample() {
       <article className="max-w-3xl mx-auto">
         <PageHeading>Sample report</PageHeading>
         <p className={p}>
-          This is a sample. The City of Example, FL and example.org are fictional, and every number in it
+          This is a sample. The City of Coquina Bay, FL and example.org are fictional, and every number in it
           is made up. A real report comes by email in this form, by the next business day.
         </p>
         <p className={`${p} mb-8`}>

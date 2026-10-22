@@ -74,7 +74,11 @@ from the VTT (a11y-audit's `booth-demo-web.vtt`, short cues of at most two lines
 each with its "Narrator:" or "Screen reader:" label), so they can be turned off or resized.
 Burned-in captions plus the default track had shown two overlapping sets in Safari. The booth and
 LinkedIn cuts keep theirs burned in. Recut again the same day (114.7 s): the opening says "More
-than one in four American adults", CDC's figure as updated May 2026.
+than one in four American adults", CDC's figure as updated May 2026. Recut a third time (a11y-audit 4848af8, 114.7 s): the
+fictional city is the City of Coquina Bay and the guides say "AM" and "PM", heard again by NVDA; the
+poster changed with it. The free check's sample report (`scripts/build_free_test_sample.py`) uses
+the same city name. The transcript module is regenerated from the transcript text by its scene
+blocks (title and intro, the re-voiced note, then one block per scene).
 
 Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the engine's secret),
 `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are all set: off, every free-test

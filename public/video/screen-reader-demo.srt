@@ -69,169 +69,165 @@ Narrator: When it's built right,
 it says what the document is.
 
 16
-00:00:34,300 --> 00:00:37,655
-Screen reader: City of Example
-Visitor and Business Guide -
+00:00:34,300 --> 00:00:37,895
+Screen reader: City of Coquina
+Bay Visitor and Business Guide -
 
 17
-00:00:37,655 --> 00:00:39,867
+00:00:37,895 --> 00:00:40,067
 Screen reader: Adobe Acrobat
 Reader (32-bit)
 
 18
-00:00:39,867 --> 00:00:42,467
+00:00:40,067 --> 00:00:42,667
 Narrator: Two columns on the
 page.
 
 19
-00:00:42,467 --> 00:00:43,833
+00:00:42,667 --> 00:00:44,033
 Narrator: Not accessible.
 
 20
-00:00:43,833 --> 00:00:46,400
+00:00:44,033 --> 00:00:46,600
 Narrator: Listen as it jumps
 between columns.
 
 21
-00:00:46,400 --> 00:00:49,845
-Screen reader: Example is a good
-place to start a business and a
+00:00:46,600 --> 00:00:50,004
+Screen reader: Coquina Bay is a
+good place to start a business
 
 22
-00:00:49,845 --> 00:00:50,267
-Screen reader: better
+00:00:50,004 --> 00:00:50,367
+Screen reader: and a
 
 23
-00:00:50,267 --> 00:00:53,067
+00:00:50,367 --> 00:00:53,767
 Screen reader: Every Saturday
-from 8 a dot m.
+from 8 AM to noon, the
 
 24
-00:00:53,067 --> 00:00:54,500
-Screen reader: to noon,
+00:00:53,767 --> 00:00:55,900
+Screen reader: better place to
+grow one.
 
 25
-00:00:54,500 --> 00:00:56,267
-Screen reader: place to grow
-one.
-
-26
-00:00:56,267 --> 00:00:57,467
+00:00:55,900 --> 00:00:57,100
 Narrator: Accessible.
 
-27
-00:00:57,467 --> 00:01:00,500
+26
+00:00:57,100 --> 00:01:00,133
 Narrator: Built right: one
 column, then the next.
 
+27
+00:01:00,133 --> 00:01:03,538
+Screen reader: Coquina Bay is a
+good place to start a business
+
 28
-00:01:00,500 --> 00:01:03,945
-Screen reader: Example is a good
-place to start a business and a
+00:01:03,538 --> 00:01:03,900
+Screen reader: and a
 
 29
-00:01:03,945 --> 00:01:04,367
-Screen reader: better
+00:01:03,900 --> 00:01:06,033
+Screen reader: better place to
+grow one.
 
 30
-00:01:04,367 --> 00:01:06,133
-Screen reader: place to grow
-one.
-
-31
-00:01:06,133 --> 00:01:08,733
+00:01:06,033 --> 00:01:08,633
 Narrator: A table of distances.
 
-32
-00:01:08,733 --> 00:01:10,100
+31
+00:01:08,633 --> 00:01:10,000
 Narrator: Not accessible.
 
-33
-00:01:10,100 --> 00:01:11,800
+32
+00:01:10,000 --> 00:01:11,700
 Screen reader: Cypress Bend
 
-34
-00:01:11,800 --> 00:01:13,633
+33
+00:01:11,700 --> 00:01:13,533
 Screen reader: Lakeview Junction
 
-35
-00:01:13,633 --> 00:01:15,400
+34
+00:01:13,533 --> 00:01:15,300
 Screen reader: 14 miles
 
-36
-00:01:15,400 --> 00:01:16,933
+35
+00:01:15,300 --> 00:01:16,833
 Screen reader: 9 miles
 
-37
-00:01:16,933 --> 00:01:18,133
+36
+00:01:16,833 --> 00:01:18,033
 Narrator: Accessible.
 
-38
-00:01:18,133 --> 00:01:21,200
+37
+00:01:18,033 --> 00:01:21,100
 Narrator: Built right: each
 place with its distance.
 
-39
-00:01:21,200 --> 00:01:24,633
+38
+00:01:21,100 --> 00:01:24,533
 Screen reader: row 2, Place,
 column 1, Sandpiper Shores
 
-40
-00:01:24,633 --> 00:01:27,900
+39
+00:01:24,533 --> 00:01:27,800
 Screen reader: From City Hall,
 column 2, 14 miles
 
-41
-00:01:27,900 --> 00:01:30,829
+40
+00:01:27,800 --> 00:01:30,729
 Narrator: Photos with no
 description are skipped in
 
-42
-00:01:30,829 --> 00:01:31,400
+41
+00:01:30,729 --> 00:01:31,300
 Narrator: silence.
 
-43
-00:01:31,400 --> 00:01:32,767
+42
+00:01:31,300 --> 00:01:32,667
 Narrator: Not accessible.
 
-44
-00:01:32,767 --> 00:01:35,167
+43
+00:01:32,667 --> 00:01:35,067
 Screen reader: (Silence. The
 photo is skipped.)
 
-45
-00:01:35,167 --> 00:01:36,367
+44
+00:01:35,067 --> 00:01:36,267
 Narrator: Accessible.
 
-46
-00:01:36,367 --> 00:01:38,233
+45
+00:01:36,267 --> 00:01:38,133
 Narrator: Built right, you hear
 what's there.
 
-47
-00:01:38,233 --> 00:01:40,924
+46
+00:01:38,133 --> 00:01:41,012
 Screen reader: graphic, The
-Example city pier at sunset,
+Coquina Bay city pier at sunset,
 
-48
-00:01:40,924 --> 00:01:44,073
+47
+00:01:41,012 --> 00:01:44,083
 Screen reader: with palm trees
 along the shore and boats on the
 
-49
-00:01:44,073 --> 00:01:44,467
+48
+00:01:44,083 --> 00:01:44,467
 Screen reader: water.
 
-50
+49
 00:01:44,467 --> 00:01:46,800
 Narrator: Nobody should have to
 listen to nonsense.
 
-51
+50
 00:01:46,800 --> 00:01:51,545
 Narrator: Hear what your
 documents sound like at
 
-52
+51
 00:01:51,545 --> 00:01:54,667
 Narrator: brianbeals.com/free-test.

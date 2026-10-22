@@ -271,7 +271,7 @@ export default function AccessibilityFederal() {
               >
                 Accessibility practice, federal Section 508
               </a>{" "}
-              <span style={{ color: "#1A1A2A" }}>(PDF, one page, 272 KB)</span>
+              <span style={{ color: "#1A1A2A" }}>(PDF, one page, 275 KB)</span>
               <span className="block text-base" style={{ color: "#1A1A2A" }}>
                 Conformance assessment and VPAT work for agencies and for vendors
                 answering a solicitation. SDVOSB set-aside eligible.

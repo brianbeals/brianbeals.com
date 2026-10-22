@@ -113,7 +113,7 @@ export default async function FreeTest({
               width={1920}
               height={1080}
             />
-            <a href="/video/screen-reader-demo.mp4">Download the video (MP4, 4 MB)</a>
+            <a href="/video/screen-reader-demo.mp4">Download the video (MP4, 4.5 MB)</a>
           </video>
           <p className="mt-4 text-base sm:text-lg">
             <a href="#check" className={link} style={{ color: "var(--link)" }}>

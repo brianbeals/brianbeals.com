@@ -111,7 +111,7 @@ export default function Home() {
               <p className="text-base mb-6 text-neutral-800">
                 Hear what a screen reader makes of a broken PDF.{" "}
                 <Link href="/free-test#demo" className={link} style={{ color: "var(--link)" }}>
-                  See it in 90 seconds
+                  See it in under two minutes
                 </Link>
                 .
               </p>

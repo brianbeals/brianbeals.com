@@ -58,8 +58,9 @@ web cut from a11y-audit `docs/demo/video/` (its end-card QR carries `?ref=video`
 the SRT and its WebVTT conversion (the `<track>`, though the captions are burned in), and the
 described transcript, which `app/free-test/transcript.ts` carries for the page's "Read the
 transcript" disclosure. Native `<video>`, no player script, no autoplay, `preload="metadata"`. A recut
-replaces all five files and regenerates `transcript.ts`. The section is `#demo`; while the free test
-is on, the home hero links to it ("See it in 90 seconds").
+replaces all five files and regenerates `transcript.ts`. Recut 2026-10-22 (114.6 s) so the
+narrator speaks every visual-only cue, which is the video's audio description (1.2.5). The section is `#demo`; while the free test
+is on, the home hero links to it ("See it in under two minutes").
 
 Off unless `FREE_TEST_ENABLED=true` and `FREE_TEST_SECRET` (32+ characters, the engine's secret),
 `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` and `RESEND_API_KEY` are all set: off, every free-test

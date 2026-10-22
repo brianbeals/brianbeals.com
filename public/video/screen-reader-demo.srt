@@ -19,110 +19,141 @@ Narrator: Here's what a screen reader hears when a document isn't built for it.
 Narrator: First, the title.
 
 6
-00:00:17,400 --> 00:00:22,933
-Screen reader: Visitor Guide FINAL v 3 dot pdf - Adobe Acrobat Reader (32-bit)
-(Slowed down for this demo. Many screen reader users listen two to three times faster.)
+00:00:17,400 --> 00:00:18,767
+Narrator: Not accessible.
 
 7
-00:00:22,933 --> 00:00:25,800
-Narrator: When it's built right, it says what the document is.
+00:00:18,767 --> 00:00:24,600
+Narrator: Slowed down for this demo. Many screen reader users listen two to three times faster.
 
 8
-00:00:25,800 --> 00:00:31,367
-Screen reader: City of Example Visitor and Business Guide - Adobe Acrobat Reader (32-bit)
+00:00:24,600 --> 00:00:30,133
+Screen reader: Visitor Guide FINAL v 3 dot pdf - Adobe Acrobat Reader (32-bit)
 
 9
-00:00:31,367 --> 00:00:34,033
-Narrator: Two columns on the page. Listen.
+00:00:30,133 --> 00:00:31,333
+Narrator: Accessible.
 
 10
-00:00:34,033 --> 00:00:37,900
-Screen reader: Example is a good place to start a business and a better
+00:00:31,333 --> 00:00:34,200
+Narrator: When it's built right, it says what the document is.
 
 11
-00:00:37,900 --> 00:00:40,700
-Screen reader: Every Saturday from 8 a dot m.
+00:00:34,200 --> 00:00:39,767
+Screen reader: City of Example Visitor and Business Guide - Adobe Acrobat Reader (32-bit)
 
 12
-00:00:40,700 --> 00:00:42,133
-Screen reader: to noon,
+00:00:39,767 --> 00:00:42,433
+Narrator: Two columns on the page. Listen.
 
 13
-00:00:42,133 --> 00:00:43,900
-Screen reader: place to grow one.
+00:00:42,433 --> 00:00:43,800
+Narrator: Not accessible.
 
 14
-00:00:43,900 --> 00:00:46,933
-Narrator: Built right: one column, then the next.
+00:00:43,800 --> 00:00:46,367
+Narrator: Listen as it jumps between columns.
 
 15
-00:00:46,933 --> 00:00:50,800
+00:00:46,367 --> 00:00:50,233
 Screen reader: Example is a good place to start a business and a better
 
 16
-00:00:50,800 --> 00:00:52,567
-Screen reader: place to grow one.
+00:00:50,233 --> 00:00:53,033
+Screen reader: Every Saturday from 8 a dot m.
 
 17
-00:00:52,567 --> 00:00:55,167
-Narrator: A table of distances.
+00:00:53,033 --> 00:00:54,467
+Screen reader: to noon,
 
 18
-00:00:55,167 --> 00:00:56,933
-Screen reader: Heron Springs
+00:00:54,467 --> 00:00:56,233
+Screen reader: place to grow one.
 
 19
-00:00:56,933 --> 00:00:58,633
-Screen reader: Cypress Bend
+00:00:56,233 --> 00:00:57,433
+Narrator: Accessible.
 
 20
-00:00:58,633 --> 00:01:00,467
-Screen reader: Lakeview Junction
+00:00:57,433 --> 00:01:00,467
+Narrator: Built right: one column, then the next.
 
 21
-00:01:00,467 --> 00:01:02,233
-Screen reader: 14 miles
+00:01:00,467 --> 00:01:04,333
+Screen reader: Example is a good place to start a business and a better
 
 22
-00:01:02,233 --> 00:01:03,767
-Screen reader: 9 miles
+00:01:04,333 --> 00:01:06,100
+Screen reader: place to grow one.
 
 23
-00:01:03,767 --> 00:01:06,833
-Narrator: Built right: each place with its distance.
+00:01:06,100 --> 00:01:08,700
+Narrator: A table of distances.
 
 24
-00:01:06,833 --> 00:01:10,267
-Screen reader: row 2, Place, column 1, Sandpiper Shores
+00:01:08,700 --> 00:01:10,067
+Narrator: Not accessible.
 
 25
-00:01:10,267 --> 00:01:13,533
-Screen reader: From City Hall, column 2, 14 miles
+00:01:10,067 --> 00:01:11,767
+Screen reader: Cypress Bend
 
 26
-00:01:13,533 --> 00:01:17,033
-Narrator: Photos with no description are skipped in silence.
+00:01:11,767 --> 00:01:13,600
+Screen reader: Lakeview Junction
 
 27
-00:01:17,033 --> 00:01:19,433
-Screen reader: (Silence. The photo is skipped.)
+00:01:13,600 --> 00:01:15,367
+Screen reader: 14 miles
 
 28
-00:01:19,433 --> 00:01:21,400
-Screen reader: Welcome to Example
+00:01:15,367 --> 00:01:16,900
+Screen reader: 9 miles
 
 29
-00:01:21,400 --> 00:01:23,267
-Narrator: Built right, you hear what's there.
+00:01:16,900 --> 00:01:18,100
+Narrator: Accessible.
 
 30
-00:01:23,267 --> 00:01:29,500
-Screen reader: graphic, The Example city pier at sunset, with palm trees along the shore and boats on the water.
+00:01:18,100 --> 00:01:21,167
+Narrator: Built right: each place with its distance.
 
 31
-00:01:29,500 --> 00:01:31,833
-Narrator: Nobody should have to listen to nonsense.
+00:01:21,167 --> 00:01:24,600
+Screen reader: row 2, Place, column 1, Sandpiper Shores
 
 32
-00:01:31,833 --> 00:01:39,700
+00:01:24,600 --> 00:01:27,867
+Screen reader: From City Hall, column 2, 14 miles
+
+33
+00:01:27,867 --> 00:01:31,367
+Narrator: Photos with no description are skipped in silence.
+
+34
+00:01:31,367 --> 00:01:32,733
+Narrator: Not accessible.
+
+35
+00:01:32,733 --> 00:01:35,133
+Screen reader: (Silence. The photo is skipped.)
+
+36
+00:01:35,133 --> 00:01:36,333
+Narrator: Accessible.
+
+37
+00:01:36,333 --> 00:01:38,200
+Narrator: Built right, you hear what's there.
+
+38
+00:01:38,200 --> 00:01:44,433
+Screen reader: graphic, The Example city pier at sunset, with palm trees along the shore and boats on the water.
+
+39
+00:01:44,433 --> 00:01:46,767
+Narrator: Nobody should have to listen to nonsense.
+
+40
+00:01:46,767 --> 00:01:54,633
 Narrator: Hear what your documents sound like at brianbeals.com/free-test.

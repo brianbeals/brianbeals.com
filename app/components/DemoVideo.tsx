@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { INTRO, NOTE, SCENES } from "@/app/free-test/transcript";
-import { LENGTH } from "./demoLength";
+import { LENGTH, LINE, LINE_CLASS } from "./demoLength";
 
 // The screen reader demo (a11y-audit docs/demo/video, the web cut, whose end-card QR
 // carries ?ref=video), on the home page, /free-test and /accessibility. Self-hosted,
@@ -15,6 +15,12 @@ import { LENGTH } from "./demoLength";
 // The duration badge sits over the poster until the video first plays, then goes.
 // It is real text in the reading order ("Length 1:54"); LENGTH lives in demoLength.ts.
 // Under the player, before the transcript: one plain semibold line (2026-10-22).
+//
+// On the home page (app/components/HeroDemo.tsx, 2026-10-22) the player mounts only
+// when the viewer presses "Hear both": `label` names it there, since no heading sits
+// beside it; `line` is off, since that line sits under the button; and each press
+// bumps `start`, which moves focus to the player and plays it. That is the viewer's
+// own press, so it is not autoplay.
 
 const link = "underline underline-offset-4 hover:no-underline";
 
@@ -31,12 +37,30 @@ function Line({ text }: { text: string }) {
   );
 }
 
-export default function DemoVideo({ labelledBy }: { labelledBy: string }) {
+export default function DemoVideo({
+  labelledBy,
+  label,
+  line = true,
+  start = 0,
+}: {
+  labelledBy?: string;
+  label?: string;
+  line?: boolean;
+  start?: number;
+}) {
   const [played, setPlayed] = useState(false);
+  const video = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = video.current;
+    if (!start || !v) return;
+    v.focus();
+    v.play().catch(() => {});
+  }, [start]);
   return (
     <div>
       <div className="relative">
         <video
+          ref={video}
           controls
           preload="metadata"
           poster="/video/screen-reader-demo-poster.jpg"
@@ -44,6 +68,7 @@ export default function DemoVideo({ labelledBy }: { labelledBy: string }) {
           height={1080}
           playsInline
           aria-labelledby={labelledBy}
+          aria-label={label}
           onPlay={() => setPlayed(true)}
           className="block w-full h-auto aspect-video rounded-sm border bg-black"
           style={{ borderColor: "var(--rule)" }}
@@ -69,9 +94,7 @@ export default function DemoVideo({ labelledBy }: { labelledBy: string }) {
           </span>
         )}
       </div>
-      <p className="mt-3 text-base sm:text-lg leading-relaxed font-semibold text-neutral-800">
-        Hear what your documents sound like. Nobody should have to listen to nonsense.
-      </p>
+      {line ? <p className={`mt-3 ${LINE_CLASS}`}>{LINE}</p> : null}
       <details className="mt-3 text-base sm:text-lg">
         <summary className={`cursor-pointer ${link}`} style={{ color: "var(--link)" }}>
           Read the transcript

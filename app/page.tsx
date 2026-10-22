@@ -1,7 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import DemoVideo from "@/app/components/DemoVideo";
-import { LENGTH } from "@/app/components/demoLength";
+import HeroDemo from "@/app/components/HeroDemo";
 import PageHeading from "@/app/components/PageHeading";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
@@ -38,14 +36,6 @@ const services = [
   },
 ];
 
-// The hero covers and, under each, the exact line NVDA read from that guide in the
-// demo's reading-order scene: across both columns in the broken one, down the column
-// in the fixed one.
-const COVERS = [
-  { src: "/home-hero-broken-page2.png", heard: "\u2026start a business and a / Every Saturday from 8 AM to noon, the" },
-  { src: "/home-hero-fixed-page2.png", heard: "\u2026start a business and a better place to grow one." },
-];
-
 const link = "underline underline-offset-4 hover:no-underline";
 const body = "text-base sm:text-lg leading-relaxed text-neutral-800";
 
@@ -65,15 +55,9 @@ export default function Home() {
     <div className="flex-1 px-6 pt-8 pb-12 sm:px-12 sm:pt-10 sm:pb-16">
       <div className="max-w-5xl mx-auto page-wide">
         {/* Hero, option C (2026-10-22): the headline and everything under it centered
-            across the full width, then the two demo city guides side by side at the same
-            size with no labels, because they look the same (public/home-hero-broken-page2.png
-            and -fixed-page2.png, page 2 of each PDF, the page the quotes come from, built by scripts/build_home_hero.py; they
-            replaced the four-figure PeopleGraphic). Under each, in small italic text, what
-            NVDA read from that guide in the demo's reading-order scene (a11y-audit
-            docs/demo/speech/*.lines.json). The first cover's alt text covers both,
-            so the second is empty. Sized, so nothing shifts; preloaded and served as AVIF
-            or WebP (next.config.ts). "Hear both" is a link to the player, which never
-            autoplays, and shows only with the demo. */}
+            across the full width, then app/components/HeroDemo.tsx: the two demo city
+            guides with what NVDA read under each, and while the demo is up, the "Hear
+            both" button that swaps the player in. The home page has no other player. */}
         <section className="text-center">
           <div className="text-balance">
             <PageHeading scale="hero" spacing="mb-4">
@@ -133,51 +117,8 @@ export default function Home() {
             , 28.7% of U.S. adults, 2022 survey data.
           </p>
 
-          <div className="mt-6 mx-auto grid max-w-[560px] grid-cols-2 gap-4 sm:gap-8">
-            {COVERS.map((c, i) => (
-              <div key={c.src}>
-                <Image
-                  src={c.src}
-                  alt={i === 0 ? "Two copies of the same city guide, side by side. They look identical." : ""}
-                  width={900}
-                  height={1165}
-                  preload
-                  sizes="(min-width: 640px) 264px, calc(50vw - 32px)"
-                  className="block w-full h-auto rounded-sm border shadow-lg"
-                  style={{ borderColor: "var(--rule)" }}
-                />
-                <p className="mt-2 text-sm italic leading-snug" style={{ color: "var(--muted-ink)" }}>
-                  {c.heard}
-                </p>
-              </div>
-            ))}
-          </div>
-          {freeTest ? (
-            <a href="#demo" className={`${outlined} mt-6 inline-block`} style={outlinedStyle}>
-              Hear both ({LENGTH})
-            </a>
-          ) : null}
+          <HeroDemo demo={freeTest} />
         </section>
-
-        {/* The screen reader demo (2026-10-22), app/components/DemoVideo.tsx, also on
-            /free-test and /accessibility. Text then video in source order, so it stacks
-            that way on phones. Its end card sends viewers to /free-test, so it shows only
-            while that page is up. */}
-        {freeTest ? (
-          <section
-            id="demo"
-            aria-labelledby="home-demo"
-            className="mt-12 grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-6 md:gap-10 items-center"
-          >
-            <div>
-              <SubHeading level={2} id="home-demo" spacing="mt-0 mb-3">
-                Hear what a screen reader hears
-              </SubHeading>
-              <p className={body}>A two-minute demo. Best with sound; captions on.</p>
-            </div>
-            <DemoVideo labelledBy="home-demo" />
-          </section>
-        ) : null}
 
         {/* Why I do this (2026-10-22): four paragraphs, wording approved by Brian. */}
         <section>

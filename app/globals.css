@@ -33,6 +33,12 @@ html {
      shows where the control is, so it needs 3:1. Tailwind's border-gray-300
      (#D1D5DB) measures 1.47:1 on white and fails. #767676 gives 4.54:1. */
   --field-border: #767676;
+  /* The home hero's "Not accessible" and "Accessible" labels, from the demo video's
+     banner red and green (a11y-audit scripts/demo_video.py, BAD_BG and GOOD_BG). The
+     red is the video's own, 4.85:1 at the gradient focus; the video's green gave
+     4.17:1 there, so this is a shade darker, 4.75:1. */
+  --verdict-bad: #B03424;
+  --verdict-good: #1A703F;
 }
 
 /* 2.4.7 Focus Visible. A single visible indicator for every interactive element,
@@ -126,6 +132,9 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
     /* 3.29:1 on the dark card. The dark border-gray-300 remap (#35485C) is
        1.75:1 and would fail the same criterion. */
     --field-border: #5A7288;
+    /* Light tints of the same pair: 6.95:1 and 8.22:1 at the dark gradient focus. */
+    --verdict-bad: #F1948A;
+    --verdict-good: #6FCF97;
   }
 
   /* Remap the Tailwind utilities this site uses; these come after the

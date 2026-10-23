@@ -109,7 +109,7 @@ export default function AccessibilityFederal() {
           </p>
         </div>
 
-        <SectionHeading>Who this is for</SectionHeading>
+        <SectionHeading>Who This Is For</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Two readers. An agency Section 508 program manager or contracting officer who
@@ -123,7 +123,7 @@ export default function AccessibilityFederal() {
           technical approach.
         </p>
 
-        <SectionHeading>What applies</SectionHeading>
+        <SectionHeading>What Applies</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Section 508 of the Rehabilitation Act, at{" "}
@@ -143,7 +143,7 @@ export default function AccessibilityFederal() {
           .
         </p>
 
-        <SectionHeading>What you get</SectionHeading>
+        <SectionHeading>What You Get</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           An Accessibility Conformance Report in VPAT 2.5 format, every criterion marked
@@ -169,7 +169,7 @@ export default function AccessibilityFederal() {
           , produced by the same process a client gets.
         </p>
 
-        <SectionHeading>Why the report has to come from outside the repair</SectionHeading>
+        <SectionHeading>Why the Report Has to Come From Outside the Repair</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A conformance claim written by whoever repaired the product is a
@@ -182,7 +182,7 @@ export default function AccessibilityFederal() {
           Available to subcontract the assessment layer under a remediation prime.
         </p>
 
-        <SectionHeading>How an agency buys this</SectionHeading>
+        <SectionHeading>How an Agency Buys This</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Three paths, depending on size and agency.
@@ -258,7 +258,7 @@ export default function AccessibilityFederal() {
         </dl>
 
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability Statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your procurement file, written for Section 508.
           </p>
@@ -284,7 +284,7 @@ export default function AccessibilityFederal() {
           </p>
         </div>
 
-        <SectionHeading>Getting started</SectionHeading>
+        <SectionHeading>Getting Started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Twenty minutes is usually enough to tell whether this fits a specific

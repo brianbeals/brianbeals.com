@@ -188,7 +188,7 @@ export default function AccessibilityPricing() {
           are in place.
         </p>
 
-        <SectionHeading>How the evaluation is done</SectionHeading>
+        <SectionHeading>How the Evaluation Is Done</SectionHeading>
 
         <ul className={list}>
           <li>
@@ -218,7 +218,7 @@ export default function AccessibilityPricing() {
           </li>
         </ul>
 
-        <SectionHeading>What we do not do</SectionHeading>
+        <SectionHeading>What We Do Not Do</SectionHeading>
 
         <ul className={list}>
           <li>

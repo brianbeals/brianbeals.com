@@ -75,7 +75,7 @@ export default function Login() {
           className="text-3xl font-semibold tracking-tight mb-6"
           style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
-          Sign in
+          Sign In
         </h1>
         <Suspense fallback={null}>
           <LoginForm />

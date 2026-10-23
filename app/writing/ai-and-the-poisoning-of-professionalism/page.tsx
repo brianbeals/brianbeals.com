@@ -68,7 +68,7 @@ export default function EssayPage() {
           This is happening at thousands of companies right now. The pattern is universal enough that no reader will be sure who I&rsquo;m describing, because everyone has the colleague. Or three. Or three hundred.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Two weeks ago they wrote three-sentence replies</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Two Weeks Ago They Wrote Three-Sentence Replies</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Now every reply runs four paragraphs, three bullets, and a sign-off that warmly invites the recipient to &ldquo;jump on a quick call.&rdquo; The substance hasn&rsquo;t changed. The shape has, and the shape is wrong. We went from circles to squares.
@@ -82,7 +82,7 @@ export default function EssayPage() {
           That last fact is the entire story.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The tells</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Tells</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Six things to look for. Any one of them is fine. Any three of them together means the AI wrote it.
@@ -116,7 +116,7 @@ export default function EssayPage() {
           Any one of these in isolation is fine. The pileup is the tell. I bail. The sender lands in mute.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">What this costs</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">What This Costs</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Recipients don&rsquo;t bounce. They don&rsquo;t object. They slow down. Then they stop.
@@ -130,7 +130,7 @@ export default function EssayPage() {
           That folder is not a place anyone wins business or long-term relationships from.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Why the sender can&rsquo;t see it</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why the Sender Can&rsquo;t See It</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The output looks responsive. Looks professional. Looks like an upgrade. That&rsquo;s the trap.
@@ -144,7 +144,7 @@ export default function EssayPage() {
           If the failure mode were a typo, the sender would catch it. If it were a tone mismatch, they would catch it. The failure mode is a faint generic gloss across every sentence, which is exactly what the model was trained to produce. The sender doesn&rsquo;t catch it because the model is doing exactly what it was asked to do.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The discipline</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Discipline</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           One rule. Read every reply out loud before you send it. Yes, your cubicle buddies will look. They&rsquo;ll get over it. If it doesn&rsquo;t sound like you on the phone, rewrite it.
@@ -162,7 +162,7 @@ export default function EssayPage() {
           Most of what needs rewriting is the opener, the closer, and one or two phantom continuity phrases in the middle. The body usually has the actual answer in it. The shell around the answer is the problem. Strip the shell. Keep the answer.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The bigger argument</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Bigger Argument</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Every AI-default reply that ships under your name erodes the trust the recipient has in your voice. Three replies in, they&rsquo;ve forgotten how you actually sound. Ten replies in, they don&rsquo;t notice when you stop replying at all.

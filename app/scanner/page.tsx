@@ -25,18 +25,18 @@ const DESCRIPTION =
   "What the BrianBealsLLC-A11y and BrianBealsLLC-NoticeCheck scanners do, how fast they go, how they treat robots.txt, and how to stop or block them.";
 
 export const metadata: Metadata = {
-  title: { absolute: "About our scanners | Brian Beals, LLC" },
+  title: { absolute: "About Our Scanners | Brian Beals, LLC" },
   description: DESCRIPTION,
   alternates: { canonical: "/scanner" },
   openGraph: {
-    title: "About our scanners | Brian Beals, LLC",
+    title: "About Our Scanners | Brian Beals, LLC",
     description: DESCRIPTION,
     url: "/scanner",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About our scanners | Brian Beals, LLC",
+    title: "About Our Scanners | Brian Beals, LLC",
     description: DESCRIPTION,
   },
 };
@@ -78,7 +78,7 @@ export default function Scanner() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        <PageHeading spacing="mb-6">About our scanners</PageHeading>
+        <PageHeading spacing="mb-6">About Our Scanners</PageHeading>
 
         <p className={body}>
           Brian Beals, LLC runs two automated readers. Each one names itself in its User-Agent and
@@ -127,7 +127,7 @@ export default function Scanner() {
           ) : null}
         </ul>
 
-        <SubHeading level={3}>How fast</SubHeading>
+        <SubHeading level={3}>How Fast</SubHeading>
         <ul className={list}>
           <li>One browser tab, one page at a time, for recon{freeTest ? ", the free test," : ""} and evaluation.</li>
           <li>
@@ -177,7 +177,7 @@ export default function Scanner() {
           records no findings about the site.
         </p>
 
-        <SubHeading level={3}>How fast</SubHeading>
+        <SubHeading level={3}>How Fast</SubHeading>
         <ul className={list}>
           <li>Started by hand, one site at a time.</li>
           <li>Four seconds between requests.</li>
@@ -194,7 +194,7 @@ export default function Scanner() {
         <SubHeading level={3}>User-Agent</SubHeading>
         <Agent label="Every request" value={NOTICE} />
 
-        <SectionHeading>What neither one does</SectionHeading>
+        <SectionHeading>What Neither One Does</SectionHeading>
         <ul className={list}>
           <li>Anything other than read-only GET requests.</li>
           <li>Submit a form.</li>
@@ -207,7 +207,7 @@ export default function Scanner() {
           </li>
         </ul>
 
-        <SectionHeading>Stop or block</SectionHeading>
+        <SectionHeading>Stop or Block</SectionHeading>
         <p className={body}>
           <strong>Email or call and I&apos;ll stop scanning your site</strong>. Write to{" "}
           <a href="mailto:brian@brianbeals.com" className={link} style={{ color: "var(--link)" }}>

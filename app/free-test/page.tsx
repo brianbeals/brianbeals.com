@@ -18,7 +18,7 @@ import { refKey } from "./fields";
 // the engine runs with REVIEW_MODE=true; change this page in the same commit that
 // turns review off.
 
-const TITLE = "Free accessibility check | Brian Beals, LLC";
+const TITLE = "Free Accessibility Check | Brian Beals, LLC";
 const DESCRIPTION =
   "By the next business day: which of your pages and PDFs fail, and the WCAG rule each one fails. A free automated check of up to 10 pages and 10 linked PDFs against WCAG 2.1 AA, reviewed by a person before it's sent.";
 
@@ -54,7 +54,7 @@ export default async function FreeTest({
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        <PageHeading>Free accessibility check</PageHeading>
+        <PageHeading>Free Accessibility Check</PageHeading>
         <p className="text-lg sm:text-xl leading-relaxed mb-4 font-semibold text-neutral-800">
           By the next business day: which of your pages and PDFs fail, and the WCAG rule each one fails.
         </p>
@@ -105,7 +105,7 @@ export default async function FreeTest({
 
           <aside aria-labelledby="ft-how" className="text-base md:col-start-2 md:row-start-2">
             <SubHeading level={2} id="ft-how" spacing="mt-0 mb-3">
-              How it works
+              How It Works
             </SubHeading>
             <ol className="list-decimal pl-5 space-y-3 leading-relaxed text-neutral-800">
               <li>
@@ -146,7 +146,7 @@ export default async function FreeTest({
         >
           <div>
             <SubHeading level={2} id="demo-heading" spacing="mt-0 mb-3">
-              Not sure what we look for? Watch first.
+              Not Sure What We Look For? Watch First.
             </SubHeading>
             <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
               A screen reader reads a broken PDF, then its accessible twin. Best with sound; captions on.

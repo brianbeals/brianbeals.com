@@ -83,7 +83,7 @@ export default function AccessibilityHealthcare() {
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance dates</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance Dates</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Recipients with 15 or more employees</dt>
             <dd className="mb-3 font-mono">May 11, 2027</dd>
@@ -97,7 +97,7 @@ export default function AccessibilityHealthcare() {
           </p>
         </div>
 
-        <SectionHeading>Who counts as a recipient</SectionHeading>
+        <SectionHeading>Who Counts as a Recipient</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Any recipient of HHS federal financial assistance. Hospitals and health
@@ -121,7 +121,7 @@ export default function AccessibilityHealthcare() {
           right of action, so a complaint does not have to start with the agency.
         </p>
 
-        <SectionHeading>The part about your documents</SectionHeading>
+        <SectionHeading>The Part About Your Documents</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The rule exempts electronic documents that existed before your compliance date.
@@ -157,7 +157,7 @@ export default function AccessibilityHealthcare() {
           tell OCR what you were doing about it without a number.
         </p>
 
-        <SectionHeading>Start with the count, not the repair</SectionHeading>
+        <SectionHeading>Start With the Count, Not the Repair</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The first engagement is a baseline inventory: every patient-facing document
@@ -177,7 +177,7 @@ export default function AccessibilityHealthcare() {
           that was true once.
         </p>
 
-        <SectionHeading>Why I do not remediate</SectionHeading>
+        <SectionHeading>Why I Do Not Remediate</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A conformance claim written by whoever repaired the documents is a
@@ -192,7 +192,7 @@ export default function AccessibilityHealthcare() {
         </p>
 
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">What this is not</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">What This Is Not</SubHeading>
           <p className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             Not an overlay, a widget, or a script you paste into your site. Those have
             been named in litigation rather than protecting against it, and OCR is not
@@ -203,7 +203,7 @@ export default function AccessibilityHealthcare() {
           </p>
         </div>
 
-        <SectionHeading>An overlapping obligation worth knowing</SectionHeading>
+        <SectionHeading>An Overlapping Obligation Worth Knowing</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Public hospital districts and other government-operated providers are covered
@@ -228,7 +228,7 @@ export default function AccessibilityHealthcare() {
           if that is the side you are on.
         </p>
 
-        <SectionHeading>The proof</SectionHeading>
+        <SectionHeading>The Proof</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           This site carries its own Accessibility Conformance Report. Thirty-nine pages and
@@ -248,7 +248,7 @@ export default function AccessibilityHealthcare() {
         </p>
 
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability Statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your file, written for Section 504.
           </p>
@@ -274,7 +274,7 @@ export default function AccessibilityHealthcare() {
           </p>
         </div>
 
-        <SectionHeading>The firm</SectionHeading>
+        <SectionHeading>The Firm</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Brian Beals, LLC. Service-disabled veteran-owned small business, based in Punta
@@ -296,7 +296,7 @@ export default function AccessibilityHealthcare() {
           </div>
         </dl>
 
-        <SectionHeading>Getting started</SectionHeading>
+        <SectionHeading>Getting Started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Twenty minutes is usually enough to tell whether this is worth your time. I

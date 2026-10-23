@@ -83,7 +83,7 @@ export default function EssayPage() {
           That&rsquo;s the gap the ADA rule is going to find.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">What the rule says about documents</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">What the Rule Says About Documents</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The Department of Justice rule for state and local government, 28 CFR 35.200, requires web content to meet WCAG 2.1 Level AA by April 26, 2027 for entities serving 50,000 or more, and April 26, 2028 for the smaller ones and every special district. Most people reading about it stop at &ldquo;web content&rdquo; and picture pages.
@@ -97,7 +97,7 @@ export default function EssayPage() {
           Look at what was in the eight. A residential services guide. Three collection maps. A bidder portal guide and a vendor registration brochure, on the page for doing business with the city. A procurement policy. These are how people use the city. None of them qualifies for the exception.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">What &ldquo;no tags&rdquo; means to a person</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">What &ldquo;No Tags&rdquo; Means to a Person</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A PDF has two layers: what you see, and a structure underneath that tells software what the parts are. Heading, paragraph, list, table, image. A screen reader reads the structure. Take it away and the reader gets a stream of text with no order, or, for the scanned one, silence.
@@ -111,7 +111,7 @@ export default function EssayPage() {
           These are the first things a screen reader user hits, and they&rsquo;re the first things a complaint cites.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Why the home page gets the attention anyway</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why the Home Page Gets the Attention Anyway</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Because it&rsquo;s visible. The home page is what the vendor demos and what the overlay widget decorates. Document libraries are invisible until someone needs one, and the person who needs one is rarely in the room when the website budget is set.
@@ -121,7 +121,7 @@ export default function EssayPage() {
           The scoring is also backwards from how the risk works. Six of the seven findings on that city&rsquo;s sample sat at Level A, the floor of the standard, and four of the six were in documents. Fixing the home page&rsquo;s contrast ratio moves you from &ldquo;mostly compliant&rdquo; to &ldquo;mostly compliant.&rdquo; Fixing the eight documents changes whether a resident can get a service.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">What to do with that</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">What to Do With That</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Start by counting. Every PDF on your web properties, cataloged, with four columns: retire it, replace it with a web page, remediate it, or leave it under the exception with a note saying why. A city of 20,000 can have a few hundred; the seven pages I sampled linked 26. A county has thousands. The count is the budget conversation, because remediation vendors charge by the page and the only way to spend that money well is to know which documents residents use.

@@ -41,7 +41,7 @@ export default function FreeTestSample() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-3xl mx-auto">
-        <PageHeading>Sample report</PageHeading>
+        <PageHeading>Sample Report</PageHeading>
         <p className={p}>
           This is a sample. The City of Coquina Bay, FL and example.org are fictional, and every number in it
           is made up. A real report comes by email in this form, by the next business day.

@@ -16,7 +16,7 @@ export const projects: {
     summary:
       "A live marine forecast for Charlotte Harbor and Pine Island Sound that turns the NWS coastal waters product, tides, red tide and live radar into a plain go or no-go.",
     description:
-      "A live marine forecast for my home water, Charlotte Harbor and Pine Island Sound. It parses the NWS coastal waters product into wind, chop, and storm-risk cards, adds Port Boca Grande tides and a red-tide line from the state's sampling, and ends on a verdict: a plain call on whether to go, and the best window to be out. The browser samples NEXRAD over the harbor and the pass every few minutes, which catches a cell on the water that the inland airport observation misses. GitHub Actions republishes after each NWS issuance. Runs entirely on public NOAA endpoints and GitHub Pages, so hosting is free, making it the only part of this project that respected a budget.",
+      "A live marine forecast for Brian's home water, Charlotte Harbor and Pine Island Sound. It parses the NWS coastal waters product into wind, chop, and storm-risk cards, adds Port Boca Grande tides and a red-tide line from the state's sampling, and ends on a verdict: a plain call on whether to go, and the best window to be out. The browser samples NEXRAD over the harbor and the pass every few minutes, which catches a cell on the water that the inland airport observation misses. GitHub Actions republishes after each NWS issuance. Runs entirely on public NOAA endpoints and GitHub Pages, so hosting is free, making it the only part of this project that respected a budget.",
     links: [
       { label: "Live", href: "https://weather.brianbeals.com" },
       { label: "Code", href: "https://github.com/brianbeals/marine-forecast" },
@@ -49,13 +49,13 @@ export const projects: {
     summary:
       "An always-on agent on the Mac mini that watches the deploys above, retries what fails, and texts only when something stays broken.",
     description:
-      "An always-on agent that lives on the Mac mini and texts like a member of the household. Every 30 minutes it checks the GitHub deploys for everything above, retries the transient failures, and texts me only when something stays broken. On Mondays it reads a legislative watch report and texts the highlights. It answers texts on its own iMessage identity, a dedicated Apple ID, because a bot on your own phone number can't tell your texts from its own echoes. Runs locally on OpenClaw with Claude doing the thinking. Getting iMessage working surfaced an upstream bug I reported and got fixed.",
+      "An always-on agent that lives on the Mac mini and texts like a member of the household. Every 30 minutes it checks the GitHub deploys for everything above, retries the transient failures, and texts him only when something stays broken. On Mondays it reads a legislative watch report and texts the highlights. It answers texts on its own iMessage identity, a dedicated Apple ID, because a bot on your own phone number can't tell your texts from its own echoes. Runs locally on OpenClaw with Claude doing the thinking. Getting iMessage working surfaced an upstream bug he reported and got fixed.",
     links: [
       { label: "Upstream fix", href: "https://github.com/openclaw/openclaw/issues/99638" },
     ],
   },
   {
-    name: "This site",
+    name: "This Site",
     summary:
       "Next.js on Vercel.",
     description: "Next.js on Vercel.",

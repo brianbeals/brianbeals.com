@@ -10,7 +10,7 @@ export default function NotFound() {
     <div className="flex-1 flex items-center justify-center px-6 py-16 sm:px-12">
       <div className="max-w-2xl mx-auto text-center">
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6" style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}>
-          That page isn't here.
+          That Page Isn't Here.
         </h1>
         <p className="text-base sm:text-lg text-neutral-700 mb-10">
           You probably want one of these instead.

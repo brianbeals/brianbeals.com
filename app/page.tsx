@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BookCallLink from "@/app/components/BookCallLink";
 import HeroDemo from "@/app/components/HeroDemo";
 import PageHeading from "@/app/components/PageHeading";
 import SectionHeading from "@/app/components/SectionHeading";
@@ -46,9 +47,6 @@ const TRUST = [
   "Evaluation only, never remediation",
 ];
 
-const outlined = "rounded border-2 px-5 py-2 font-semibold hover:underline underline-offset-4";
-const outlinedStyle = { borderColor: "var(--link)", color: "var(--link)" };
-
 export default function Home() {
   const freeTest = freeTestEnabled();
   return (
@@ -61,7 +59,7 @@ export default function Home() {
         <section className="text-center">
           <div className="text-balance">
             <PageHeading scale="hero" spacing="mb-4">
-              More than one in four U.S. adults has a disability. Can they use your forms and documents?
+              More Than One in Four U.S. Adults Has a Disability. Can They Use Your Forms and Documents?
             </PageHeading>
           </div>
           <p className={`${body} mb-2 mx-auto`}>
@@ -77,74 +75,80 @@ export default function Home() {
             </a>
             , 28.7% of U.S. adults, 2022 survey data.
           </p>
-          {/* While the free test is on (2026-10-17), it is the primary button (navy since
-              2026-10-22, so "Hear both" below is the hero's one green button) and
-              the call is the outlined second, with the readiness checklist as a
-              text line under the buttons. Off, the call is primary and the
-              checklist button takes the second slot. */}
-          <div className={`flex flex-wrap justify-center gap-3 ${freeTest ? "mb-3" : ""}`}>
+          {/* One primary button (2026-10-23, SBDC review). While the free test is on,
+              "Get a free automated check" is the hero's only filled button, in --cta-bg
+              green; the readiness checklist and the call are text links in the line
+              under it, and the call stays a button in the top bar. "Hear both" below is
+              a text-style button. Off, the call takes the button and the checklist
+              stays a text link. Clicks on the call links are "book_call_click" events
+              (BookCallLink). */}
+          <div className="flex flex-wrap justify-center gap-3 mb-3">
             {freeTest ? (
-              <>
-                <Link
-                  href="/free-test"
-                  className="btn-navy rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
-                >
-                  Get a free automated check
-                </Link>
-                <Link href="/contact" className={outlined} style={outlinedStyle}>
-                  Book a 15-minute call
-                </Link>
-              </>
+              <Link
+                href="/free-test"
+                className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+              >
+                Get a free automated check
+              </Link>
             ) : (
-              <>
-                <Link
-                  href="/contact"
-                  className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
-                >
-                  Book a 15-minute call
-                </Link>
-                <Link href="/accessibility/before-we-start" className={outlined} style={outlinedStyle}>
-                  Run the readiness checklist
-                </Link>
-              </>
+              <BookCallLink
+                placement="home-hero"
+                className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+              >
+                Book a 15-minute call
+              </BookCallLink>
             )}
           </div>
-          {freeTest ? (
-            <p className="text-base mx-auto text-neutral-800">
-              Not sure where you stand?{" "}
-              <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
-                Run the readiness checklist
-              </Link>
-              .
-            </p>
-          ) : null}
+          <p className="text-base mx-auto text-neutral-800">
+            Not sure where you stand?{" "}
+            <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
+              Run the readiness checklist
+            </Link>
+            {freeTest ? (
+              <>
+                {" "}or{" "}
+                <BookCallLink placement="home-hero" className={link} style={{ color: "var(--link)" }}>
+                  book a 15-minute call
+                </BookCallLink>
+              </>
+            ) : null}
+            .
+          </p>
 
           <HeroDemo demo={freeTest} />
         </section>
 
-        {/* Why I do this (2026-10-22): four paragraphs, wording approved by Brian. */}
+        {/* Why I do this (2026-10-22): four paragraphs, wording approved by Brian. Since
+            2026-10-23 a signed founder note: first person, under a left rule, ending on
+            the signature. The rest of the site's description of Brian (/about) is third
+            person. */}
         <section>
-          <SectionHeading>Why I do this</SectionHeading>
-          <p className={`${body} mb-4`}>
-            I set out to start an IT consulting company, and I did the paperwork the way everyone does:
-            articles of organization, a business tax receipt, a property use form. Most of it wasn&apos;t
-            online. What was came as PDFs to print, and the boxes were too small for what they asked. So I
-            sat in a government lobby while a clerk worked through what I&apos;d written and typed every
-            field back into a computer.
-          </p>
-          <p className={`${body} mb-4`}>
-            She was patient. The form was the problem, and my handwriting didn&apos;t help.
-          </p>
-          <p className={`${body} mb-4`}>
-            I&apos;ve spent my career helping large organizations get value from their data, and that
-            morning I saw the other end of it. A form that gave me trouble shuts out someone who can&apos;t
-            see it, can&apos;t hold a pen, or fills it in with a screen reader. The new federal rules say
-            those forms have to work for everyone.
-          </p>
-          <p className={body}>
-            My job is to test them, independently, and tell you plainly what works before a resident finds
-            out what doesn&apos;t.
-          </p>
+          <SectionHeading>Why I Do This</SectionHeading>
+          <div className="border-l-4 pl-5" style={{ borderColor: "var(--rule)" }}>
+            <p className={`${body} mb-4`}>
+              I set out to start an IT consulting company, and I did the paperwork the way everyone does:
+              articles of organization, a business tax receipt, a property use form. Most of it wasn&apos;t
+              online. What was came as PDFs to print, and the boxes were too small for what they asked. So I
+              sat in a government lobby while a clerk worked through what I&apos;d written and typed every
+              field back into a computer.
+            </p>
+            <p className={`${body} mb-4`}>
+              She was patient. The form was the problem, and my handwriting didn&apos;t help.
+            </p>
+            <p className={`${body} mb-4`}>
+              I&apos;ve spent my career helping large organizations get value from their data, and that
+              morning I saw the other end of it. A form that gave me trouble shuts out someone who can&apos;t
+              see it, can&apos;t hold a pen, or fills it in with a screen reader. The new federal rules say
+              those forms have to work for everyone.
+            </p>
+            <p className={`${body} mb-4`}>
+              My job is to test them, independently, and tell you plainly what works before a resident finds
+              out what doesn&apos;t.
+            </p>
+            <p className={`${body} font-semibold`} style={{ color: "var(--head)" }}>
+              Brian Beals, founder
+            </p>
+          </div>
         </section>
 
         {/* Trust strip, a list since 2026-10-17: as one paragraph of spans VoiceOver ran
@@ -170,7 +174,7 @@ export default function Home() {
         </ul>
 
         <section>
-          <SectionHeading>What I test</SectionHeading>
+          <SectionHeading>What I Test</SectionHeading>
           {/* Whole-card links (globals.css, .service-card). The heading text is the one
               link in each card; its ::after stretches over the card, so the whole card is
               the click target while the link's name stays the short service name. The
@@ -207,7 +211,7 @@ export default function Home() {
         </section>
 
         <section>
-          <SectionHeading>What the documents show</SectionHeading>
+          <SectionHeading>What the Documents Show</SectionHeading>
           <p className={`${body} mb-4`}>
             A sample of one Florida city&apos;s website: 8 of 26 PDFs had no tags. A sample of one
             Florida health center&apos;s: 4 of 5, including the sliding-fee application.

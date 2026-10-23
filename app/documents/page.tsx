@@ -18,12 +18,12 @@ import PageHeading from "@/app/components/PageHeading";
 // accessibility should not make anyone open a PDF to learn what it does.
 
 export const metadata: Metadata = {
-  title: { absolute: "Capability statements | Brian Beals, LLC" },
+  title: { absolute: "Capability Statements | Brian Beals, LLC" },
   description:
     "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
   alternates: { canonical: "/documents" },
   openGraph: {
-    title: "Capability statements | Brian Beals, LLC",
+    title: "Capability Statements | Brian Beals, LLC",
     description:
       "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
     url: "/documents",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   // showed the home title, description and card here.
   twitter: {
     card: "summary_large_image",
-    title: "Capability statements | Brian Beals, LLC",
+    title: "Capability Statements | Brian Beals, LLC",
     description:
       "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
   },
@@ -83,7 +83,7 @@ export default function Documents() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <div className="max-w-5xl mx-auto page-wide">
-        <PageHeading spacing="mb-3">Capability statements</PageHeading>
+        <PageHeading spacing="mb-3">Capability Statements</PageHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
           Each of these is published in two formats. The PDF conforms to PDF/UA-1
           (ISO 14289-1), verified with veraPDF rather than asserted by the tool
@@ -156,7 +156,7 @@ export default function Documents() {
         </ul>
 
         {/* The program page behind each accessibility statement (2026-10-16). */}
-        <SectionHeading>Program pages</SectionHeading>
+        <SectionHeading>Program Pages</SectionHeading>
         <ul className="space-y-2 text-base sm:text-lg mb-6">
           {[
             ["/accessibility/title-ii", "ADA Title II, state and local government"],
@@ -172,7 +172,7 @@ export default function Documents() {
           ))}
         </ul>
 
-        <SectionHeading>This site&rsquo;s own report</SectionHeading>
+        <SectionHeading>This Site&rsquo;s Own Report</SectionHeading>
         <p className="text-base leading-relaxed mb-3 text-neutral-800">
           brianbeals.com is evaluated against all 50 Level A and AA success
           criteria and the result is published, including anything it does not fully

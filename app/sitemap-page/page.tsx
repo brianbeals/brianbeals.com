@@ -9,7 +9,7 @@ import { enabled as freeTestEnabled } from "@/lib/free-test";
 // for crawlers, not something a person can use to find a page. The distinction
 // gets missed often enough that it is worth writing down.
 export const metadata: Metadata = {
-  title: { absolute: "Site map | Brian Beals, LLC" },
+  title: { absolute: "Site Map | Brian Beals, LLC" },
   description:
     "Every page on brianbeals.com, in one list. A second way to reach any page, alongside the navigation.",
   alternates: { canonical: "/sitemap-page" },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    heading: "Main pages",
+    heading: "Main Pages",
     links: [
       // Same order as the main nav, then the pages hanging off it. Elsewhere
       // left the nav on 2026-10-10 and is reachable from /about and here.
@@ -93,7 +93,7 @@ export default function SiteMapPage() {
           className="text-4xl font-semibold tracking-tight mb-3"
           style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
         >
-          Site map
+          Site Map
         </h1>
         <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
           Every page on this site, in one list.

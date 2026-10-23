@@ -99,7 +99,7 @@ export default function Accessibility() {
         {freeTestEnabled() ? (
           <section aria-labelledby="acc-demo" className="my-8 max-w-xl">
             <SubHeading level={2} id="acc-demo" spacing="mt-0 mb-3">
-              Hear what a screen reader hears
+              Hear What a Screen Reader Hears
             </SubHeading>
             <DemoVideo labelledBy="acc-demo" />
           </section>
@@ -108,7 +108,7 @@ export default function Accessibility() {
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance dates</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance Dates</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Public entities serving 50,000 or more</dt>
             <dd className="mb-3">April 26, 2027</dd>
@@ -134,7 +134,7 @@ export default function Accessibility() {
           around it. None of them is the repair.
         </p>
 
-        <SubHeading id="conformance-report">Conformance report</SubHeading>
+        <SubHeading id="conformance-report">Conformance Report</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Up to 25 pages across your site&apos;s templates, plus the documents linked from
@@ -144,7 +144,7 @@ export default function Accessibility() {
           remediation list. Two to four weeks from scope sign-off.
         </p>
 
-        <SubHeading id="document-inventory">Document inventory and triage</SubHeading>
+        <SubHeading id="document-inventory">Document Inventory and Triage</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Every PDF on your web properties cataloged and sorted: retire, replace with a web
@@ -153,7 +153,7 @@ export default function Accessibility() {
           residents use.
         </p>
 
-        <SubHeading id="program-and-policy">Program and policy setup</SubHeading>
+        <SubHeading id="program-and-policy">Program and Policy Setup</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The accessibility statement, ADA coordinator designation, grievance procedure and
@@ -180,7 +180,7 @@ export default function Accessibility() {
           : what has to be in place for a fixed fee to hold.
         </p>
 
-        <SectionHeading>What you get</SectionHeading>
+        <SectionHeading>What You Get</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           An Accessibility Conformance Report in VPAT 2.5 format, the same document your
@@ -201,7 +201,7 @@ export default function Accessibility() {
           record leaves you with nothing to show.
         </p>
 
-        <SectionHeading>State and local: ADA Title II</SectionHeading>
+        <SectionHeading>State and Local: ADA Title II</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Cities, counties, school districts, and special districts have their own page: the
@@ -258,7 +258,7 @@ export default function Accessibility() {
           .
         </p>
 
-        <SectionHeading>Why I do not remediate</SectionHeading>
+        <SectionHeading>Why I Do Not Remediate</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A conformance claim written by whoever repaired the site is a self-assessment. The
@@ -273,7 +273,7 @@ export default function Accessibility() {
           both ends.
         </p>
 
-        <SectionHeading>How the evaluation runs</SectionHeading>
+        <SectionHeading>How the Evaluation Runs</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Automated scanning across a representative sample of pages, then manual testing for
@@ -296,7 +296,7 @@ export default function Accessibility() {
           library does not.
         </p>
 
-        <SectionHeading>The proof</SectionHeading>
+        <SectionHeading>The Proof</SectionHeading>
 
         {/* Matches the October 22, 2026 report; checked against
             public/conformance-report.html on 2026-10-22. Change these numbers only when the
@@ -364,7 +364,7 @@ export default function Accessibility() {
           .
         </p>
 
-        <SectionHeading>Maryland: CATS+ contractors</SectionHeading>
+        <SectionHeading>Maryland: CATS+ Contractors</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Maryland runs its own version of this obligation through a different statute.
@@ -379,7 +379,7 @@ export default function Accessibility() {
           .
         </p>
 
-        <SectionHeading>The firm</SectionHeading>
+        <SectionHeading>The Firm</SectionHeading>
 
         <div className="flex flex-col items-start min-[600px]:flex-row gap-5 mb-8">
           <SbaMark height={96} />
@@ -416,7 +416,7 @@ export default function Accessibility() {
         </div>
 
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability Statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page each, for your procurement file. Four, because the rule that matters
             depends on who is buying. These two cover the practice:
@@ -476,9 +476,9 @@ export default function Accessibility() {
           </p>
         </div>
 
-        <SectionHeading>Common questions</SectionHeading>
+        <SectionHeading>Common Questions</SectionHeading>
 
-        <SubHeading>Is an Accessibility Conformance Report the same as an audit?</SubHeading>
+        <SubHeading>Is an Accessibility Conformance Report the Same as an Audit?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           They overlap. An accessibility audit finds the web accessibility problems and
@@ -487,7 +487,7 @@ export default function Accessibility() {
           You get both.
         </p>
 
-        <SubHeading>What does ADA Title II require by April 2027?</SubHeading>
+        <SubHeading>What Does ADA Title II Require by April 2027?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Every state entity, and every local government serving 50,000 or more, must have its
@@ -496,7 +496,7 @@ export default function Accessibility() {
           entities and special districts have until April 26, 2028.
         </p>
 
-        <SubHeading>Does the rule cover PDFs?</SubHeading>
+        <SubHeading>Does the Rule Cover PDFs?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Yes. The rule calls them conventional electronic documents. They have to meet the
@@ -504,7 +504,7 @@ export default function Accessibility() {
           content, and older files nobody uses to apply for or reach a service.
         </p>
 
-        <SubHeading>Do you do the remediation?</SubHeading>
+        <SubHeading>Do You Do the Remediation?</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           No. A report written by whoever fixed the site is the vendor grading their own
@@ -512,7 +512,7 @@ export default function Accessibility() {
           independent. It also gives your remediation vendor a clear spec to bid against.
         </p>
 
-        <SectionHeading>Getting started</SectionHeading>
+        <SectionHeading>Getting Started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Thirty minutes is usually enough to tell whether this is worth your time. I will walk

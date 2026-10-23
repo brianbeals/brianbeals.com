@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import Script from "next/script";
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import ErrorSummary from "@/app/components/ErrorSummary";
@@ -56,7 +57,8 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
     if (state.status === "error" || state.status === "invalid") window.turnstile?.reset();
     if (state.status === "sent") {
       doneRef.current?.focus();
-      document.title = "Check your email | Brian Beals, LLC";
+      document.title = "Check Your Email | Brian Beals, LLC";
+      track("free_check_submitted");
     }
   }, [state]);
 
@@ -64,7 +66,7 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
     return (
       <div>
         <SubHeading level={2} ref={doneRef} tabIndex={-1} spacing="mt-0 mb-3">
-          Check your email
+          Check Your Email
         </SubHeading>
         <p className="text-base sm:text-lg leading-relaxed text-neutral-800 mb-4">
           A confirmation email is on its way. The check starts only after you

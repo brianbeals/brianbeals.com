@@ -11,19 +11,19 @@ const DESCRIPTION =
   "Book a free 15-minute call about the ADA Title II, Section 504 or Section 508 dates, or send a message. Email and phone work too.";
 
 export const metadata: Metadata = {
-  title: { absolute: "Let's talk | Brian Beals, LLC" },
+  title: { absolute: "Let's Talk | Brian Beals, LLC" },
   description: DESCRIPTION,
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Let's talk | Brian Beals, LLC",
+    title: "Let's Talk | Brian Beals, LLC",
     description: DESCRIPTION,
     url: "/contact",
     type: "website",
   },
   twitter: {
-    title: "Let's talk | Brian Beals, LLC",
+    title: "Let's Talk | Brian Beals, LLC",
     description: DESCRIPTION,
   },
 };
@@ -34,7 +34,7 @@ export default function Contact() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        <PageHeading>Let&apos;s talk</PageHeading>
+        <PageHeading>Let&apos;s Talk</PageHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
           A free 15-minute call about the ADA Title II, Section 504 or Section 508 dates and where
           your site stands against them.

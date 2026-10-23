@@ -67,7 +67,7 @@ export default function EssayPage() {
           Automation is the boring machinery that has quietly run the world for decades. Cron, scripts, parsers, schedulers, the mail server. It does the same thing every time, for free, and it fails loudly when it fails at all. AI is one specialized part you drop into that machinery at the spots where the work is language or judgment. The skill worth having in 2026 is knowing which is which. This is what it looks like when I build it for myself.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">A grocery robot that barely uses AI</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">A Grocery Robot That Barely Uses AI</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Every week a small system tells me which of the things my family actually buys are on sale at our Publix. It runs on its own, and it&rsquo;s a decent model of how to place AI correctly: AI does exactly two jobs, and the boring machinery does everything else.
@@ -97,7 +97,7 @@ export default function EssayPage() {
           Count the AI in that system and you get two steps: read the receipt, judge the fuzzy matches. Everything else, the filter, the trigger, the fetch, the string-matching, the file writing, the send, is deterministic tooling doing the job it was built for. Wrap every step in an agent instead and I&rsquo;d be paying a model to do what cron and a few hundred lines of code already do perfectly, slower, and with the occasional confident lie. The matcher even keeps a plain-code fallback, so if the model is down, the email still goes out. The boring parts are the reliable parts, on purpose.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">A second little AI, watching the flock</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">A Second Little AI, Watching the Flock</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           There&rsquo;s a companion piece I&rsquo;m fonder of than I should be. A small always-on agent, running locally, that watches everything else I&rsquo;ve built. Every half hour it checks whether the deploys and jobs are healthy, quietly retries the ones that fail for dumb transient reasons, and texts me only when something stays broken. On Mondays it reads a long legislative report, the kind that runs hundreds of pages and buries the one line I care about deep inside, and texts me the parts that matter.
@@ -107,7 +107,7 @@ export default function EssayPage() {
           It&rsquo;s a little AI sitting on top of a lot of automation, and it earns its place for the same reason. Deciding whether a failure is transient noise or a real problem worth interrupting me for is a judgment call. Reading a dense report and pulling out what matters is a language call. Those are the model&rsquo;s jobs. Running the deploys, keeping time, moving the files, none of that is its job, and it doesn&rsquo;t try. It watches the machinery and speaks up when a human should. A little AI, watching AI and automation and email, staying quiet until quiet is the wrong answer.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Why the confusion costs money</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why the Confusion Costs Money</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Now put my two clients back in the picture. When you reach for a model to do deterministic work, you pay for it four ways. First in tokens, real recurring money, for what cron does free. Then in non-determinism: the same input starts producing different outputs, so nothing tests cleanly anymore. Speed goes too, a 30-millisecond command swapped for a 30-second call. And the failure modes pile up: rate limits, bad days, a vendor outage, none of which happen to a shell script.

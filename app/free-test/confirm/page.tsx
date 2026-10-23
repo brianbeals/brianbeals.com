@@ -12,7 +12,7 @@ import { confirmFreeTest } from "../actions";
 // there, and /free-test/confirmed says so.
 
 export const metadata: Metadata = {
-  title: { absolute: "Confirm your free check | Brian Beals, LLC" },
+  title: { absolute: "Confirm Your Free Check | Brian Beals, LLC" },
   robots: { index: false, follow: false },
 };
 
@@ -34,7 +34,7 @@ export default async function Confirm({
     return (
       <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
         <article className="max-w-2xl mx-auto">
-          <PageHeading>This link is incomplete</PageHeading>
+          <PageHeading>This Link Is Incomplete</PageHeading>
           <p className={p}>
             Copy the whole link from the confirmation email into your browser, or{" "}
             <Link href="/free-test" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>
@@ -50,7 +50,7 @@ export default async function Confirm({
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-2xl mx-auto">
-        <PageHeading>Confirm your free check</PageHeading>
+        <PageHeading>Confirm Your Free Check</PageHeading>
         {problem === "send" ? (
           <div className="doc-note stop bg-white mb-6">
             <p>

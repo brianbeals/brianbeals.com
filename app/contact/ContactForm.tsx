@@ -43,7 +43,7 @@ export default function ContactForm({ canSend }: { canSend: boolean }) {
     if (state.status === "invalid") summaryRef.current?.focus();
     if (state.status === "sent") {
       doneRef.current?.focus();
-      document.title = "Message received | Brian Beals, LLC";
+      document.title = "Message Received | Brian Beals, LLC";
       track("contact_submitted");
     }
   }, [state]);
@@ -60,7 +60,7 @@ export default function ContactForm({ canSend }: { canSend: boolean }) {
     return (
       <div>
         <SubHeading level={2} ref={doneRef} tabIndex={-1} spacing="mt-0 mb-3">
-          Message received
+          Message Received
         </SubHeading>
         <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
           Brian will reply within one business day.

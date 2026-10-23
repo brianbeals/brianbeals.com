@@ -64,7 +64,7 @@ export default function VoiceCritiquePage() {
 
         <PromptCopy />
 
-        <SectionHeading>Seeing the result</SectionHeading>
+        <SectionHeading>Seeing the Result</SectionHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Where the critique renders depends on the tool. Claude.ai shows the HTML inline as an
           artifact. Gemini, ChatGPT, and Copilot return the HTML as source instead of rendering it,
@@ -72,7 +72,7 @@ export default function VoiceCritiquePage() {
           in any browser to see the styled result.
         </p>
 
-        <SectionHeading>The full version</SectionHeading>
+        <SectionHeading>The Full Version</SectionHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The prompt is the accessible path. The full version is a Claude Code skill that reads files
           directly, computes readability instead of estimating it, writes the HTML to disk with no

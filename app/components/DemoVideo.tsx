@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { useEffect, useRef, useState } from "react";
 import { INTRO, NOTE, SCENES } from "@/app/free-test/transcript";
 import { LENGTH, LINE, LINE_CLASS } from "./demoLength";
@@ -69,7 +70,12 @@ export default function DemoVideo({
           playsInline
           aria-labelledby={labelledBy}
           aria-label={label}
-          onPlay={() => setPlayed(true)}
+          onPlay={() => {
+            // First play on this page only, not each resume: "demo_play" in Vercel Web
+            // Analytics, one of the three events behind the 2026-10-23 CTA comparison.
+            if (!played) track("demo_play", { page: window.location.pathname });
+            setPlayed(true);
+          }}
           className="block w-full h-auto aspect-video rounded-sm border bg-black"
           style={{ borderColor: "var(--rule)" }}
         >

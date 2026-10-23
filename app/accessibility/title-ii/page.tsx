@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BookCallLink from "@/app/components/BookCallLink";
 import PageHeading from "@/app/components/PageHeading";
 import SectionHeading from "@/app/components/SectionHeading";
 import SubHeading from "@/app/components/SubHeading";
@@ -55,10 +56,10 @@ const link = "underline underline-offset-4 font-semibold";
 const list = "list-disc pl-6 space-y-3 mb-6 text-base sm:text-lg leading-relaxed text-neutral-800";
 
 const COMPETENCIES: [string, string][] = [
-  ["Title II readiness assessment", "Keyboard, screen reader, and automated testing, delivered as a VPAT 2.5 ACR and a roadmap."],
-  ["Document inventory and triage", "Every PDF sorted into retire, replace, remediate, or leave, delivered as a biddable work order."],
-  ["Program and policy setup", "Accessibility statement, coordinator, grievance procedure, and ACR-before-purchase language."],
-  ["Ongoing monitoring", "Recurring scans and an annual reassessment against the prior report."],
+  ["Title II Readiness Assessment", "Keyboard, screen reader, and automated testing, delivered as a VPAT 2.5 ACR and a roadmap."],
+  ["Document Inventory and Triage", "Every PDF sorted into retire, replace, remediate, or leave, delivered as a biddable work order."],
+  ["Program and Policy Setup", "Accessibility statement, coordinator, grievance procedure, and ACR-before-purchase language."],
+  ["Ongoing Monitoring", "Recurring scans and an annual reassessment against the prior report."],
 ];
 
 const BUY: [string, string][] = [
@@ -108,7 +109,7 @@ export default function AccessibilityTitleII() {
 
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on white. */}
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance dates</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance Dates</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Public entities serving 50,000 or more</dt>
             <dd className="mb-3 font-mono">April 26, 2027</dd>
@@ -121,7 +122,7 @@ export default function AccessibilityTitleII() {
           </p>
         </div>
 
-        <SectionHeading>Who this is for</SectionHeading>
+        <SectionHeading>Who This Is For</SectionHeading>
 
         <p className={body}>Cities, counties, school districts, and special districts.</p>
 
@@ -132,7 +133,7 @@ export default function AccessibilityTitleII() {
           for or reach a service.
         </p>
 
-        <SectionHeading>What I do</SectionHeading>
+        <SectionHeading>What I Do</SectionHeading>
 
         {COMPETENCIES.map(([name, text]) => (
           <div key={name}>
@@ -152,7 +153,7 @@ export default function AccessibilityTitleII() {
           .
         </p>
 
-        <SectionHeading>Why this practice</SectionHeading>
+        <SectionHeading>Why This Practice</SectionHeading>
 
         <ul className={list}>
           <li>Evaluation only, never the remediation: no self-assessment.</li>
@@ -165,7 +166,7 @@ export default function AccessibilityTitleII() {
           <li>No product to sell: no overlay, no platform license, no per-page quota.</li>
         </ul>
 
-        <SectionHeading>The proof</SectionHeading>
+        <SectionHeading>The Proof</SectionHeading>
 
         <ul className={list}>
           <li>
@@ -184,7 +185,7 @@ export default function AccessibilityTitleII() {
         </ul>
 
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability Statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your procurement file, written for ADA Title II.
           </p>
@@ -210,7 +211,7 @@ export default function AccessibilityTitleII() {
           </p>
         </div>
 
-        <SectionHeading>How to buy</SectionHeading>
+        <SectionHeading>How to Buy</SectionHeading>
 
         <dl className="text-base sm:text-lg leading-relaxed mb-8 text-neutral-800">
           {BUY.map(([k, v]) => (
@@ -253,12 +254,12 @@ export default function AccessibilityTitleII() {
           </div>
         </dl>
 
-        <SectionHeading>Getting started</SectionHeading>
+        <SectionHeading>Getting Started</SectionHeading>
 
         <p className={body}>
-          <Link href="/contact" className={link} style={{ color: "var(--link)" }}>
+          <BookCallLink placement="title-ii" className={link} style={{ color: "var(--link)" }}>
             Book a 15-minute call
-          </Link>
+          </BookCallLink>
           , write to{" "}
           <a href="mailto:brian@brianbeals.com" className="underline underline-offset-4" style={{ color: "var(--link)" }}>
             brian@brianbeals.com

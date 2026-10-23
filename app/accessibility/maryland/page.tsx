@@ -82,7 +82,7 @@ export default function AccessibilityMaryland() {
         {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
             white. Body ink on it clears comfortably. */}
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Who this reaches</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Who This Reaches</SubHeading>
           <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
             <dt className="font-semibold">Applies to</dt>
             <dd className="mb-3">
@@ -110,7 +110,7 @@ export default function AccessibilityMaryland() {
           </p>
         </div>
 
-        <SectionHeading>The 18-and-12 sequence</SectionHeading>
+        <SectionHeading>The 18-and-12 Sequence</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           For awards on or after January 1, 2020,{" "}
@@ -144,7 +144,7 @@ export default function AccessibilityMaryland() {
           carries no dollar ceiling in the statute. That gap is the part worth pricing.
         </p>
 
-        <SectionHeading>Why it never shows up in a solicitation</SectionHeading>
+        <SectionHeading>Why It Never Shows Up in a Solicitation</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           A keyword search of eMMA, Maryland&apos;s procurement portal, for
@@ -155,7 +155,7 @@ export default function AccessibilityMaryland() {
           just as easy to forget you&apos;re holding it.
         </p>
 
-        <SectionHeading>The vehicle</SectionHeading>
+        <SectionHeading>The Vehicle</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           CATS+ is Maryland&apos;s IT services vehicle, BPO 060B2490023, running through
@@ -178,7 +178,7 @@ export default function AccessibilityMaryland() {
           status. The VB number is the credential.
         </p>
 
-        <SectionHeading>What I do</SectionHeading>
+        <SectionHeading>What I Do</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The work is conformance evaluation, not remediation: VPAT 2.5 and
@@ -190,7 +190,7 @@ export default function AccessibilityMaryland() {
           self-assessment, not independent evidence.
         </p>
 
-        <SectionHeading>The proof</SectionHeading>
+        <SectionHeading>The Proof</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Maryland&apos;s own regulations, at{" "}
@@ -220,7 +220,7 @@ export default function AccessibilityMaryland() {
           own on display.
         </p>
 
-        <SectionHeading>The firm</SectionHeading>
+        <SectionHeading>The Firm</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Brian Beals, LLC. Service-disabled veteran-owned small business, based in
@@ -255,7 +255,7 @@ export default function AccessibilityMaryland() {
         </dl>
 
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability statement</SubHeading>
+          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability Statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
             One page for your procurement file, written for Maryland.
           </p>
@@ -281,7 +281,7 @@ export default function AccessibilityMaryland() {
           </p>
         </div>
 
-        <SectionHeading>Getting started</SectionHeading>
+        <SectionHeading>Getting Started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Twenty minutes is usually enough to tell whether this fits your capture plan

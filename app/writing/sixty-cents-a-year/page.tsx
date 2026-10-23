@@ -63,7 +63,7 @@ export default function EssayPage() {
           Summer is winding down for most of the country. In Florida it just gets slightly less aggressive about it, and I&rsquo;ve spent the week thinking about ice cream: six tubs since February, two of them free. The thing that found the free ones costs sixty cents a year to run.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">What it actually does</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">What It Actually Does</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           It&rsquo;s a cron job that pulls the weekly grocery ad, filters it, matches what&rsquo;s on sale against what I actually buy, and emails me when something lands. Those are four steps a computer has done reliably since before I had a driver&rsquo;s license, and there&rsquo;s exactly one model call in the whole thing, sitting at the very end.
@@ -77,7 +77,7 @@ export default function EssayPage() {
           On August 10 the email came. I walked out with five tubs and paid for three.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Why there&rsquo;s a model in there at all</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why There&rsquo;s a Model in There at All</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Because of lines like this one, printed on the July receipt:
@@ -94,7 +94,7 @@ export default function EssayPage() {
           You can&rsquo;t write an assertion for that, because a rule doesn&rsquo;t know whether it&rsquo;s ice cream or a typo. Every receipt invents new abbreviations for things it has printed a thousand times before. So one model call reads the line, turns it into a brand and a product and a price, and hands it back, and then the boring machinery takes over again.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The part I&rsquo;ve stopped trying to resolve</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Part I&rsquo;ve Stopped Trying to Resolve</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           There is an enormous conversation happening right now about enterprise AI. I&rsquo;m in a lot of it, most weeks, with people who are serious about it.
@@ -108,7 +108,7 @@ export default function EssayPage() {
           Both of those are true at the same time, and I&rsquo;ve given up trying to make them resolve into something tidier.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The thing has a name</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Thing Has a Name</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           When I mentioned the cost in a comment thread a couple of weeks ago, someone replied: &ldquo;There&rsquo;s still room for expert systems!&rdquo;
@@ -122,7 +122,7 @@ export default function EssayPage() {
           Deterministic rules never stopped working. They stopped being fashionable, which is a different thing, and fashion comes back around.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">What it saved, which is almost nothing</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">What It Saved, Which Is Almost Nothing</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           On ice cream, the robot has saved me $13.10.

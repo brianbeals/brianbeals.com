@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 // browser tabs, and anyone scanning a history list, gets no way to tell them
 // apart.
 export const metadata: Metadata = {
-  title: "Sign in | Brian Beals",
+  title: "Sign In | Brian Beals",
   robots: { index: false, follow: false },
 };
 

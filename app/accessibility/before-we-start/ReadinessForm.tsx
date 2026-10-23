@@ -47,7 +47,7 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
     if (state.status === "invalid") summaryRef.current?.focus();
     if (state.status === "sent") {
       doneRef.current?.focus();
-      document.title = "Checklist received | Brian Beals, LLC";
+      document.title = "Checklist Received | Brian Beals, LLC";
       // A conversion in Vercel Web Analytics (track, no new script).
       track("readiness_submitted");
     }
@@ -57,7 +57,7 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
     return (
       <div className="ck-received">
         <SubHeading ref={doneRef} tabIndex={-1} spacing="mt-0 mb-3">
-          Checklist received
+          Checklist Received
         </SubHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-4 text-neutral-800">
           Brian will reply within one business day. Your answers are below; print them for

@@ -67,7 +67,7 @@ export default function EssayPage() {
           Then it landed. My father joined the Michigan State Police in 1968. His first patrols were in cars with that tray on the dash.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Somebody&rsquo;s automation project</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Somebody&rsquo;s Automation Project</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           That tray was somebody&rsquo;s automation project. Some sergeant watched officers squint at a clipboard under the dome light, or skip the list entirely after dark, and decided the car should solve it. A bracket, a bulb, a tray. Fleet-wide, problem solved.
@@ -77,7 +77,7 @@ export default function EssayPage() {
           It worked so well it disappeared. Fifty years later, the son of a man who read those sheets on night patrol couldn&rsquo;t tell what it was for. That&rsquo;s the best outcome an automation can have, and it&rsquo;s also the first clue about how this kind of work behaves.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The floor keeps rising</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Floor Keeps Rising</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Solve the squinting problem and the next constraint surfaces. Now the plates are readable at forty miles an hour, and the radio becomes the problem: switch channels to talk to the next district and you&rsquo;ve gone deaf to your own dispatcher. Fix that, and the next one is waiting. The radio is bolted to the car, so on a traffic stop the mic gets hung out the window with the volume cranked, and everyone on the street hears your business. Hand the officer a portable, and the paperwork becomes the bottleneck. Keep pulling that thread for a few decades and you arrive at the in-car computer that replaced the tray, the bulb, and the hot sheet itself.
@@ -95,7 +95,7 @@ export default function EssayPage() {
           That&rsquo;s the engine: every automation raises the floor of what&rsquo;s normal, and your sense of friction resets to the new floor. The job was never done, it&rsquo;s just that the baseline moved.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">A treadmill is the wrong picture</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">A Treadmill Is the Wrong Picture</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The easy read on that engine is a treadmill: fifty years of running and the work is still there, so what was the point. I&rsquo;ve heard the same sigh from people who build software tooling and people who build workshop jigs. The backlog never shrinks. The tinkering never ends.
@@ -105,7 +105,7 @@ export default function EssayPage() {
           A ladder is the right picture. The next rung only becomes visible once you&rsquo;re standing on the one below it. Nobody in 1968 could have written the requirement for a mobile data terminal; that idea wasn&rsquo;t reachable from the ground. What they could see was exactly one rung: read the list at night without stopping the car. Standing on that rung, the radio problem came into focus. Standing on the radio, the paperwork did. From the inside, progress feels like a clearer view of the next problem. That&rsquo;s the proof you&rsquo;re climbing, and the reason it never feels like arriving.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Compounds or accumulates</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Compounds or Accumulates</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The tray can&rsquo;t teach the part that took me longest to learn: not all of it counts.
@@ -127,7 +127,7 @@ export default function EssayPage() {
           The test that separates them fits into one question: am I removing friction I hit this month, or friction I imagine I might hit someday? A month is the right window. Long enough that the sample is real, short enough that memory stays honest. The question is portable, too. It works on the shell setup tuned for a job you left a year ago, and on the beautiful rack of workshop jigs for cuts you&rsquo;ve never made. If the friction is real and recent, build the tray. If you&rsquo;re building against a hypothetical, you&rsquo;re decorating.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The day it ends</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Day It Ends</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           The tray didn&rsquo;t survive, and it didn&rsquo;t fail. It got buried under fifty years of fixes, each one invisible from the rung before it, until a stranger had to ask what it was. Everything useful you build is headed for the same retirement, and the next constraint is already in the car with you.

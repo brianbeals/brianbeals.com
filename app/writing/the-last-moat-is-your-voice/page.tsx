@@ -67,7 +67,7 @@ export default function EssayPage() {
           The content is fine. Grammatically clean, on-message, hits the right beats. The quality isn&rsquo;t the problem. The brand is, and most companies haven&rsquo;t priced it in yet.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Speed and cost stopped being the differentiator</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Speed and Cost Stopped Being the Differentiator</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Two years ago, &ldquo;AI lets us ship ten times faster&rdquo; was a real selling point. You could win meetings with it. In 2026 it&rsquo;s table stakes. Every competitor has the same models, the same agents, the same workflows, the same prompt libraries pulled from the same Substacks. The question moved from <em>can we produce this</em> to <em>does this still sound like us when we do</em>.
@@ -77,7 +77,7 @@ export default function EssayPage() {
           Most enterprise marketing budgets are still optimizing for the first question. The customers are already grading on the second.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Your AI sounds exactly like everyone else&rsquo;s AI</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Your AI Sounds Exactly Like Everyone Else&rsquo;s AI</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Pull ten LinkedIn posts from ten different B2B companies this week. The vocabulary repeats. &ldquo;Leverage.&rdquo; &ldquo;Unlock.&rdquo; &ldquo;Empower.&rdquo; &ldquo;Seamless.&rdquo; &ldquo;Robust.&rdquo; &ldquo;Cutting-edge.&rdquo; &ldquo;Game-changing.&rdquo; Five of these in 400 words, every time, every company.
@@ -95,7 +95,7 @@ export default function EssayPage() {
           The companies producing this content think they&rsquo;re producing thought leadership. They&rsquo;re producing the wallpaper version. The reader scrolls past three of them on a coffee break and remembers none.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">Why this kills brand equity faster than people realize</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">Why This Kills Brand Equity Faster Than People Realize</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Brand recognition requires distinctiveness. Distinctiveness can&rsquo;t be produced by a tool that thousands of other companies are also using, the same way, with the same defaults. The math is brutal: you&rsquo;re paying for the same model your competitor is paying for, you&rsquo;re getting output in the same statistical shape your competitor is getting, and you&rsquo;re spending real money to make yourself sound interchangeable with them.
@@ -109,7 +109,7 @@ export default function EssayPage() {
           The companies that figure this out two years late will spend the following five years trying to claw the voice back.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">What discipline actually looks like</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">What Discipline Actually Looks Like</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Four practices, in order of how hard they are to actually do.
@@ -135,7 +135,7 @@ export default function EssayPage() {
           I spend my days helping enterprise organizations get AI past the pilot stage, and this is a common conversation I&rsquo;m having with executive buyers right now. The CIO and the CMO walk into the same room about it for the first time, sometimes ever.
         </p>
 
-        <SubHeading level={2} spacing="mt-12 mb-4">The bet</SubHeading>
+        <SubHeading level={2} spacing="mt-12 mb-4">The Bet</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Everyone adopted AI. The companies that win the next five years will be the ones who held the line on voice while the pressure to ship faster was strongest. Speed is a settled question now. Voice is the next one.

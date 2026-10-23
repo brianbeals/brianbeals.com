@@ -46,7 +46,7 @@ export default async function Approve({
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-2xl mx-auto">
-        <PageHeading>Approve this report</PageHeading>
+        <PageHeading>Approve This Report</PageHeading>
         {one("problem") === "send" ? (
           <div className="doc-note stop bg-white mb-6">
             <p>

@@ -24,6 +24,8 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
   },
 };
+// Third person since 2026-10-23 (SBDC review). The first-person voice lives in the
+// signed founder note under "Why I Do This" on the home page.
 export default function About() {
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
@@ -38,11 +40,11 @@ export default function About() {
             className="rounded-md shadow-sm"
           />
         </div>
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I run Brian Beals, LLC, an independent digital accessibility practice for government agencies, health centers, schools, and the vendors who sell to them.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Brian Beals founded Brian Beals, LLC, an independent digital accessibility practice for government agencies, health centers, schools, and the vendors who sell to them.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I test websites, apps, and documents against WCAG 2.1 AA and write the Accessibility Conformance Report that marks and evidences every criterion. For an agency with years of PDFs online, I inventory the documents and sort each one into retire, replace, remediate, or leave, so the remediation budget goes to the files people actually use.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">He tests websites, apps, and documents against WCAG 2.1 AA and writes the Accessibility Conformance Report that marks and evidences every criterion. For an agency with years of PDFs online, he inventories the documents and sorts each one into retire, replace, remediate, or leave, so the remediation budget goes to the files people actually use.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Evaluation only, never remediation. I don&apos;t sell the repair, so the report has no stake in what it finds.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Evaluation only, never remediation. The firm doesn&apos;t sell the repair, so the report has no stake in what it finds.</p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">Brian Beals, LLC is an SBA-certified service-disabled veteran-owned small business, a Florida Veteran Business Enterprise, and a Maryland Veteran-Owned Small Business Enterprise.</p>
 
@@ -52,20 +54,20 @@ export default function About() {
           </a>
           , or see{" "}
           <Link href="/accessibility" className="underline underline-offset-4 font-semibold" style={{ color: "var(--link)" }}>
-            what I test and what it costs
+            what Brian tests and what it costs
           </Link>
           .
         </p>
 
         <SectionHeading>Earlier</SectionHeading>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">I&apos;ve built three enterprise technology practices from a blank page. Before that, technical sales at Red Hat, Oracle, and MicroStrategy.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">He has built three enterprise technology practices from a blank page. Before that, he worked in technical sales at Red Hat, Oracle, and MicroStrategy.</p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">U.S. Navy electronics technician, honorably discharged. What I took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why I'd rather lose a deal than sell a customer something that won't deliver.</p>
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">He served as a U.S. Navy electronics technician and was honorably discharged. What he took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why he'd rather lose a deal than sell a customer something that won't deliver.</p>
 
         {/* The full project write-ups, moved from the home page 2026-10-12. The
             home page keeps one sentence each; both read app/projects.ts. */}
-        <SectionHeading>Building in public</SectionHeading>
+        <SectionHeading>Building in Public</SectionHeading>
 
         <ProjectList text="description" />
 

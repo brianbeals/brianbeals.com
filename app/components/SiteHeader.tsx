@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BookCallLink from "./BookCallLink";
 import HeaderMenu from "./HeaderMenu";
 
 /**
@@ -40,12 +41,12 @@ export default function SiteHeader() {
           <span>Brian Beals, LLC</span>
         </Link>
         <HeaderMenu />
-        <Link href="/contact" className="site-cta btn-cta rounded font-semibold hover:underline underline-offset-4">
+        <BookCallLink placement="header" className="site-cta btn-cta rounded font-semibold hover:underline underline-offset-4">
           <span className="cta-long">Book a 15-minute call</span>
           {/* Only one of the two shows at a time (display: none on the other), so
               the accessible name is always the visible label (2.5.3). */}
           <span className="cta-short">Book a call</span>
-        </Link>
+        </BookCallLink>
       </div>
     </header>
   );

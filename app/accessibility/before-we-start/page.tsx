@@ -180,7 +180,7 @@ export default function BeforeWeStart() {
           so there are no surprises after a number has been quoted.
         </p>
 
-        <SectionHeading>The one that changes the price most</SectionHeading>
+        <SectionHeading>The One That Changes the Price Most</SectionHeading>
 
         <div className="doc-note stop bg-white text-base sm:text-lg leading-relaxed text-neutral-800">
           <p className="mb-4">
@@ -304,7 +304,7 @@ export default function BeforeWeStart() {
         </table>
 
         <section className="ck-section print-break" aria-labelledby="readiness">
-          <SectionHeading id="readiness">Readiness checklist</SectionHeading>
+          <SectionHeading id="readiness">Readiness Checklist</SectionHeading>
 
           <p className={body}>
             Complete this before a fee is quoted: send it below, or print it and email it to{" "}
@@ -322,7 +322,7 @@ export default function BeforeWeStart() {
           <ReadinessForm canSend={Boolean(process.env.RESEND_API_KEY)} />
         </section>
 
-        <SectionHeading>What happens after this comes back</SectionHeading>
+        <SectionHeading>What Happens After This Comes Back</SectionHeading>
 
         <ol className="list-decimal pl-6 space-y-3 mb-6 text-base sm:text-lg leading-relaxed text-neutral-800">
           <li>A short call to resolve anything marked unknown, particularly the allowlist question.</li>

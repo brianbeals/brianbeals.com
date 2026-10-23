@@ -13,7 +13,8 @@ import { LENGTH, LENGTH_SPOKEN, LINE, LINE_CLASS } from "./demoLength";
 // alt text covers both, so the second is empty.
 //
 // While the demo is up (`demo`, the free test being on, since the video's end card
-// points at /free-test), a primary "Hear both" button sits under them. Its name
+// points at /free-test), a "Hear both" button sits under them, styled as a text
+// link since 2026-10-23 so the free check is the hero's one primary button. Its name
 // starts with its visible text, "Hear both (1:54)", so it meets 2.5.3 Label in Name,
 // then gives the length in words. Pressing it
 // mounts the demo player in the covers' place and plays it with focus on it; that is
@@ -122,7 +123,8 @@ export default function HeroDemo({ demo }: { demo: boolean }) {
             type="button"
             onClick={() => setStart((n) => n + 1)}
             aria-label={`Hear both (${LENGTH}), play the ${LENGTH_SPOKEN} demo`}
-            className="btn-cta mt-4 inline-flex items-center gap-2 rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+            className={`mt-4 inline-flex items-center gap-2 font-semibold ${link}`}
+            style={{ color: "var(--link)" }}
           >
             <svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
               <path d="M4 2.5v11l9-5.5z" />

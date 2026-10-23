@@ -33,7 +33,7 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={submit} className="space-y-4">
+    <form method="post" onSubmit={submit} className="space-y-4">
       {/* 3.3.2 / 4.1.2. A placeholder disappears on first keystroke and is not a
           reliable accessible name, so the field carries a real label. */}
       <label htmlFor="site-password" className="sr-only">

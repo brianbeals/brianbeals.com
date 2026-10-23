@@ -124,7 +124,7 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
   );
 
   return (
-    <form onSubmit={onSubmit} noValidate className="max-w-xl">
+    <form method="post" onSubmit={onSubmit} noValidate className="max-w-xl">
       {/* The QR or link the visitor arrived by (?ref=), for the request event. */}
       {source ? <input type="hidden" name="ref" value={source} /> : null}
       <Script

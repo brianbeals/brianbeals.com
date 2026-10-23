@@ -179,7 +179,7 @@ export default function ReadinessForm({ canSend }: { canSend: boolean }) {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="ck-form">
+    <form method="post" onSubmit={onSubmit} noValidate className="ck-form">
       {errorKeys.length ? (
         <ErrorSummary
           ref={summaryRef}

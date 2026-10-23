@@ -109,6 +109,10 @@ success states, in light and dark, and the page fits 320px (Turnstile drops to i
 
 Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4. Hosted on Vercel, DNS at Namecheap.
 
+## Security headers
+
+Since 2026-10-23 `next.config.ts` sends these on every route: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` (the desk keeps `same-origin` through a later rule, since a config header replaces a route handler's own), `Permissions-Policy` denying camera, microphone and geolocation, `X-Frame-Options: DENY`, `Cross-Origin-Opener-Policy: same-origin`, and a `Content-Security-Policy-Report-Only`. The CSP is report-only, not enforced: violations show in the browser console and nothing is blocked. It allows same-origin everything plus Cloudflare Turnstile's script and frame (`challenges.cloudflare.com`), with `'unsafe-inline'` for the JSON-LD, the pre-paint script and inline styles. A new third-party script, frame or fetch goes into that list before it ships, or it logs a violation, and would break once the policy is enforced. On 2026-10-23 a sweep of the 41 sitemap pages plus `/free-test/sample`, `/login` and `/tools/voice-critique` logged no violations on a local production build; the sample report's absolute `https://brianbeals.com/bb-mark.png` counts as same-origin only in production. All four forms (`/contact`, `/free-test`, the readiness checklist, `/login`) carry `method="post"`, so a submit before the JavaScript loads never puts their values in the URL. `public/.well-known/security.txt` (RFC 9116) names brian@brianbeals.com and expires 2027-10-23; renew the `Expires` line before then.
+
 ## Local dev
 
 ```bash

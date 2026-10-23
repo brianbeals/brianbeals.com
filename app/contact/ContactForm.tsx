@@ -114,7 +114,7 @@ export default function ContactForm({ canSend }: { canSend: boolean }) {
   };
 
   return (
-    <form onSubmit={onSubmit} noValidate className="max-w-xl">
+    <form method="post" onSubmit={onSubmit} noValidate className="max-w-xl">
       {errorKeys.length ? (
         <ErrorSummary
           ref={summaryRef}

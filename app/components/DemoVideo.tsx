@@ -51,6 +51,13 @@ export default function DemoVideo({
 }) {
   const [played, setPlayed] = useState(false);
   const video = useRef<HTMLVideoElement>(null);
+  // demo_progress milestones already sent from this player (2026-10-24).
+  const sent = useRef(new Set<number>());
+  const progress = (percent: number) => {
+    if (sent.current.has(percent)) return;
+    sent.current.add(percent);
+    track("demo_progress", { percent, page: window.location.pathname });
+  };
   useEffect(() => {
     const v = video.current;
     if (!start || !v) return;
@@ -76,6 +83,14 @@ export default function DemoVideo({
             if (!played) track("demo_play", { page: window.location.pathname });
             setPlayed(true);
           }}
+          // 25, 50 and 75 as playback passes each mark (a seek past one counts), 100 on
+          // the end; each once per page load.
+          onTimeUpdate={(e) => {
+            const v = e.currentTarget;
+            if (!v.duration) return;
+            for (const p of [25, 50, 75]) if (v.currentTime / v.duration >= p / 100) progress(p);
+          }}
+          onEnded={() => progress(100)}
           className="block w-full h-auto aspect-video rounded-sm border bg-black"
           style={{ borderColor: "var(--rule)" }}
         >

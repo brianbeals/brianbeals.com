@@ -1,9 +1,9 @@
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
 import HeaderSwitch from "./components/HeaderSwitch";
 import SbaMark from "./components/SbaMark";
+import SiteAnalytics, { TrackingNote } from "./components/SiteAnalytics";
 import "./globals.css";
 
 const sourceSerif = Source_Serif_4({
@@ -233,9 +233,10 @@ export default function RootLayout({
             <Link href="/sitemap-page" className="underline underline-offset-4 hover:no-underline">
               Site map
             </Link>
+            <TrackingNote />
           </div>
         </footer>
-        <Analytics />
+        <SiteAnalytics />
       </body>
     </html>
   );

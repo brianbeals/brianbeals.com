@@ -105,6 +105,23 @@ through, 19 of 19 checks; axe (WCAG 2.1 A and AA) found nothing on the new pages
 success states, in light and dark, and the page fits 320px (Turnstile drops to its compact size below
 380px).
 
+## Analytics events
+
+Vercel Web Analytics, no other script. `<Analytics />` and the engagement timer live in `app/components/SiteAnalytics.tsx`, mounted once in `app/layout.tsx`. Custom events show in the dashboard only on a Pro or Enterprise plan. Every event:
+
+| Event | Properties | Fires |
+|---|---|---|
+| `contact_submitted` | none | `/contact` form sent (`app/contact/ContactForm.tsx`) |
+| `readiness_submitted` | none | readiness checklist sent (`app/accessibility/before-we-start/ReadinessForm.tsx`) |
+| `free_check_submitted` | none | `/free-test` form reaches "Check Your Email" (`app/free-test/FreeTestForm.tsx`) |
+| `book_call_click` | `placement`: `header`, `home-hero` or `title-ii` | a "Book a 15-minute call" link (`app/components/BookCallLink.tsx`) |
+| `demo_play` | `page`: the path | first play of the demo video on a page, not a resume (`app/components/DemoVideo.tsx`) |
+| `demo_progress` | `percent`: 25, 50, 75 or 100; `page`: the path | playback passes each quarter (a seek past one counts), 100 on the end; each once per page load |
+| `engaged_30s` | `page`: the path | the tab has been visible 30 seconds in total on one page view; hidden time doesn't count |
+| `engaged_120s` | `page`: the path | the same at 120 seconds |
+
+**Owner opt-out.** Any URL with `?notrack=1` sets `localStorage` `bb_notrack=1` on that browser, and `?notrack=0` clears it. While it is set, `beforeSend` drops every page view and event, and the footer shows "Tracking off on this browser" after the site map link. It is per browser, so set it on each one. If storage is blocked, only a page whose URL carries `?notrack=1` is dropped.
+
 ## Stack
 
 Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4. Hosted on Vercel, DNS at Namecheap.

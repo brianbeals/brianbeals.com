@@ -39,7 +39,7 @@ export const orgKey = (v: string) => (ORGS.some(([k]) => k === v) ? v : "");
 
 /* Where the visitor came from, from the page's ?ref= (a QR on a capability
    statement or card: cap-titleii, cap-healthcare, cap-federal, cap-maryland,
-   card). Passed through to the request event and logged by the engine; anything
+   cap-nonprofit, card). Passed through to the request event and logged by the engine; anything
    not shaped like a short slug is dropped. Same check as the engine's REF. */
 export const refKey = (v: string) => (/^[a-z0-9][a-z0-9-]{0,39}$/.test(v) ? v : "");
 

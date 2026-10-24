@@ -49,6 +49,11 @@ const STATIC_PAGES: StaticEntry[] = [
   { path: "/capability-statement-accessibility-federal.html", priority: 0.5, changeFrequency: "monthly" },
   { path: "/capability-statement-accessibility-healthcare.html", priority: 0.5, changeFrequency: "monthly" },
   { path: "/capability-statement-accessibility-maryland.html", priority: 0.5, changeFrequency: "monthly" },
+  // The HHS-funded nonprofit statement (2026-10-24), the one PDF listed here: it
+  // has no program page, so /documents and the two Section 504 callouts are its
+  // only links.
+  { path: "/capability-statement-accessibility-nonprofit.html", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf", priority: 0.4, changeFrequency: "monthly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },

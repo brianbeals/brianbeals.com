@@ -20,12 +20,12 @@ import PageHeading from "@/app/components/PageHeading";
 export const metadata: Metadata = {
   title: { absolute: "Capability Statements | Brian Beals, LLC" },
   description:
-    "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+    "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
   alternates: { canonical: "/documents" },
   openGraph: {
     title: "Capability Statements | Brian Beals, LLC",
     description:
-      "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+      "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
     url: "/documents",
     type: "website",
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Capability Statements | Brian Beals, LLC",
     description:
-      "Capability statements for ADA Title II, Section 504, Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+      "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
   },
 };
 
@@ -55,6 +55,15 @@ const docs: Doc[] = [
     html: "/capability-statement-accessibility-healthcare.html",
     pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Healthcare.pdf",
     thumb: "/thumbs/capability-statement-accessibility-healthcare.png",
+  },
+  // Published 2026-10-24. No program page of its own; /accessibility/healthcare
+  // covers the rule.
+  {
+    name: "Section 504 for HHS-Funded Nonprofits",
+    note: "Aging services, early learning and Head Start, behavioral health.",
+    html: "/capability-statement-accessibility-nonprofit.html",
+    pdf: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf",
+    thumb: "/thumbs/capability-statement-accessibility-nonprofit.png",
   },
   {
     name: "ADA Title II Digital Accessibility",

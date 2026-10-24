@@ -418,7 +418,7 @@ export default function Accessibility() {
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
           <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability Statement</SubHeading>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
-            One page each, for your procurement file. Four, because the rule that matters
+            One page each, for your procurement file. Five, because the rule that matters
             depends on who is buying. These two cover the practice:
           </p>
           <ul className="mb-4 space-y-3">
@@ -451,15 +451,23 @@ export default function Accessibility() {
             </li>
           </ul>
           <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
-            Two more are written for a specific rule and live with it:{" "}
+            Three more are written for a specific rule and live with it:{" "}
             <Link
               href="/accessibility/healthcare"
               className="underline underline-offset-4 font-semibold"
               style={{ color: "#22688F" }}
             >
               Section 504 for healthcare
-            </Link>{" "}
-            and{" "}
+            </Link>
+            ,{" "}
+            <a
+              href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf"
+              className="underline underline-offset-4 font-semibold"
+              style={{ color: "#22688F" }}
+            >
+              Section 504 for HHS-funded nonprofits
+            </a>{" "}
+            (PDF), and{" "}
             <Link
               href="/accessibility/maryland"
               className="underline underline-offset-4 font-semibold"

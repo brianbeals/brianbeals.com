@@ -266,9 +266,21 @@ export default function AccessibilityHealthcare() {
                 framed for 45 CFR Part 84 and the May 11, 2027 date.
               </span>
             </li>
+            <li>
+              <a
+                href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf"
+                className="underline underline-offset-4 font-semibold"
+                style={{ color: "#22688F" }}
+              >
+                Section 504 for HHS-funded nonprofits
+              </a>
+              <span className="block text-base" style={{ color: "#1A1A2A" }}>
+                Aging services, early learning and Head Start, behavioral health.
+              </span>
+            </li>
           </ul>
           <p className="text-sm leading-relaxed" style={{ color: "#5B6470" }}>
-            A tagged PDF: structure tree present, language declared, headings in order,
+            Tagged PDFs: structure tree present, language declared, headings in order,
             table headers marked. A firm that hands you an inaccessible document about
             accessibility has told you something.
           </p>

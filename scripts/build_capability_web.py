@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the four accessibility capability statement web pages from the Letter one-pagers.
+"""Build the five accessibility capability statement web pages from the Letter one-pagers.
 
 The one-pagers in the LLC folder (Accessibility-Practice/*_ONEPAGE.html) are the source for both
 the PDFs (render_print_pdf.py --tight) and these pages, so the HTML and the PDF say the same thing.
@@ -32,6 +32,8 @@ PAGES = {
         ("capability-statement-accessibility-federal.html", "Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf"),
     "Capability_Statement_Accessibility_Healthcare_ONEPAGE.html":
         ("capability-statement-accessibility-healthcare.html", "Brian-Beals-LLC-Accessibility-Capability-Statement-Healthcare.pdf"),
+    "Capability_Statement_Accessibility_Nonprofit_ONEPAGE.html":
+        ("capability-statement-accessibility-nonprofit.html", "Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf"),
     "Capability_Statement_Accessibility_Maryland_ONEPAGE.html":
         ("capability-statement-accessibility-maryland.html", "Brian-Beals-LLC-Accessibility-Capability-Statement-Maryland.pdf"),
 }

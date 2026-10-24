@@ -108,9 +108,13 @@ export default function AccessibilityHealthcare() {
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Medicare and Medicaid participation is federal financial assistance for this
-          purpose, which is what pulls in nearly every provider in the country. Federal
-          procurement contracts and contracts of insurance or guaranty are not. This is
+          Medicaid and Medicare payments count as federal financial assistance for this
+          purpose. Medicare Part B was the long exception: HHS treated it as outside the
+          definition until May 2024, when it reversed that position for Section 504 and
+          the other civil rights laws it enforces (89 FR 37664). Practices whose only
+          federal money was Part B had until May 6, 2025 to comply. That is what pulls in
+          nearly every provider in the country. Federal procurement contracts and
+          contracts of insurance or guaranty are not federal financial assistance. This is
           the point most organizations get wrong, usually by assuming that not holding a
           grant means not being a recipient.
         </p>

@@ -269,8 +269,8 @@ export default function Accessibility() {
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Staying out of the repair work also gives you something useful: a specification your
           remediation vendor bids against, instead of a per-page quote you have no way to
-          check. I am happy to refer a partner for the repair. I will not be the one holding
-          both ends.
+          check. I am happy to refer a partner for the repair. I will not grade my own
+          work.
         </p>
 
         <SectionHeading>How the Evaluation Runs</SectionHeading>

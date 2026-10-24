@@ -188,7 +188,7 @@ export default function AccessibilityHealthcare() {
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           Staying out of the repair also gives you a specification your remediation
           vendor bids against, instead of a per-document quote you have no way to check.
-          I am happy to refer a partner for the repair. I will not hold both ends.
+          I am happy to refer a partner for the repair. I will not grade my own work.
         </p>
 
         <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>

@@ -13,10 +13,17 @@ import { LENGTH, LENGTH_SPOKEN, LINE, LINE_CLASS } from "./demoLength";
 // alt text covers both, so the second is empty.
 //
 // While the demo is up (`demo`, the free test being on, since the video's end card
-// points at /free-test), a "Hear both" button sits under them, styled as a text
-// link since 2026-10-23 so the free check is the hero's one primary button. Its name
-// starts with its visible text, "Hear both (1:54)", so it meets 2.5.3 Label in Name,
-// then gives the length in words. Pressing it
+// points at /free-test), the covers are the play control (2026-10-24): one <button>
+// holding both covers, a navy play circle centered over them (72px, 56px on a phone)
+// and the visible caption "Hear both (1:54)" under them, so a press anywhere on the
+// covers plays and there is one tab stop. The free check stays the hero's one filled
+// button; this one reads as a video, not a second call to action. Its name starts
+// with the caption, "Hear both (1:54)", so it meets 2.5.3 Label in Name, then gives
+// the length in words. The covers' alt text, which a button's name would swallow,
+// becomes its description. Hover and keyboard focus darken the circle and scale it
+// slightly (no scale under prefers-reduced-motion); focus also rings the circle white
+// then navy (11.6:1 against the white covers, and the white gap against the navy
+// circle), inside the site's own ring around the whole button. Pressing it
 // mounts the demo player in the covers' place and plays it with focus on it; that is
 // the viewer's own press, not autoplay. The covers stay in the same grid cell,
 // hidden, so the cell keeps their height and nothing below moves. Before playback
@@ -32,8 +39,7 @@ import { LENGTH, LENGTH_SPOKEN, LINE, LINE_CLASS } from "./demoLength";
 // The cross and the check carry the difference without color (1.4.1) and are hidden
 // from screen readers, which hear just the words. They are drawn, not the ✕ and ✓
 // characters, since axe returns a lone symbol as contrast "needs review". The covers
-// stay unlabeled. With the labels the covers went from 222px to 206px wide at 1440,
-// so "Hear both" still ends above the fold at 1440x900.
+// stay unlabeled. With the labels the covers went from 222px to 206px wide at 1440.
 const COVERS = [
   {
     src: "/home-hero-broken-page2.png",
@@ -49,7 +55,27 @@ const COVERS = [
   },
 ];
 
+const COVERS_ALT = "Two copies of the same city guide, side by side. They look identical.";
+
 const link = "underline underline-offset-4 hover:no-underline";
+
+// The two covers, with the first one's alt text when they stand alone, or none
+// inside the play button, whose description carries it.
+function covers(alt: boolean) {
+  return COVERS.map((c, i) => (
+    <Image
+      key={c.src}
+      src={c.src}
+      alt={alt && i === 0 ? COVERS_ALT : ""}
+      width={900}
+      height={1165}
+      preload
+      sizes="(min-width: 640px) 206px, calc(50vw - 32px)"
+      className="block w-full h-auto rounded-sm border shadow-lg"
+      style={{ borderColor: "var(--rule)" }}
+    />
+  ));
+}
 
 export default function HeroDemo({ demo }: { demo: boolean }) {
   const [start, setStart] = useState(0);
@@ -60,19 +86,37 @@ export default function HeroDemo({ demo }: { demo: boolean }) {
         <div
           className={`[grid-area:1/1] mx-auto grid w-full max-w-[444px] grid-cols-2 gap-x-4 sm:gap-x-8 ${playing ? "invisible" : ""}`}
         >
-          {COVERS.map((c, i) => (
-            <Image
-              key={c.src}
-              src={c.src}
-              alt={i === 0 ? "Two copies of the same city guide, side by side. They look identical." : ""}
-              width={900}
-              height={1165}
-              preload
-              sizes="(min-width: 640px) 206px, calc(50vw - 32px)"
-              className="block w-full h-auto rounded-sm border shadow-lg"
-              style={{ borderColor: "var(--rule)" }}
-            />
-          ))}
+          {demo ? (
+            <button
+              type="button"
+              onClick={() => setStart((n) => n + 1)}
+              aria-label={`Hear both (${LENGTH}), play the ${LENGTH_SPOKEN} demo`}
+              aria-describedby="hero-covers-desc"
+              className="group col-span-2 block w-full cursor-pointer rounded-sm outline-offset-4"
+            >
+              <span className="relative grid grid-cols-2 gap-x-4 sm:gap-x-8">
+                {covers(false)}
+                <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-14 w-14 sm:h-[72px] sm:w-[72px] items-center justify-center rounded-full bg-[#1E3A5F] shadow-[0_4px_14px_rgba(0,0,0,0.35)] motion-safe:transition-transform group-hover:bg-[#13263F] group-focus-visible:bg-[#13263F] motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:scale-110 group-focus-visible:shadow-[0_0_0_3px_#FFFFFF,0_0_0_6px_#1E3A5F]">
+                    <svg focusable="false" viewBox="0 0 24 24" className="ml-1 h-6 w-6 sm:h-8 sm:w-8" fill="#FFFFFF">
+                      <path d="M6 3.5v17l14-8.5z" />
+                    </svg>
+                  </span>
+                </span>
+              </span>
+              <span
+                className="mt-3 block text-base sm:text-lg font-semibold group-hover:underline underline-offset-4"
+                style={{ color: "var(--link)" }}
+              >
+                Hear both ({LENGTH})
+              </span>
+              <span id="hero-covers-desc" hidden>
+                {COVERS_ALT}
+              </span>
+            </button>
+          ) : (
+            covers(true)
+          )}
           <p className="col-span-2 mt-2 text-sm sm:text-base text-neutral-800">What a screen reader reads aloud:</p>
           {COVERS.map((c) => (
             <div key={c.src} className="mt-1">
@@ -119,19 +163,7 @@ export default function HeroDemo({ demo }: { demo: boolean }) {
       </div>
       {demo ? (
         <>
-          <button
-            type="button"
-            onClick={() => setStart((n) => n + 1)}
-            aria-label={`Hear both (${LENGTH}), play the ${LENGTH_SPOKEN} demo`}
-            className={`mt-4 inline-flex items-center gap-2 font-semibold ${link}`}
-            style={{ color: "var(--link)" }}
-          >
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
-              <path d="M4 2.5v11l9-5.5z" />
-            </svg>
-            Hear both ({LENGTH})
-          </button>
-          <p className={`mt-3 mx-auto ${LINE_CLASS}`}>{LINE}</p>
+          <p className={`mt-4 mx-auto ${LINE_CLASS}`}>{LINE}</p>
           {/* Hidden, not removed, once the player shows, so nothing below moves. */}
           <p className={`mt-2 mx-auto text-base ${playing ? "invisible" : ""}`}>
             <a href="/video/screen-reader-demo-transcript.txt" className={link} style={{ color: "var(--link)" }}>

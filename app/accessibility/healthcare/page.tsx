@@ -69,7 +69,7 @@ export default function AccessibilityHealthcare() {
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             The HHS final rule at 45 CFR Part 84 sets WCAG 2.1 Level AA as the standard
             for web content, mobile apps, and electronic documents. If you take Medicare,
-            Medicaid or an HHS grant, it reaches you.
+            Medicaid, or an HHS grant, it reaches you.
           </p>
         </div>
 

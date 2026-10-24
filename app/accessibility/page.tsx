@@ -345,24 +345,39 @@ export default function Accessibility() {
           whether the work is any good is to read one.
         </p>
 
-        <SectionHeading>Healthcare: Section 504</SectionHeading>
+        <SectionHeading>Section 504: Healthcare and HHS-Funded Nonprofits</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Healthcare organizations answer to a different rule with an earlier date. The
-          HHS final rule at <strong style={{ color: "var(--head)" }}>45 CFR Part 84</strong>{" "}
+          Organizations that receive HHS funding answer to a different rule with an earlier
+          date. The HHS rule at <strong style={{ color: "var(--head)" }}>45 CFR Part 84</strong>{" "}
           requires WCAG 2.1 Level AA by May 11, 2027 for recipients with 15 or more
-          employees, and it reaches anyone taking Medicare or Medicaid. Its
-          legacy-document exemption stops at any document a patient uses to apply for or
-          access a program, which puts the whole forms library back in scope.{" "}
-          <Link
-            href="/accessibility/healthcare"
-            className="underline underline-offset-4 font-semibold"
-            style={{ color: "var(--link)" }}
-          >
-            See how Section 504 applies to healthcare
-          </Link>
-          .
+          employees, and May 10, 2028 for smaller ones. It covers hospitals and health
+          centers, and also aging services, early learning and Head Start, and behavioral
+          health nonprofits, including those whose HHS money passes through a state agency
+          or regional funder. Its legacy-document exemption stops at any document someone
+          uses to apply for or access a program.
         </p>
+
+        <ul className="text-base sm:text-lg leading-relaxed mb-6 space-y-2">
+          <li>
+            <Link
+              href="/accessibility/healthcare"
+              className="underline underline-offset-4 font-semibold"
+              style={{ color: "var(--link)" }}
+            >
+              See how Section 504 applies to healthcare
+            </Link>
+          </li>
+          <li>
+            <a
+              href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf"
+              className="underline underline-offset-4 font-semibold"
+              style={{ color: "var(--link)" }}
+            >
+              Capability statement for HHS-funded nonprofits (PDF)
+            </a>
+          </li>
+        </ul>
 
         <SectionHeading>Maryland: CATS+ Contractors</SectionHeading>
 

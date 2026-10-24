@@ -3,7 +3,8 @@ import HeaderMenu from "./HeaderMenu";
 /**
  * The header on /desk (2026-10-16): the public header's bar (SiteHeader.tsx) with
  * the desk's own navigation. Same markup classes, so the same CSS applies: navy bar,
- * --accent-stripe border, white focus ring, one 68px row, pinned on wide windows
+ * --accent-stripe border, white focus ring, the descriptor line under the name,
+ * one 68px row (78px below 520px), pinned on wide windows
  * and on phones held upright, scrolled away in landscape and at 400% zoom, and the
  * links under a Menu button below 1024px (the same HeaderMenu component).
  *
@@ -29,7 +30,11 @@ export default function DeskHeader() {
   return (
     <header className="site-header desk-header px-4 sm:px-12">
       <div className="site-header-row max-w-5xl mx-auto">
-        <a href="/desk#main" className="site-brand hover:underline underline-offset-4">
+        <a
+          href="/desk#main"
+          className="site-brand hover:underline underline-offset-4"
+          aria-label="Brian Beals, LLC Desk, Independent Accessibility Evaluation"
+        >
           {/* Decorative: the words beside it are the link's text. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -39,8 +44,13 @@ export default function DeskHeader() {
             width={36}
             height={36}
           />
-          <span>
-            Brian Beals, LLC<span aria-hidden="true"> ·</span> Desk
+          <span className="site-brand-text">
+            {/* The public header's descriptor line, styled and placed the same way
+                (SiteHeader.tsx, globals.css .site-brand-tag and .site-tag-row). */}
+            <span>
+              Brian Beals, LLC<span aria-hidden="true"> ·</span> Desk
+            </span>
+            <span className="site-brand-tag">Independent Accessibility Evaluation</span>
           </span>
         </a>
         <HeaderMenu links={DESK_LINKS} label="Desk" listId="desk-nav-list" plain />
@@ -49,6 +59,7 @@ export default function DeskHeader() {
         <a href="/logout" className="site-cta site-cta-quiet rounded font-semibold hover:underline underline-offset-4">
           Sign out
         </a>
+        <p className="site-tag-row" aria-hidden="true">Independent Accessibility Evaluation</p>
       </div>
     </header>
   );

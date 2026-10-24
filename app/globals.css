@@ -244,6 +244,58 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
 .site-brand img {
   flex: none;
 }
+/* The firm name over its descriptor line (SiteHeader.tsx). Tight leading keeps the
+   pair inside the 64px row. */
+.site-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.site-brand-tag {
+  color: #D6EAF8;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+/* Phones' copy of the descriptor, on its own line under the row (below 520px). */
+.site-tag-row {
+  display: none;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: -6px 0 0;
+  padding-bottom: 8px;
+  color: #D6EAF8;
+  font-size: 0.8125rem;
+  line-height: 1.2;
+}
+/* Below 520px the descriptor cannot share the row with Menu and the call button
+   (it is 221px wide at 13px). The copy in the link is visually hidden, so the link's
+   name still carries it, and .site-tag-row shows it under a 56px row. The nav list
+   moves down to row three. */
+@media (max-width: 519px) {
+  :root {
+    --header-h: 78px;
+  }
+  .site-header-row {
+    grid-template-rows: minmax(56px, auto) auto auto;
+  }
+  .site-brand-tag {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+  .site-tag-row {
+    display: block;
+  }
+  .site-nav {
+    grid-row: 3;
+  }
+}
 .menu-btn {
   display: none;
   align-items: center;
@@ -296,8 +348,10 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
   display: none;
 }
 /* Where the full call label does not fit beside the brand and the Menu button.
-   Measured 2026-10-16: the full label needs about 480px with the brand on one line. */
-@media (max-width: 479px) {
+   Measured 2026-10-16: the full label needed about 480px with the brand on one line.
+   Since the descriptor line (2026-10-24) the brand column is its 221px width from
+   520px, so the short label holds until 660px. */
+@media (max-width: 659px) {
   .cta-long {
     display: none;
   }
@@ -364,6 +418,13 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
   .site-cta {
     min-height: 0;
     padding: 6px 12px;
+  }
+}
+/* The desk's nine links beside the brand and its descriptor line: tighter spacing
+   until there is room for the site's 20px (2026-10-24). */
+@media (min-width: 1024px) and (max-width: 1179px) {
+  .desk-header .site-nav ul {
+    column-gap: 14px;
   }
 }
 /* Pinned where the bar is one 68px row and the window is tall enough to spare it:

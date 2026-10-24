@@ -21,6 +21,13 @@ import HeaderMenu from "./HeaderMenu";
  * call" where the full label does not fit beside the brand and the Menu button.
  * Tap targets in the row and the list are at least 44px.
  *
+ * Under the firm name, inside the home link, a descriptor line (2026-10-24):
+ * "Independent Accessibility Evaluation" in the capability statements' light-blue
+ * tag color, #D6EAF8 on the navy at 9.3:1. From 520px it sits under the name within
+ * the 64px row, so the bar keeps its height. Below 520px it cannot share the row
+ * with Menu and the call button, so it takes its own line under the row (the bar
+ * grows from 68px to 78px) and the link keeps it in its accessible name.
+ *
  * The skip link stays the first focusable element: it is rendered before this
  * header in app/layout.tsx and sits above it (z-index) when focused.
  */
@@ -28,7 +35,13 @@ export default function SiteHeader() {
   return (
     <header className="site-header px-4 sm:px-12">
       <div className="site-header-row max-w-5xl mx-auto">
-        <Link href="/" className="site-brand hover:underline underline-offset-4">
+        {/* The label adds only the comma a screen reader needs between the two lines;
+            the words are the visible ones, so the name still matches the label (2.5.3). */}
+        <Link
+          href="/"
+          className="site-brand hover:underline underline-offset-4"
+          aria-label="Brian Beals, LLC, Independent Accessibility Evaluation"
+        >
           {/* Decorative: the firm name beside it is the link's text. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -38,7 +51,12 @@ export default function SiteHeader() {
             width={36}
             height={36}
           />
-          <span>Brian Beals, LLC</span>
+          <span className="site-brand-text">
+            <span>Brian Beals, LLC</span>
+            {/* Visible beside the mark from 520px; below that, visually hidden here
+                (still in the link's name) and shown on its own line under the row. */}
+            <span className="site-brand-tag">Independent Accessibility Evaluation</span>
+          </span>
         </Link>
         <HeaderMenu />
         <BookCallLink placement="header" className="site-cta btn-cta rounded font-semibold hover:underline underline-offset-4">
@@ -47,6 +65,10 @@ export default function SiteHeader() {
               the accessible name is always the visible label (2.5.3). */}
           <span className="cta-short">Book a call</span>
         </BookCallLink>
+        {/* Phones: the descriptor's visible copy, on its own line under the row. The
+            home link above already carries it in its name, so this copy is hidden from
+            assistive technology rather than read twice. */}
+        <p className="site-tag-row" aria-hidden="true">Independent Accessibility Evaluation</p>
       </div>
     </header>
   );

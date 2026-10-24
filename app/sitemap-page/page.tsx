@@ -30,7 +30,7 @@ const sections = [
       ...(freeTestEnabled()
         ? [{ href: "/free-test", label: "Free accessibility test", note: "An automated first look at up to 10 pages and 10 linked PDFs, for anyone with an email address on the site's own domain." }]
         : []),
-      { href: "/accessibility/title-ii", label: "ADA Title II Digital Accessibility", note: "28 CFR 35.200, the April 26 2027 and 2028 dates, what the practice does for cities, counties, school districts and special districts, and how to buy it." },
+      { href: "/accessibility/title-ii", label: "ADA Title II Digital Accessibility", note: "28 CFR 35.200, the April 26 2027 and 2028 dates, what the practice does for cities, counties, school districts, and special districts, and how to buy it." },
       { href: "/accessibility/healthcare", label: "Section 504 for Healthcare", note: "45 CFR Part 84, the May 11 2027 date, and what it means for patient-facing documents." },
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },
       { href: "/accessibility/federal", label: "Section 508 for Federal Agencies and Their Vendors", note: "36 CFR 1194, the conformance report, and how an agency buys it: micro-purchase, SDVOSB sole source, and VA's Vets First." },

@@ -128,7 +128,7 @@ export default function Accessibility() {
         <SectionHeading>Services</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          These are built for a county, city, school district or special district getting
+          These are built for a county, city, school district, or special district getting
           ready for the Title II date, and for the ADA coordinator who will be asked what was
           done. Each one is digital accessibility (a11y) evaluation or the program paperwork
           around it. None of them is the repair.
@@ -156,8 +156,8 @@ export default function Accessibility() {
         <SubHeading id="program-and-policy">Program and Policy Setup</SubHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The accessibility statement, ADA coordinator designation, grievance procedure and
-          self-evaluation record the rule expects. Plus procurement language that requires an
+          The accessibility statement, ADA coordinator designation, grievance procedure,
+          and self-evaluation record the rule expects. Plus procurement language that requires an
           ACR before you buy.
         </p>
 
@@ -186,7 +186,7 @@ export default function Accessibility() {
           An Accessibility Conformance Report in VPAT 2.5 format, the same document your
           procurement office already asks software vendors to produce. All 50 Level A and
           Level AA success criteria of WCAG 2.1, each one marked Supports, Partially
-          Supports, Does Not Support or Not Applicable, each one evidenced. Dated and signed.
+          Supports, Does Not Support, or Not Applicable, each one evidenced. Dated and signed.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -227,7 +227,7 @@ export default function Accessibility() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           It reaches two groups. Federal agencies, for the information and communication
-          technology they develop, procure and use. And every company selling that technology
+          technology they develop, procure, and use. And every company selling that technology
           to an agency, which is where the deadline is real and immediate: a solicitation asks
           for a VPAT, and the answer is due with the bid.
         </p>

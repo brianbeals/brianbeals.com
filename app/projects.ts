@@ -14,7 +14,7 @@ export const projects: {
   {
     name: "Marine Forecast",
     summary:
-      "A live marine forecast for Charlotte Harbor and Pine Island Sound that turns the NWS coastal waters product, tides, red tide and live radar into a plain go or no-go.",
+      "A live marine forecast for Charlotte Harbor and Pine Island Sound that turns the NWS coastal waters product, tides, red tide, and live radar into a plain go or no-go.",
     description:
       "A live marine forecast for Brian's home water, Charlotte Harbor and Pine Island Sound. It parses the NWS coastal waters product into wind, chop, and storm-risk cards, adds Port Boca Grande tides and a red-tide line from the state's sampling, and ends on a verdict: a plain call on whether to go, and the best window to be out. The browser samples NEXRAD over the harbor and the pass every few minutes, which catches a cell on the water that the inland airport observation misses. GitHub Actions republishes after each NWS issuance. Runs entirely on public NOAA endpoints and GitHub Pages, so hosting is free, making it the only part of this project that respected a budget.",
     links: [
@@ -25,7 +25,7 @@ export const projects: {
   {
     name: "Harbor Spots",
     summary:
-      "Reefs, ramps, seagrass and manatee zones in Charlotte Harbor from live state GIS, with distance and bearing from wherever you launch.",
+      "Reefs, ramps, seagrass, and manatee zones in Charlotte Harbor from live state GIS, with distance and bearing from wherever you launch.",
     description:
       "A map of the artificial reefs, boat ramps, seagrass beds, and manatee zones in Charlotte Harbor and Pine Island Sound, assembled from live state GIS services. Pick where you're leaving from and it recomputes every reef's distance and magnetic bearing, redraws the 20 nm range ring, and refits the view. A strip in the corner reads today's conditions from the forecast above. Rebuilt weekly from FWC and DEP feature services. The one hand-entered piece is the marina list, because no GIS layer knows which docks people actually leave from.",
     links: [

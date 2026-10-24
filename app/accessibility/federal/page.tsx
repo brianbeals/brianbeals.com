@@ -148,7 +148,7 @@ export default function AccessibilityFederal() {
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
           An Accessibility Conformance Report in VPAT 2.5 format, every criterion marked
           and evidenced, dated and signed. Testing is by script and by ear, in VoiceOver
-          and NVDA across Safari, Chrome and Edge, and every verdict traces to a capture
+          and NVDA across Safari, Chrome, and Edge, and every verdict traces to a capture
           file. Documents are validated against PDF/UA. You also get a prioritized
           roadmap your remediation vendor can bid against.
         </p>

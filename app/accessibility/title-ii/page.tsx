@@ -18,7 +18,7 @@ import SubHeading from "@/app/components/SubHeading";
 // Change it when the report is reissued, with the /accessibility and healthcare
 // proof lines.
 const DESCRIPTION =
-  "ADA Title II requires WCAG 2.1 AA for state and local government websites, apps, forms, PDFs and media: April 26, 2027 for entities serving 50,000 or more, April 26, 2028 for smaller ones and special districts. Independent evaluation for cities, counties, school districts and special districts.";
+  "ADA Title II requires WCAG 2.1 AA for state and local government websites, apps, forms, PDFs, and media: April 26, 2027 for entities serving 50,000 or more, April 26, 2028 for smaller ones and special districts. Independent evaluation for cities, counties, school districts, and special districts.";
 
 export const metadata: Metadata = {
   title: { absolute: "ADA Title II Digital Accessibility | Brian Beals, LLC" },

@@ -22,21 +22,21 @@ import PageHeading from "@/app/components/PageHeading";
 export const metadata: Metadata = {
   title: { absolute: "Accessibility Services and Pricing for Public Entities | Brian Beals, LLC" },
   description:
-    "Fixed prices for independent WCAG 2.1 AA evaluation of public entity websites and documents: conformance reports, full site audits, annual re-evaluation and document triage.",
+    "Fixed prices for independent WCAG 2.1 AA evaluation of public entity websites and documents: conformance reports, full site audits, annual re-evaluation, and document triage.",
   alternates: {
     canonical: "/accessibility/pricing",
   },
   openGraph: {
     title: "Accessibility Services and Pricing for Public Entities | Brian Beals, LLC",
     description:
-      "Fixed prices for independent WCAG 2.1 AA evaluation of public entity websites and documents: conformance reports, full site audits, annual re-evaluation and document triage.",
+      "Fixed prices for independent WCAG 2.1 AA evaluation of public entity websites and documents: conformance reports, full site audits, annual re-evaluation, and document triage.",
     url: "/accessibility/pricing",
     type: "website",
   },
   twitter: {
     title: "Accessibility Services and Pricing for Public Entities | Brian Beals, LLC",
     description:
-      "Fixed prices for independent WCAG 2.1 AA evaluation of public entity websites and documents: conformance reports, full site audits, annual re-evaluation and document triage.",
+      "Fixed prices for independent WCAG 2.1 AA evaluation of public entity websites and documents: conformance reports, full site audits, annual re-evaluation, and document triage.",
   },
 };
 
@@ -213,7 +213,7 @@ export default function AccessibilityPricing() {
             map to a WCAG criterion.
           </li>
           <li>
-            Every criterion marked Supports, Partially Supports, Does Not Support or Not
+            Every criterion marked Supports, Partially Supports, Does Not Support, or Not
             Applicable, with the page and element cited.
           </li>
         </ul>

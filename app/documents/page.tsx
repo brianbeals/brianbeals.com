@@ -20,12 +20,12 @@ import PageHeading from "@/app/components/PageHeading";
 export const metadata: Metadata = {
   title: { absolute: "Capability Statements | Brian Beals, LLC" },
   description:
-    "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+    "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508, and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
   alternates: { canonical: "/documents" },
   openGraph: {
     title: "Capability Statements | Brian Beals, LLC",
     description:
-      "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+      "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508, and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
     url: "/documents",
     type: "website",
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Capability Statements | Brian Beals, LLC",
     description:
-      "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508 and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
+      "Capability statements for ADA Title II, Section 504 (healthcare and HHS-funded nonprofits), Section 508, and Maryland digital accessibility work. HTML and PDF/UA-1 PDF.",
   },
 };
 

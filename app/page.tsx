@@ -128,7 +128,7 @@ export default function Home() {
             <p className={`${body} mb-4`}>
               I set out to start an IT consulting company, and I did the paperwork the way everyone does:
               articles of organization, a business tax receipt, a property use form. Most of it wasn&apos;t
-              online. What was came as PDFs to print, and the boxes were too small for what they asked. So I
+              online. What was online came as PDFs to print, and the boxes were too small for what they asked. So I
               sat in a government lobby while a clerk worked through what I&apos;d written and typed every
               field back into a computer.
             </p>

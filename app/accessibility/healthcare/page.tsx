@@ -68,8 +68,8 @@ export default function AccessibilityHealthcare() {
           <PageHeading tone="band" spacing="mb-4">Section 504 for Healthcare</PageHeading>
           <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
             The HHS final rule at 45 CFR Part 84 sets WCAG 2.1 Level AA as the standard
-            for web content, mobile apps, and electronic documents. If you take Medicare
-            or Medicaid, it reaches you.
+            for web content, mobile apps, and electronic documents. If you take Medicare,
+            Medicaid or an HHS grant, it reaches you.
           </p>
         </div>
 

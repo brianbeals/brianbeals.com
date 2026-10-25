@@ -3,8 +3,8 @@
 // itself has a React header since 2026-10-16 (app/components/DeskHeader.tsx) with
 // the same section names, the same navy and the same --accent-stripe; this bar
 // is a string injected into pages React does not render, so its Menu button (below
-// 1100px since 2026-10-25, matching DeskHeader; first below 768px, then 1024px) is a
-// small inline script rather than HeaderMenu.
+// 1150px since 2026-10-25; first below 768px, then 1024px, then 1100px) is a small
+// inline script rather than HeaderMenu.
 //
 // One implementation, as a self-contained HTML string with its own <style>,
 // because three of the four places it appears are built HTML served as is
@@ -28,14 +28,14 @@
 // Evaluation" line, at the header's sizes (name 22px from 640px, 20px from 560px,
 // 18px from 400px, 15px below; mark 44, 40, 36, 32px; descriptor 15px in #D6EAF8,
 // 9.3:1) and with its accessible name. Below 560px the descriptor takes its own
-// line under the name, as in the header. From 1100px the links keep their size and
-// wrap after it, so the bar grows rather than shrinking them. Below 1100px (first
-// 768px, then 1024px, all on 2026-10-25, so tablets get one row and the links
-// never wrap to a second row at 1024 to 1099) they
+// line under the name, as in the header. From 1150px the links keep their size and
+// wrap after it, so the bar grows rather than shrinking them. Below 1150px (first
+// 768px, then 1024px, then 1100px, all on 2026-10-25; 1150px is where the eleven
+// links first fit on the lockup's row, so the bar is never two rows) they
 // collapse under a Menu button that shares the lockup's row, as on the public
 // site's phone header: aria-expanded and aria-controls, the button keeps focus when
 // it opens the list, Escape closes it and returns focus to the button, and a link
-// or a click outside closes it. From 1024 to 1099px the bar is pinned with the Menu,
+// or a click outside closes it. From 1024 to 1149px the bar is pinned with the Menu,
 // so an open list scrolls within the window under the row. The list collapses only once the script has run
 // (.dk-m on the bar), so without JavaScript the links show and the button stays
 // hidden. The lockup's elements are reset
@@ -97,7 +97,7 @@ html:not(.dk-js) .bb-hdr{position:static!important}
   font:600 14px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 .dkbar .dk-menu svg{display:block;width:16px;height:12px;flex:none}
 .dkbar .dk-menu:focus-visible{outline:3px solid #FFFFFF;outline-offset:1px}
-@media (max-width:1099px){
+@media (max-width:1149px){
   .dkbar.dk-m .dk-menu{display:inline-flex;order:1;margin-left:auto}
   .dkbar .dk-tagrow{order:2}
   .dkbar.dk-m ul{order:3;flex-basis:100%;flex-direction:column;align-items:stretch;gap:0;padding:4px 0 8px}
@@ -156,7 +156,7 @@ const BRAND =
   `<span class="dk-tag">${TAG}</span></span></a>` +
   `<p class="dk-tagrow" aria-hidden="true">${TAG}</p>`;
 
-/* The Menu button below 1100px. Runs right after the bar, so its elements exist. */
+/* The Menu button below 1150px. Runs right after the bar, so its elements exist. */
 const MENU_JS = `(function(){var n=document.getElementById("dk-pin");if(!n)return;
 var b=n.querySelector(".dk-menu"),l=document.getElementById("dk-list");if(!b||!l)return;n.classList.add("dk-m");
 function on(){return b.getAttribute("aria-expanded")==="true"}

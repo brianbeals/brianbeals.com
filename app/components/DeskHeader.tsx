@@ -4,9 +4,11 @@ import HeaderMenu from "./HeaderMenu";
  * The header on /desk (2026-10-16): the public header's bar (SiteHeader.tsx) with
  * the desk's own navigation. Same markup classes, so the same CSS applies: navy bar,
  * --accent-stripe border, white focus ring, the descriptor line under the name,
- * one 68px row (78px below 520px), pinned on wide windows
+ * one 76px bar (80px below 560px), pinned on wide windows
  * and on phones held upright, scrolled away in landscape and at 400% zoom, and the
- * links under a Menu button below 1024px (the same HeaderMenu component).
+ * links under a Menu button below 1100px (the same HeaderMenu component): from
+ * 1024px the public nav sits in the row, but the desk's nine links do not fit beside
+ * the brand lockup until 1100px.
  *
  * One name per section, shared with the bar injected into the desk's documents and
  * dashboards (lib/desk-bar.ts). The section headings keep their longer names

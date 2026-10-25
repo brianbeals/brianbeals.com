@@ -158,8 +158,9 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
    token, used unchanged in dark mode. */
 :root {
   --accent-stripe: #1E8449;
-  /* The pinned bar: a 64px row plus the 4px stripe. */
-  --header-h: 68px;
+  /* The pinned bar: a 72px row plus the 4px stripe (64px until the larger brand
+     lockup, 2026-10-24). */
+  --header-h: 76px;
   /* The primary call to action, "Book a 15-minute call" (header and homepage hero),
      2026-10-16. White on #1E8449 is 4.71:1 and on the hover #196F3D 6.1:1, in both
      color schemes, since the button carries its own background. */
@@ -200,7 +201,7 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
    the nav list (HeaderMenu.tsx) on its own line below the row, collapsed under
    html.js until the Menu button opens it. Without JavaScript html.js never appears,
    the button stays hidden and the list shows. Every control in the row and the
-   list is at least 44px tall. From 1024px: brand, nav, call button in one 64px row,
+   list is at least 44px tall. From 1024px: brand, nav, call button in one 72px row,
    as before the menu existed. */
 /* A grid below 1024px: the first row is fixed, so opening the list (row two)
    never moves the Menu button, and the brand's column shrinks and lets the firm
@@ -243,9 +244,11 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
 }
 .site-brand img {
   flex: none;
+  width: 36px;
+  height: 36px;
 }
 /* The firm name over its descriptor line (SiteHeader.tsx). Tight leading keeps the
-   pair inside the 64px row. */
+   pair inside the 72px row, and where they share it the mark is the pair's height. */
 .site-brand-text {
   display: flex;
   flex-direction: column;
@@ -253,13 +256,13 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
 }
 .site-brand-tag {
   color: #D6EAF8;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.2;
   white-space: nowrap;
 }
-/* Phones' copy of the descriptor, on its own line under the row (below 520px). */
+/* Phones' copy of the descriptor, on its own line under the row (below 560px). */
 .site-tag-row {
   display: none;
   grid-column: 1 / -1;
@@ -267,16 +270,18 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
   margin: -6px 0 0;
   padding-bottom: 8px;
   color: #D6EAF8;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.2;
 }
-/* Below 520px the descriptor cannot share the row with Menu and the call button
-   (it is 221px wide at 13px). The copy in the link is visually hidden, so the link's
-   name still carries it, and .site-tag-row shows it under a 56px row. The nav list
-   moves down to row three. */
-@media (max-width: 519px) {
+/* Below 560px the descriptor cannot share the row with Menu and the call button
+   (it is 255px wide at 15px; 520px until it grew from 13px, 2026-10-24). The copy
+   in the link is visually hidden, so the link's name still carries it, and
+   .site-tag-row shows it under a 56px row. The name and mark keep their phone
+   sizes, so the name wraps no more than before. The nav list moves down to row
+   three. */
+@media (max-width: 559px) {
   :root {
-    --header-h: 78px;
+    --header-h: 80px;
   }
   .site-header-row {
     grid-template-rows: minmax(56px, auto) auto auto;
@@ -349,9 +354,9 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
 }
 /* Where the full call label does not fit beside the brand and the Menu button.
    Measured 2026-10-16: the full label needed about 480px with the brand on one line.
-   Since the descriptor line (2026-10-24) the brand column is its 221px width from
-   520px, so the short label holds until 660px. */
-@media (max-width: 659px) {
+   Since the descriptor line (2026-10-24) the brand column is its 255px width plus the
+   44px mark from 560px, so the short label holds until 700px. */
+@media (max-width: 699px) {
   .cta-long {
     display: none;
   }
@@ -383,17 +388,35 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
     padding: 0 8px;
   }
 }
-@media (min-width: 640px) {
+/* Where the descriptor shares the row: the name 2px larger than on phones and the
+   mark the height of the two lines (2026-10-24). */
+@media (min-width: 560px) {
+  .site-header-row {
+    grid-template-rows: minmax(72px, auto) auto;
+  }
   .site-brand {
     font-size: 1.25rem;
+  }
+  .site-brand img {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (min-width: 640px) {
+  .site-brand {
+    font-size: 1.375rem;
     gap: 12px;
+  }
+  .site-brand img {
+    width: 44px;
+    height: 44px;
   }
 }
 @media (min-width: 1024px) {
   .site-header-row {
     display: flex;
     column-gap: 24px;
-    height: 64px;
+    height: 72px;
   }
   .menu-btn,
   .js .menu-btn {
@@ -420,14 +443,61 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
     padding: 6px 12px;
   }
 }
-/* The desk's nine links beside the brand and its descriptor line: tighter spacing
-   until there is room for the site's 20px (2026-10-24). */
+/* Room for the nav beside the larger brand lockup (2026-10-24; the mark, 12px and
+   the 250px descriptor make the brand 306px wide). The public nav's six links take
+   14px gaps below 1180px, and below 1100px the call button reads "Book a call". */
 @media (min-width: 1024px) and (max-width: 1179px) {
-  .desk-header .site-nav ul {
+  .site-nav ul {
     column-gap: 14px;
   }
 }
-/* Pinned where the bar is one 68px row and the window is tall enough to spare it:
+@media (min-width: 1024px) and (max-width: 1099px) {
+  .cta-long {
+    display: none;
+  }
+  .cta-short {
+    display: inline;
+  }
+}
+/* The desk's nine links (440px of text) take 16px gaps from 1180px and 14px from
+   1100px. Below 1100px they do not fit beside the brand and Sign out at all, so
+   the desk keeps its phone layout, the Menu button with the list under the row,
+   up to 1099px. */
+@media (min-width: 1180px) {
+  .desk-header .site-nav ul {
+    column-gap: 16px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1099px) {
+  .desk-header .site-header-row {
+    display: grid;
+    column-gap: 8px;
+    height: auto;
+  }
+  .js .desk-header .menu-btn {
+    display: inline-flex;
+  }
+  .desk-header .site-nav {
+    margin-left: 0;
+  }
+  .js .desk-header .site-nav:not([data-open]) {
+    display: none;
+  }
+  .desk-header .site-nav ul {
+    display: block;
+    padding: 4px 0 12px;
+  }
+  .desk-header .site-nav a {
+    display: flex;
+    min-height: 44px;
+    padding: 0 4px;
+  }
+  .desk-header .site-cta {
+    min-height: 44px;
+    padding: 0 12px;
+  }
+}
+/* Pinned where the bar is one 76px row and the window is tall enough to spare it:
    from 1024px wide at 600px high, and below 1024px at 500px high (next rule). Below either size it scrolls with the page, so a 320px viewport or 400% zoom
    never loses height to it (1.4.10). scroll-padding-top is the bar's height plus
    8px, so a focused element's ring and an anchor's heading land clear of the bar
@@ -443,9 +513,10 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
     scroll-padding-top: calc(var(--header-h) + 8px);
   }
 }
-/* Below 1024px the bar is also one 68px row (brand, Menu, call button), so it pins
-   on phones held upright: 500px high or more. A landscape phone (375px high) and
-   320x256 (400% zoom) fall below that and scroll it away (1.4.10). When it is pinned
+/* Below 1024px the bar is also one row (brand, Menu, call button; 76px, or 80px
+   with the descriptor's own line below 560px), so it pins on phones held upright:
+   500px high or more. A landscape phone (375px high) and 320x256 (400% zoom) fall
+   below that and scroll it away (1.4.10). When it is pinned
    and the menu is open, the list scrolls inside whatever height is left under the
    bar, so no link can sit below the bottom of the screen out of reach. */
 @media (max-width: 1023px) and (min-height: 500px) {

@@ -8,7 +8,7 @@ import HeaderMenu from "./HeaderMenu";
  * --accent-stripe border. The bar is #1E3A5F with white ink in both color schemes,
  * like the band on the /accessibility pages, so it needs no dark-mode variant.
  *
- * From 1024px: one 64px row (68px with the stripe), brand, nav, call button, pinned
+ * From 1024px: one 72px row (76px with the stripe), brand, nav, call button, pinned
  * when the window is also 600px high (globals.css, .site-header), with
  * scroll-padding-top keeping focus and anchor targets clear of it (2.4.11).
  *
@@ -22,11 +22,12 @@ import HeaderMenu from "./HeaderMenu";
  * Tap targets in the row and the list are at least 44px.
  *
  * Under the firm name, inside the home link, a descriptor line (2026-10-24):
- * "Independent Accessibility Evaluation" in the capability statements' light-blue
- * tag color, #D6EAF8 on the navy at 9.3:1. From 520px it sits under the name within
- * the 64px row, so the bar keeps its height. Below 520px it cannot share the row
- * with Menu and the call button, so it takes its own line under the row (the bar
- * grows from 68px to 78px) and the link keeps it in its accessible name.
+ * "Independent Accessibility Evaluation" at 15px in the capability statements'
+ * light-blue tag color, #D6EAF8 on the navy at 9.3:1. From 560px it sits under the
+ * name (22px, 20px below 640px) in the 72px row, with the mark scaled to the two
+ * lines. Below 560px it cannot share the row with Menu and the call button, so it
+ * takes its own line under the row (the bar is 80px) and the link keeps it in its
+ * accessible name.
  *
  * The skip link stays the first focusable element: it is rendered before this
  * header in app/layout.tsx and sits above it (z-index) when focused.
@@ -53,7 +54,7 @@ export default function SiteHeader() {
           />
           <span className="site-brand-text">
             <span>Brian Beals, LLC</span>
-            {/* Visible beside the mark from 520px; below that, visually hidden here
+            {/* Visible beside the mark from 560px; below that, visually hidden here
                 (still in the link's name) and shown on its own line under the row. */}
             <span className="site-brand-tag">Independent Accessibility Evaluation</span>
           </span>

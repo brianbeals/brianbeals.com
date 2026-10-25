@@ -59,7 +59,7 @@ export default function Home() {
         <section className="text-center">
           <div className="text-balance">
             <PageHeading scale="hero" spacing="mb-4">
-              More Than One in Four U.S. Adults Has a Disability. Can They Use Your Forms and Documents?
+              More than one in four U.S. adults has a disability. Can they use your forms and documents?
             </PageHeading>
           </div>
           <p className={`${body} mb-2 mx-auto`}>

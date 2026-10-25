@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { signedIn } from "@/lib/desk";
 import { rateLimiter } from "@/lib/form-mail";
 import { approveOk, enabled, ipHash, sendEvent, tokenShape, turnstileOk } from "@/lib/free-test";
 import { TRAP, orgKey, refKey, validate, type Errors } from "./fields";
@@ -15,13 +16,24 @@ import { TRAP, orgKey, refKey, validate, type Errors } from "./fields";
 // email" message: a tripped honeypot and this instance's rate limit send nothing
 // and say the same thing, and the engine's own gates (free mail, another domain,
 // its rate limits, a private address) are decided on the mini, out of sight.
+//
+// OWNER FAST PATH (2026-10-25). A form posted with a valid /desk session (the
+// bb_gate cookie, checked as the desk checks it) sends an "owner" event instead:
+// no confirmation email, no review, the scan queued at once and the report with
+// its PDF mailed to brian@brianbeals.com only. The session is the only proof. The
+// typed address is never read, checked or sent, so typing Brian's address
+// without a session gets the public path like anyone else. Turnstile and the
+// honeypot still apply. At most 10 an hour, here per instance and again in the
+// engine (owner_per_hour), which is the limit that holds across instances.
 
 const limited = rateLimiter();
+const ownerLimited = rateLimiter(10, 60 * 60_000);
 
 export type RequestState =
   | { status: "idle" }
   | { status: "invalid"; errors: Errors }
   | { status: "sent" }
+  | { status: "owner" }
   | { status: "error"; message: string };
 
 const clientIp = async () => ((await headers()).get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
@@ -30,7 +42,9 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
   if (!enabled()) return { status: "error", message: "The free check is not open yet. Email brian@brianbeals.com." };
   const get = (n: string) => String(form.get(n) || "");
 
+  const owner = await signedIn();
   const errors = validate(get);
+  if (owner) delete errors.email;
   if (Object.keys(errors).length) return { status: "invalid", errors };
 
   const ip = await clientIp();
@@ -43,6 +57,17 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
   if (get(TRAP) !== "") {
     console.log("free-test: honeypot filled, not sent");
     return { status: "sent" };
+  }
+  if (owner) {
+    if (ownerLimited("owner")) {
+      console.log("free-test: owner rate limit, not sent");
+      return { status: "error", message: "Owner checks are limited to 10 an hour. Try again later." };
+    }
+    const sent = await sendEvent("owner", { url: get("url").trim(), ip_hash: ipHash(ip) });
+    console.log(`free-test: owner check ${sent ? "sent" : "not sent"}`);
+    return sent
+      ? { status: "owner" }
+      : { status: "error", message: "The owner check could not be sent. Try again in a minute." };
   }
   if (limited(ip)) {
     console.log("free-test: instance rate limit, not sent");

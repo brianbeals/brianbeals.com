@@ -40,8 +40,9 @@ export const orgKey = (v: string) => (ORGS.some(([k]) => k === v) ? v : "");
 /* Where the visitor came from, from the page's ?ref= (a QR on a capability
    statement or card: cap-titleii, cap-healthcare, cap-federal, cap-maryland,
    cap-nonprofit, card). Passed through to the request event and logged by the engine; anything
-   not shaped like a short slug is dropped. Same check as the engine's REF. */
-export const refKey = (v: string) => (/^[a-z0-9][a-z0-9-]{0,39}$/.test(v) ? v : "");
+   not shaped like a short slug is dropped. Same check as the engine's REF, which
+   also drops "owner": that ref marks Brian's own checks and can't be claimed by ?ref=. */
+export const refKey = (v: string) => (/^[a-z0-9][a-z0-9-]{0,39}$/.test(v) && v !== "owner" ? v : "");
 
 export const errorLabel: Record<string, string> = { url: "Website", email: "Work email" };
 export const errorTarget = (key: string) => `ft-${key}`;

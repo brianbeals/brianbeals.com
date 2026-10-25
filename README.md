@@ -95,6 +95,23 @@ of organization?", whose key (`app/free-test/fields.ts` `ORGS`, matching the eng
 signed request. The form's copy says Brian reads each report first; change it if the engine's
 `REVIEW_MODE` goes off.
 
+**Owner fast path** (2026-10-25, `app/free-test/actions.ts`). A form sent with a valid /desk session
+(the `bb_gate` cookie, verified as the desk verifies it, `signedIn()` in `lib/desk.ts`) is Brian's own
+check: the action sends a signed `owner` event carrying only the URL and the IP hash, and the form
+gives way to "Running. The report will come to brian@brianbeals.com in a few minutes." The engine
+(a11y-audit `free_test/engine.py` `on_owner`) skips the confirmation email, the review gate, the
+30-day cache and the daily hold, queues the scan ahead of the public queue, and mails the standard
+report, HTML body and the tagged PDF, to brian@brianbeals.com only. The session is the only proof:
+the typed address is never read or sent, so typing Brian's address without a session, or with a
+forged cookie, gets the public path. Turnstile and the honeypot still apply. At most 10 an hour,
+per instance here and again in the engine (`owner_per_hour`), which holds across instances and
+emails Brian once when it refuses one. Owner checks are stored and logged like any other request,
+with ref `owner`, which `?ref=owner` on a public request can't claim (dropped here and by the
+engine), and send no analytics event. `scripts/test_free_test_owner.py` checks all of it against a
+local build (`npm run build` first): no session, a forged cookie, a session with someone else's
+address typed, and the eleventh check in an hour. The engine must have the `owner` type before the
+site sends one; an older engine files the event to Rejected and nothing runs.
+
 Local end to end: `FREE_TEST_OUTBOX=<folder>` (refused on Vercel) writes each event there as an
 `.eml` instead of sending, and the engine reads the same folder with `FREE_TEST_QUEUE=dir:<folder>`,
 mail to Mailpit on 1026 (`FREE_TEST_MAIL=smtp://127.0.0.1:1026`, never 1025, which is Proton Bridge).

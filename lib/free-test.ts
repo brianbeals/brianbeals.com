@@ -32,7 +32,9 @@ export const FROM = '"Brian Beals, LLC" <freetest@forms.brianbeals.com>';
 const BEGIN = "-----BEGIN FREE-TEST-----";
 const END = "-----END FREE-TEST-----";
 
-export type EventType = "request" | "confirmed" | "approved";
+/* "owner" (2026-10-25) is sent only for a form posted with a valid /desk session
+   (actions.ts); the engine runs it at once and mails the report to Brian alone. */
+export type EventType = "request" | "confirmed" | "approved" | "owner";
 
 const secret = () => process.env.FREE_TEST_SECRET || "";
 

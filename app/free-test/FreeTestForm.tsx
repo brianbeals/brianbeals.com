@@ -20,6 +20,10 @@ import { ORGS, TRAP, errorLabel, errorTarget, validate, type Errors } from "./fi
 // on the server. A token works once, so the widget is reset after any refused
 // send. It is rendered explicitly so a narrow screen gets the compact widget:
 // the normal one is a fixed 300px iframe, 4px wider than the form at 320px.
+//
+// Signed in to /desk, a send is Brian's own check (actions.ts): the action answers
+// "owner" and the form gives way to one line saying where the report goes. The
+// form itself looks the same either way; the server ignores the typed address.
 
 declare global {
   interface Window {
@@ -38,6 +42,7 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
   const [clientErrors, setClientErrors] = useState<Errors>({});
   const summaryRef = useRef<HTMLHeadingElement>(null);
   const doneRef = useRef<HTMLHeadingElement>(null);
+  const ownerRef = useRef<HTMLParagraphElement>(null);
   const widgetRef = useRef<HTMLDivElement>(null);
   const renderWidget = () => {
     const el = widgetRef.current;
@@ -60,7 +65,24 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
       document.title = "Check Your Email | Brian Beals, LLC";
       track("free_check_submitted");
     }
+    // Not a conversion: no analytics event for Brian's own checks.
+    if (state.status === "owner") {
+      ownerRef.current?.focus();
+      document.title = "Running | Brian Beals, LLC";
+    }
   }, [state]);
+
+  if (state.status === "owner") {
+    return (
+      <p
+        ref={ownerRef}
+        tabIndex={-1}
+        className="text-base sm:text-lg leading-relaxed text-neutral-800"
+      >
+        Running. The report will come to brian@brianbeals.com in a few minutes.
+      </p>
+    );
+  }
 
   if (state.status === "sent") {
     return (

@@ -9,7 +9,7 @@ Turnstile test keys, and FREE_TEST_OUTBOX pointed at a temporary folder, so each
 signed event lands there as an .eml instead of going anywhere. Then, in Chromium:
 
   - no session, Brian's own address typed: the public path (a "request" event
-    carrying the typed address, "Check Your Email")
+    carrying the typed address, "Thank you. Check your email.")
   - a forged bb_gate cookie: the public path
   - a valid /desk session, someone else's address typed: an "owner" event with
     only the URL and the IP hash (the typed address is in no event), and
@@ -108,6 +108,9 @@ try:
         check(page.locator("#check").get_by_role("link", name="Book a 15-minute call").get_attribute("href") == "/contact",
               "no Book a 15-minute call link")
         check(HELP in text, "public confirmation lost the Can't get past the check line")
+        check("Didn't get the email? It comes from freetest@forms.brianbeals.com. Check your spam folder, or write "
+              "to brian@brianbeals.com." in text, "the sender line is missing or changed")
+        check(page.title() == "Thank you | Brian Beals, LLC", f"confirmation tab title is {page.title()!r}")
         ev = events()
         check([t for t, _ in ev] == ["request"] and ev[0][1].get("email") == "brian@brianbeals.com",
               f"no session sent {ev}")

@@ -86,7 +86,7 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
     if (state.status === "error" || state.status === "invalid") window.turnstile?.reset();
     if (state.status === "sent") {
       doneRef.current?.focus();
-      document.title = "Check Your Email | Brian Beals, LLC";
+      document.title = "Thank you | Brian Beals, LLC";
       track("free_check_submitted");
     }
     // Not a conversion: no analytics event for Brian's own checks.
@@ -121,7 +121,8 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
             the report usually arrives by the next business day.
           </p>
           <p className={`${body} mb-4`}>
-            Didn&apos;t get the email? Check your spam folder, or write to{" "}
+            Didn&apos;t get the email? It comes from freetest@forms.brianbeals.com. Check your spam folder, or
+            write to{" "}
             <a href="mailto:brian@brianbeals.com" className={link} style={{ color: "var(--link)" }}>
               brian@brianbeals.com
             </a>

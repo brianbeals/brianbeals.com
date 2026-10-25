@@ -144,8 +144,9 @@ sends its own (a11y-audit README, "Failing loudly"); the site adds:
   minutes, each carrying the count since the last. The confirm and approve buttons alert on a failed
   send too.
 
-State lives in a Redis store over Upstash's REST API (`KV_REST_API_URL`, `KV_REST_API_TOKEN`, set by
-Vercel's Marketplace "Upstash for Redis" integration): `ft:hb`, `ft:hb:down`, the form-error count
+State lives in a Redis store over Upstash's REST API (`KV_REST_API_URL` and `KV_REST_API_TOKEN`, or
+`UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`, as Vercel's Marketplace "Upstash for Redis"
+integration names them): `ft:hb`, `ft:hb:down`, the form-error count
 and window, and handled webhook ids. Without it the heartbeat and watch routes answer 503 and form
 errors are counted in each instance's memory. `scripts/test_free_test_alerts.py` runs all of it
 against a local build with a stand-in store, alerts written to `FREE_TEST_ALERT_OUTBOX`.

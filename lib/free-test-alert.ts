@@ -8,7 +8,8 @@
 // into the engine's queue, where an alert would be read as a request and rejected.
 //
 // STATE lives in a Redis store over Upstash's REST API (Vercel Marketplace, "Upstash
-// for Redis", which sets KV_REST_API_URL and KV_REST_API_TOKEN): the last heartbeat,
+// for Redis", which sets KV_REST_API_URL and KV_REST_API_TOKEN, or UPSTASH_REDIS_REST_URL and
+// UPSTASH_REDIS_REST_TOKEN): the last heartbeat,
 // the open outage, the form-error count and its 15-minute window, and the webhook
 // ids already handled. Without it the heartbeat and watch routes answer 503, and
 // form errors fall back to this instance's memory.
@@ -53,13 +54,16 @@ export async function alertBrian(subject: string, text: string): Promise<boolean
 
 /* ---- the store ------------------------------------------------------------ */
 
-export const kvEnabled = () => Boolean(process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN);
+// The integration names them KV_REST_API_* or UPSTASH_REDIS_REST_*, by how it was set up; either works.
+const kvUrl = () => process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || "";
+const kvToken = () => process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || "";
+export const kvEnabled = () => Boolean(kvUrl() && kvToken());
 
 /* One Redis command over the REST API, e.g. kv("SET", "k", "v", "NX", "EX", "900"). */
 export async function kv(...args: (string | number)[]): Promise<unknown> {
-  const res = await fetch(process.env.KV_REST_API_URL as string, {
+  const res = await fetch(kvUrl(), {
     method: "POST",
-    headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}`, "Content-Type": "application/json" },
+    headers: { Authorization: `Bearer ${kvToken()}`, "Content-Type": "application/json" },
     body: JSON.stringify(args.map(String)),
     cache: "no-store",
   });

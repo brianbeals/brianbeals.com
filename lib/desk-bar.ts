@@ -21,6 +21,15 @@
 // --dk-stick-h, the bar plus a pinned band, sets html scroll-padding-top so anchor
 // jumps, the skip link's target and keyboard focus land clear of both (2.4.11).
 // Without JavaScript nothing measures the bar, so the band stays unpinned.
+//
+// Since 2026-10-25 the bar opens with DeskHeader's brand lockup, linking to /desk:
+// the BB mark, "Brian Beals, LLC · Desk" and the "Independent Accessibility
+// Evaluation" line, at the header's sizes (name 22px from 640px, 20px from 560px,
+// 18px from 400px, 15px below; mark 44, 40, 36, 32px; descriptor 15px in #D6EAF8,
+// 9.3:1) and with its accessible name. Below 560px the descriptor takes its own
+// line under the name, as in the header. The links keep their size and wrap after
+// it, so the bar grows rather than shrinking them. The lockup's elements are reset
+// (all: unset) so the dashboards' own img, span and p styles cannot reach them.
 
 export type DeskSection = "desk" | "pricing" | "before" | "recon" | "rules" | "overlays" | "pitch" | "ids" | "state" | "fed";
 
@@ -56,8 +65,22 @@ html:not(.dk-js) .bb-hdr{position:static!important}
   font:600 15px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   padding:6px 12px;box-sizing:border-box;width:100%;border-bottom:4px solid #1E8449}
 .dkbar *{box-sizing:border-box}
-.dkbar ul{display:flex;flex-wrap:wrap;align-items:center;gap:4px 2px;margin:0 auto;padding:0;
-  list-style:none;max-width:72rem}
+.dkbar .dk-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;margin:0 auto;max-width:72rem}
+.dkbar ul{display:flex;flex:1 1 auto;flex-wrap:wrap;align-items:center;gap:4px 2px;margin:0;padding:0;
+  list-style:none}
+.dkbar .dk-brand img,.dkbar .dk-brand span,.dkbar .dk-tagrow{all:unset}
+.dkbar a.dk-brand{display:flex;align-items:center;gap:12px;min-height:44px;padding:4px 0;border-radius:0;
+  font-size:22px;font-weight:600;letter-spacing:-0.01em;line-height:1.15}
+.dkbar .dk-brand img{display:block;flex:none;width:44px;height:44px}
+.dkbar .dk-brand .dk-bt{display:flex;flex-direction:column;min-width:0}
+.dkbar .dk-brand .dk-tag,.dkbar .dk-tagrow{color:#D6EAF8;font-size:15px;font-weight:400;letter-spacing:0;
+  line-height:1.2;white-space:nowrap}
+.dkbar .dk-tagrow{display:none}
+@media (max-width:639px){.dkbar a.dk-brand{font-size:20px;gap:10px}.dkbar .dk-brand img{width:40px;height:40px}}
+@media (max-width:559px){.dkbar a.dk-brand{font-size:18px}.dkbar .dk-brand img{width:36px;height:36px}
+  .dkbar .dk-brand .dk-tag{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  .dkbar .dk-tagrow{display:block;flex-basis:100%;margin:-6px 0 2px}}
+@media (max-width:399px){.dkbar a.dk-brand{font-size:15px;gap:8px}.dkbar .dk-brand img{width:32px;height:32px}}
 .dkbar li{margin:0;padding:0}
 .dkbar a{display:inline-block;color:#FFFFFF;text-decoration:none;padding:7px 9px;border-radius:5px;
   font:inherit;min-height:24px}
@@ -95,6 +118,20 @@ r.style.setProperty("--dk-stick-h",b+h(document.querySelector(".bb-hdr"))+"px")}
 var o=new ResizeObserver(u);o.observe(p);if(s)o.observe(s);addEventListener("resize",u);
 document.addEventListener("DOMContentLoaded",function(){var d=document.querySelector(".bb-hdr");if(d)o.observe(d);u()});u()})();`;
 
+/* DeskHeader's mark: the same data URI, decorative beside the words. */
+const MARK =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='white'/%3E%3Ctext x='16' y='15' text-anchor='middle' dominant-baseline='central' fill='%231E3A5F' font-family='system-ui' font-size='16' font-weight='800'%3EBB%3C/text%3E%3C/svg%3E";
+const TAG = "Independent Accessibility Evaluation";
+// The label matches DeskHeader's: the visible words, plus the comma a screen
+// reader needs between the two lines (2.5.3). The phone copy of the descriptor is
+// hidden from assistive technology, since the link already carries it.
+const BRAND =
+  `<a class="dk-brand" href="/desk" aria-label="Brian Beals, LLC Desk, ${TAG}">` +
+  `<img src="${MARK}" alt="" aria-hidden="true" width="44" height="44">` +
+  `<span class="dk-bt"><span>Brian Beals, LLC<span aria-hidden="true"> ·</span> Desk</span>` +
+  `<span class="dk-tag">${TAG}</span></span></a>` +
+  `<p class="dk-tagrow" aria-hidden="true">${TAG}</p>`;
+
 /* withSkip adds a skip link ahead of the bar and a target after it, for pages
    that have no skip link of their own. */
 export function deskBarHtml(current: DeskSection, withSkip = false): string {
@@ -115,7 +152,7 @@ export function deskBarHtml(current: DeskSection, withSkip = false): string {
     current === "fed"
       ? '<nav class="dk-sub" id="dk-sub" aria-label="Federal pitch"><p><a href="/desk#pitch-federal">Federal pitch, Section 508: SOFWERX, primes, program offices</a></p></nav>'
       : "";
-  return `<style>${CSS}</style>${skip}<nav class="dkbar" id="dk-pin" aria-label="Desk"><ul>${items}</ul></nav>${sub}<script>${PIN_JS}</script>${target}`;
+  return `<style>${CSS}</style>${skip}<nav class="dkbar" id="dk-pin" aria-label="Desk"><div class="dk-row">${BRAND}<ul>${items}</ul></div></nav>${sub}<script>${PIN_JS}</script>${target}`;
 }
 
 /* Put the bar at the very top of a built HTML page: after the page's own skip

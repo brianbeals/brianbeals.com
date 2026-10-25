@@ -5,7 +5,7 @@ import { signedIn } from "@/lib/desk";
 
 // The hand check's start page (2026-10-25). A free-test job on a site that blocks
 // the scanner sends Brian a [free-test ALERT] whose "Start hand check" link comes
-// here: /desk/hand-check?d=<domain>&e=<name>&p=<page>&p=<page>... It lists the pages
+// here: /desk/hand-check?d=<domain>&e=<name>&b=<403|robots>&p=<page>... It lists the pages
 // and offers "Start on this Mac", a plain link to the collector agent on the Mac
 // Brian is using (a11y-audit scripts/hand_check.py --serve, http://127.0.0.1:8790),
 // which shows its own Start button. A link and a button, both clicked by a person:
@@ -53,8 +53,10 @@ export default async function HandCheck({
   const domain = one(q.d).toLowerCase().replace(/^www\./, "");
   const valid = /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(domain);
   const entity = one(q.e).slice(0, 120) || domain;
+  // How the free test was blocked (401, 403, 429 or robots), passed on so the report can say so.
+  const blocked = /^(401|403|429|robots)$/.test(one(q.b)) ? one(q.b) : "";
   const pages = valid ? pagesFor(domain, [q.p].flat().filter((x): x is string => Boolean(x))) : [];
-  const start = new URLSearchParams({ domain, entity });
+  const start = new URLSearchParams({ domain, entity, ...(blocked ? { blocked } : {}) });
   for (const p of pages) start.append("page", p);
 
   return (
@@ -66,7 +68,9 @@ export default async function HandCheck({
         ) : (
           <>
             <p className="mb-4">
-              {domain} blocks automated scanners, so these pages get the free test&apos;s checks by hand: you open
+              {domain} blocks automated scanners
+              {blocked ? ` (${blocked === "robots" ? "robots.txt" : `HTTP ${blocked}`})` : ""}, so these pages get the
+              free test&apos;s checks by hand: you open
               each one and click the <strong>Hand check</strong> bookmark. When the last one is in, the report is
               built and emailed to you.
             </p>

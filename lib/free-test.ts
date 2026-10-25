@@ -103,32 +103,44 @@ export async function sendEvent(type: EventType, data: Record<string, string>): 
   const subject = `[free-test] ${type}`;
   const outbox = localOutbox();
   if (outbox) {
-    mkdirSync(outbox, { recursive: true });
-    const eml =
-      `From: ${FROM}\r\nTo: brian@brianbeals.com\r\nSubject: ${subject}\r\n` +
-      `MIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n${block.replace(/\n/g, "\r\n")}`;
-    writeFileSync(join(outbox, `${Date.now()}-${randomUUID()}.eml`), eml);
-    return true;
+    // A folder that can't be written is a failed send, as a refused Resend call is.
+    try {
+      mkdirSync(outbox, { recursive: true });
+      const eml =
+        `From: ${FROM}\r\nTo: brian@brianbeals.com\r\nSubject: ${subject}\r\n` +
+        `MIME-Version: 1.0\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n${block.replace(/\n/g, "\r\n")}`;
+      writeFileSync(join(outbox, `${Date.now()}-${randomUUID()}.eml`), eml);
+      return true;
+    } catch {
+      console.error("free-test: the local outbox could not be written");
+      return false;
+    }
   }
   const html = `<pre>${block.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</pre>`;
   return sendToBrian("free-test", { from: FROM, subject, text: block, html });
 }
 
-/* Cloudflare Turnstile, checked on the server for every request. */
-export async function turnstileOk(token: string, ip: string): Promise<boolean> {
+/* Cloudflare Turnstile, checked on the server for every request. "failed" is the
+   visitor's check not passing; "error" is ours or Cloudflare's (siteverify
+   unreachable or not 2xx, or an error code about our key), which the action
+   alerts on (2026-10-25). */
+export type TurnstileResult = "ok" | "failed" | "error";
+const OUR_FAULT = /missing-input-secret|invalid-input-secret|internal-error/;
+export async function turnstileVerify(token: string, ip: string): Promise<{ result: TurnstileResult; why: string }> {
   const key = process.env.TURNSTILE_SECRET_KEY;
-  if (!key || !token) return false;
+  if (!key) return { result: "error", why: "TURNSTILE_SECRET_KEY is not set" };
+  if (!token) return { result: "failed", why: "no token" };
   try {
     const body = new URLSearchParams({ secret: key, response: token });
     if (ip && ip !== "unknown") body.set("remoteip", ip);
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body });
-    if (!res.ok) {
-      console.error(`free-test: Turnstile returned ${res.status}`);
-      return false;
-    }
-    return Boolean(((await res.json()) as { success?: boolean }).success);
-  } catch {
-    console.error("free-test: Turnstile request failed");
-    return false;
+    const j = (await res.json().catch(() => ({}))) as { success?: boolean; "error-codes"?: string[] };
+    // A bad secret comes back as 400 with its error code; name the code when there is one.
+    if (!res.ok) return { result: "error", why: (j["error-codes"] || []).join(", ") || `siteverify returned ${res.status}` };
+    if (j.success) return { result: "ok", why: "" };
+    const codes = (j["error-codes"] || []).join(", ");
+    return { result: OUR_FAULT.test(codes) ? "error" : "failed", why: codes || "no error code" };
+  } catch (e) {
+    return { result: "error", why: `siteverify request failed (${e instanceof Error ? e.name : "unknown"})` };
   }
 }

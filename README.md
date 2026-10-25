@@ -122,6 +122,34 @@ local build (`npm run build` first): no session, a forged cookie, a session with
 address typed, and the eleventh check in an hour. The engine must have the `owner` type before the
 site sends one; an older engine files the event to Rejected and nothing runs.
 
+**Free test alerts** (2026-10-25, `lib/free-test-alert.ts`). Every alert goes to brian@brianbeals.com
+from `alerts@forms.brianbeals.com` with a subject starting `[free-test ALERT]`; never from freetest@,
+whose "[free-test]" mail the Proton filter files into the engine's queue. The engine on the mini
+sends its own (a11y-audit README, "Failing loudly"); the site adds:
+- **Dead-man's switch.** Each engine tick POSTs a heartbeat to `/api/free-test/heartbeat`, signed with
+  `FREE_TEST_SECRET` (HMAC-SHA256 of `heartbeat:<ts>`, within five minutes), stored as `ft:hb`. Every
+  15 minutes `.github/workflows/free-test-watch.yml` calls `/api/free-test/watch` with
+  `Authorization: Bearer <CRON_SECRET>`: 20 minutes with no heartbeat sends one alert ("engine
+  heartbeat missing") and sets `ft:hb:down`; the next heartbeat sends one "all clear". Nothing is
+  sent before the first heartbeat ever arrives. A GitHub schedule because the Hobby plan allows a
+  Vercel cron at most once a day; if the plan moves to Pro, a `vercel.json` cron on the same route
+  would do (Vercel sends the same bearer header).
+- **Resend delivery failures.** `/api/free-test/resend-webhook` takes Resend's `email.bounced`,
+  `email.complained` and `email.delivery_delayed` (Svix-signed, `RESEND_WEBHOOK_SECRET`), and for
+  mail from freetest@ only alerts with the recipient, which email it was (confirmation, reminder,
+  report, note) and the reason; a retried delivery alerts once.
+- **Form errors.** A failed send, a Turnstile siteverify error (unreachable, not 2xx, or a code about
+  our key; a visitor failing the check is not one), or anything thrown in the /free-test action is
+  logged and alerted with the typed site and email (never an owner's), at most one email per 15
+  minutes, each carrying the count since the last. The confirm and approve buttons alert on a failed
+  send too.
+
+State lives in a Redis store over Upstash's REST API (`KV_REST_API_URL`, `KV_REST_API_TOKEN`, set by
+Vercel's Marketplace "Upstash for Redis" integration): `ft:hb`, `ft:hb:down`, the form-error count
+and window, and handled webhook ids. Without it the heartbeat and watch routes answer 503 and form
+errors are counted in each instance's memory. `scripts/test_free_test_alerts.py` runs all of it
+against a local build with a stand-in store, alerts written to `FREE_TEST_ALERT_OUTBOX`.
+
 Local end to end: `FREE_TEST_OUTBOX=<folder>` (refused on Vercel) writes each event there as an
 `.eml` instead of sending, and the engine reads the same folder with `FREE_TEST_QUEUE=dir:<folder>`,
 mail to Mailpit on 1026 (`FREE_TEST_MAIL=smtp://127.0.0.1:1026`, never 1025, which is Proton Bridge).

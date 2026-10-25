@@ -4,7 +4,8 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { signedIn } from "@/lib/desk";
 import { rateLimiter } from "@/lib/form-mail";
-import { approveOk, enabled, ipHash, sendEvent, tokenShape, turnstileOk } from "@/lib/free-test";
+import { approveOk, enabled, ipHash, sendEvent, tokenShape, turnstileVerify } from "@/lib/free-test";
+import { formError } from "@/lib/free-test-alert";
 import { TRAP, orgKey, refKey, validate, type Errors } from "./fields";
 
 // The free test's three actions: a request from the form, a confirmation from the
@@ -42,7 +43,26 @@ const siteDomain = (url: string) =>
 
 const clientIp = async () => ((await headers()).get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
 
+/* FAILING LOUDLY (2026-10-25). A failure on our side (the request event not sent,
+   Turnstile's siteverify erroring, anything thrown) is logged and alerted through
+   formError (lib/free-test-alert.ts): one email per 15 minutes with a count, the
+   typed site and email. A visitor failing the Turnstile check is not an error. */
 export async function requestFreeTest(_prev: RequestState, form: FormData): Promise<RequestState> {
+  try {
+    return await handleRequest(form);
+  } catch (e) {
+    await formError("server error", e instanceof Error ? `${e.name}: ${e.message}`.slice(0, 200) : "unknown", {
+      url: String(form.get("url") || ""),
+      email: String(form.get("email") || ""),
+    }).catch(() => null);
+    return {
+      status: "error",
+      message: "Something went wrong on our side. Try again in a few minutes, or email brian@brianbeals.com.",
+    };
+  }
+}
+
+async function handleRequest(form: FormData): Promise<RequestState> {
   if (!enabled()) return { status: "error", message: "The free check is not open yet. Email brian@brianbeals.com." };
   const get = (n: string) => String(form.get(n) || "");
 
@@ -52,7 +72,17 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
   if (Object.keys(errors).length) return { status: "invalid", errors };
 
   const ip = await clientIp();
-  if (!(await turnstileOk(get("cf-turnstile-response"), ip)))
+  // The typed address goes in an alert only from the public path; an owner's is never read.
+  const typed = { url: get("url"), email: owner ? "(owner check)" : get("email") };
+  const check = await turnstileVerify(get("cf-turnstile-response"), ip);
+  if (check.result === "error") {
+    await formError("Turnstile verify error", check.why, typed);
+    return {
+      status: "error",
+      message: "The security check couldn't be verified on our side. Try again in a minute, or email brian@brianbeals.com.",
+    };
+  }
+  if (check.result !== "ok")
     return {
       status: "error",
       message: "The security check hasn't finished yet. Wait a few seconds, then send again.",
@@ -72,6 +102,7 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
     }
     const ok = await sendEvent("owner", { url: get("url").trim(), ip_hash: ipHash(ip) });
     console.log(`free-test: owner check ${ok ? "sent" : "not sent"}`);
+    if (!ok) await formError("send failure", "the owner event could not be sent", typed);
     return ok
       ? { status: "owner", domain: siteDomain(get("url")) }
       : { status: "error", message: "The owner check could not be sent. Try again in a minute." };
@@ -90,6 +121,7 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
     ...(org ? { org } : {}),
     ...(ref ? { ref } : {}),
   });
+  if (!ok) await formError("send failure", "the request event could not be sent (Resend refused it or was unreachable)", typed);
   if (!ok)
     return {
       status: "error",
@@ -105,6 +137,7 @@ export async function confirmFreeTest(form: FormData): Promise<void> {
   const token = String(form.get("token") || "");
   if (!enabled() || !tokenShape(token)) redirect("/free-test/confirm?problem=link");
   const ok = await sendEvent("confirmed", { token });
+  if (!ok) await formError("send failure", "a confirmation event could not be sent", {});
   redirect(ok ? "/free-test/confirmed" : `/free-test/confirm?token=${encodeURIComponent(token)}&problem=send`);
 }
 
@@ -114,6 +147,7 @@ export async function approveFreeTest(form: FormData): Promise<void> {
   const sig = String(form.get("sig") || "");
   if (!enabled() || !approveOk(job, sig)) redirect("/free-test");
   const ok = await sendEvent("approved", { job });
+  if (!ok) await formError("send failure", `the approval of job ${job} could not be sent`, {});
   const q = new URLSearchParams({ id: job, sig, [ok ? "done" : "problem"]: ok ? "1" : "send" });
   redirect(`/free-test/approve?${q}`);
 }

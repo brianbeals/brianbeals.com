@@ -68,10 +68,12 @@ def events():
     return out
 
 
-def submit(page, url, addr):
+def submit(page, url, addr, org=None):
     page.goto(BASE + "/free-test", wait_until="load")
     page.fill("#ft-url", url)
     page.fill("#ft-email", addr)
+    if org:
+        page.select_option("#ft-org", org)
     # The test site key passes at once; wait for its token.
     page.wait_for_function("document.querySelector('[name=\"cf-turnstile-response\"]')?.value", timeout=30000)
     page.click("button[type=submit]")
@@ -101,7 +103,7 @@ try:
         # 1. No session, Brian's address typed: public.
         ctx = b.new_context()
         page = ctx.new_page()
-        text = submit(page, "www.example.gov", "brian@brianbeals.com")
+        text = submit(page, "www.example.gov", "brian@brianbeals.com", org="nonprofit")
         check(THANKS in text and "Running" not in text, "no session: not the public answer")
         check(page.evaluate("document.activeElement.innerText") == THANKS, "the thank-you heading doesn't take focus")
         check("We sent a confirmation link to brian@brianbeals.com." in text, "the typed address isn't named")
@@ -114,6 +116,7 @@ try:
         ev = events()
         check([t for t, _ in ev] == ["request"] and ev[0][1].get("email") == "brian@brianbeals.com",
               f"no session sent {ev}")
+        check(ev[0][1].get("org") == "nonprofit", f"the Nonprofit (HHS-funded) choice didn't reach the event: {ev[0][1]}")
         ctx.close()
 
         # 2. A forged session cookie: public.

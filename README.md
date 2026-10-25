@@ -91,8 +91,10 @@ Run the readiness checklist." under the buttons; off, the call is primary and th
 checklist button takes the second slot (they read the flag
 at build, so set it and redeploy). `freetest@forms.brianbeals.com` must be added as a Resend sender
 before the flag goes on. The form has one optional field besides the two required ones, "What kind
-of organization?", whose key (`app/free-test/fields.ts` `ORGS`, matching the engine's) goes in the
-signed request. The form's copy says Brian reads each report first; change it if the engine's
+of organization?" (City or county, School district or college, Health center or hospital, Nonprofit
+(HHS-funded) since 2026-10-25, Federal agency or contractor, Other), whose key (`app/free-test/fields.ts`
+`ORGS`, matching the engine's) goes in the signed request; a nonprofit gets Section 504's dates, like a
+health center, and the report speaks of "a client or caregiver". The form's copy says Brian reads each report first; change it if the engine's
 `REVIEW_MODE` goes off. After a public send (2026-10-25) the form gives way to the h2 "Thank you.
 Check your email.", which takes focus, then "We sent a confirmation link to <the typed address>.
 Click it within three business days and your check starts.", what happens next in the words of

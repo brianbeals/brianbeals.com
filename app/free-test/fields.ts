@@ -27,11 +27,14 @@ export function validate(get: (name: string) => string): Errors {
 
 /* The optional "What kind of organization?" choices. The keys match the
    engine's (a11y-audit free_test/emails.py ORGS), which adds a deadline line to
-   the report for each but "other". Anything else is not sent. */
+   the report for each but "other". Anything else is not sent. "nonprofit"
+   (2026-10-25) gets Section 504's dates, as a health center does, and the report
+   speaks of "a client or caregiver" (free_test/audience.py). */
 export const ORGS: [string, string][] = [
   ["city", "City or county"],
   ["school", "School district or college"],
   ["health", "Health center or hospital"],
+  ["nonprofit", "Nonprofit (HHS-funded)"],
   ["federal", "Federal agency or contractor"],
   ["other", "Other"],
 ];

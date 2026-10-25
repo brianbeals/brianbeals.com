@@ -91,16 +91,9 @@ export default async function FreeTest({
             See a sample report
           </Link>
           <div id="check" className="md:col-start-1 md:row-start-1 md:row-span-2">
+            {/* The form also carries the "Can't get past the check?" line, the ACR's 1.1.1
+                alternative to Turnstile, which owner mode leaves out. */}
             <FreeTestForm siteKey={turnstileSiteKey()} source={ref} />
-            {/* The way past Turnstile when its check fails (2026-10-22): the ACR's 1.1.1
-                answer for /free-test names this line as the alternative route. */}
-            <p className="mt-6 text-base leading-relaxed text-neutral-800">
-              Can&apos;t get past the check? Email{" "}
-              <a href="mailto:brian@brianbeals.com" className={link} style={{ color: "var(--link)" }}>
-                brian@brianbeals.com
-              </a>{" "}
-              and I&apos;ll run it for you.
-            </p>
           </div>
 
           <aside aria-labelledby="ft-how" className="text-base md:col-start-2 md:row-start-2">

@@ -32,9 +32,13 @@ const ownerLimited = rateLimiter(10, 60 * 60_000);
 export type RequestState =
   | { status: "idle" }
   | { status: "invalid"; errors: Errors }
-  | { status: "sent" }
-  | { status: "owner" }
+  | { status: "sent"; email: string }
+  | { status: "owner"; domain: string }
   | { status: "error"; message: string };
+
+/* "www.leeschools.net/about" -> "leeschools.net", for the owner's Running line. */
+const siteDomain = (url: string) =>
+  url.trim().toLowerCase().replace(/^https?:\/\//, "").split(/[/?#:]/)[0].replace(/^www\./, "");
 
 const clientIp = async () => ((await headers()).get("x-forwarded-for") || "").split(",")[0].trim() || "unknown";
 
@@ -54,24 +58,27 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
       message: "The security check hasn't finished yet. Wait a few seconds, then send again.",
     };
 
+  // The address as typed, for "We sent a confirmation link to …". Every path that
+  // answers "sent" echoes it, so the screen gives nothing away.
+  const sent: RequestState = { status: "sent", email: get("email").trim() };
   if (get(TRAP) !== "") {
     console.log("free-test: honeypot filled, not sent");
-    return { status: "sent" };
+    return sent;
   }
   if (owner) {
     if (ownerLimited("owner")) {
       console.log("free-test: owner rate limit, not sent");
       return { status: "error", message: "Owner checks are limited to 10 an hour. Try again later." };
     }
-    const sent = await sendEvent("owner", { url: get("url").trim(), ip_hash: ipHash(ip) });
-    console.log(`free-test: owner check ${sent ? "sent" : "not sent"}`);
-    return sent
-      ? { status: "owner" }
+    const ok = await sendEvent("owner", { url: get("url").trim(), ip_hash: ipHash(ip) });
+    console.log(`free-test: owner check ${ok ? "sent" : "not sent"}`);
+    return ok
+      ? { status: "owner", domain: siteDomain(get("url")) }
       : { status: "error", message: "The owner check could not be sent. Try again in a minute." };
   }
   if (limited(ip)) {
     console.log("free-test: instance rate limit, not sent");
-    return { status: "sent" };
+    return sent;
   }
 
   const org = orgKey(get("org"));
@@ -88,7 +95,7 @@ export async function requestFreeTest(_prev: RequestState, form: FormData): Prom
       status: "error",
       message: "Your request could not be sent. Try again in a minute, or email brian@brianbeals.com.",
     };
-  return { status: "sent" };
+  return sent;
 }
 
 /* The confirmation link opens a page with a button; only the button's POST sends

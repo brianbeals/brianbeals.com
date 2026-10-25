@@ -13,7 +13,10 @@ signed event lands there as an .eml instead of going anywhere. Then, in Chromium
   - a forged bb_gate cookie: the public path
   - a valid /desk session, someone else's address typed: an "owner" event with
     only the URL and the IP hash (the typed address is in no event), and
-    "Running. The report will come to brian@brianbeals.com in a few minutes."
+    "Running pinellas.gov. The report will come to brian@brianbeals.com in about 2–4 minutes.",
+    with no "Can't get past the check?" line
+  - the public confirmation: "Thank you. Check your email." takes focus, names the
+    typed address, links the call, and keeps the "Can't get past the check?" line
   - ten owner checks in an hour go; the eleventh is refused on the page and sends nothing
   - every event's HMAC verifies with the secret, as the engine checks it
 
@@ -40,7 +43,9 @@ PORT = 3457
 BASE = f"http://127.0.0.1:{PORT}"
 SECRET = "owner-test-secret-0123456789abcdef0123"
 OUTBOX = Path(tempfile.mkdtemp())
-RUNNING = "Running. The report will come to brian@brianbeals.com in a few minutes."
+RUNNING = "Running pinellas.gov. The report will come to brian@brianbeals.com in about 2–4 minutes."
+THANKS = "Thank you. Check your email."
+HELP = "Can't get past the check?"
 fails = []
 
 
@@ -71,7 +76,7 @@ def submit(page, url, addr):
     page.wait_for_function("document.querySelector('[name=\"cf-turnstile-response\"]')?.value", timeout=30000)
     page.click("button[type=submit]")
     page.wait_for_function(
-        "document.querySelector('main').innerText.match(/Check Your Email|Running\\.|Not sent/)", timeout=30000)
+        "document.querySelector('main').innerText.match(/Check your email|Running |Not sent/)", timeout=30000)
     return page.inner_text("main")
 
 
@@ -95,8 +100,14 @@ try:
 
         # 1. No session, Brian's address typed: public.
         ctx = b.new_context()
-        text = submit(ctx.new_page(), "www.example.gov", "brian@brianbeals.com")
-        check("Check Your Email" in text and RUNNING not in text, "no session: not the public answer")
+        page = ctx.new_page()
+        text = submit(page, "www.example.gov", "brian@brianbeals.com")
+        check(THANKS in text and "Running" not in text, "no session: not the public answer")
+        check(page.evaluate("document.activeElement.innerText") == THANKS, "the thank-you heading doesn't take focus")
+        check("We sent a confirmation link to brian@brianbeals.com." in text, "the typed address isn't named")
+        check(page.locator("#check").get_by_role("link", name="Book a 15-minute call").get_attribute("href") == "/contact",
+              "no Book a 15-minute call link")
+        check(HELP in text, "public confirmation lost the Can't get past the check line")
         ev = events()
         check([t for t, _ in ev] == ["request"] and ev[0][1].get("email") == "brian@brianbeals.com",
               f"no session sent {ev}")
@@ -107,7 +118,7 @@ try:
         ctx.add_cookies([{"name": "bb_gate", "value": f"{int(time.time() * 1000) + 10**9}.{'0' * 64}",
                           "url": BASE}])
         text = submit(ctx.new_page(), "www.example.gov", "a@example.gov")
-        check("Check Your Email" in text, "forged cookie: not the public answer")
+        check(THANKS in text, "forged cookie: not the public answer")
         check([t for t, _ in events()] == ["request", "request"], "forged cookie sent an owner event")
         ctx.close()
 
@@ -120,6 +131,7 @@ try:
         page = ctx.new_page()
         text = submit(page, "www.pinellas.gov", "someone@else.example")
         check(RUNNING in text, f"session: page said {text[:200]!r}")
+        check(HELP not in text, "owner mode shows the Can't get past the check line")
         check(page.evaluate("document.activeElement.innerText") == RUNNING, "the Running line doesn't take focus")
         ev = events()
         check(ev[-1][0] == "owner" and set(ev[-1][1]) == {"url", "ip_hash"} and ev[-1][1]["url"] == "www.pinellas.gov",
@@ -130,9 +142,9 @@ try:
         # 4. Ten an hour.
         for i in range(9):
             text = submit(page, f"www.site{i}.gov", "x@y.example")
-            check(RUNNING in text, f"owner check {i + 2} of 10 refused: {text[:120]!r}")
+            check(f"Running site{i}.gov." in text, f"owner check {i + 2} of 10 refused: {text[:120]!r}")
         text = submit(page, "www.eleven.gov", "x@y.example")
-        check("limited to 10 an hour" in text and RUNNING not in text, f"eleventh owner check: {text[:200]!r}")
+        check("limited to 10 an hour" in text and "Running" not in text, f"eleventh owner check: {text[:200]!r}")
         check([t for t, _ in events()].count("owner") == 10, "the eleventh owner check sent an event")
         ctx.close()
         b.close()

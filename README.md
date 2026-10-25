@@ -128,12 +128,11 @@ whose "[free-test]" mail the Proton filter files into the engine's queue. The en
 sends its own (a11y-audit README, "Failing loudly"); the site adds:
 - **Dead-man's switch.** Each engine tick POSTs a heartbeat to `/api/free-test/heartbeat`, signed with
   `FREE_TEST_SECRET` (HMAC-SHA256 of `heartbeat:<ts>`, within five minutes), stored as `ft:hb`. Every
-  15 minutes `.github/workflows/free-test-watch.yml` calls `/api/free-test/watch` with
-  `Authorization: Bearer <CRON_SECRET>`: 20 minutes with no heartbeat sends one alert ("engine
-  heartbeat missing") and sets `ft:hb:down`; the next heartbeat sends one "all clear". Nothing is
-  sent before the first heartbeat ever arrives. A GitHub schedule because the Hobby plan allows a
-  Vercel cron at most once a day; if the plan moves to Pro, a `vercel.json` cron on the same route
-  would do (Vercel sends the same bearer header).
+  15 minutes a Vercel cron (`vercel.json`, the account is on Pro) calls `/api/free-test/watch`
+  with Vercel's standard `Authorization: Bearer <CRON_SECRET>`: 20 minutes with no heartbeat sends
+  one alert ("engine heartbeat missing") and sets `ft:hb:down`; the next heartbeat sends one "all
+  clear". Nothing is sent before the first heartbeat ever arrives. To trigger it by hand:
+  `curl -H "Authorization: Bearer $CRON_SECRET" https://brianbeals.com/api/free-test/watch`.
 - **Resend delivery failures.** `/api/free-test/resend-webhook` takes Resend's `email.bounced`,
   `email.complained` and `email.delivery_delayed` (Svix-signed, `RESEND_WEBHOOK_SECRET`), and for
   mail from freetest@ only alerts with the recipient, which email it was (confirmation, reminder,

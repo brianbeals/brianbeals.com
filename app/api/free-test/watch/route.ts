@@ -2,13 +2,13 @@ import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { alertBrian, kv, kvEnabled } from "@/lib/free-test-alert";
 
-// The dead-man's switch (2026-10-25). GitHub Actions calls this every 15 minutes
-// (.github/workflows/free-test-watch.yml) with "Authorization: Bearer <CRON_SECRET>";
-// a GitHub schedule rather than a Vercel cron because the Hobby plan allows a
-// cron at most once a day. No heartbeat from the engine for 20 minutes: one alert,
-// and ft:hb:down holds when the outage was noticed. A heartbeat again: one "all
-// clear", and the flag goes. Nothing is sent before the first heartbeat ever
-// arrives, so the deploy before the mini's pull is quiet.
+// The dead-man's switch (2026-10-25). A Vercel cron (vercel.json) calls this every
+// 15 minutes with Vercel's standard "Authorization: Bearer <CRON_SECRET>" (moved from
+// a GitHub Actions schedule the same day, once the account was on Pro). No heartbeat
+// from the engine for 20 minutes: one alert, and ft:hb:down holds when the outage
+// was noticed. A heartbeat again: one "all clear", and the flag goes. Nothing is
+// sent before the first heartbeat ever arrives, so the deploy before the mini's
+// pull is quiet.
 
 export const dynamic = "force-dynamic";
 

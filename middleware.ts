@@ -30,6 +30,8 @@ export async function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
   url.pathname = "/login";
   url.search = "";
-  url.searchParams.set("next", path);
+  // The query comes along, so a link like /desk/hand-check?d=...&p=... survives the sign-in
+  // (2026-10-25); /login only follows a next that is a path on this site.
+  url.searchParams.set("next", path + req.nextUrl.search);
   return NextResponse.redirect(url);
 }

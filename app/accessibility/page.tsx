@@ -287,7 +287,8 @@ export default function Accessibility() {
           Every report states plainly what was tested and what was not. A row that mostly
           worked is Partially Supports. A report that overstates conformance is worse than one
           that admits a gap, because a reader who finds the gap themselves has reason to doubt
-          every other row.
+          every other row. Raw scans, screen reader recordings, and verification files are kept
+          for the life of the report plus one year, and provided to the client on request.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

@@ -63,7 +63,7 @@ export function sectionForDoc(slug: string): DeskSection {
   if (slug === "scope-and-limitations") return "before";
   if (slug === "recon-sample") return "recon";
   if (slug === "regime-cheat-sheet") return "rules";
-  if (slug === "overlays" || slug === "overlay-battlecards") return "overlays";
+  if (slug === "overlays" || slug === "overlay-battlecards" || slug === "overlay-local-sites") return "overlays";
   if (slug === "positioning-and-pitch") return "pitch";
   return "desk";
 }

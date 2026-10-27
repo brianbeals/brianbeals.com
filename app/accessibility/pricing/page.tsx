@@ -7,12 +7,11 @@ import PageHeading from "@/app/components/PageHeading";
 // Ported 2026-10-15 from the approved print sheet
 // LLC/FL-VBE/Accessibility-Practice/Services-Sheet-Public-Entities.html. Port the
 // sheet, do not rewrite it. Edits made for the web: the H1 names public entities
-// generally rather than Florida; Charlotte County is off the vendor line while its
-// RFP is open under a cone of silence (put it back, with its NIGP codes, once that
-// closes); the Prompt Payment Act line is marked as Florida terms; one line points
-// healthcare and federal work at their own pages; and the sample-report path is
-// the live /conformance-report.html. No SAM link: SAM entity pages need sign-in
-// (see docs commit 86318d0).
+// generally rather than Florida; the Prompt Payment Act line is marked as Florida
+// terms; one line points healthcare and federal work at their own pages; and the
+// sample-report path is the live /conformance-report.html. No SAM link: SAM entity pages need sign-in
+// (see docs commit 86318d0). Charlotte County was off the vendor line for RFP
+// 2026-0634's cone of silence until 2026-10-26; Brian never bid it, so it is back.
 //
 // "FROM" PRICES ONLY, decided 2026-10-15. The print sheet carries full ranges and
 // the document-count bands; this page shows each engagement's floor and nothing
@@ -242,7 +241,8 @@ export default function AccessibilityPricing() {
 
         <ul className={list}>
           <li>
-            Registered vendor: MyFloridaMarketPlace, SAM.gov (UEI NJLEHNAQATJ6, CAGE 22XM3).
+            Registered vendor: Charlotte County (NIGP 918-25, 918-32, 915-96), MyFloridaMarketPlace,
+            SAM.gov (UEI NJLEHNAQATJ6, CAGE 22XM3).
           </li>
           <li>
             Fixed price per engagement; invoiced on delivery. For Florida public entities, Local

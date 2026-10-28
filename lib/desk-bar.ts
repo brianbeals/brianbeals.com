@@ -174,12 +174,20 @@ const MENU_BTN =
 
 /* withSkip adds a skip link ahead of the bar and a target after it, for pages
    that have no skip link of their own. */
-export function deskBarHtml(current: DeskSection, withSkip = false): string {
+//
+// feedbackFrom (2026-10-27): for a read-only viewer (lib/gate.ts), the path of the
+// page, and the bar gains "Send feedback" (/desk/feedback) beside Sign out. The
+// owner's bar is unchanged.
+export function deskBarHtml(current: DeskSection, withSkip = false, feedbackFrom?: string): string {
+  const feedback = feedbackFrom
+    ? `<li class="dk-out"><a href="/desk/feedback?from=${encodeURIComponent(feedbackFrom)}">Send feedback</a></li>`
+    : "";
   const items = LINKS.map(([key, href, label]) => {
     const cls = key === "desk" ? ' class="dk-home"' : "";
     const cur = key === current ? ' aria-current="page"' : "";
-    const li = key === "logout" ? '<li class="dk-out">' : "<li>";
-    return `${li}<a href="${href}"${cls}${cur}>${label.replace(/&/g, "&amp;")}</a></li>`;
+    const li = key === "logout" && !feedback ? '<li class="dk-out">' : "<li>";
+    const a = `${li}<a href="${href}"${cls}${cur}>${label.replace(/&/g, "&amp;")}</a></li>`;
+    return key === "logout" ? feedback + a : a;
   }).join("");
   const skip = withSkip ? '<a class="dk-skip" href="#desk-content">Skip to content</a>' : "";
   const target = withSkip ? '<span id="desk-content" tabindex="-1"></span>' : "";
@@ -198,10 +206,24 @@ export function deskBarHtml(current: DeskSection, withSkip = false): string {
 /* Put the bar at the very top of a built HTML page: after the page's own skip
    link when it has one (so that stays the first stop), otherwise right after
    <body> with a skip link of its own. */
-export function injectDeskBar(html: string, current: DeskSection): string {
+export function injectDeskBar(html: string, current: DeskSection, feedbackFrom?: string): string {
   const skip = /<a[^>]*class="[^"]*skip[^"]*"[^>]*>[\s\S]*?<\/a>/i;
-  if (skip.test(html)) return html.replace(skip, (m) => m + deskBarHtml(current));
-  const bar = deskBarHtml(current, true);
+  if (skip.test(html)) return html.replace(skip, (m) => m + deskBarHtml(current, false, feedbackFrom));
+  const bar = deskBarHtml(current, true, feedbackFrom);
   if (/<body[^>]*>/i.test(html)) return html.replace(/<body[^>]*>/i, (m) => m + bar);
   return bar + html;
+}
+
+/* The page a read-only viewer gets on an owner-only path (lib/gate.ts
+   viewerBlocked), status 403, from the middleware and from /desk/hand-check. */
+export function readOnlyHtml(path: string): string {
+  const html =
+    '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">' +
+    '<meta name="color-scheme" content="light dark"><meta name="robots" content="noindex,nofollow"><title>Read-only access | Brian Beals, LLC</title>' +
+    "<style>body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}main{max-width:40rem;margin:0 auto;padding:24px 16px}a{color:inherit}</style>" +
+    '</head><body><main id="main"><h1>Read-only access</h1>' +
+    "<p>Thanks for taking a look. You're signed in with read-only access, and this page starts work or sends mail on Brian's behalf, so it's for his own login.</p>" +
+    '<p>Everything on <a href="/desk">the desk</a> is yours to read, including the documents and the state and federal dashboards. ' +
+    `If something here would help you, <a href="/desk/feedback?from=${encodeURIComponent(path)}">send Brian a note</a>.</p></main></body></html>`;
+  return injectDeskBar(html, "desk", path);
 }

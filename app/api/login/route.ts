@@ -1,30 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
-import { COOKIE_NAME, signSession } from "@/lib/gate";
+import { COOKIE_NAME, TTL_MS, roleForPassword, signSession } from "@/lib/gate";
 
-const TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
-
+// One form, two passwords (lib/gate.ts): SITE_GATE_PASSWORD signs in the owner for
+// 30 days, SITE_GATE_VIEWER_PASSWORD (when set) a read-only viewer for 14. Neither
+// password is ever logged or echoed.
 export async function POST(req: NextRequest) {
-  const expected = process.env.SITE_GATE_PASSWORD || "";
-  const secret = process.env.SITE_GATE_SECRET || "";
-  if (!expected || !secret) {
+  if (!process.env.SITE_GATE_PASSWORD || !process.env.SITE_GATE_SECRET) {
     return NextResponse.json({ error: "gate not configured" }, { status: 500 });
   }
 
-  const body = (await req.json().catch(() => ({}))) as { password?: string };
-  if (body.password !== expected) {
+  const body = (await req.json().catch(() => ({}))) as { password?: unknown };
+  const role = await roleForPassword(body.password);
+  const value = role ? await signSession(role) : null;
+  if (!role || !value) {
     // small constant delay to slow brute force
     await new Promise((r) => setTimeout(r, 500));
     return NextResponse.json({ error: "wrong password" }, { status: 401 });
   }
 
-  const value = await signSession(secret, TTL_MS);
   const res = NextResponse.json({ ok: true });
   res.cookies.set(COOKIE_NAME, value, {
     httpOnly: true,
     secure: true,
     sameSite: "lax",
     path: "/",
-    maxAge: TTL_MS / 1000,
+    maxAge: TTL_MS[role] / 1000,
   });
   return res;
 }

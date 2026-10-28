@@ -1,6 +1,6 @@
 import { normalize } from "node:path";
 import { cookies } from "next/headers";
-import { COOKIE_NAME, verifySession } from "@/lib/gate";
+import { COOKIE_NAME, verifySession, type Role } from "@/lib/gate";
 
 // The private desk (/desk) and the dashboards behind it read their content from
 // private GitHub repos at request time. This repo is PUBLIC: no desk content,
@@ -94,7 +94,7 @@ export async function readSource(src: Source, path: string): Promise<Uint8Array 
       "User-Agent": "brianbeals-desk",
     },
     // Cached server-side for two minutes. Safe to share: every route that calls
-    // this is behind the gate, and there is one reader.
+    // this is behind the gate, and both roles may read all of it.
     next: { revalidate: 120 },
   });
   if (res.status === 404) return null;
@@ -106,11 +106,15 @@ export async function readSource(src: Source, path: string): Promise<Uint8Array 
   return new Uint8Array(await res.arrayBuffer());
 }
 
-/* Second check behind the middleware, so a matcher mistake cannot publish a desk route. */
+/* The session's role (owner or read-only viewer, lib/gate.ts), or null signed out. */
+export async function sessionRole(): Promise<Role | null> {
+  return verifySession((await cookies()).get(COOKIE_NAME)?.value);
+}
+
+/* Second check behind the middleware, so a matcher mistake cannot publish a desk
+   route. Either role may read the desk. */
 export async function signedIn(): Promise<boolean> {
-  const secret = process.env.SITE_GATE_SECRET || "";
-  const value = (await cookies()).get(COOKIE_NAME)?.value;
-  return Boolean(secret && value && (await verifySession(secret, value)));
+  return (await sessionRole()) !== null;
 }
 
 const TYPES: Record<string, string> = {

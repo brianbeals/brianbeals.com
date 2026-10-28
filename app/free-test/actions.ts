@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { signedIn } from "@/lib/desk";
+import { sessionRole } from "@/lib/desk";
 import { rateLimiter } from "@/lib/form-mail";
 import { approveOk, enabled, ipHash, sendEvent, tokenShape, turnstileVerify } from "@/lib/free-test";
 import { formError } from "@/lib/free-test-alert";
@@ -26,6 +26,10 @@ import { TRAP, orgKey, refKey, validate, type Errors } from "./fields";
 // without a session gets the public path like anyone else. Turnstile and the
 // honeypot still apply. At most 10 an hour, here per instance and again in the
 // engine (owner_per_hour), which is the limit that holds across instances.
+//
+// READ-ONLY VIEWERS (2026-10-27). A session signed in with the viewer password
+// (lib/gate.ts) is refused here outright, before any event: neither the owner path
+// nor the public one runs while it is signed in. The message says to sign out.
 
 const limited = rateLimiter();
 const ownerLimited = rateLimiter(10, 60 * 60_000);
@@ -66,7 +70,14 @@ async function handleRequest(form: FormData): Promise<RequestState> {
   if (!enabled()) return { status: "error", message: "The free check is not open yet. Email brian@brianbeals.com." };
   const get = (n: string) => String(form.get(n) || "");
 
-  const owner = await signedIn();
+  const role = await sessionRole();
+  if (role === "viewer")
+    return {
+      status: "error",
+      message:
+        "You're signed in with read-only desk access, which can't start a check. Sign out to use the public form, or email brian@brianbeals.com.",
+    };
+  const owner = role === "owner";
   const errors = validate(get);
   if (owner) delete errors.email;
   if (Object.keys(errors).length) return { status: "invalid", errors };

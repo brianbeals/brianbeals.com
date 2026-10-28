@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PageHeading from "@/app/components/PageHeading";
-import { signedIn } from "@/lib/desk";
+import { sessionRole } from "@/lib/desk";
 
 // The hand check's start page (2026-10-25). A free-test job on a site that blocks
 // the scanner sends Brian a [free-test ALERT] whose "Start hand check" link comes
@@ -10,7 +10,8 @@ import { signedIn } from "@/lib/desk";
 // Brian is using (a11y-audit scripts/hand_check.py --serve, http://127.0.0.1:8790),
 // which shows its own Start button. A link and a button, both clicked by a person:
 // nothing starts on its own, and nothing here talks to the Mac. Behind the site gate
-// like the rest of /desk, and signedIn() again here.
+// like the rest of /desk, and the session checked again here. Owner only: a read-only
+// viewer gets the middleware's 403 page, and this page's own note if that is ever skipped.
 export const metadata: Metadata = {
   title: { absolute: "Hand Check | Brian Beals, LLC" },
   robots: { index: false, follow: false, nocache: true },
@@ -44,11 +45,28 @@ export default async function HandCheck({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const q = await searchParams;
-  if (!(await signedIn())) {
+  const role = await sessionRole();
+  if (!role) {
     const back = new URLSearchParams();
     for (const [k, v] of Object.entries(q)) for (const x of [v].flat()) if (x) back.append(k, x);
     redirect(`/login?next=${encodeURIComponent(`/desk/hand-check?${back}`)}`);
   }
+  if (role !== "owner")
+    return (
+      <div className="flex-1 px-4 py-6 sm:px-12 sm:py-10">
+        <article className="max-w-5xl mx-auto page-wide text-base leading-relaxed text-neutral-800">
+          <PageHeading spacing="mb-6">Read-Only Access</PageHeading>
+          <p className="mb-4">
+            You&apos;re signed in with read-only access, and the hand check starts work on Brian&apos;s Mac, so it&apos;s
+            for his own login.{" "}
+            <a href="/desk" className={link} style={{ color: "var(--link)" }}>
+              Back to the desk
+            </a>
+            .
+          </p>
+        </article>
+      </div>
+    );
   const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) || "";
   const domain = one(q.d).toLowerCase().replace(/^www\./, "");
   const valid = /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(domain);

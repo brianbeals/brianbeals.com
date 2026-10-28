@@ -11,6 +11,8 @@ signed event lands there as an .eml instead of going anywhere. Then, in Chromium
   - no session, Brian's own address typed: the public path (a "request" event
     carrying the typed address, "Thank you. Check your email.")
   - a forged bb_gate cookie: the public path
+  - a read-only viewer session (SITE_GATE_VIEWER_PASSWORD): refused on the page,
+    no event of either kind
   - a valid /desk session, someone else's address typed: an "owner" event with
     only the URL and the IP hash (the typed address is in no event), and
     "Running pinellas.gov. The report will come to brian@brianbeals.com in about 2–4 minutes.",
@@ -82,10 +84,17 @@ def submit(page, url, addr, org=None):
     return page.inner_text("main")
 
 
+def sign_in(ctx, password):
+    r = ctx.request.post(BASE + "/api/login", data={"password": password})
+    # The login cookie is Secure; over local http, hand it to the context as is.
+    val = re.search(r"bb_gate=([^;]+)", r.headers.get("set-cookie", "")).group(1)
+    ctx.add_cookies([{"name": "bb_gate", "value": val, "url": BASE}])
+
+
 env = {**os.environ, "FREE_TEST_ENABLED": "true", "FREE_TEST_SECRET": SECRET,
        "TURNSTILE_SITE_KEY": "1x00000000000000000000AA", "TURNSTILE_SECRET_KEY": "1x0000000000000000000000000000000AA",
        "FREE_TEST_OUTBOX": str(OUTBOX), "SITE_GATE_PASSWORD": "localtest",
-       "SITE_GATE_SECRET": "localsecret-0123456789abcdef"}
+       "SITE_GATE_VIEWER_PASSWORD": "localviewer", "SITE_GATE_SECRET": "localsecret-0123456789abcdef"}
 env.pop("VERCEL", None)
 env.pop("RESEND_API_KEY", None)
 srv = subprocess.Popen(["npx", "next", "start", "-p", str(PORT), "-H", "127.0.0.1"], cwd=ROOT, env=env,
@@ -121,19 +130,24 @@ try:
 
         # 2. A forged session cookie: public.
         ctx = b.new_context()
-        ctx.add_cookies([{"name": "bb_gate", "value": f"{int(time.time() * 1000) + 10**9}.{'0' * 64}",
+        ctx.add_cookies([{"name": "bb_gate", "value": f"owner.{int(time.time() * 1000) + 10**9}.{'0' * 64}",
                           "url": BASE}])
         text = submit(ctx.new_page(), "www.example.gov", "a@example.gov")
         check(THANKS in text, "forged cookie: not the public answer")
         check([t for t, _ in events()] == ["request", "request"], "forged cookie sent an owner event")
         ctx.close()
 
+        # 2b. A read-only viewer session: refused, nothing sent.
+        ctx = b.new_context()
+        sign_in(ctx, "localviewer")
+        text = submit(ctx.new_page(), "www.pinellas.gov", "a@example.gov")
+        check("Not sent" in text and "read-only desk access" in text, f"viewer: page said {text[:200]!r}")
+        check([t for t, _ in events()] == ["request", "request"], "a viewer session sent an event")
+        ctx.close()
+
         # 3. A real session: owner, the typed address ignored.
         ctx = b.new_context()
-        r = ctx.request.post(BASE + "/api/login", data={"password": "localtest"})
-        # The login cookie is Secure; over local http, hand it to the context as is.
-        val = re.search(r"bb_gate=([^;]+)", r.headers.get("set-cookie", "")).group(1)
-        ctx.add_cookies([{"name": "bb_gate", "value": val, "url": BASE}])
+        sign_in(ctx, "localtest")
         page = ctx.new_page()
         text = submit(page, "www.pinellas.gov", "someone@else.example")
         check(RUNNING in text, f"session: page said {text[:200]!r}")
@@ -163,4 +177,5 @@ if fails:
     for f in fails:
         print(f"  - {f}")
     sys.exit(1)
-print("ok: owner path with a session, public without one or with a forged one, typed address ignored, 10 an hour")
+print("ok: owner path with a session, public without one or with a forged one, viewer refused, typed address ignored, "
+      "10 an hour")

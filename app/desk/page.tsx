@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PageHeading from "@/app/components/PageHeading";
 import DeskCopy from "./DeskCopy";
-import { DESK, DeskError, deskProblem, readSource, signedIn } from "@/lib/desk";
+import { DESK, DeskError, deskProblem, readSource, sessionRole } from "@/lib/desk";
 
 // The private desk: a quick reference for research and live phone calls. Behind
-// the site gate (middleware.ts, then signedIn() here), noindex, in neither
+// the site gate (middleware.ts, then sessionRole() here), noindex, in neither
 // sitemap, linked from no public page.
 //
 // The content is NOT in this repo, which is public. It is desk.html in the
@@ -19,7 +19,8 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function Desk() {
-  if (!(await signedIn())) redirect("/login?next=/desk");
+  const role = await sessionRole();
+  if (!role) redirect("/login?next=/desk");
 
   let body: string | null = null;
   let problem = deskProblem() || "";
@@ -43,6 +44,18 @@ export default async function Desk() {
     <div className="flex-1 px-4 py-6 sm:px-12 sm:py-10">
       <article className="desk max-w-5xl mx-auto page-wide">
         <PageHeading spacing="mb-6">Desk</PageHeading>
+        {/* Read-only viewers (lib/gate.ts) get a way to send Brian a note about the page. */}
+        {role === "viewer" && (
+          <p className="mb-6 text-sm">
+            <a
+              href="/desk/feedback?from=%2Fdesk"
+              className="underline underline-offset-4 hover:no-underline"
+              style={{ color: "var(--link)" }}
+            >
+              Send feedback
+            </a>
+          </p>
+        )}
         {body ? (
           // Trusted: written by Brian in a private repo only this token can read.
           <>

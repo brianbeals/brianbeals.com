@@ -28,13 +28,24 @@ const sections = [
       { href: "/scanner", label: "About our scanners", note: "What the BrianBealsLLC-A11y and BrianBealsLLC-NoticeCheck scanners do, their pace, robots.txt, and how to stop or block them." },
       // Only once FREE_TEST_ENABLED is on (lib/free-test.ts).
       ...(freeTestEnabled()
-        ? [{ href: "/free-test", label: "Free accessibility test", note: "An automated first look at up to 10 pages and 10 linked PDFs, for anyone with an email address on the site's own domain." }]
+        ? [
+            { href: "/free-test", label: "Free accessibility test", note: "An automated first look at up to 10 pages and 10 linked PDFs, for anyone with an email address on the site's own domain." },
+            { href: "/free-test/sample", label: "Sample free test report", note: "The report the free test sends, run on example.org, a fictional city." },
+          ]
         : []),
       { href: "/accessibility/title-ii", label: "ADA Title II Digital Accessibility", note: "28 CFR 35.200, the April 26 2027 and 2028 dates, what the practice does for cities, counties, school districts, and special districts, and how to buy it." },
       { href: "/accessibility/healthcare", label: "Section 504 for Healthcare", note: "45 CFR Part 84, the May 11 2027 date, and what it means for patient-facing documents." },
       { href: "/accessibility/maryland", label: "Maryland Nonvisual Access Requirements", note: "The § 3.5-311 clause and CATS+ vehicle, for capture managers." },
       { href: "/accessibility/federal", label: "Section 508 for Federal Agencies and Their Vendors", note: "36 CFR 1194, the conformance report, and how an agency buys it: micro-purchase, SDVOSB sole source, and VA's Vets First." },
       { href: "/documents", label: "Capability Statements", note: "Every capability statement, in HTML and as a PDF/UA-1 conformant PDF. The short URL the document footers point at." },
+      // The HTML capability statements were linked only from /documents until 2026-10-28,
+      // when the a11y-audit 2.4.5 check, now page by page, listed all five as reachable one
+      // way. Same drift as the essays below: this list is written by hand.
+      { href: "/capability-statement-accessibility.html", label: "Capability Statement: ADA Title II Digital Accessibility", note: "For cities, counties, school districts, and special districts." },
+      { href: "/capability-statement-accessibility-healthcare.html", label: "Capability Statement: Section 504 Digital Accessibility for Healthcare", note: "For hospitals and health systems." },
+      { href: "/capability-statement-accessibility-nonprofit.html", label: "Capability Statement: Section 504 Digital Accessibility for HHS-Funded Nonprofits", note: "For nonprofits that receive HHS funding." },
+      { href: "/capability-statement-accessibility-maryland.html", label: "Capability Statement: Maryland Nonvisual Access and ADA Title II", note: "For Maryland agencies and their prime contractors." },
+      { href: "/capability-statement-accessibility-federal.html", label: "Capability Statement: Section 508 Digital Accessibility", note: "For federal agencies and their vendors." },
       { href: "/conformance-report.html", label: "Accessibility Conformance Report", note: "This site's own VPAT 2.5 report. Linked from fifteen pages, six of them the archived reports, and, until August 30 2026, missing here, which left it locatable only one way." },
       { href: "/conformance-report-2026-08-30.html", label: "Accessibility Conformance Report, August 30, 2026", note: "Superseded by the October 8 2026 re-evaluation and kept so that report's citation resolves." },
       { href: "/conformance-report-2026-10-08.html", label: "Accessibility Conformance Report, October 8, 2026", note: "Superseded by the October 10 2026 re-evaluation and kept so that report's citation resolves." },

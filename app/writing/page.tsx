@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SectionHeading from "@/app/components/SectionHeading";
 import EssayList from "./EssayList";
 import { essays } from "./essays";
@@ -32,6 +33,20 @@ export default function WritingIndex() {
         <PageHeading>Writing</PageHeading>
         <SectionHeading spacing="mt-0 mb-6">Essays</SectionHeading>
         <EssayList essays={essays} />
+        {/* A second way to the tool, beside the site map (WCAG 2.4.5): until 2026-10-28 the
+            site map was its only link. */}
+        <SectionHeading>Tools</SectionHeading>
+        <p className="text-base sm:text-lg leading-relaxed text-neutral-800">
+          <Link
+            href="/tools/voice-critique"
+            className="underline underline-offset-4 hover:no-underline"
+            style={{ color: "var(--link)" }}
+          >
+            Voice Critique
+          </Link>
+          : the prompt behind the rubric in these essays. It grades a document on five
+          dimensions and is free to copy.
+        </p>
       </div>
     </div>
   );

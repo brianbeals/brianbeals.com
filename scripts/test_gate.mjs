@@ -9,7 +9,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { TTL_MS, roleForPassword, signSession, verifySession, viewerBlocked } from "../lib/gate.ts";
-import { deskBarHtml, readOnlyHtml } from "../lib/desk-bar.ts";
+import { deskBarHtml, readOnlyHtml, sectionForDoc } from "../lib/desk-bar.ts";
 import { buildFeedbackEmail, feedbackPath } from "../app/desk/feedback/email.ts";
 import { rateLimiter } from "../lib/form-mail.ts";
 
@@ -164,4 +164,10 @@ test("the feedback rate limit refuses the sixth note in an hour", () => {
   const results = Array.from({ length: 6 }, () => limited("1.2.3.4"));
   assert.deepEqual(results, [false, false, false, false, false, true]);
   assert.equal(limited("5.6.7.8"), false);
+});
+
+test("the monitoring tools cards sit in the Overlays section, beside the battlecards", () => {
+  for (const slug of ["overlays", "overlay-battlecards", "overlay-local-sites", "monitoring-tools"])
+    assert.equal(sectionForDoc(slug), "overlays", slug);
+  assert.equal(sectionForDoc("monitoring"), "desk");
 });

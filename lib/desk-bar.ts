@@ -63,7 +63,9 @@ export function sectionForDoc(slug: string): DeskSection {
   if (slug === "scope-and-limitations") return "before";
   if (slug === "recon-sample") return "recon";
   if (slug === "regime-cheat-sheet") return "rules";
-  if (slug === "overlays" || slug === "overlay-battlecards" || slug === "overlay-local-sites") return "overlays";
+  // Monitoring tools (2026-10-29) sit beside the overlay battlecards, though they are never overlays.
+  if (slug === "overlays" || slug === "overlay-battlecards" || slug === "overlay-local-sites" || slug === "monitoring-tools")
+    return "overlays";
   if (slug === "positioning-and-pitch") return "pitch";
   return "desk";
 }

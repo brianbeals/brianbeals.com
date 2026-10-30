@@ -12,6 +12,9 @@ import { sessionRole } from "@/lib/desk";
 // nothing starts on its own, and nothing here talks to the Mac. Behind the site gate
 // like the rest of /desk, and the session checked again here. Owner only: a read-only
 // viewer gets the middleware's 403 page, and this page's own note if that is ever skipped.
+// docs=<1-50> (2026-10-30) makes it documents only: at most that many PDFs from the listed
+// pages, permit and application forms first, and a report on the PDFs alone
+// (hand_check.py --documents).
 export const metadata: Metadata = {
   title: { absolute: "Hand Check | Brian Beals, LLC" },
   robots: { index: false, follow: false, nocache: true },
@@ -21,6 +24,7 @@ export const dynamic = "force-dynamic";
 
 const COLLECTOR = "http://127.0.0.1:8790";
 const MAX_PAGES = 15;
+const MAX_DOCS = 50;
 const link = "underline underline-offset-4 hover:no-underline";
 
 /* Only http(s) pages on the site itself, at most 15. */
@@ -74,7 +78,14 @@ export default async function HandCheck({
   // How the free test was blocked (401, 403, 429 or robots), passed on so the report can say so.
   const blocked = /^(401|403|429|robots)$/.test(one(q.b)) ? one(q.b) : "";
   const pages = valid ? pagesFor(domain, [q.p].flat().filter((x): x is string => Boolean(x))) : [];
-  const start = new URLSearchParams({ domain, entity, ...(blocked ? { blocked } : {}) });
+  const n = /^\d{1,2}$/.test(one(q.docs)) ? Number(one(q.docs)) : 0;
+  const docs = n >= 1 && n <= MAX_DOCS ? n : 0;
+  const start = new URLSearchParams({
+    domain,
+    entity,
+    ...(blocked ? { blocked } : {}),
+    ...(docs ? { docs: String(docs) } : {}),
+  });
   for (const p of pages) start.append("page", p);
 
   return (
@@ -85,13 +96,22 @@ export default async function HandCheck({
           <p role="alert">This link has no site or no pages on it. Use the link in the free-test alert.</p>
         ) : (
           <>
-            <p className="mb-4">
-              {domain} blocks automated scanners
-              {blocked ? ` (${blocked === "robots" ? "robots.txt" : `HTTP ${blocked}`})` : ""}, so these pages get the
-              free test&apos;s checks by hand: you open
-              each one and click the <strong>Hand check</strong> bookmark. When the last one is in, the report is
-              built and emailed to you.
-            </p>
+            {docs ? (
+              <p className="mb-4">
+                <strong>Documents only.</strong> {domain} keeps automated scanners away from its documents
+                {blocked ? ` (${blocked === "robots" ? "robots.txt" : `HTTP ${blocked}`})` : ""}, so up to {docs} PDFs
+                linked from these pages are checked by hand, permit and application forms first: you open each page
+                and click the <strong>Hand check</strong> bookmark, and your browser fetches its PDFs. When the last
+                one is in, a report on the PDFs alone is built and emailed to you.
+              </p>
+            ) : (
+              <p className="mb-4">
+                {domain} blocks automated scanners
+                {blocked ? ` (${blocked === "robots" ? "robots.txt" : `HTTP ${blocked}`})` : ""}, so these pages get
+                the free test&apos;s checks by hand: you open each one and click the <strong>Hand check</strong>{" "}
+                bookmark. When the last one is in, the report is built and emailed to you.
+              </p>
+            )}
             <ol className="list-decimal pl-6 mb-6 space-y-1">
               {pages.map((p) => (
                 <li key={p}>

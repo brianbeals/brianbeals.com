@@ -161,7 +161,7 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
   /* The pinned bar: a 72px row plus the 4px stripe (64px until the larger brand
      lockup, 2026-10-24). */
   --header-h: 76px;
-  /* The primary call to action, "Book a 15-minute call" (header and homepage hero),
+  /* The primary call to action, "Request a 15-minute call" (header and homepage hero),
      2026-10-16. White on #1E8449 is 4.71:1 and on the hover #196F3D 6.1:1, in both
      color schemes, since the button carries its own background. */
   --cta-bg: #1E8449;
@@ -365,7 +365,7 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
   }
 }
 /* 320 to 399px, and 400% zoom: a smaller mark and name, tighter buttons and no
-   menu icon, so brand, Menu and "Book a call" still share one row at 320px. */
+   menu icon, so brand, Menu and "Request a call" still share one row at 320px. */
 @media (max-width: 399px) {
   .site-header-row {
     column-gap: 6px;
@@ -445,7 +445,7 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
 }
 /* Room for the nav beside the larger brand lockup (2026-10-24; the mark, 12px and
    the 250px descriptor make the brand 306px wide). The public nav's six links take
-   14px gaps below 1180px, and below 1100px the call button reads "Book a call". */
+   14px gaps below 1180px, and below 1100px the call button reads "Request a call". */
 @media (min-width: 1024px) and (max-width: 1179px) {
   .site-nav ul {
     column-gap: 14px;

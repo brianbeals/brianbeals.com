@@ -17,8 +17,9 @@ import HeaderMenu from "./HeaderMenu";
  * open. Pinned when the window is at least 500px high (a phone held upright); a
  * landscape phone, 320px by 256px or 400% zoom scroll it away with the page
  * (1.4.10). Pinned with the menu open, the list scrolls within the height left
- * under the bar. The call button reads "Book a
+ * under the bar. The call button reads "Request a
  * call" where the full label does not fit beside the brand and the Menu button.
+ * "Request", not "Book" (2026-10-31): it opens the /contact form, not a scheduler.
  * Tap targets in the row and the list are at least 44px.
  *
  * Under the firm name, inside the home link, a descriptor line (2026-10-24):
@@ -61,10 +62,10 @@ export default function SiteHeader() {
         </Link>
         <HeaderMenu />
         <BookCallLink placement="header" className="site-cta btn-cta rounded font-semibold hover:underline underline-offset-4">
-          <span className="cta-long">Book a 15-minute call</span>
+          <span className="cta-long">Request a 15-minute call</span>
           {/* Only one of the two shows at a time (display: none on the other), so
               the accessible name is always the visible label (2.5.3). */}
-          <span className="cta-short">Book a call</span>
+          <span className="cta-short">Request a call</span>
         </BookCallLink>
         {/* Phones: the descriptor's visible copy, on its own line under the row. The
             home link above already carries it in its name, so this copy is hidden from

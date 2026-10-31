@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { enabled as freeTestEnabled } from "@/lib/free-test";
+import { CAGE, NAICS_LIST, UEI } from "@/lib/identity";
 import DemoVideo from "@/app/components/DemoVideo";
 import SbaMark from "@/app/components/SbaMark";
 import SectionHeading from "@/app/components/SectionHeading";
@@ -412,20 +413,20 @@ export default function Accessibility() {
               >
                 SBA&apos;s Small Business Search
               </a>{" "}
-              by UEI NJLEHNAQATJ6.
+              by UEI {UEI}.
             </p>
             <dl className="text-base leading-relaxed text-neutral-800">
               <div className="flex gap-3">
                 <dt className="font-semibold w-20 flex-none">UEI</dt>
-                <dd className="font-mono">NJLEHNAQATJ6</dd>
+                <dd className="font-mono">{UEI}</dd>
               </div>
               <div className="flex gap-3">
                 <dt className="font-semibold w-20 flex-none">CAGE</dt>
-                <dd className="font-mono">22XM3</dd>
+                <dd className="font-mono">{CAGE}</dd>
               </div>
               <div className="flex gap-3">
                 <dt className="font-semibold w-20 flex-none">NAICS</dt>
-                <dd className="font-mono">541512, 541511, 541519, 541611, 541618, 541990</dd>
+                <dd className="font-mono">{NAICS_LIST}</dd>
               </div>
             </dl>
           </div>

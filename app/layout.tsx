@@ -3,6 +3,7 @@ import { Source_Serif_4 } from "next/font/google";
 import Link from "next/link";
 import HeaderSwitch from "./components/HeaderSwitch";
 import SbaMark from "./components/SbaMark";
+import { CAGE, NAICS_LIST, UEI } from "@/lib/identity";
 import SiteAnalytics, { TrackingNote } from "./components/SiteAnalytics";
 import "./globals.css";
 
@@ -132,10 +133,13 @@ const personJsonLd = {
       founder: { "@id": "https://brianbeals.com/#person" },
       address: {
         "@type": "PostalAddress",
+        streetAddress: "3366 Tripoli Blvd",
         addressLocality: "Punta Gorda",
         addressRegion: "FL",
+        postalCode: "33950",
         addressCountry: "US",
       },
+      telephone: "+1-941-979-6282",
       // Federally issued and globally unique, which makes them far stronger
       // disambiguation than a link to a directory page. Both are already public
       // on /accessibility/maryland and in the SAM registry.
@@ -143,12 +147,12 @@ const personJsonLd = {
         {
           "@type": "PropertyValue",
           propertyID: "UEI",
-          value: "NJLEHNAQATJ6",
+          value: UEI,
         },
         {
           "@type": "PropertyValue",
           propertyID: "CAGE",
-          value: "22XM3",
+          value: CAGE,
         },
       ],
       // Federal contracting directories that carry the LLC. Both are server-
@@ -159,6 +163,7 @@ const personJsonLd = {
       sameAs: [
         "https://govtribe.com/vendors/brian-beals-llc-22xm3",
         "https://www.highergov.com/awardee/brian-beals-llc-1625265099/",
+        "https://www.linkedin.com/company/brian-beals-llc/",
       ],
     },
   ],
@@ -218,7 +223,11 @@ export default function RootLayout({
                 Business Enterprise
               </p>
               <p>
-                UEI NJLEHNAQATJ6 · CAGE 22XM3 · NAICS 541512, 541511, 541519, 541611, 541618, 541990 ·{" "}
+                Punta Gorda, FL ·{" "}
+                <a href="tel:+19419796282" className="underline underline-offset-4 hover:no-underline">
+                  (941) 979-6282
+                </a>
+                {" · "}UEI {UEI} · CAGE {CAGE} · NAICS {NAICS_LIST} ·{" "}
                 <Link href="/documents" className="underline underline-offset-4 hover:no-underline">
                   Capability statements
                 </Link>
@@ -226,7 +235,7 @@ export default function RootLayout({
             </div>
           </div>
           <div className="max-w-5xl mx-auto flex flex-wrap gap-x-4 gap-y-1">
-            <span>© {new Date().getFullYear()} Brian Beals</span>
+            <span>© {new Date().getFullYear()} Brian Beals, LLC</span>
             {/* 2.4.5 Multiple Ways. The second route to every page, reachable
                 from every page. A site map linked from nowhere satisfies
                 nothing. */}

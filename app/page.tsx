@@ -95,7 +95,7 @@ export default function Home() {
                 placement="home-hero"
                 className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
               >
-                Request a 15-minute call
+                Book a 15-minute call
               </BookCallLink>
             )}
           </div>
@@ -108,7 +108,7 @@ export default function Home() {
               <>
                 {" "}or{" "}
                 <BookCallLink placement="home-hero" className={link} style={{ color: "var(--link)" }}>
-                  request a 15-minute call
+                  book a 15-minute call
                 </BookCallLink>
               </>
             ) : null}

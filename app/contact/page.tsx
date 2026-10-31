@@ -3,12 +3,15 @@ import Link from "next/link";
 import PageHeading from "@/app/components/PageHeading";
 import ContactForm from "./ContactForm";
 import { enabled as freeTestEnabled } from "@/lib/free-test";
+import BookCallLink from "@/app/components/BookCallLink";
 
-// The contact page (form since 2026-10-16). The form sends through Resend like the
+// The contact page (form since 2026-10-16). Since 2026-10-31 a line above the form
+// points to the booking page (BookCallLink, placement "contact") and the form is the
+// fallback. The form sends through Resend like the
 // readiness checklist (actions.ts, lib/form-mail.ts). Email, phone and the
 // checklist stay beside it, so nobody has to use the form to reach Brian.
 const DESCRIPTION =
-  "Request a free 15-minute call about the ADA Title II, Section 504 or Section 508 dates, or send a message. Email and phone work too.";
+  "Book a free 15-minute call about the ADA Title II, Section 504 or Section 508 dates, or send a message. Email and phone work too.";
 
 export const metadata: Metadata = {
   title: { absolute: "Let's Talk | Brian Beals, LLC" },
@@ -36,12 +39,20 @@ export default function Contact() {
       <article className="max-w-5xl mx-auto page-wide">
         <PageHeading>Let&apos;s Talk</PageHeading>
         <p className="text-base sm:text-lg leading-relaxed mb-10 text-neutral-800">
-          Request a free 15-minute call about the ADA Title II, Section 504 or Section 508 dates and
-          where your site stands against them. Brian replies within one business day with times.
+          Book a free 15-minute call about the ADA Title II, Section 504 or Section 508 dates and
+          where your site stands against them. Messages get a reply within one business day.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_16rem] gap-10 md:gap-12">
-          <ContactForm canSend={Boolean(process.env.RESEND_API_KEY)} />
+          <div>
+            <p className="text-base mb-6 text-neutral-800">
+              <BookCallLink placement="contact" className={link} style={{ color: "var(--link)" }}>
+                Pick a time on the calendar
+              </BookCallLink>
+              , or send a message below.
+            </p>
+            <ContactForm canSend={Boolean(process.env.RESEND_API_KEY)} />
+          </div>
 
           <aside aria-label="Other ways to reach Brian" className="text-base">
             <ul className="space-y-4">

@@ -16,7 +16,7 @@ import { ORGS, TRAP, errorLabel, errorTarget, validate, type Errors } from "./fi
 // says "Sending…"; on success the form gives way to "Thank you. Check your
 // email.", which takes focus so a screen reader announces it, over the address the
 // link went to, what happens next (the How It Works steps in short), the spam
-// folder line and a "Request a 15-minute call" link (book_call_click, placement
+// folder line and a "Book a 15-minute call" link (book_call_click, placement
 // free-test-confirm, 2026-10-25).
 //
 // Cloudflare Turnstile sits above the button (its script loads on this page only)
@@ -130,7 +130,7 @@ export default function FreeTestForm({ siteKey, source }: { siteKey: string; sou
           </p>
           <p className={body}>
             <BookCallLink placement="free-test-confirm" className={link} style={{ color: "var(--link)" }}>
-              Request a 15-minute call
+              Book a 15-minute call
             </BookCallLink>
           </p>
         </div>

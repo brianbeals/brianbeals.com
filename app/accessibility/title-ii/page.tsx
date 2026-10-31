@@ -258,7 +258,7 @@ export default function AccessibilityTitleII() {
 
         <p className={body}>
           <BookCallLink placement="title-ii" className={link} style={{ color: "var(--link)" }}>
-            Request a 15-minute call
+            Book a 15-minute call
           </BookCallLink>
           , write to{" "}
           <a href="mailto:brian@brianbeals.com" className="underline underline-offset-4" style={{ color: "var(--link)" }}>

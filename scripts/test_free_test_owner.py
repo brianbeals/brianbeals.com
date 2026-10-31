@@ -116,7 +116,7 @@ try:
         check(THANKS in text and "Running" not in text, "no session: not the public answer")
         check(page.evaluate("document.activeElement.innerText") == THANKS, "the thank-you heading doesn't take focus")
         check("We sent a confirmation link to brian@brianbeals.com." in text, "the typed address isn't named")
-        check(page.locator("#check").get_by_role("link", name="Book a 15-minute call").get_attribute("href") == "/contact",
+        check(page.locator("#check").get_by_role("link", name="Book a 15-minute call").get_attribute("href").startswith("https://calendar.proton.me/bookings"),
               "no Book a 15-minute call link")
         check(HELP in text, "public confirmation lost the Can't get past the check line")
         check("Didn't get the email? It comes from freetest@forms.brianbeals.com. Check your spam folder, or write "

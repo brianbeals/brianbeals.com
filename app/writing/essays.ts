@@ -134,3 +134,25 @@ export function topicLabel(topic: Topic): string {
 export function essayTopic(slug: string): Topic | undefined {
   return essays.find((e) => e.slug === slug)?.topic;
 }
+
+// The /writing view (2026-10-31, buyer-first pass): one topic or all of them.
+// The page opens on Accessibility, the essays a buyer came for; ?topic=all,
+// ?topic=ai and ?topic=building are one click away. The older hash links
+// (/writing#ai) still open their topic. The canonical URL stays /writing.
+export type View = Topic | "all";
+
+export const DEFAULT_VIEW: View = "accessibility";
+
+function isView(value: string | null | undefined): value is View {
+  return value === "all" || TOPICS.some((t) => t.slug === value);
+}
+
+export function viewFrom(query: string | null | undefined, hash?: string | null): View {
+  if (isView(query)) return query;
+  if (isView(hash)) return hash;
+  return DEFAULT_VIEW;
+}
+
+export function viewHref(view: View): string {
+  return view === DEFAULT_VIEW ? "/writing" : `/writing?topic=${view}`;
+}

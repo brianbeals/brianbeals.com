@@ -33,6 +33,8 @@ const STATIC_PAGES: StaticEntry[] = [
   // Ported from the approved print documents on 2026-10-15.
   { path: "/accessibility/pricing", priority: 0.8, changeFrequency: "monthly" },
   { path: "/accessibility/before-we-start", priority: 0.7, changeFrequency: "monthly" },
+  // The sample finding (2026-10-31), linked from /accessibility.
+  { path: "/accessibility/sample-finding", priority: 0.7, changeFrequency: "monthly" },
   // The page both scanners' User-Agents link to (2026-10-17). Not in the header nav.
   { path: "/scanner", priority: 0.4, changeFrequency: "monthly" },
   // The free test's form, only once FREE_TEST_ENABLED is on (lib/free-test.ts).
@@ -54,6 +56,8 @@ const STATIC_PAGES: StaticEntry[] = [
   // only links.
   { path: "/capability-statement-accessibility-nonprofit.html", priority: 0.5, changeFrequency: "monthly" },
   { path: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf", priority: 0.4, changeFrequency: "monthly" },
+  // The side projects, moved off /about 2026-10-31. Not in the header nav.
+  { path: "/projects", priority: 0.4, changeFrequency: "monthly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
   { path: "/tools/voice-critique", priority: 0.6, changeFrequency: "monthly" },

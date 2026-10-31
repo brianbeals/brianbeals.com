@@ -2,13 +2,22 @@
 
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
-import { TOPICS, topicLabel, type Essay, type Topic } from "./essays";
+import {
+  TOPICS,
+  topicLabel,
+  viewFrom,
+  viewHref,
+  type Essay,
+  type View,
+} from "./essays";
 import SubHeading from "@/app/components/SubHeading";
 
-// The topic filter on /writing. The URL hash carries the filter, so
-// /writing#accessibility opens filtered and a link from an email or a
-// capability statement can land there. Without JavaScript every essay shows
-// and the controls are plain anchors to the hash, which change nothing.
+// The topic filter on /writing. Since 2026-10-31 the query string carries it
+// (?topic=all|accessibility|ai|building, essays.ts viewFrom) and the page opens
+// on Accessibility. The server renders the view it was asked for, so without
+// JavaScript the controls are plain links that load each view. The older hash
+// links (/writing#accessibility, from emails and capability statements) still
+// open their topic once the page hydrates.
 
 const listeners = new Set<() => void>();
 
@@ -23,27 +32,30 @@ function subscribe(listener: () => void) {
   };
 }
 
-function readHash(): string {
-  return window.location.hash.slice(1);
+function readView(): View {
+  return viewFrom(
+    new URLSearchParams(window.location.search).get("topic"),
+    window.location.hash.slice(1),
+  );
 }
 
-// null on the server and during hydration: render the no-JavaScript version.
-function serverHash(): string | null {
-  return null;
-}
-
-function isTopic(value: string | null): value is Topic {
-  return TOPICS.some((t) => t.slug === value);
+function noop() {
+  return () => {};
 }
 
 const pill =
   "inline-block rounded-full border px-4 py-1.5 text-sm underline-offset-4";
 
-export default function EssayList({ essays }: { essays: Essay[] }) {
-  const hash = useSyncExternalStore(subscribe, readHash, serverHash);
-  const hydrated = hash !== null;
-  const active: Topic | null = isTopic(hash) ? hash : null;
-  const shown = active ? essays.filter((e) => e.topic === active) : essays;
+export default function EssayList({
+  essays,
+  initial,
+}: {
+  essays: Essay[];
+  initial: View;
+}) {
+  const view = useSyncExternalStore(subscribe, readView, () => initial);
+  const hydrated = useSyncExternalStore(noop, () => true, () => false);
+  const shown = view === "all" ? essays : essays.filter((e) => e.topic === view);
 
   // Two status regions, used in turn, so pressing the same filter twice still
   // announces in NVDA with Edge. Same pattern and reason as
@@ -52,36 +64,41 @@ export default function EssayList({ essays }: { essays: Essay[] }) {
     null,
   );
 
-  function choose(topic: Topic | null) {
-    const url = topic
-      ? `#${topic}`
-      : window.location.pathname + window.location.search;
-    if (topic !== active) window.history.pushState(null, "", url);
+  function choose(next: View) {
+    if (next !== view || window.location.hash) {
+      window.history.pushState(null, "", viewHref(next));
+    }
     listeners.forEach((l) => l());
-    const count = topic
-      ? essays.filter((e) => e.topic === topic).length
-      : essays.length;
+    const count =
+      next === "all" ? essays.length : essays.filter((e) => e.topic === next).length;
     const noun = count === 1 ? "essay" : "essays";
     setStatus((s) => ({
-      text: `Showing ${count} ${noun}, ${topic ? topicLabel(topic) : "all topics"}.`,
+      text: `Showing ${count} ${noun}, ${next === "all" ? "all topics" : topicLabel(next)}.`,
       slot: s?.slot === 0 ? 1 : 0,
     }));
   }
 
-  const options: { slug: Topic | null; label: string }[] = [
-    { slug: null, label: "All" },
-    ...TOPICS.map((t) => ({ slug: t.slug, label: t.label })),
+  // Accessibility first: the view the page opens on.
+  const options: { slug: View; label: string }[] = [
+    ...TOPICS.map((t) => ({ slug: t.slug as View, label: t.label })),
+    { slug: "all", label: "All" },
   ];
 
   return (
     <>
+      {view === "accessibility" && (
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          What public documents and websites actually show against the Title II and Section
+          504 dates.
+        </p>
+      )}
       <div
         role="group"
         aria-label="Filter essays by topic"
         className="flex flex-wrap gap-2 mb-10"
       >
         {options.map((o) => {
-          const pressed = hydrated && o.slug === active;
+          const pressed = o.slug === view;
           // Pressed shows by fill, border, weight, and underline, never by
           // color alone (1.4.1).
           const style = pressed
@@ -104,7 +121,13 @@ export default function EssayList({ essays }: { essays: Essay[] }) {
               {o.label}
             </button>
           ) : (
-            <a key={o.label} href={o.slug ? `#${o.slug}` : "#"} className={cls} style={style}>
+            <a
+              key={o.label}
+              href={viewHref(o.slug)}
+              aria-current={pressed ? "true" : undefined}
+              className={cls}
+              style={style}
+            >
               {o.label}
             </a>
           );

@@ -202,6 +202,19 @@ export default function Accessibility() {
           record leaves you with nothing to show.
         </p>
 
+        {/* The sample finding (2026-10-31, buyer-first pass): one finding and its ACR rows. */}
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          <Link
+            href="/accessibility/sample-finding"
+            className="underline underline-offset-4 font-semibold"
+            style={{ color: "var(--link)" }}
+          >
+            See a sample finding
+          </Link>
+          : one document, written up the way it appears in a report, and the conformance report
+          rows it becomes.
+        </p>
+
         <SectionHeading>State and Local: ADA Title II</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -540,7 +553,7 @@ export default function Accessibility() {
         <SectionHeading>Getting Started</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Thirty minutes is usually enough to tell whether this is worth your time. I will walk
+          Fifteen minutes is usually enough to tell whether this is worth your time. I will walk
           you through what a sample of your site shows and what full scope would look like for
           an entity your size. If the timing is wrong, say so and I will leave it alone.
         </p>

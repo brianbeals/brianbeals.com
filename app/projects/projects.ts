@@ -1,7 +1,7 @@
-// The projects built in public. The home page shows each one's summary, a
-// single sentence; /about carries the full description under "Building in
-// public". Moved here 2026-10-12 so the two pages read from one list and the
-// order and links cannot drift.
+// The projects built in public. /projects carries the full description under
+// "Building in Public" (moved off /about 2026-10-31, the buyer-first pass: a
+// government buyer reads About, and the side projects sit one click further on).
+// One list, so the order and links cannot drift.
 
 export type ProjectLink = { label: string; href: string };
 

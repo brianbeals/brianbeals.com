@@ -1,10 +1,10 @@
-import { projects } from "@/app/projects";
+import { projects } from "./projects";
 import SubHeading from "@/app/components/SubHeading";
 
 /**
- * The building-in-public list. The home page passes "summary" (one sentence per
- * project); /about passes "description" (the full write-up). Same order, same
- * links, from app/projects.ts.
+ * The building-in-public list. /projects passes "description" (the full
+ * write-up); "summary" is the one-sentence form the home page used until
+ * 2026-10-12. Same order, same links, from app/projects/projects.ts.
  */
 export default function ProjectList({ text }: { text: "summary" | "description" }) {
   return (

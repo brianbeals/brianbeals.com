@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import ProjectList from "@/app/components/ProjectList";
 import SectionHeading from "@/app/components/SectionHeading";
 import PageHeading from "@/app/components/PageHeading";
 const DESCRIPTION =
@@ -65,14 +64,11 @@ export default function About() {
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">He served as a U.S. Navy electronics technician and was honorably discharged. What he took from it: honor in the work, integrity when nobody is checking, an attention to detail that's hard to switch off. It's also why he'd rather lose a deal than sell a customer something that won't deliver.</p>
 
-        {/* The full project write-ups, moved from the home page 2026-10-12. The
-            home page keeps one sentence each; both read app/projects.ts. */}
-        <SectionHeading>Building in Public</SectionHeading>
-
-        <ProjectList text="description" />
-
-        {/* Off the main nav since 2026-10-10. This line and the site map are its two routes. */}
-        <p className="text-base sm:text-lg leading-relaxed mt-12 text-neutral-800"><Link href="/elsewhere" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>Elsewhere</Link>: adventure travel, mostly to places where the signal goes away.</p>
+        {/* The project write-ups and the Elsewhere link moved to /projects on 2026-10-31
+            (buyer-first pass). This sentence and the site map are its two routes. */}
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">He builds his own tooling, including the scanner behind every report on this site. The side projects are{" "}
+          <Link href="/projects" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>here</Link>.
+        </p>
       </article>
     </div>
   );

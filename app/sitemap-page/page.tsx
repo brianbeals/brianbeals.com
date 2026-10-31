@@ -20,9 +20,10 @@ const sections = [
     heading: "Main Pages",
     links: [
       // Same order as the main nav, then the pages hanging off it. Elsewhere
-      // left the nav on 2026-10-10 and is reachable from /about and here.
-      { href: "/", label: "Home", note: "Accessibility services, the proof, the AI practice, and projects built in public." },
+      // left the nav on 2026-10-10 and is reachable from /projects and here.
+      { href: "/", label: "Home", note: "Accessibility services, the proof, and the AI practice." },
       { href: "/accessibility", label: "Services", note: "Accessibility evaluation: conformance reports, document triage, program setup, and common questions." },
+      { href: "/accessibility/sample-finding", label: "What a Finding Looks Like", note: "A sample finding for a fictional city, and the conformance report rows it becomes." },
       { href: "/accessibility/pricing", label: "Services and Pricing for Public Entities", note: "Fixed prices for each engagement, how the evaluation is done, and what is not offered." },
       { href: "/accessibility/before-we-start", label: "Pre-Engagement Requirements", note: "What has to be in place before a fixed fee is quoted, with a printable readiness checklist." },
       { href: "/scanner", label: "About our scanners", note: "What the BrianBealsLLC-A11y and BrianBealsLLC-NoticeCheck scanners do, their pace, robots.txt, and how to stop or block them." },
@@ -53,9 +54,10 @@ const sections = [
       { href: "/conformance-report-2026-10-11.html", label: "Accessibility Conformance Report, October 11, 2026, first issue", note: "Superseded the same day by the second October 11 2026 re-evaluation and kept so that report's citation resolves." },
       { href: "/conformance-report-2026-10-11b.html", label: "Accessibility Conformance Report, October 11, 2026, second issue", note: "Superseded by the October 17 2026 re-evaluation and kept so that report's citation resolves." },
       { href: "/conformance-report-2026-10-17.html", label: "Accessibility Conformance Report, October 17, 2026", note: "The prior report, superseded by the October 22 2026 re-evaluation and kept so the current report's citation resolves." },
-      { href: "/writing", label: "Writing", note: "Essays on AI, voice, and enterprise technology." },
+      { href: "/writing", label: "Writing", note: "Essays on accessibility for public entities, then AI and building. Opens on accessibility." },
       { href: "/about", label: "About", note: "Background, certifications, and how I work." },
       { href: "/contact", label: "Contact", note: "Email, LinkedIn, and GitHub." },
+      { href: "/projects", label: "Projects", note: "Side projects built in public: the marine forecast, the harbor map, and the rest." },
       { href: "/elsewhere", label: "Elsewhere", note: "Adventure travel, mostly to places where the signal goes away." },
     ],
   },

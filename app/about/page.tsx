@@ -66,8 +66,8 @@ export default function About() {
 
         {/* The project write-ups and the Elsewhere link moved to /projects on 2026-10-31
             (buyer-first pass). This sentence and the site map are its two routes. */}
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">He builds his own tooling, including the scanner behind every report on this site. The side projects are{" "}
-          <Link href="/projects" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>here</Link>.
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">He builds his own tooling, including the scanner behind every report on this site. See the{" "}
+          <Link href="/projects" className="underline underline-offset-4 hover:no-underline" style={{ color: "var(--link)" }}>side projects</Link>.
         </p>
       </article>
     </div>

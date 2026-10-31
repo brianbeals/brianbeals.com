@@ -3,6 +3,7 @@ import type { Dirent } from "node:fs";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { enabled as freeTestEnabled } from "@/lib/free-test";
+import { docs } from "@/app/documents/docs";
 
 const BASE_URL = "https://brianbeals.com";
 
@@ -43,19 +44,15 @@ const STATIC_PAGES: StaticEntry[] = [
   // footer of every PDF, so it has to resolve for as long as any of those PDFs
   // is in circulation, which is longer than any of them is current.
   { path: "/documents", priority: 0.7, changeFrequency: "monthly" },
-  // The HTML capability statements themselves, static files under public/.
-  // Linked only from /documents and never listed here, so the accessibility
-  // scan's crawl never found them and the conformance report left all six out
-  // of its evaluated set until 2026-10-08.
-  { path: "/capability-statement-accessibility.html", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/capability-statement-accessibility-federal.html", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/capability-statement-accessibility-healthcare.html", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/capability-statement-accessibility-maryland.html", priority: 0.5, changeFrequency: "monthly" },
-  // The HHS-funded nonprofit statement (2026-10-24), the one PDF listed here: it
-  // has no program page, so /documents and the two Section 504 callouts are its
-  // only links.
-  { path: "/capability-statement-accessibility-nonprofit.html", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf", priority: 0.4, changeFrequency: "monthly" },
+  // Every capability statement's HTML and PDF, from the list /documents shows
+  // (app/documents/docs.ts, 2026-10-31), so a statement added there is listed here.
+  // The HTML files were linked only from /documents and never listed here until
+  // 2026-10-08, so the accessibility scan's crawl never found them; until
+  // 2026-10-31 only the Nonprofit PDF was listed.
+  ...docs.flatMap((d): StaticEntry[] => [
+    ...(d.html ? [{ path: d.html, priority: 0.5, changeFrequency: "monthly" as const }] : []),
+    { path: d.pdf, priority: 0.4, changeFrequency: "monthly" },
+  ]),
   // The side projects, moved off /about 2026-10-31. Not in the header nav.
   { path: "/projects", priority: 0.4, changeFrequency: "monthly" },
   { path: "/elsewhere", priority: 0.6, changeFrequency: "monthly" },

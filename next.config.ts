@@ -34,12 +34,15 @@ const csp = [
 
 const nextConfig: NextConfig = {
   images: { formats: ["image/avif", "image/webp"] },
-  // The two AI, Analytics & Automation capability statement PDFs, linked from nowhere,
-  // were removed 2026-10-31. A copy already sent still lands on the current statements.
+  // The AI, Analytics & Automation capability statements (two PDFs and two HTML pages),
+  // linked from nowhere, were removed 2026-10-31. A copy already sent still lands on the current statements.
   async redirects() {
     return [
       { source: "/Brian-Beals-LLC-Capability-Statement-Federal.pdf", destination: "/documents", permanent: true },
       { source: "/Brian-Beals-LLC-Capability-Statement-Florida.pdf", destination: "/documents", permanent: true },
+      // Their HTML versions, unlisted and noindexed since 2026-10-16, removed the same day.
+      { source: "/capability-statement.html", destination: "/documents", permanent: true },
+      { source: "/capability-statement-state-local.html", destination: "/documents", permanent: true },
     ];
   },
   async headers() {

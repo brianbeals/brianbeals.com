@@ -104,7 +104,9 @@ export default function AccessibilityHealthcare() {
           systems, federally qualified health centers and community health centers,
           physician and dental practices, behavioral health, dialysis, long-term care,
           home health, health plans, research institutions, medical schools, and human
-          services programs.
+          services programs. It also covers aging services, early learning and Head Start,
+          and behavioral health nonprofits, including those whose HHS money passes through a
+          state agency or regional funder.
         </p>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">

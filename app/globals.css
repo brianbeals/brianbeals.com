@@ -574,6 +574,94 @@ main > div > .max-w-sm.mx-auto { --col-max: 24rem; }
   }
 }
 
+/* The /accessibility hub (2026-10-31). .hub-card is a plain card, the
+   .service-card border without the link states. The band's second button is light
+   on navy: #D6EAF8 text and border on #1E3A5F (9.3:1), filled on hover. On the band
+   the --link focus ring is barely visible, so it is white (11.5:1), as on the header. */
+.hub-card {
+  border-color: var(--rule);
+}
+/* A second link inside a whole-card link (the Section 504 card's PDF) keeps its own
+   ring, and the card's ring stays for the card's own link, so focus shows which. */
+.service-card a.card-extra:focus-visible {
+  outline: 3px solid var(--link);
+  outline-offset: 2px;
+}
+.service-card:has(a.card-extra:focus-visible) {
+  outline: none;
+}
+.hero-band :focus-visible {
+  outline-color: #FFFFFF;
+}
+.hero-band .btn-cta {
+  border: 1px solid #D6EAF8;
+}
+.btn-on-band {
+  color: #D6EAF8;
+  border: 1px solid #D6EAF8;
+}
+.btn-on-band:hover {
+  background-color: #D6EAF8;
+  color: #1E3A5F;
+}
+/* Native <details> disclosures (the hub's Questions and How This Site Was Tested).
+   The summary is the question, in the SubHeading serif; a drawn chevron turns on
+   open. Open and closed are announced by the browser, so nothing is scripted. */
+.faq {
+  border-top: 1px solid var(--rule);
+}
+.faq:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.faq > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.9rem 0.25rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: var(--head);
+  scroll-margin-top: 28px;
+}
+.faq > summary::-webkit-details-marker {
+  display: none;
+}
+.faq > summary::before {
+  content: "";
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 120ms;
+}
+.faq[open] > summary::before {
+  transform: rotate(45deg);
+}
+.faq > summary:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.faq-body {
+  padding: 0 0.25rem 0.25rem 1.3rem;
+}
+@media (min-width: 640px) {
+  .faq > summary {
+    font-size: 1.25rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq > summary::before {
+    transition: none;
+  }
+}
+
 /* Section headings (app/components/SectionHeading.tsx), 2026-10-16. The bar is
    --head and the text --head-ink: white on #1E3A5F (11.5:1) in light mode;
    #0F1822 on #A9C9E8 (10.4:1) in dark mode, where a navy slab would sit almost

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { enabled as freeTestEnabled } from "@/lib/free-test";
 import { CAGE, NAICS_LIST, UEI } from "@/lib/identity";
+import BookCallLink from "@/app/components/BookCallLink";
 import DemoVideo from "@/app/components/DemoVideo";
 import SbaMark from "@/app/components/SbaMark";
 import SectionHeading from "@/app/components/SectionHeading";
@@ -18,10 +19,9 @@ export const metadata: Metadata = {
   // issued 2026-08-06 and runs to 2029-08-05.
   //
   // Since 2026-10-10 the homepage leads with the accessibility practice too, and
-  // this page is the Services destination in the main nav. The homepage carries
-  // the summary and the cards; this page carries the detail each card links to.
-  // The AI practice stays positioning on the homepage, with no page of its own
-  // here, until it joins as a second service.
+  // this page is the Services destination in the main nav. Since 2026-10-31 it is a
+  // hub: each rule's detail lives on its own page, the method and the answers in
+  // <details> disclosures here (docs history: the services-hub pass).
   description:
     "Independent WCAG 2.1 Level AA evaluation and VPAT 2.5 Accessibility Conformance Reports. ADA Title II for state and local government, Section 508 for federal agencies and the vendors who sell to them. SBA-certified service-disabled veteran-owned small business.",
   alternates: {
@@ -60,14 +60,128 @@ function BBMarkInverse() {
   );
 }
 
+const body = "text-base sm:text-lg leading-relaxed mb-6 text-neutral-800";
+const link = "underline underline-offset-4 font-semibold";
+const cardText = "text-base leading-relaxed text-neutral-800";
+
+// Which rule applies: whole-card links, the home page's .service-card pattern. The
+// heading text is each card's one stretched link; the 504 card's PDF link sits
+// above the stretch (relative z-10) so it stays its own target. Dates and cites
+// exactly as the rule pages state them.
+const RULES: {
+  name: string;
+  href: string;
+  who: string;
+  dates: React.ReactNode;
+  extra?: React.ReactNode;
+}[] = [
+  {
+    name: "ADA Title II",
+    href: "/accessibility/title-ii",
+    who: "Cities, counties, school districts, and special districts.",
+    dates: (
+      <>
+        <strong style={{ color: "var(--head)" }}>28 CFR 35.200</strong>. April 26, 2027 for
+        entities serving 50,000 or more; April 26, 2028 for smaller ones and all special
+        districts, a year later than first set, by DOJ&apos;s interim final rule of April 20,
+        2026 (document 2026-07663).
+      </>
+    ),
+  },
+  {
+    name: "Section 504",
+    href: "/accessibility/healthcare",
+    who: "Hospitals, health centers, and nonprofits that receive HHS funding.",
+    dates: (
+      <>
+        <strong style={{ color: "var(--head)" }}>45 CFR Part 84</strong>, WCAG 2.1 Level AA. May
+        11, 2027 for recipients with 15 or more employees; May 10, 2028 for smaller ones.
+      </>
+    ),
+    extra: (
+      <a
+        href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf"
+        className="card-extra relative z-10 mt-2 inline-block text-base underline underline-offset-4"
+        style={{ color: "var(--link)" }}
+      >
+        Capability statement for HHS-funded nonprofits (PDF)
+      </a>
+    ),
+  },
+  {
+    name: "Section 508",
+    href: "/accessibility/federal",
+    who: "Federal agencies, and the vendors selling technology to them.",
+    dates: (
+      <>
+        <strong style={{ color: "var(--head)" }}>36 CFR 1194</strong>. In force now, with no
+        compliance date: a solicitation asks for a VPAT, and the answer is due with the bid.
+      </>
+    ),
+  },
+  {
+    name: "Maryland Nonvisual Access",
+    href: "/accessibility/maryland",
+    who: "CATS+ master contractors and their subcontractors.",
+    dates: (
+      <>
+        Maryland&apos;s own statute, State Finance and Procurement § 3.5-311, and the nonvisual
+        access clause in the contract.
+      </>
+    ),
+  },
+];
+
+// The three homepage cards link here by id. Keep the ids in step with the services
+// array in app/page.tsx. The H3 copy matches the cards.
+const SERVICES: { id: string; name: string; text: string }[] = [
+  {
+    id: "conformance-report",
+    name: "Conformance Report",
+    text: "Up to 25 pages across your site's templates, plus the documents linked from them, against all 50 WCAG 2.1 A and AA web accessibility criteria. An ACR in VPAT 2.5 format, an accessibility audit report with evidence per criterion, and a prioritized remediation list. Two to four weeks from scope sign-off.",
+  },
+  {
+    id: "document-inventory",
+    name: "Document Inventory and Triage",
+    text: "Every PDF on your web properties cataloged and sorted: retire, replace with a web page, remediate, or leave under the rule's exceptions. A work order a remediation vendor can bid against, so per-page spend goes to the documents residents use.",
+  },
+  {
+    id: "program-and-policy",
+    name: "Program and Policy Setup",
+    text: "The accessibility statement, ADA coordinator designation, grievance procedure, and self-evaluation record the rule expects. Plus procurement language that requires an ACR before you buy.",
+  },
+];
+
+// Matches the October 22, 2026 report; checked against public/conformance-report.html
+// on 2026-10-22. Change these numbers only when the report is regenerated, and change
+// the home page Proof line with them.
+const PROOF: { big: string; label: string }[] = [
+  { big: "40", label: "Supports" },
+  { big: "0", label: "Partially Supports or Does Not Support" },
+  { big: "4 of 4", label: "PDFs tagged, pass veraPDF" },
+  { big: "Oct 22, 2026", label: "Tested" },
+];
+
+// Native <details>: no script, and a screen reader announces each summary as a
+// collapsed or expanded button. Styles in globals.css (.faq).
+function Answer({ q, children }: { q: string; children: React.ReactNode }) {
+  return (
+    <details className="faq">
+      <summary>{q}</summary>
+      <div className="faq-body">{children}</div>
+    </details>
+  );
+}
+
 export default function Accessibility() {
+  const freeTest = freeTestEnabled();
   return (
     <div className="flex-1 px-6 py-12 sm:px-12 sm:py-16">
       <article className="max-w-5xl mx-auto page-wide">
-        {/* Navy band. Carries the mark and the one-line position, so a reader who
-            arrived from an email sees a firm rather than a personal homepage. */}
+        {/* Navy band. Carries the mark, the one-line position and the two ways in, so a
+            reader who arrived from an email sees a firm rather than a personal homepage. */}
         <div
-          className="rounded-lg px-6 py-8 sm:px-8 sm:py-10 mb-10"
+          className="hero-band rounded-lg px-6 py-8 sm:px-8 sm:py-10 mb-10"
           style={{ backgroundColor: "#1E3A5F" }}
         >
           <div className="flex items-center gap-3 mb-5">
@@ -80,25 +194,33 @@ export default function Accessibility() {
             </span>
           </div>
           <PageHeading tone="band" spacing="mb-4">Accessibility Conformance Reports</PageHeading>
-          <p className="text-lg leading-relaxed" style={{ color: "#D6EAF8" }}>
+          <p className="text-lg leading-relaxed mb-6" style={{ color: "#D6EAF8" }}>
             Independent WCAG 2.1 Level AA evaluation for public entities. I write the
             conformance report. I do not do the remediation, and that is the point.
           </p>
+          <div className="flex flex-wrap gap-3">
+            <BookCallLink
+              placement="accessibility-hero"
+              className="btn-cta rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+            >
+              Book a 15-minute call
+            </BookCallLink>
+            {freeTest ? (
+              <Link
+                href="/free-test"
+                className="btn-on-band rounded px-5 py-2.5 font-semibold hover:underline underline-offset-4"
+              >
+                Free automated check
+              </Link>
+            ) : null}
+          </div>
         </div>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The Department of Justice rule at{" "}
-          <strong style={{ color: "var(--head)" }}>28 CFR 35.200</strong> requires WCAG 2.1
-          Level AA for state and local government web content and digital documents. DOJ
-          extended the compliance dates by one year in an interim final rule published in
-          the Federal Register on April 20, 2026, document 2026-07663.
-        </p>
 
         {/* The screen reader demo, smaller here (2026-10-22): app/components/DemoVideo.tsx,
             the same player, captions and transcript as the home page and /free-test. Its
             end card sends viewers to /free-test, so it shows only while that page is up. */}
-        {freeTestEnabled() ? (
-          <section aria-labelledby="acc-demo" className="my-8 max-w-xl">
+        {freeTest ? (
+          <section aria-labelledby="acc-demo" className="mb-8 max-w-xl">
             <SubHeading level={2} id="acc-demo" spacing="mt-0 mb-3">
               Hear What a Screen Reader Hears
             </SubHeading>
@@ -106,76 +228,51 @@ export default function Accessibility() {
           </section>
         ) : null}
 
-        {/* Ice card, #D6EAF8. Background only, never text: it measures 1.24:1 on
-            white. Body ink on it clears comfortably. */}
-        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Compliance Dates</SubHeading>
-          <dl className="text-base leading-relaxed" style={{ color: "#1A1A2A" }}>
-            <dt className="font-semibold">Public entities serving 50,000 or more</dt>
-            <dd className="mb-3">April 26, 2027</dd>
-            <dt className="font-semibold">
-              Public entities under 50,000, and all special district governments
-            </dt>
-            <dd>April 26, 2028</dd>
-          </dl>
-          <p className="text-sm mt-4" style={{ color: "#5B6470" }}>
-            Confirm which tier applies to your entity before planning against a date. Special
-            districts land on the later date regardless of size.
-          </p>
-        </div>
+        <SectionHeading>Which Rule Applies to You?</SectionHeading>
 
-        {/* The three homepage cards link here by id. Keep the ids in step with
-            the services array in app/page.tsx. The H3 copy matches the cards. */}
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-none mb-6">
+          {RULES.map((r) => (
+            <li key={r.href} className="service-card relative flex flex-col rounded-md border p-4">
+              <SubHeading spacing="mt-0 mb-2">
+                <Link
+                  href={r.href}
+                  className="underline underline-offset-4 after:absolute after:inset-0 after:rounded-md"
+                  style={{ color: "var(--link)" }}
+                >
+                  {r.name}
+                </Link>
+              </SubHeading>
+              <p className={`${cardText} mb-2`}>{r.who}</p>
+              <p className={cardText}>{r.dates}</p>
+              {r.extra}
+            </li>
+          ))}
+        </ul>
+
         <SectionHeading>Services</SectionHeading>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          These are built for a county, city, school district, or special district getting
-          ready for the Title II date, and for the ADA coordinator who will be asked what was
-          done. Each one is digital accessibility (a11y) evaluation or the program paperwork
-          around it. None of them is the repair.
+        <p className={body}>
+          Each one is digital accessibility (a11y) evaluation or the program paperwork around
+          it. None of them is the repair.
         </p>
 
-        <SubHeading id="conformance-report">Conformance Report</SubHeading>
+        <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-none mb-4">
+          {SERVICES.map((s) => (
+            <li key={s.id} className="hub-card rounded-md border p-4">
+              <SubHeading id={s.id} spacing="mt-0 mb-2">
+                {s.name}
+              </SubHeading>
+              <p className={cardText}>{s.text}</p>
+            </li>
+          ))}
+        </ul>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Up to 25 pages across your site&apos;s templates, plus the documents linked from
-          them, against all 50 WCAG 2.1 A and AA web accessibility criteria. An ACR in VPAT
-          2.5 format, an
-          accessibility audit report with evidence per criterion, and a prioritized
-          remediation list. Two to four weeks from scope sign-off.
-        </p>
-
-        <SubHeading id="document-inventory">Document Inventory and Triage</SubHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Every PDF on your web properties cataloged and sorted: retire, replace with a web
-          page, remediate, or leave under the rule&apos;s exceptions. A work order a
-          remediation vendor can bid against, so per-page spend goes to the documents
-          residents use.
-        </p>
-
-        <SubHeading id="program-and-policy">Program and Policy Setup</SubHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The accessibility statement, ADA coordinator designation, grievance procedure,
-          and self-evaluation record the rule expects. Plus procurement language that requires an
-          ACR before you buy.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          <Link
-            href="/accessibility/pricing"
-            className="underline underline-offset-4 hover:no-underline font-semibold"
-            style={{ color: "var(--link)" }}
-          >
+        <p className={body}>
+          <Link href="/accessibility/pricing" className={link} style={{ color: "var(--link)" }}>
             Pricing
           </Link>
           : fixed prices for each engagement.{" "}
-          <Link
-            href="/accessibility/before-we-start"
-            className="underline underline-offset-4 hover:no-underline font-semibold"
-            style={{ color: "var(--link)" }}
-          >
+          <Link href="/accessibility/before-we-start" className={link} style={{ color: "var(--link)" }}>
             Before we start
           </Link>
           : what has to be in place for a fixed fee to hold.
@@ -183,238 +280,158 @@ export default function Accessibility() {
 
         <SectionHeading>What You Get</SectionHeading>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+        <p className={body}>
           An Accessibility Conformance Report in VPAT 2.5 format, the same document your
-          procurement office already asks software vendors to produce. All 50 Level A and
-          Level AA success criteria of WCAG 2.1, each one marked Supports, Partially
-          Supports, Does Not Support, or Not Applicable, each one evidenced. Dated and signed.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          procurement office already asks software vendors to produce: all 50 Level A and Level
+          AA success criteria of WCAG 2.1, each one marked and evidenced, dated and signed.
           Alongside it, a prioritized remediation list your web vendor can bid against, and a
-          one-page summary written for a commission meeting or a budget request rather than
-          for an engineer.
+          one-page summary written for a commission meeting or a budget request.
         </p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+        <p className={body}>
           If a complaint ever arrives, the question is rarely whether the site was perfect. It
           is what you knew and what you were doing about it. Fixing everything and keeping no
           record leaves you with nothing to show.
         </p>
 
-        {/* The sample finding (2026-10-31, buyer-first pass): one finding and its ACR rows. */}
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          <Link
-            href="/accessibility/sample-finding"
-            className="underline underline-offset-4 font-semibold"
-            style={{ color: "var(--link)" }}
-          >
+        <p className={body}>
+          <Link href="/accessibility/sample-finding" className={link} style={{ color: "var(--link)" }}>
             See a sample finding
           </Link>
-          : one document, written up the way it appears in a report, and the conformance report
-          rows it becomes.
-        </p>
-
-        <SectionHeading>State and Local: ADA Title II</SectionHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Cities, counties, school districts, and special districts have their own page: the
-          dates, what I do, how to buy, and the one-page capability statement.{" "}
-          <Link
-            href="/accessibility/title-ii"
-            className="underline underline-offset-4 font-semibold"
-            style={{ color: "var(--link)" }}
-          >
-            See the ADA Title II page
-          </Link>
+          , or{" "}
+          <a href="/conformance-report.html" className={link} style={{ color: "var(--link)" }}>
+            read this site&apos;s own report
+          </a>
           .
-        </p>
-
-        <SectionHeading>Federal: Section 508</SectionHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Section 508 of the Rehabilitation Act, at{" "}
-          <strong style={{ color: "var(--head)" }}>36 CFR 1194 Appendix A</strong>, works
-          differently. There is no government-wide compliance date. It is in force now, and
-          what it affects is award eligibility.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          It reaches two groups. Federal agencies, for the information and communication
-          technology they develop, procure, and use. And every company selling that technology
-          to an agency, which is where the deadline is real and immediate: a solicitation asks
-          for a VPAT, and the answer is due with the bid.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          If a contracting officer has asked you for an Accessibility Conformance Report and
-          you do not have one, that is a dated problem this quarter, not a 2027 problem. A
-          missing or obviously boilerplate ACR can cost an award before anyone reads the
-          technical approach.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          One detail worth knowing, because it trips people up. Section 508 points at WCAG 2.0
-          Level AA while the Title II rule points at 2.1 Level AA. Building to 2.1 satisfies
-          both, since 2.1 is a superset. The reverse is not true, so a 2.0 conformance claim
-          does not cover a Title II obligation.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Agencies and the vendors answering their solicitations have their own page.{" "}
-          <Link
-            href="/accessibility/federal"
-            className="underline underline-offset-4 font-semibold"
-            style={{ color: "var(--link)" }}
-          >
-            See how an agency buys a Section 508 conformance report
-          </Link>
-          .
-        </p>
-
-        <SectionHeading>Why I Do Not Remediate</SectionHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          A conformance claim written by whoever repaired the site is a self-assessment. The
-          report has to come from outside the work, or it is the vendor grading their own
-          homework and your counsel will say so.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Staying out of the repair work also gives you something useful: a specification your
-          remediation vendor bids against, instead of a per-page quote you have no way to
-          check. I am happy to refer a partner for the repair. I will not grade my own
-          work.
-        </p>
-
-        <SectionHeading>How the Evaluation Runs</SectionHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Automated scanning across a representative sample of pages, then manual testing for
-          the criteria a machine cannot settle. Whether an image is decorative or meaningful,
-          whether headings describe their sections, whether reading order carries meaning,
-          whether an error message actually helps. Keyboard traversal and screen reader checks
-          are done by hand.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Every report states plainly what was tested and what was not. A row that mostly
-          worked is Partially Supports. A report that overstates conformance is worse than one
-          that admits a gap, because a reader who finds the gap themselves has reason to doubt
-          every other row. Raw scans, screen reader recordings, and verification files are kept
-          for the life of the report plus one year, and provided to the client on request.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Documents count too. The Title II rule reaches conventional electronic documents, and
-          an untagged PDF is the most common failure I find. A site can pass while its forms
-          library does not.
         </p>
 
         <SectionHeading>The Proof</SectionHeading>
 
-        {/* Matches the October 22, 2026 report; checked against
-            public/conformance-report.html on 2026-10-22. Change these numbers only when the
-            report is regenerated, and change the home page Proof line with them. */}
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          This site carries its own Accessibility Conformance Report. It covers thirty-nine
-          pages and all four published documents, tested against all 50 Level A and AA criteria.
-          The latest run was October 22, 2026. The result:{" "}
-          <strong style={{ color: "var(--head)" }}>40 Supports</strong> and{" "}
-          <strong style={{ color: "var(--head)" }}>10 Not Applicable</strong>. Nothing is
-          marked Partially Supports or Does Not Support, and nothing was left out. All four
-          PDFs are tagged and pass veraPDF.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          The August 30 report marked one criterion Partially Supports: 2.4.5 Multiple Ways,
-          because the report itself did not link the site map. Every page now does, the
-          report included, and the October 8 report marks it Supports. Both earlier
-          reports stay published at their own addresses, so the change is on the record
-          rather than quietly replaced. A firm that evaluates its own site should show its edges, and
-          its fixes.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          A person, not the scan, settled 23 checklist answers. They came from a scripted
-          keyboard pass: Tab to the end of every page and back, then hover on every link.
-          Then a VoiceOver pass in Safari, across 12 pages, confirmed four criteria by ear.
-          On October 10 the sample grew to 13 pages, one per template, heard by two readers on
-          two operating systems, by hand and by scripted capture: VoiceOver on macOS 27.0 and
-          NVDA 2026.2 on Windows 11. The two readers agreed on every check, and both announced
-          the status message on the one page with a button. Reading order can&apos;t be scored by a machine, and no report from this practice
-          will claim it was.
-        </p>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          <a
-            href="/conformance-report.html"
-            className="underline underline-offset-4 font-semibold"
-            style={{ color: "var(--link)" }}
-          >
-            Read the full conformance report
-          </a>
-          . It is the same document a client receives, produced by the same process, published
-          here because a firm that sells conformance reports should have its own on display.
-          It also serves as this site&apos;s accessibility statement. The fastest way to judge
-          whether the work is any good is to read one.
-        </p>
-
-        <SectionHeading>Section 504: Healthcare and HHS-Funded Nonprofits</SectionHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Organizations that receive HHS funding answer to a different rule with an earlier
-          date. The HHS rule at <strong style={{ color: "var(--head)" }}>45 CFR Part 84</strong>{" "}
-          requires WCAG 2.1 Level AA by May 11, 2027 for recipients with 15 or more
-          employees, and May 10, 2028 for smaller ones. It covers hospitals and health
-          centers, and also aging services, early learning and Head Start, and behavioral
-          health nonprofits, including those whose HHS money passes through a state agency
-          or regional funder. Its legacy-document exemption stops at any document someone
-          uses to apply for or access a program.
-        </p>
-
-        <ul className="text-base sm:text-lg leading-relaxed mb-6 space-y-2">
-          <li>
-            <Link
-              href="/accessibility/healthcare"
-              className="underline underline-offset-4 font-semibold"
-              style={{ color: "var(--link)" }}
-            >
-              See how Section 504 applies to healthcare
-            </Link>
-          </li>
-          <li>
-            <a
-              href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf"
-              className="underline underline-offset-4 font-semibold"
-              style={{ color: "var(--link)" }}
-            >
-              Capability statement for HHS-funded nonprofits (PDF)
-            </a>
-          </li>
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-none mb-6">
+          {PROOF.map((t) => (
+            <li key={t.label} className="hub-card rounded-md border p-4">
+              <p
+                className="text-2xl font-bold leading-tight"
+                style={{ color: "var(--head)", fontFamily: "var(--font-serif)" }}
+              >
+                {t.big}
+              </p>
+              <p className="text-sm leading-snug mt-1 text-neutral-800">{t.label}</p>
+            </li>
+          ))}
         </ul>
 
-        <SectionHeading>Maryland: CATS+ Contractors</SectionHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Maryland runs its own version of this obligation through a different statute.
-          If you hold or subcontract on CATS+,{" "}
-          <Link
-            href="/accessibility/maryland"
-            className="underline underline-offset-4 font-semibold"
-            style={{ color: "var(--link)" }}
-          >
-            see how Maryland&apos;s nonvisual access clause works
-          </Link>
+        <p className={body}>
+          Thirty-nine pages and all four published documents, against all 50 Level A and AA
+          criteria: the other 10 are Not Applicable, and nothing was left out. It is the same
+          document a client receives, and this site&apos;s accessibility statement.{" "}
+          <a href="/conformance-report.html" className={link} style={{ color: "var(--link)" }}>
+            Read the full conformance report
+          </a>
           .
         </p>
 
+        <details className="faq mb-6">
+          <summary>How This Site Was Tested</summary>
+          <div className="faq-body">
+            <p className={body}>
+              The August 30 report marked one criterion Partially Supports: 2.4.5 Multiple Ways,
+              because the report itself did not link the site map. Every page now does, the
+              report included, and the October 8 report marks it Supports. Both earlier
+              reports stay published at their own addresses, so the change is on the record
+              rather than quietly replaced. A firm that evaluates its own site should show its
+              edges, and its fixes.
+            </p>
+            <p className={body}>
+              A person, not the scan, settled 23 checklist answers. They came from a scripted
+              keyboard pass: Tab to the end of every page and back, then hover on every link.
+              Then a VoiceOver pass in Safari, across 12 pages, confirmed four criteria by ear.
+              On October 10 the sample grew to 13 pages, one per template, heard by two readers
+              on two operating systems, by hand and by scripted capture: VoiceOver on macOS 27.0
+              and NVDA 2026.2 on Windows 11. The two readers agreed on every check, and both
+              announced the status message on the one page with a button. Reading order
+              can&apos;t be scored by a machine, and no report from this practice will claim it
+              was.
+            </p>
+            <p className={body}>
+              The report is published here, produced by the same process a client gets, because
+              a firm that sells conformance reports should have its own on display. The fastest
+              way to judge whether the work is any good is to read one.
+            </p>
+          </div>
+        </details>
+
+        <SectionHeading>Why I Don&apos;t Remediate</SectionHeading>
+
+        <p className={body}>
+          A conformance claim written by whoever repaired the site is the vendor grading their
+          own homework, and your counsel will say so. Staying out of the repair gives your
+          remediation vendor a specification to bid against, instead of a per-page quote you
+          have no way to check.
+        </p>
+
+        <SectionHeading>Questions</SectionHeading>
+
+        <div className="mb-8 max-w-[70ch]">
+          <Answer q="How Does the Evaluation Run?">
+            <p className={body}>
+              Automated scanning across a representative sample of pages, then manual testing
+              for the criteria a machine cannot settle. Whether an image is decorative or
+              meaningful, whether headings describe their sections, whether reading order
+              carries meaning, whether an error message actually helps. Keyboard traversal and
+              screen reader checks are done by hand.
+            </p>
+            <p className={body}>
+              Every report states plainly what was tested and what was not. A row that mostly
+              worked is Partially Supports. A report that overstates conformance is worse than
+              one that admits a gap, because a reader who finds the gap themselves has reason to
+              doubt every other row. Raw scans, screen reader recordings, and verification files
+              are kept for the life of the report plus one year, and provided to the client on
+              request.
+            </p>
+            <p className={body}>
+              Documents count too. The Title II rule reaches conventional electronic documents,
+              and an untagged PDF is the most common failure I find. A site can pass while its
+              forms library does not.
+            </p>
+          </Answer>
+          <Answer q="Is an Accessibility Conformance Report the Same as an Audit?">
+            <p className={body}>
+              They overlap. An accessibility audit finds the web accessibility problems and
+              records the evidence. The conformance report is the signed, dated verdict on each
+              of the 50 criteria. It uses the VPAT format your purchasing office already asks
+              for. You get both.
+            </p>
+          </Answer>
+          <Answer q="What Does ADA Title II Require by April 2027?">
+            <p className={body}>
+              Every state entity, and every local government serving 50,000 or more, must have
+              its web content and mobile apps meet WCAG 2.1 Level AA by April 26, 2027. That
+              includes the documents posted on the site and content a vendor provides for you.
+              Smaller entities and special districts have until April 26, 2028.
+            </p>
+          </Answer>
+          <Answer q="Does the Rule Cover PDFs?">
+            <p className={body}>
+              Yes. The rule calls them conventional electronic documents. They have to meet the
+              same standard as the page that links them. The exceptions are narrow: archived
+              content, and older files nobody uses to apply for or reach a service.
+            </p>
+          </Answer>
+          <Answer q="Do You Do the Remediation?">
+            <p className={body}>
+              No, for the reasons under Why I Don&apos;t Remediate above. I am happy to refer a
+              partner for the repair. I will not grade my own work.
+            </p>
+          </Answer>
+        </div>
+
         <SectionHeading>The Firm</SectionHeading>
 
-        <div className="flex flex-col items-start min-[600px]:flex-row gap-5 mb-8">
-          <SbaMark height={96} />
+        <div className="flex flex-col items-start min-[600px]:flex-row gap-5 mb-6">
+          <SbaMark height={72} />
           <div>
-            <p className="text-base sm:text-lg leading-relaxed mb-5 text-neutral-800">
+            <p className="text-base sm:text-lg leading-relaxed mb-4 text-neutral-800">
               Brian Beals, LLC. SBA-certified service-disabled veteran-owned small business,
               Florida Veteran Business Enterprise, Maryland Veteran-Owned Small Business
               Enterprise. Registered in SAM.gov and based in Punta Gorda, Florida. A
@@ -428,157 +445,74 @@ export default function Accessibility() {
               </a>{" "}
               by UEI {UEI}.
             </p>
-            <dl className="text-base leading-relaxed text-neutral-800">
-              <div className="flex gap-3">
-                <dt className="font-semibold w-20 flex-none">UEI</dt>
+            <dl className="flex flex-wrap gap-x-6 gap-y-1 text-base leading-relaxed text-neutral-800">
+              <div className="flex gap-2">
+                <dt className="font-semibold">UEI</dt>
                 <dd className="font-mono">{UEI}</dd>
               </div>
-              <div className="flex gap-3">
-                <dt className="font-semibold w-20 flex-none">CAGE</dt>
+              <div className="flex gap-2">
+                <dt className="font-semibold">CAGE</dt>
                 <dd className="font-mono">{CAGE}</dd>
               </div>
-              <div className="flex gap-3">
-                <dt className="font-semibold w-20 flex-none">NAICS</dt>
+              <div className="flex gap-2">
+                <dt className="font-semibold">NAICS</dt>
                 <dd className="font-mono">{NAICS_LIST}</dd>
               </div>
             </dl>
           </div>
         </div>
 
-        <div className="callout my-8 rounded-md p-5" style={{ backgroundColor: "#D6EAF8" }}>
-          <SubHeading level={2} tone="ice" spacing="mt-0 mb-3">Capability Statement</SubHeading>
-          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
-            One page each, for your procurement file. Five, because the rule that matters
-            depends on who is buying. These two cover the practice:
-          </p>
-          <ul className="mb-4 space-y-3">
-            <li>
-              <a
-                href="/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf"
-                className="underline underline-offset-4 font-semibold"
-                style={{ color: "#22688F" }}
-              >
-                Accessibility practice, ADA Title II
-              </a>
-              <span className="block text-base" style={{ color: "#1A1A2A" }}>
-                Conformance evaluation, ACR and VPAT work, and document inventory, written
-                for state and local government and the April 2027 and 2028 dates.
-              </span>
-            </li>
-            <li>
-              <a
-                href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf"
-                className="underline underline-offset-4 font-semibold"
-                style={{ color: "#22688F" }}
-              >
-                Accessibility practice, federal Section 508
-              </a>
-              <span className="block text-base" style={{ color: "#1A1A2A" }}>
-                The same evaluation practice framed for 36 CFR 1194: conformance assessment and
-                VPAT for agencies and for vendors answering a solicitation. SDVOSB set-aside
-                eligible.
-              </span>
-            </li>
-          </ul>
-          <p className="text-base leading-relaxed mb-4" style={{ color: "#1A1A2A" }}>
-            Three more are written for a specific rule and live with it:{" "}
-            <Link
-              href="/accessibility/healthcare"
-              className="underline underline-offset-4 font-semibold"
-              style={{ color: "#22688F" }}
-            >
-              Section 504 for healthcare
-            </Link>
-            ,{" "}
-            <a
-              href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf"
-              className="underline underline-offset-4 font-semibold"
-              style={{ color: "#22688F" }}
-            >
-              Section 504 for HHS-funded nonprofits
-            </a>{" "}
-            (PDF), and{" "}
-            <Link
-              href="/accessibility/maryland"
-              className="underline underline-offset-4 font-semibold"
-              style={{ color: "#22688F" }}
-            >
-              Maryland nonvisual access
-            </Link>
-            .
-          </p>
-          <p className="text-sm leading-relaxed" style={{ color: "#5B6470" }}>
-            All are tagged PDFs: structure tree present, language declared, headings in
-            order, table headers marked, no untagged figures. A firm that hands you an
-            inaccessible document about accessibility has told you something.
-          </p>
-        </div>
-
-        <SectionHeading>Common Questions</SectionHeading>
-
-        <SubHeading>Is an Accessibility Conformance Report the Same as an Audit?</SubHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          They overlap. An accessibility audit finds the web accessibility problems and
-          records the evidence. The conformance report is the signed, dated verdict on each of
-          the 50 criteria. It uses the VPAT format your purchasing office already asks for.
-          You get both.
-        </p>
-
-        <SubHeading>What Does ADA Title II Require by April 2027?</SubHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Every state entity, and every local government serving 50,000 or more, must have its
-          web content and mobile apps meet WCAG 2.1 Level AA by April 26, 2027. That includes
-          the documents posted on the site and content a vendor provides for you. Smaller
-          entities and special districts have until April 26, 2028.
-        </p>
-
-        <SubHeading>Does the Rule Cover PDFs?</SubHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          Yes. The rule calls them conventional electronic documents. They have to meet the
-          same standard as the page that links them. The exceptions are narrow: archived
-          content, and older files nobody uses to apply for or reach a service.
-        </p>
-
-        <SubHeading>Do You Do the Remediation?</SubHeading>
-
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          No. A report written by whoever fixed the site is the vendor grading their own
-          homework, and your counsel will say so. Staying out of the repair keeps the report
-          independent. It also gives your remediation vendor a clear spec to bid against.
+        <p className={body}>
+          Capability statements, one page each for your procurement file. Two cover the
+          practice:{" "}
+          <a href="/Brian-Beals-LLC-Accessibility-Capability-Statement.pdf" className={link} style={{ color: "var(--link)" }}>
+            ADA Title II
+          </a>{" "}
+          and{" "}
+          <a href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Federal.pdf" className={link} style={{ color: "var(--link)" }}>
+            federal Section 508
+          </a>{" "}
+          (PDFs). Three more are written for a specific rule and live with it:{" "}
+          <Link href="/accessibility/healthcare" className={link} style={{ color: "var(--link)" }}>
+            Section 504 for healthcare
+          </Link>
+          ,{" "}
+          <a href="/Brian-Beals-LLC-Accessibility-Capability-Statement-Nonprofit.pdf" className={link} style={{ color: "var(--link)" }}>
+            Section 504 for HHS-funded nonprofits
+          </a>{" "}
+          (PDF), and{" "}
+          <Link href="/accessibility/maryland" className={link} style={{ color: "var(--link)" }}>
+            Maryland nonvisual access
+          </Link>
+          . All are tagged PDFs. A firm that hands you an inaccessible document about
+          accessibility has told you something.
         </p>
 
         <SectionHeading>Getting Started</SectionHeading>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+        <p className={body}>
           Fifteen minutes is usually enough to tell whether this is worth your time. I will walk
           you through what a sample of your site shows and what full scope would look like for
           an entity your size. If the timing is wrong, say so and I will leave it alone.
         </p>
 
-        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
-          <Link
-            href="/contact"
-            className="underline underline-offset-4"
-            style={{ color: "var(--link)" }}
-          >
-            Get in touch
+        <p className={body}>
+          <BookCallLink placement="accessibility-close" className="underline underline-offset-4" style={{ color: "var(--link)" }}>
+            Book a 15-minute call
+          </BookCallLink>
+          ,{" "}
+          <Link href="/contact" className="underline underline-offset-4" style={{ color: "var(--link)" }}>
+            send a message
           </Link>
           , or write to{" "}
-          <a
-            href="mailto:brian@brianbeals.com"
-            className="underline underline-offset-4"
-            style={{ color: "var(--link)" }}
-          >
+          <a href="mailto:brian@brianbeals.com" className="underline underline-offset-4" style={{ color: "var(--link)" }}>
             brian@brianbeals.com
           </a>
           .
         </p>
         {/* The free test's quiet entry point, only while it is on (lib/free-test.ts). */}
-        {freeTestEnabled() ? (
-          <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+        {freeTest ? (
+          <p className={body}>
             <Link href="/free-test" className="underline underline-offset-4" style={{ color: "var(--link)" }}>
               Free automated check
             </Link>{" "}

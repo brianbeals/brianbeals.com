@@ -123,6 +123,12 @@ export default function AccessibilityFederal() {
           technical approach.
         </p>
 
+        {/* Moved from /accessibility on 2026-10-31 (the services hub), word for word. */}
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          If a contracting officer has asked you for an Accessibility Conformance Report and
+          you do not have one, that is a dated problem this quarter, not a 2027 problem.
+        </p>
+
         <SectionHeading>What Applies</SectionHeading>
 
         <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
@@ -131,14 +137,24 @@ export default function AccessibilityFederal() {
             36 CFR 1194 Appendix A
           </Cite>
           , is in force now. There is no compliance date to plan against, and what it
-          governs is award eligibility. It points at WCAG 2.0 Level AA. A product built to
-          2.1 AA satisfies 2.0 AA, since 2.1 is a superset; the reverse does not hold.{" "}
+          governs is award eligibility. It reaches federal agencies, for the information and
+          communication technology they develop, procure, and use, and every company selling
+          that technology to an agency. It points at WCAG 2.0 Level AA. A product built to
+          2.1 AA satisfies 2.0 AA, since 2.1 is a superset; the reverse does not hold.
+        </p>
+
+        {/* Moved from /accessibility on 2026-10-31 (the services hub), which this page
+            linked as "More on how 508 and Title II differ". */}
+        <p className="text-base sm:text-lg leading-relaxed mb-6 text-neutral-800">
+          One detail worth knowing, because it trips people up. Section 508 points at WCAG 2.0
+          Level AA while the Title II rule points at 2.1 Level AA. Building to 2.1 satisfies
+          both. A 2.0 conformance claim does not cover a Title II obligation.{" "}
           <Link
-            href="/accessibility"
+            href="/accessibility/title-ii"
             className="underline underline-offset-4 hover:no-underline"
             style={{ color: "var(--link)" }}
           >
-            More on how 508 and Title II differ
+            See the ADA Title II page
           </Link>
           .
         </p>
